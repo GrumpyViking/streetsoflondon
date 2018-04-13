@@ -113,6 +113,61 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &188774580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 188774582}
+  - component: {fileID: 188774581}
+  m_Layer: 0
+  m_Name: ObjectPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &188774581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 188774580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2008fade9f38e634c9bc5683959d6d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texArray:
+  - {fileID: 2800000, guid: 733ffdf2190f1504db127d0d3d67deae, type: 3}
+  - {fileID: 2800000, guid: 72cf0a1c9d65a6346bdfc6e006068416, type: 3}
+  - {fileID: 2800000, guid: dd791c5b50c95b541b8bcb18a94c6322, type: 3}
+  - {fileID: 2800000, guid: 8bf2e59165e1f654698496c91716c780, type: 3}
+  - {fileID: 2800000, guid: 584ccae11e7fe8c43bf0645df0a0b092, type: 3}
+  - {fileID: 2800000, guid: 4d6a16b5947992442989f5a13897a356, type: 3}
+  - {fileID: 2800000, guid: f12332e3b4368114bb2b33af2d74298a, type: 3}
+  - {fileID: 2800000, guid: c24e7a439ba24604fbb46231e55f835c, type: 3}
+  - {fileID: 2800000, guid: 83750fba949261748be559180662ec3a, type: 3}
+  - {fileID: 2800000, guid: 4ab3d0cce3f37c24b8a87265a3a91982, type: 3}
+  pools:
+  - tag: Unit
+    prefab: {fileID: 1030904958661354, guid: 03b39a6e3d0815a4abb162f20356f3a9, type: 2}
+    size: 10
+--- !u!4 &188774582
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 188774580}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &451689577
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,19 +195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e23638b789c7d45bec15e0b515dab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 10
-  prefab: {fileID: 1739216219727800, guid: 03b39a6e3d0815a4abb162f20356f3a9, type: 2}
-  texArray:
-  - {fileID: 2800000, guid: 733ffdf2190f1504db127d0d3d67deae, type: 3}
-  - {fileID: 2800000, guid: 72cf0a1c9d65a6346bdfc6e006068416, type: 3}
-  - {fileID: 2800000, guid: dd791c5b50c95b541b8bcb18a94c6322, type: 3}
-  - {fileID: 2800000, guid: 8bf2e59165e1f654698496c91716c780, type: 3}
-  - {fileID: 2800000, guid: 584ccae11e7fe8c43bf0645df0a0b092, type: 3}
-  - {fileID: 2800000, guid: 4d6a16b5947992442989f5a13897a356, type: 3}
-  - {fileID: 2800000, guid: f12332e3b4368114bb2b33af2d74298a, type: 3}
-  - {fileID: 2800000, guid: c24e7a439ba24604fbb46231e55f835c, type: 3}
-  - {fileID: 2800000, guid: 83750fba949261748be559180662ec3a, type: 3}
-  - {fileID: 2800000, guid: 4ab3d0cce3f37c24b8a87265a3a91982, type: 3}
 --- !u!4 &451689579
 Transform:
   m_ObjectHideFlags: 0
