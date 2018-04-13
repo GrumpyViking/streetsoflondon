@@ -6,9 +6,9 @@ public class CameraController : MonoBehaviour {
 
     public float panSpeed = 20f;
     public float panBorderThickness = 10f;
-    public int cameraCurrentZoom = 8;
-    public int cameraZoomMax = 20;
-    public int cameraZoomMin = 5;
+    public float cameraCurrentZoom = 8f;
+    public float cameraZoomMax = 20f;
+    public float cameraZoomMin = 5f;
     public Vector2 panLimit;
 
     void Start()
