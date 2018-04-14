@@ -37,6 +37,11 @@ public class ObjectPooler : MonoBehaviour
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
                 obj.GetComponent<Renderer>().material.mainTexture = texArray[i];
+                obj.AddComponent<MoveUnit>();
+                obj.AddComponent<Rigidbody>();
+                obj.GetComponent<Rigidbody>().useGravity = false;
+                
+                
                 objectPool.Enqueue(obj);
             }
             poolDictonary.Add(pool.tag, objectPool);
