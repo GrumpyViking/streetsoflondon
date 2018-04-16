@@ -7,6 +7,7 @@ public class ObjectPooler : MonoBehaviour
 
     public Dictionary<string, Queue<GameObject>> poolDictonary;
     public Texture[] texArray;
+
     [System.Serializable]
     public class Pool
     {
@@ -40,8 +41,8 @@ public class ObjectPooler : MonoBehaviour
                 obj.AddComponent<MoveUnit>();
                 obj.AddComponent<Rigidbody>();
                 obj.GetComponent<Rigidbody>().useGravity = false;
-                
-                
+                obj.GetComponent<Rigidbody>().isKinematic = true;
+
                 objectPool.Enqueue(obj);
             }
             poolDictonary.Add(pool.tag, objectPool);
@@ -65,11 +66,5 @@ public class ObjectPooler : MonoBehaviour
         return objectToSpawn;
 
     }
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
+  
 }
