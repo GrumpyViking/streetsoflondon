@@ -7,6 +7,8 @@ public class ObjectPooler : MonoBehaviour
 
     public Dictionary<string, Queue<GameObject>> poolDictonary;
     public Texture[] texArray;
+    public string name="Test";
+    public int count=0;
 
     [System.Serializable]
     public class Pool
@@ -37,6 +39,8 @@ public class ObjectPooler : MonoBehaviour
             {
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
+                obj.name = name+count;
+                count++;
                 obj.GetComponent<Renderer>().material.mainTexture = texArray[i];
                 obj.AddComponent<MoveUnit>();
                 obj.AddComponent<Rigidbody>();
