@@ -4,13 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+public class SwitchScene : MonoBehaviour {
 
-
-public class GameManager : MonoBehaviour {
-
-	
-    public void SceneSwitch(int scene)
+    public int scene;
+    public void ChangeScene()
     {
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadScene(scene);       
     }
 }
