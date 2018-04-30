@@ -52,16 +52,14 @@ public class CameraController : MonoBehaviour {
             if (Input.GetAxis("Mouse ScrollWheel") > 0 && currentZoom >= minZoom  )
             {
                 scroll = Input.GetAxisRaw("Mouse ScrollWheel");
-                Debug.Log(Input.GetAxisRaw("Mouse ScrollWheel"));
                 camera.fieldOfView -= scroll * zoomSpeed;
                 currentZoom = camera.fieldOfView;
-                Debug.Log(currentZoom);
             }
 
             
 
-            pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
-            pos.z = Mathf.Clamp(pos.z, -panLimit.y, panLimit.y);
+            //pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
+            //pos.z = Mathf.Clamp(pos.z, -panLimit.y, panLimit.y);
 
 
             transform.position = pos;
@@ -69,4 +67,17 @@ public class CameraController : MonoBehaviour {
         
 	}
 
+    public void SwitchSide(int side)
+    {
+        if(side == 0)
+        {
+            camera.transform.localPosition = new Vector3(80, 1000, -100);
+            camera.transform.localRotation = Quaternion.Euler(65, 0, 0);
+        }
+        if (side == 1)
+        {
+            camera.transform.localPosition = new Vector3(80, 1000, 1350);
+            camera.transform.localRotation = Quaternion.Euler(65, 180, 0);
+        }
+    }
 }
