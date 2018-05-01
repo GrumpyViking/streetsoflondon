@@ -4228,7 +4228,7 @@ MonoBehaviour:
   name: Test
   count: 0
   pools:
-  - tag: Unit
+  - tag: unit
     prefab: {fileID: 1030904958661354, guid: 03b39a6e3d0815a4abb162f20356f3a9, type: 2}
     size: 10
 --- !u!4 &1077912414
@@ -7825,7 +7825,7 @@ MonoBehaviour:
   panSpeed: 100
   panBorderThickness: 10
   panLimit: {x: 200, y: 100}
-  cameraActiv: 0
+  cameraActiv: 1
   camera: {fileID: 1968099219}
   maxZoom: 90
   zoomSpeed: 20
