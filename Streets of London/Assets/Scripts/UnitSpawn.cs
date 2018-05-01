@@ -10,7 +10,7 @@ public class UnitSpawn : MonoBehaviour {
         
         for(int i = 0; i < 10; i++)
         {
-                ObjectPooler.Insatnce.SpawnFromPool("Unit", new Vector3(i * 10f, 0, 0), Quaternion.Euler(-90, 180, 0));
+                ObjectPooler.Insatnce.SpawnFromPool("unit", new Vector3(i * 10f, 0, 0), Quaternion.Euler(-90, 180, 0));
         }
         
 	}
