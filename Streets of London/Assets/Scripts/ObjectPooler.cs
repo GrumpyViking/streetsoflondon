@@ -42,7 +42,7 @@ public class ObjectPooler : MonoBehaviour
                 obj.name = name+count;
                 count++;
                 obj.GetComponent<Renderer>().material.mainTexture = texArray[i];
-                obj.AddComponent<MoveUnit>();
+                obj.AddComponent<DragDropScript>();
                 obj.AddComponent<Rigidbody>();
                 obj.GetComponent<Rigidbody>().useGravity = false;
                 obj.GetComponent<Rigidbody>().isKinematic = true;
