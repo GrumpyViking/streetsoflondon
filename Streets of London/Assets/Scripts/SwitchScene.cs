@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SwitchScene : MonoBehaviour {
-
-    public int scene;
-    public void ChangeScene()
+    // Wechselt zur übergebenen Szene
+    public void ChangeScene(int scene)
     {
         SceneManager.LoadScene(scene);       
     }
