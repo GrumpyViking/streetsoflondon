@@ -280,7 +280,7 @@ RectTransform:
   - {fileID: 668797832}
   - {fileID: 1525978160}
   m_Father: {fileID: 761749103}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1187,8 +1187,8 @@ RectTransform:
   m_Children:
   - {fileID: 1361776100}
   - {fileID: 1547016400}
-  - {fileID: 210226071}
   - {fileID: 1518013932}
+  - {fileID: 210226071}
   - {fileID: 991208312}
   - {fileID: 397497919}
   - {fileID: 1570545623}
@@ -1827,7 +1827,7 @@ RectTransform:
   - {fileID: 98376118}
   - {fileID: 1547314488}
   m_Father: {fileID: 761749103}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2157,7 +2157,7 @@ GameObject:
   - component: {fileID: 1570545625}
   - component: {fileID: 1570545624}
   m_Layer: 5
-  m_Name: PlaserOneFrame
+  m_Name: Plaser1Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

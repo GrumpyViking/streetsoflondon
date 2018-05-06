@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Mono.Data.Sqlite;
 using System.Data;
 
+
 public class MainMenuManager : MonoBehaviour {
 
     public GameObject playerOneText;
@@ -23,23 +24,25 @@ public class MainMenuManager : MonoBehaviour {
 
         ctp = ChooseStartingPlayer.GetComponent<Text>();
 
+        #region Datenbank
         //setup database
         string conn = "URI=file:" + Application.dataPath + "/DB/PlayerData.db"; //Path to database.
         IDbConnection dbconn;
         dbconn = (IDbConnection)new SqliteConnection(conn);
         dbconn.Open(); //Open connection to the database.
         IDbCommand dbcmd = dbconn.CreateCommand();
+
         dbcmd.CommandText = "DELETE FROM Spieler";
         dbcmd.ExecuteNonQuery();
 
         dbcmd.CommandText = "VACUUM";
         dbcmd.ExecuteNonQuery();
 
-        
-        dbcmd.CommandText = "INSERT INTO Spieler(Name, Gold) VALUES ('"+pot.text+"',20)";
+
+        dbcmd.CommandText = "INSERT INTO Spieler(Name, Gold) VALUES ('" + pot.text + "',20)";
         dbcmd.ExecuteNonQuery();
 
-        dbcmd.CommandText = "INSERT INTO Spieler(NAME, GOLD) Values('"+ptt.text+"' ,'20')";
+        dbcmd.CommandText = "INSERT INTO Spieler(NAME, GOLD) Values('" + ptt.text + "' ,'20')";
         dbcmd.ExecuteNonQuery();
 
         string sqlQuery = "SELECT * FROM Spieler";
@@ -59,9 +62,13 @@ public class MainMenuManager : MonoBehaviour {
         dbcmd = null;
         dbconn.Close();
         dbconn = null;
+        #endregion
 
+        PassthrougData.startPlayer = StartingPlayer(ctp.text);
 
-        //übergabe werte an Spielansicht
+        PassthrougData.player1 = pot.text;
+        PassthrougData.player2 = ptt.text;
+
 
         //Wechsel zur Spielansicht
         switchSceneScript = GameObject.FindGameObjectWithTag("Scene").GetComponent<SwitchScene>();
@@ -69,7 +76,23 @@ public class MainMenuManager : MonoBehaviour {
 
     }
 
+    int StartingPlayer(string choise)
+    {
+        if(choise.Equals("Spieler 1"))
+        {
+            return 0;
+        }else if (choise.Equals("Spieler 2"))
+        {
+            return 1;
+        }
+        else if (choise.Equals("Zufall"))
+        {
+            return Random.Range(0, 1);
+        }
+        else
+        {
+            return 0; //Default Player 1
+        }
+    }
 
-
-    
 }

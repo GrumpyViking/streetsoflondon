@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
+    public bool cameraActiv;
     public float panSpeed = 20f;
     public float panBorderThickness = 10f;
     public Vector2 panLimit;
-
-    public bool cameraActiv = true;
     public Camera camera;
-
     public float maxZoom = 90f;
     public float zoomSpeed = 20f;
     public float minZoom = 20f;
     public float currentZoom = 65f;
-
     float scroll;
 
+    private void Start()
+    {
+        SetCameraActiv(false);
+    }
 
+    public void SetCameraActiv(bool ca)
+    {
+        cameraActiv = ca;
+    }
 
-    //
     void LateUpdate () {
         if (cameraActiv)
         {
