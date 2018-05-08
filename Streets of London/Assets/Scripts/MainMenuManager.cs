@@ -25,9 +25,8 @@ public class MainMenuManager : MonoBehaviour {
 
         ctp = ChooseStartingPlayer.GetComponent<Text>();
 
-        
-        dbc.WriteToDB("INSERT INTO Spieler(Name, Gold) VALUES ('" + pot.text + "','20')");
-        dbc.WriteToDB("INSERT INTO Spieler(Name, Gold) VALUES('" + ptt.text + "' ,'20')");
+        dbc.WriteToDB("INSERT INTO Spieler(ID, Name, Gold) VALUES (1,'" + pot.text + "',20)");
+        dbc.WriteToDB("INSERT INTO Spieler(ID, Name, Gold) VALUES (2,'" + ptt.text + "' ,20)");
 
         PassthrougData.startPlayer = StartingPlayer(ctp.text);
         PassthrougData.player1 = pot.text;

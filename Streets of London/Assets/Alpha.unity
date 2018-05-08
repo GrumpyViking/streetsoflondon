@@ -18329,6 +18329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1565836640}
   - component: {fileID: 1565836639}
+  - component: {fileID: 1565836641}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -18352,7 +18353,9 @@ MonoBehaviour:
   timer: 10
   myTimer: {fileID: 409507441}
   pm: {fileID: 868672217}
+  dbc: {fileID: 1565836641}
   playerText: {fileID: 1976897745}
+  goldText: {fileID: 1677896797}
 --- !u!4 &1565836640
 Transform:
   m_ObjectHideFlags: 0
@@ -18366,6 +18369,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1565836641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1565836638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaed5be9bf62d7445ab206f6056416de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1572626672
 GameObject:
   m_ObjectHideFlags: 0

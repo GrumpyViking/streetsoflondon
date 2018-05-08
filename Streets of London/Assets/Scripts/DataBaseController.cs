@@ -9,7 +9,7 @@ public class DataBaseController : MonoBehaviour {
     IDbConnection dbconn;
     IDataReader reader;
     IDbCommand dbcmd;
-
+    static bool init = false;
     void OpenDBConnection()
     {
         string conn = "URI=file:" + Application.dataPath + "/DB/PlayerData.db"; //Path to database.
@@ -19,6 +19,15 @@ public class DataBaseController : MonoBehaviour {
 
 
     void Start () {
+        if (!init)
+        {
+            CleanDB();
+            init = true;
+        }
+        
+    }
+    public void CleanDB()
+    {
         OpenDBConnection();
         dbcmd = dbconn.CreateCommand();
         dbcmd.CommandText = "DELETE FROM Spieler";
@@ -28,21 +37,25 @@ public class DataBaseController : MonoBehaviour {
         dbcmd.ExecuteNonQuery();
         CloseDBConnection();
     }
-
     public string RequestFromDB(string query)
     {
+        string buff = "";
         OpenDBConnection();
         dbcmd = dbconn.CreateCommand();
         dbcmd.CommandText = query;
         reader = dbcmd.ExecuteReader();
-            int id = reader.GetInt32(0);
-            string name = reader.GetString(1);
-            int gold = reader.GetInt32(2);
+        while (reader.Read())
+        {
+            int gold = reader.GetInt32(0);
+
+            buff = gold.ToString();
+        }
+
         reader.Close();
         reader = null;
         CloseDBConnection();
 
-        return "id " + id + "  name =" + name + "  gold =" + gold;
+        return buff;
     }
 
     public void WriteToDB(string query)

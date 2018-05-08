@@ -18,8 +18,10 @@ public class GameManager : MonoBehaviour {
     public GameObject myTimer;
 
     public SpielerMenu pm;
+    public DataBaseController dbc;
     public GameObject playerText;
-
+    public GameObject goldText;
+    
 
     private void Start()
     {
@@ -33,10 +35,12 @@ public class GameManager : MonoBehaviour {
         if (PassthrougData.startPlayer == 0)
         {
             playerText.GetComponent<Text>().text = PassthrougData.player1;
+            goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '1'");
         }
         else
         {
             playerText.GetComponent<Text>().text = PassthrougData.player2;
+            goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '2'");
         }
         count = timer;
         tTimer = myTimer.GetComponent<Text>();
@@ -74,6 +78,7 @@ public class GameManager : MonoBehaviour {
             }
             else if (count == -1)
             {
+                paused = true;
                 Reset();
             }
             count--;
