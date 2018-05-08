@@ -8,31 +8,44 @@ public class SpielerMenu : MonoBehaviour {
     public GameObject spielerMenuScriptObject;
     public GameObject playerTextObject;
     public GameManager gm;
-
+    bool init;
     private void Start()
     {
-        
+        init = false;
         if (PassthrougData.startPlayer == 0)
         {
-            playerTextObject.GetComponent<Text>().text = PassthrougData.player1;
+            SetPlayer(PassthrougData.player1);
         }
         else
         {
-            playerTextObject.GetComponent<Text>().text = PassthrougData.player2;
+            SetPlayer(PassthrougData.player2);
         }
- 
+        Debug.Log("test");
     }
     
     public void PanelState(bool state)
     {
         spielerMenuScriptObject.SetActive(state);
 
+    }
 
+    public void SetPlayer(string name)
+    {
+        playerTextObject.GetComponent<Text>().text = name;
     }
 
     public void StartGame()
     {
-        gm.SetupScene();
+        if (!init)
+        {
+            gm.SetupScene();
+            init=true;
+        }
+        else
+        {
+            gm.Continue();
+        }
+        
     }
 
     public void ExitPorgram()

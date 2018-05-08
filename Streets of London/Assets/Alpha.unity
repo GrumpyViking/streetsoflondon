@@ -18349,7 +18349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 1968099216}
   timeLine: {fileID: 449028800}
-  timer: 30
+  timer: 10
   myTimer: {fileID: 409507441}
   pm: {fileID: 868672217}
   playerText: {fileID: 1976897745}
