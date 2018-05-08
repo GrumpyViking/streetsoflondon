@@ -4,26 +4,42 @@ using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour {
-    public GameObject playerText;
+    
     private float count;
     public GameObject camera;
-    Text pPlayer;
+
 
     private int side;
-    public PlayerMenu pm;
+    
     public GameObject timeLine;
     Text tTimer;
     public float timer = 30f;
     public GameObject myTimer;
 
+    public SpielerMenu pm;
+    public GameObject playerText;
+
+
     private void Start()
     {
+        pm.PanelState(true);
+    }
+
+    public void SetupScene()
+    {
+        if (PassthrougData.startPlayer == 0)
+        {
+            playerText.GetComponent<Text>().text = PassthrougData.player1;
+        }
+        else
+        {
+            playerText.GetComponent<Text>().text = PassthrougData.player2;
+        }
+
         side = 0;
         count = timer;
         tTimer = myTimer.GetComponent<Text>();
-        pPlayer = playerText.GetComponent<Text>();
         InvokeRepeating("TimeLine", 1.0f, 1.0f);
-        pm.PanelState(true);
     }
 
 
@@ -32,6 +48,8 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             //Pause GameFlow
+
+            
             //Show SpielerMenu
             pm.PanelState(true);
         }
@@ -39,14 +57,8 @@ public class GameManager : MonoBehaviour {
 
     public void SetPlayer(string name)
     {
-        if (side == 0)
-        {
-            pPlayer.text = name;
-        }
-        else
-        {
-            pPlayer.text = name;
-        }
+        
+        playerText.GetComponent<Text>().text = name;
     }
 
     void TimeLine()

@@ -3,27 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerMenu : MonoBehaviour {
+public class SpielerMenu : MonoBehaviour {
 
-    public GameObject playerMenu;
-    public GameObject playerName;
+    public GameObject spielerMenuScriptObject;
+    public GameObject playerTextObject;
+    public GameManager gm;
+
     private void Start()
     {
         
         if (PassthrougData.startPlayer == 0)
         {
-            playerName.GetComponent<Text>().text = PassthrougData.player1;
+            playerTextObject.GetComponent<Text>().text = PassthrougData.player1;
         }
         else
         {
-            playerName.GetComponent<Text>().text = PassthrougData.player2;
+            playerTextObject.GetComponent<Text>().text = PassthrougData.player2;
         }
  
     }
     
     public void PanelState(bool state)
     {
-        playerMenu.SetActive(state);
+        spielerMenuScriptObject.SetActive(state);
+
+
+    }
+
+    public void StartGame()
+    {
+        gm.SetupScene();
     }
 
     public void ExitPorgram()

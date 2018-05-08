@@ -9395,8 +9395,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 787e08ea7ce2c0f48bf8a581498fc6c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMenu: {fileID: 868672213}
-  playerName: {fileID: 1260320314}
+  spielerMenuScriptObject: {fileID: 0}
+  playerTextObject: {fileID: 0}
+  gm: {fileID: 0}
 --- !u!1 &801065400
 GameObject:
   m_ObjectHideFlags: 0
@@ -10551,8 +10552,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 787e08ea7ce2c0f48bf8a581498fc6c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMenu: {fileID: 868672213}
-  playerName: {fileID: 1260320314}
+  spielerMenuScriptObject: {fileID: 868672213}
+  playerTextObject: {fileID: 1976897745}
+  gm: {fileID: 1565836639}
 --- !u!1 &876343386
 GameObject:
   m_ObjectHideFlags: 0
@@ -18349,12 +18351,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f74d083fcf51540ba7bc77a7fa8afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerText: {fileID: 1976897745}
   camera: {fileID: 1968099216}
-  pm: {fileID: 760123597}
   timeLine: {fileID: 449028800}
   timer: 30
   myTimer: {fileID: 409507441}
+  pm: {fileID: 868672217}
+  playerText: {fileID: 1976897745}
 --- !u!4 &1565836640
 Transform:
   m_ObjectHideFlags: 0
