@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 8
+  serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -39,6 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -54,11 +55,10 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_TextureWidth: 1024
-    m_TextureHeight: 1024
+    m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -1112,6 +1112,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 0ce45e3eec775de4c8ba2034f8d92614, type: 2}
   m_StaticBatchInfo:
@@ -1196,6 +1197,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 0ce45e3eec775de4c8ba2034f8d92614, type: 2}
   m_StaticBatchInfo:
@@ -1459,6 +1461,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 17f061565229d4042adf1ce686c1cdd5, type: 2}
   m_StaticBatchInfo:
@@ -3363,6 +3366,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 17f061565229d4042adf1ce686c1cdd5, type: 2}
   m_StaticBatchInfo:
@@ -4443,7 +4447,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -7.7949905, y: 144}
+  m_AnchoredPosition: {x: -7.795044, y: 144}
   m_SizeDelta: {x: 63.590015, y: 3.8699799}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &360910878
@@ -5366,6 +5370,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &427266248
 Transform:
   m_ObjectHideFlags: 0
@@ -5629,6 +5634,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: b2ef1375a3e7e9c4fab6cd5273de16a3, type: 2}
   m_StaticBatchInfo:
@@ -6994,6 +7000,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: b2ef1375a3e7e9c4fab6cd5273de16a3, type: 2}
   m_StaticBatchInfo:
@@ -7194,7 +7201,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.8, y: -0.00018833461}
+  m_AnchoredPosition: {x: 7.799999, y: -0.00018692017}
   m_SizeDelta: {x: 1834.1, y: 980}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &560733777
@@ -7335,6 +7342,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a169b4ccaf3aea1498be6437b3d49dfa, type: 2}
   m_StaticBatchInfo:
@@ -7531,7 +7539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.2, y: -0.6}
+  m_AnchoredPosition: {x: 1.199997, y: -0.6000004}
   m_SizeDelta: {x: -19.3, y: -18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &591651545
@@ -8592,6 +8600,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 441517a4f0073d1459f5887510c64306, type: 2}
   m_StaticBatchInfo:
@@ -10731,7 +10740,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.54, y: 0}
+  m_AnchoredPosition: {x: 1.5399933, y: 0}
   m_SizeDelta: {x: -19.91, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &880244485
@@ -11035,6 +11044,7 @@ GameObject:
   - component: {fileID: 920223857}
   - component: {fileID: 920223859}
   - component: {fileID: 920223858}
+  - component: {fileID: 920223860}
   m_Layer: 5
   m_Name: KaufMenu
   m_TagString: Panel
@@ -11106,6 +11116,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 920223856}
+--- !u!114 &920223860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 920223856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd22a06afa06b024b98c01ff73b3b566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kaufMenuScriptObject: {fileID: 920223856}
 --- !u!1 &924052165
 GameObject:
   m_ObjectHideFlags: 0
@@ -11832,6 +11854,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 88401642ce294a64198ad85c1de9edc8, type: 2}
   m_StaticBatchInfo:
@@ -11917,7 +11940,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.2, y: -0.6}
+  m_AnchoredPosition: {x: 1.199997, y: -0.6000004}
   m_SizeDelta: {x: -19.3, y: -18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1000719112
@@ -12521,7 +12544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.2, y: -0.6}
+  m_AnchoredPosition: {x: 1.199997, y: -0.6000004}
   m_SizeDelta: {x: -19.3, y: -18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1098537819
@@ -17078,6 +17101,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 88401642ce294a64198ad85c1de9edc8, type: 2}
   m_StaticBatchInfo:
@@ -18350,7 +18374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 1968099216}
   timeLine: {fileID: 449028800}
-  timer: 10
+  timer: 30
   myTimer: {fileID: 409507441}
   pm: {fileID: 868672217}
   dbc: {fileID: 1565836641}
@@ -19452,7 +19476,6 @@ GameObject:
   - component: {fileID: 1720359018}
   - component: {fileID: 1720359017}
   - component: {fileID: 1720359016}
-  - component: {fileID: 1720359019}
   m_Layer: 5
   m_Name: btnKaufmenu
   m_TagString: Untagged
@@ -19518,8 +19541,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1720359019}
-        m_MethodName: SetPanelState
+      - m_Target: {fileID: 920223860}
+        m_MethodName: OeffneKaufmenue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19564,17 +19587,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1720359014}
---- !u!114 &1720359019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1720359014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd22a06afa06b024b98c01ff73b3b566, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1720802245
 GameObject:
   m_ObjectHideFlags: 0
@@ -19674,6 +19686,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a169b4ccaf3aea1498be6437b3d49dfa, type: 2}
   m_StaticBatchInfo:
@@ -23237,7 +23250,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000045299996, y: -603}
+  m_AnchoredPosition: {x: -0.000061035156, y: -603}
   m_SizeDelta: {x: -320.99, y: 736.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2023296831
