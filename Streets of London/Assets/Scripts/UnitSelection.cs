@@ -5,17 +5,15 @@ using UnityEngine.UI;
 
 public class UnitSelection : MonoBehaviour {
 
+    //Spiel-Objekte
     public GameObject unitSelectionScriptObject;
     public GameObject playerMenuScriptObject;
     public GameObject playerTextSpielerMenu;
     public GameObject playerTextEinheitenAuswahl;
     public GameManager gm;
-    public SpielerMenu sm;
+    public SpielerMenu sm;        
 
-    int side;
-
-    bool finish = false;
-
+    //Aufleucht-Objekte
     public GameObject leuchten01;
     public GameObject leuchten02;
     public GameObject leuchten03;
@@ -27,8 +25,10 @@ public class UnitSelection : MonoBehaviour {
     public GameObject leuchten09;
     public GameObject leuchten10;
 
-    private int unitsChosen = 0;
+    private int unitsChosen = 0;            //Counter der gewaehlten Einheiten
+    private int side;                       //Angabe des aktuellen Spielers
 
+    //Bool-Werte für die Auswahl der Einheitentypen
     private bool boss = false;
     private bool diebin = false;
     private bool meuchelmoerder = false;
@@ -40,11 +40,15 @@ public class UnitSelection : MonoBehaviour {
     private bool taschendieb = false;
     private bool tueftler = false;
 
+    private bool finish = false;            //Bool-Wert um die Auswahl für den zweiten Spieler zu ermöglichen
+
+    //---------------------------------------------------------------------
+    //Methode zum Aufrufen der ersten Auswahl
     public void Auswahl()
     {
         unitSelectionScriptObject.SetActive(true);
         playerTextEinheitenAuswahl.GetComponent<Text>().text = playerTextSpielerMenu.GetComponent<Text>().text;
-        
+        side = PassthrougData.startPlayer;
     }
 
     //---------------------------------------------------------------------
@@ -253,55 +257,14 @@ public class UnitSelection : MonoBehaviour {
     //OnClick-Methode für den Bestätigen-Button
     public void SubmitUnitSelection()
     {
-        if (boss == true)
-        {
-            //Hier kommt die Methode hin um den Einheitentyp der Datenbank hinzuzufügen
-        }
-        if (diebin == true)
-        {
-            //Hier kommt die Methode hin um den Einheitentyp der Datenbank hinzuzufügen
-        }
-        if (meuchelmoerder == true)
-        {
-            //Hier kommt die Methode hin um den Einheitentyp der Datenbank hinzuzufügen
-        }
-        if (pestarzt == true)
-        {
-            //Hier kommt die Methode hin um den Einheitentyp der Datenbank hinzuzufügen
-        }
-        if (polizist == true)
-        {
-            //Hier kommt die Methode hin um den Einheitentyp der Datenbank hinzuzufügen
-        }
-        if (raufbold == true)
-        {
-            //Hier kommt die Methode hin um den Einheitentyp der Datenbank hinzuzufügen
-        }
-        if (scharfschuetze == true)
-        {
-            //Hier kommt die Methode hin um den Einheitentyp der Datenbank hinzuzufügen
-        }
-        if (schlaeger == true)
-        {
-            //Hier kommt die Methode hin um den Einheitentyp der Datenbank hinzuzufügen
-        }
-        if (taschendieb == true)
-        {
-            //Hier kommt die Methode hin um den Einheitentyp der Datenbank hinzuzufügen
-        }
-        if (tueftler == true)
-        {
-            //Hier kommt die Methode hin um den Einheitentyp der Datenbank hinzuzufügen
-        }
-
+        SubmitToDatabase();
+        ResetSelection();
         if (finish == true)
         {
             if (side == 0)
             {
                 side = 1;
                 sm.SetPlayer(PassthrougData.player2);
-
-
             }
             else
             {
@@ -318,8 +281,6 @@ public class UnitSelection : MonoBehaviour {
             {
                 side = 1;
                 sm.SetPlayer(PassthrougData.player2);
-
-
             }
             else
             {
@@ -328,8 +289,13 @@ public class UnitSelection : MonoBehaviour {
             }
             playerTextEinheitenAuswahl.GetComponent<Text>().text = playerTextSpielerMenu.GetComponent<Text>().text;
             sm.PanelState(true);
-        }
+        }      
+    }
 
+    //---------------------------------------------------------------------
+    //Methode zum Reset des Leuchtens und der bool-Werte
+    public void ResetSelection()
+    {        
         leuchten01.SetActive(false);
         leuchten02.SetActive(false);
         leuchten03.SetActive(false);
@@ -351,5 +317,121 @@ public class UnitSelection : MonoBehaviour {
         taschendieb = false;
         tueftler = false;
         unitsChosen = 0;
-}
+    }
+
+    //---------------------------------------------------------------------
+    //Methode für die Übertragung der Auswahl an die Datenbank
+    public void SubmitToDatabase()
+    {
+        if (boss == true)
+        {
+            if (side == 0)
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
+            }
+            else
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
+            }
+        }
+        if (diebin == true)
+        {
+            if (side == 0)
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
+            }
+            else
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
+            }
+        }
+        if (meuchelmoerder == true)
+        {
+            if (side == 0)
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
+            }
+            else
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
+            }
+        }
+        if (pestarzt == true)
+        {
+            if (side == 0)
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
+            }
+            else
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
+            }
+        }
+        if (polizist == true)
+        {
+            if (side == 0)
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
+            }
+            else
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
+            }
+        }
+        if (raufbold == true)
+        {
+            if (side == 0)
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
+            }
+            else
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
+            }
+        }
+        if (scharfschuetze == true)
+        {
+            if (side == 0)
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
+            }
+            else
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
+            }
+        }
+        if (schlaeger == true)
+        {
+            if (side == 0)
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
+            }
+            else
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
+            }
+        }
+        if (taschendieb == true)
+        {
+            if (side == 0)
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
+            }
+            else
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
+            }
+        }
+        if (tueftler == true)
+        {
+            if (side == 0)
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
+            }
+            else
+            {
+                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
+            }
+        }
+    }
 }
