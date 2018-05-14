@@ -7497,8 +7497,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitSelectionScriptObject: {fileID: 560733775}
+  playerMenuScriptObject: {fileID: 0}
   playerTextSpielerMenu: {fileID: 1260320314}
   playerTextEinheitenAuswahl: {fileID: 653488579}
+  gm: {fileID: 0}
+  sm: {fileID: 868672217}
   leuchten01: {fileID: 1387667005}
   leuchten02: {fileID: 812161058}
   leuchten03: {fileID: 1409072211}
@@ -11077,6 +11080,7 @@ MonoBehaviour:
   spielerMenuScriptObject: {fileID: 868672213}
   playerTextObject: {fileID: 1260320314}
   gm: {fileID: 1565836639}
+  us: {fileID: 560733779}
 --- !u!1 &876343386
 GameObject:
   m_ObjectHideFlags: 0
@@ -19322,7 +19326,6 @@ MonoBehaviour:
   dbc: {fileID: 1565836641}
   playerText: {fileID: 1976897745}
   goldText: {fileID: 1677896797}
-  us: {fileID: 560733779}
 --- !u!4 &1565836640
 Transform:
   m_ObjectHideFlags: 0

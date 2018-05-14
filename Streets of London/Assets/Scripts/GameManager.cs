@@ -22,8 +22,6 @@ public class GameManager : MonoBehaviour {
     public GameObject playerText;
     public GameObject goldText;
 
-    public UnitSelection us;
-
     private void Start()
     {
         pm.PanelState(true);
@@ -38,13 +36,11 @@ public class GameManager : MonoBehaviour {
         {
             playerText.GetComponent<Text>().text = PassthrougData.player1;
             goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '1'");
-            us.Auswahl();
         }
         else
         {
             playerText.GetComponent<Text>().text = PassthrougData.player2;
-            goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '2'");
-            us.Auswahl();
+            goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '2'");         
         }
         count = timer;
         tTimer = myTimer.GetComponent<Text>();

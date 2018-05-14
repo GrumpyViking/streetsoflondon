@@ -6,8 +6,15 @@ using UnityEngine.UI;
 public class UnitSelection : MonoBehaviour {
 
     public GameObject unitSelectionScriptObject;
+    public GameObject playerMenuScriptObject;
     public GameObject playerTextSpielerMenu;
     public GameObject playerTextEinheitenAuswahl;
+    public GameManager gm;
+    public SpielerMenu sm;
+
+    int side;
+
+    bool finish = false;
 
     public GameObject leuchten01;
     public GameObject leuchten02;
@@ -37,6 +44,7 @@ public class UnitSelection : MonoBehaviour {
     {
         unitSelectionScriptObject.SetActive(true);
         playerTextEinheitenAuswahl.GetComponent<Text>().text = playerTextSpielerMenu.GetComponent<Text>().text;
+        
     }
 
     //---------------------------------------------------------------------
@@ -285,5 +293,63 @@ public class UnitSelection : MonoBehaviour {
         {
             //Hier kommt die Methode hin um den Einheitentyp der Datenbank hinzuzufügen
         }
-    }
+
+        if (finish == true)
+        {
+            if (side == 0)
+            {
+                side = 1;
+                sm.SetPlayer(PassthrougData.player2);
+
+
+            }
+            else
+            {
+                side = 0;
+                sm.SetPlayer(PassthrougData.player1);
+            }
+            sm.PanelState(true);
+            unitSelectionScriptObject.SetActive(false);
+        }
+        else
+        {
+            finish = true;
+            if (side == 0)
+            {
+                side = 1;
+                sm.SetPlayer(PassthrougData.player2);
+
+
+            }
+            else
+            {
+                side = 0;
+                sm.SetPlayer(PassthrougData.player1);
+            }
+            playerTextEinheitenAuswahl.GetComponent<Text>().text = playerTextSpielerMenu.GetComponent<Text>().text;
+            sm.PanelState(true);
+        }
+
+        leuchten01.SetActive(false);
+        leuchten02.SetActive(false);
+        leuchten03.SetActive(false);
+        leuchten04.SetActive(false);
+        leuchten05.SetActive(false);
+        leuchten06.SetActive(false);
+        leuchten07.SetActive(false);
+        leuchten08.SetActive(false);
+        leuchten09.SetActive(false);
+        leuchten10.SetActive(false);
+        boss = false;
+        diebin = false;
+        meuchelmoerder = false;
+        pestarzt = false;
+        polizist = false;
+        raufbold = false;
+        scharfschuetze = false;
+        schlaeger = false;
+        taschendieb = false;
+        tueftler = false;
+        unitsChosen = 0;
+}
 }

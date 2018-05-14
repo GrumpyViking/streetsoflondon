@@ -8,6 +8,10 @@ public class SpielerMenu : MonoBehaviour {
     public GameObject spielerMenuScriptObject;
     public GameObject playerTextObject;
     public GameManager gm;
+
+    int unitsSelected = 0;
+    public UnitSelection us;
+
     bool init;
     private void Start()
     {
@@ -36,16 +40,23 @@ public class SpielerMenu : MonoBehaviour {
 
     public void StartGame()
     {
-        if (!init)
+        if (unitsSelected < 1)
         {
-            gm.SetupScene();
-            init=true;
+            unitsSelected++;
+            us.Auswahl();
         }
         else
-        {
-            gm.Continue();
+        {           
+                if (!init)
+                {
+                    gm.SetupScene();
+                    init = true;
+                }
+                else
+                {
+                    gm.Continue();
+                }
         }
-        
     }
 
     public void ExitPorgram()
