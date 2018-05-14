@@ -41,8 +41,9 @@ public class ObjectPooler : MonoBehaviour
                 obj.SetActive(false);
                 obj.name = name+count;
                 count++;
-                obj.GetComponent<Renderer>().material.mainTexture = texArray[i];
+                
                 obj.AddComponent<DragDropScript>();
+                obj.AddComponent <Outline> ();
                 obj.AddComponent<Rigidbody>();
                 obj.GetComponent<Rigidbody>().useGravity = false;
                 obj.GetComponent<Rigidbody>().isKinematic = true;
@@ -53,7 +54,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, int textureindex)
     {
         if (!poolDictonary.ContainsKey(tag))
         {
@@ -62,10 +63,10 @@ public class ObjectPooler : MonoBehaviour
         }
         GameObject objectToSpawn = poolDictonary[tag].Dequeue();
         objectToSpawn.SetActive(true);
+        objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[textureindex];
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
         
-
         poolDictonary[tag].Enqueue(objectToSpawn);
         return objectToSpawn;
 

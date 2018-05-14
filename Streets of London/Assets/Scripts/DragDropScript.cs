@@ -10,7 +10,6 @@ public class DragDropScript : MonoBehaviour
     bool isMouseDragging;
     Vector3 offsetValue;
     Vector3 positionOfScreen;
-
     // Use this for initialization
     void Start()
     {
@@ -23,6 +22,7 @@ public class DragDropScript : MonoBehaviour
         //Mouse Button Press Down
         if (Input.GetMouseButtonDown(0))
         {
+            
             RaycastHit hitInfo;
             getTarget = ReturnClickedObject(out hitInfo);
             if (getTarget != null)
