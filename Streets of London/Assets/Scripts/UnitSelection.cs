@@ -329,12 +329,12 @@ public class UnitSelection : MonoBehaviour {
             if (side == 0)
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (1, Boss, Boss, 3, 5, 3, 1, 5, 4, 1)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (1, 'Boss', 'Boss', 3, 5, 3, 1, 5, 4, 1)");
             }
             else
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (2, Boss, Boss, 3, 5, 3, 1, 5, 4, 2)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (2, 'Boss', 'Boss', 3, 5, 3, 1, 5, 4, 2)");
             }
         }
         if (diebin == true)
@@ -342,12 +342,12 @@ public class UnitSelection : MonoBehaviour {
             if (side == 0)
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (3, Diebin, Diebin, 3, 3, 2, 2, 3, 3, 1)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (3, 'Diebin', 'Diebin', 3, 3, 2, 2, 3, 3, 1)");
             }
             else
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (4, Diebin, Diebin, 3, 3, 2, 2, 3, 3, 2)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (4, 'Diebin', 'Diebin', 3, 3, 2, 2, 3, 3, 2)");
             }
         }
         if (meuchelmoerder == true)
@@ -355,12 +355,12 @@ public class UnitSelection : MonoBehaviour {
             if (side == 0)
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (5, Meuchelmoerder, Meuchelmoerder, 4, 3, 1, 1, 4, 3, 1)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (5, 'Meuchelmoerder', 'Meuchelmoerder', 4, 3, 1, 1, 4, 3, 1)");
             }
             else
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (6, Meuchelmoerder, Meuchelmoerder, 4, 3, 1, 1, 4, 3, 2)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (6, 'Meuchelmoerder', 'Meuchelmoerder', 4, 3, 1, 1, 4, 3, 2)");
             }
         }
         if (pestarzt == true)
@@ -368,12 +368,12 @@ public class UnitSelection : MonoBehaviour {
             if (side == 0)
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (7, Pestarzt, Pestarzt, 3, 3, 4, 1, 4, 1, 1)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (7, 'Pestarzt', 'Pestarzt', 3, 3, 4, 1, 4, 1, 1)");
             }
             else
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (8, Pestarzt, Pestarzt, 3, 3, 4, 1, 4, 1, 2)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (8, 'Pestarzt', 'Pestarzt', 3, 3, 4, 1, 4, 1, 2)");
             }
         }
         if (polizist == true)
@@ -381,12 +381,12 @@ public class UnitSelection : MonoBehaviour {
             if (side == 0)
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (9, Polizist, Polizist, 2, 5, 3, 1, 3, 2, 1)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (9, 'Polizist', 'Polizist', 2, 5, 3, 1, 3, 2, 1)");
             }
             else
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (10, Polizist, Polizist, 2, 5, 3, 1, 3, 2, 2)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (10, 'Polizist', 'Polizist', 2, 5, 3, 1, 3, 2, 2)");
             }
         }
         if (raufbold == true)
@@ -394,12 +394,12 @@ public class UnitSelection : MonoBehaviour {
             if (side == 0)
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (11, Raufbold, Raufbold, 2, 6, 3, 1, 3, 1, 1)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (11, 'Raufbold', 'Raufbold', 2, 6, 3, 1, 3, 1, 1)");
             }
             else
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (12, Raufbold, Raufbold, 2, 6, 3, 1, 3, 1, 2)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (12, 'Raufbold', 'Raufbold', 2, 6, 3, 1, 3, 1, 2)");
             }
         }
         if (scharfschuetze == true)
@@ -407,12 +407,12 @@ public class UnitSelection : MonoBehaviour {
             if (side == 0)
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (13, Scharfschuetze, Scharfschuetze, 3, 3, 2, 3, 4, 3, 1)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (13, 'Scharfschuetze', 'Scharfschuetze', 3, 3, 2, 3, 4, 3, 1)");
             }
             else
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (14, Scharfschuetze, Scharfschuetze, 3, 3, 2, 3, 4, 3, 2)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (14, 'Scharfschuetze', 'Scharfschuetze', 3, 3, 2, 3, 4, 3, 2)");
             }
         }
         if (schlaeger == true)
@@ -420,12 +420,12 @@ public class UnitSelection : MonoBehaviour {
             if (side == 0)
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (15, Schlaeger, Schlaeger, 2, 4, 2, 1, 2, 2, 1)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (15, 'Schlaeger', 'Schlaeger', 2, 4, 2, 1, 2, 2, 1)");
             }
             else
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (16, Schlaeger, Schlaeger, 2, 4, 2, 1, 2, 2, 2)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (16, 'Schlaeger', 'Schlaeger', 2, 4, 2, 1, 2, 2, 2)");
             }
         }
         if (taschendieb == true)
@@ -433,12 +433,12 @@ public class UnitSelection : MonoBehaviour {
             if (side == 0)
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (17, Taschendieb, Taschendieb, 4, 2, 1, 1, 2, 1, 1)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (17, 'Taschendieb', 'Taschendieb', 4, 2, 1, 1, 2, 1, 1)");
             }
             else
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (18, Taschendieb, Taschendieb, 4, 2, 1, 1, 2, 1, 2)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (18, 'Taschendieb', 'Taschendieb', 4, 2, 1, 1, 2, 1, 2)");
             }
         }
         if (tueftler == true)
@@ -446,12 +446,12 @@ public class UnitSelection : MonoBehaviour {
             if (side == 0)
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (19, Tueftler, Tueftler, 2, 2, 1, 2, 5, 5, 1)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (19, 'Tueftler', 'Tueftler', 2, 2, 1, 2, 5, 5, 1)");
             }
             else
             {
                 //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (20, Tueftler, Tueftler, 2, 2, 1, 2, 5, 5, 2)");
+                dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (20, 'Tueftler', 'Tueftler', 2, 2, 1, 2, 5, 5, 2)");
             }
         }
     }

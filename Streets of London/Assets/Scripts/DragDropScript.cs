@@ -48,10 +48,10 @@ public class DragDropScript : MonoBehaviour
             {
                 getTarget.transform.position = originalPosition;
             }
-            else
-            {
-                getTarget.transform.position = currentPosition;
-            }
+            //else
+            //{
+            //     getTarget.transform.position = currentPosition;
+            // }
             
         }
 
