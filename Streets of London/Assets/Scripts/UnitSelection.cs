@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,6 +45,9 @@ public class UnitSelection : MonoBehaviour {
     private bool tueftler = false;
     private bool finish = false;            //Bool-Wert um die Auswahl für den zweiten Spieler zu ermöglichen
 
+    private ArrayList RandomUnitsPool;
+    private String[] RandomUnits;
+    
 
     private void Start()
     {
@@ -266,7 +270,8 @@ public class UnitSelection : MonoBehaviour {
     //OnClick-Methode für den Bestätigen-Button
     public void SubmitUnitSelection()
     {
-        if(unitsChosen == 5)
+            SelectRandomUnits();
+        if (unitsChosen == 5)
         {
             Reset();
             SubmitToDatabase();
@@ -282,6 +287,10 @@ public class UnitSelection : MonoBehaviour {
             }
             sm.PanelState(true);
         } 
+        else
+        {
+            SchlaegerSelected();
+        }
     }
 
     //---------------------------------------------------------------------
@@ -467,5 +476,100 @@ public class UnitSelection : MonoBehaviour {
     {
         zeitleiste.transform.localScale += new Vector3(1 , 0, 0);
         count = timer;
+    }
+
+    public void SelectRandomUnits()
+    {
+        if (unitsChosen != 5)
+        {
+            if (!boss)
+            {
+                RandomUnitsPool.Add("boss");
+            }
+            if (!diebin)
+            {
+                RandomUnitsPool.Add("diebin");
+            }
+            if (!meuchelmoerder)
+            {
+                RandomUnitsPool.Add("meuchelmoerder");
+            }
+            if (!pestarzt)
+            {
+                RandomUnitsPool.Add("pestarzt");
+            }
+            if (!polizist)
+            {
+                RandomUnitsPool.Add("polizist");
+            }
+            if (!raufbold)
+            {
+                RandomUnitsPool.Add("raufbold");
+            }
+            if (!scharfschuetze)
+            {
+                RandomUnitsPool.Add("scharfschuetze");
+            }
+            if (!schlaeger)
+            {
+                RandomUnitsPool.Add("schlaeger");
+            }
+            if (!taschendieb)
+            {
+                RandomUnitsPool.Add("taschendieb");
+            }
+            if (!tueftler)
+            {
+                RandomUnitsPool.Add("tueftler");
+            }
+            RandomUnitsPool.CopyTo(RandomUnits);
+            System.Random rnd = new System.Random();
+            for (int i = unitsChosen; i <= 5; i++)
+            {
+                int rndzahl = rnd.Next(0, 10-unitsChosen);
+                String name = Convert.ToString(RandomUnits.GetValue(rndzahl));
+                if (name == "boss")
+                {
+                    boss = true;
+                }
+                if (name == "diebin")
+                {
+                    diebin = true;
+                }
+                if (name == "meuchelmoerder")
+                {
+                    meuchelmoerder = true;
+                }
+                if (name == "pestarzt")
+                {
+                    pestarzt = true;
+                }
+                if (name == "polizist")
+                {
+                    polizist = true;
+                }
+                if (name == "raufbold")
+                {
+                    raufbold = true;
+                }
+                if (name == "scharfschuetze")
+                {
+                    scharfschuetze = true;
+                }
+                if (name == "schlaeger")
+                {
+                    schlaeger = true;
+                }
+                if (name == "taschendieb")
+                {
+                    taschendieb = true;
+                }
+                if (name == "tueftler")
+                {
+                    tueftler = true;
+                }
+                unitsChosen++;
+            }
+        }
     }
 }
