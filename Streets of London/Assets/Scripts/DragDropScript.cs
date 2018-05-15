@@ -8,8 +8,10 @@ public class DragDropScript : MonoBehaviour
     //Initialize Variables
     GameObject getTarget;
     bool isMouseDragging;
+    bool validPosition = false;
     Vector3 offsetValue;
     Vector3 positionOfScreen;
+    Vector3 originalPosition;
     // Use this for initialization
     void Start()
     {
@@ -28,7 +30,9 @@ public class DragDropScript : MonoBehaviour
             if (getTarget != null)
             {
                 isMouseDragging = true;
+                originalPosition = getTarget.transform.position;
                 //Converting world position to screen position.
+
                 positionOfScreen = Camera.main.WorldToScreenPoint(getTarget.transform.position);
                 offsetValue = getTarget.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, positionOfScreen.z));
             }
@@ -38,6 +42,11 @@ public class DragDropScript : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             isMouseDragging = false;
+            if (!validPosition)
+            {
+                getTarget.transform.position = originalPosition;
+            }
+            
         }
 
         //Is mouse Moving

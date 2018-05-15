@@ -19326,6 +19326,7 @@ MonoBehaviour:
   dbc: {fileID: 1565836641}
   playerText: {fileID: 1976897745}
   goldText: {fileID: 1677896797}
+  cc: {fileID: 1968099221}
 --- !u!4 &1565836640
 Transform:
   m_ObjectHideFlags: 0

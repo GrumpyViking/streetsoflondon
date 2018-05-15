@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour {
     public DataBaseController dbc;
     public GameObject playerText;
     public GameObject goldText;
+    public CameraController cc;
 
     private void Start()
     {
@@ -114,6 +115,7 @@ public class GameManager : MonoBehaviour {
     public void Continue()
     {
         paused = false;
+        cc.cameraActiv = true;
     }
 
 }
