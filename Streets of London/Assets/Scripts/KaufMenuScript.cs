@@ -24,10 +24,13 @@ public class KaufMenuScript : MonoBehaviour
     public GameObject preis5;
     public GameObject preisTK;
 
+    public DataBaseController dbc;
+
     public void OeffneKaufmenue()
     {
         kaufMenuScriptObject.SetActive(true);
         playerTextKaufMenu.GetComponent<Text>().text = playerTextTop.GetComponent<Text>().text;
+        //EinheitentypAktualisierung(1);
     }
 
     public void SchließeKaufmenu()
@@ -181,5 +184,11 @@ public class KaufMenuScript : MonoBehaviour
         preisTK.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeigeTK.GetComponent<Text>().text) * 4);
     }
     //---------------------------------------------------------------------------------------------------------------
+
+    public void EinheitentypAktualisierung(int playerID)
+    {
+        Debug.Log(Convert.ToString(dbc.RequestFromDB("Select Name from Einheitentyp where SpielerID = " + playerID + "and ID = 1")));
+    }
+
 }
 

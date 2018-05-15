@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 
 
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour {
     public CameraController cc;
     public DataBaseController dbc;
     public SpielerMenu pm;
+    public Ressources rc;
    
 
     private void Start()
@@ -45,11 +47,13 @@ public class GameManager : MonoBehaviour {
         {
             playerText.GetComponent<Text>().text = PassthrougData.player1;
             goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '1'");
+            rc.AktualisiereGold(1);
         }
         else
         {
             playerText.GetComponent<Text>().text = PassthrougData.player2;
-            goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '2'");         
+            goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '2'");
+            rc.AktualisiereGold(2);
         }
         count = timer;
         tTimer = myTimer.GetComponent<Text>();
@@ -74,6 +78,7 @@ public class GameManager : MonoBehaviour {
     public void SetPlayer(string name)
     {
         playerText.GetComponent<Text>().text = name;
+        rc.AktualisiereGold(Convert.ToInt32(dbc.RequestFromDB("Select ID from Spieler where Name = " + name)));
     }
 
     void TimeLine()
@@ -126,4 +131,10 @@ public class GameManager : MonoBehaviour {
         cc.cameraActiv = true;
     }
 
+    public void ZugBeenden()
+    {
+        paused = true;
+        PassthrougData.gameactiv = false;
+        Reset();
+    }
 }
