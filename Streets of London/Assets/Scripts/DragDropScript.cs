@@ -20,7 +20,7 @@ public class DragDropScript : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(PassthrougData.gameactiv == true);
+        //Debug.Log(PassthrougData.gameactiv == true);
         if (PassthrougData.gameactiv)
         {
             //Mouse Button Press Down

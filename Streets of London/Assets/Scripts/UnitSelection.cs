@@ -57,7 +57,9 @@ public class UnitSelection : MonoBehaviour {
     private bool scharfschuetzeRnd = false;
     private bool schlaegerRnd = false;
     private bool taschendiebRnd = false;
-    private bool tueftlerRnd = false;     
+    private bool tueftlerRnd = false;
+
+    
 
     private void Start()
     {
@@ -286,9 +288,9 @@ public class UnitSelection : MonoBehaviour {
     //OnClick-Methode für den Bestätigen-Button
     public void SubmitUnitSelection()
     {
+        SelectRandomUnits();
         if (unitsChosen == 5)
-        {
-
+        {            
             SubmitToDatabase();
             Reset();
             ResetSelection();
@@ -302,10 +304,6 @@ public class UnitSelection : MonoBehaviour {
                 sm.SetPlayer(PassthrougData.player2);
             }
             sm.PanelState(true);
-        }
-        else {
-            SelectRandomUnits();
-            //SchlaegerSelected();
         }
     }
 
@@ -580,66 +578,116 @@ public class UnitSelection : MonoBehaviour {
                     continue;
                 }
             }
-
+            bossRnd = false;
+            diebinRnd = false;
+            meuchelmoerderRnd = false;
+            pestarztRnd = false;
+            polizistRnd = false;
+            raufboldRnd = false;
+            scharfschuetzeRnd = false;
+            schlaegerRnd = false;
+            taschendiebRnd = false;
+            tueftlerRnd = false;
             System.Random rnd = new System.Random();
+            ArrayList rndlist = new ArrayList();
             for (int i = unitsChosen; i < 5; i++)
             {
-                int rndzahl = rnd.Next(0, RandomUnits.Length);
+                int rndzahl = rnd.Next(1, RandomUnits.Length);
+
+                if (!rndlist.Contains(rndzahl))
+                {
+                    rndlist.Add(rndzahl);
+                }
+                else
+                {
+                    while (rndlist.Contains(rndzahl))
+                    {
+                        if (!rndlist.Contains(rndzahl))
+                        {
+                            rndlist.Add(rndzahl);
+                        }
+                        else
+                        {
+                            rndzahl = rnd.Next(0, RandomUnits.Length);
+                        }
+                    }   
+                }
+                //Debug.Log(rndzahl);
                 String name = Convert.ToString(RandomUnits.GetValue(rndzahl));
                 unitsChosen += 1;
-                Debug.Log(name);
-                if (name == "boss")
+                if (name == "boss" && bossRnd == false)
                 {
                     boss = true;
+                    bossRnd = true;
+                    //Debug.Log("B");
                     continue;
                 }
-                if (name == "diebin")
+                if (name == "diebin" && diebinRnd == false)
                 {
                     diebin = true;
+                    diebinRnd = true;
+                    //Debug.Log("D");
                     continue;
                 }
-                if (name == "meuchelmoerder")
+                if (name == "meuchelmoerder" && meuchelmoerderRnd == false)
                 {
                     meuchelmoerder = true;
+                    meuchelmoerderRnd = true;
+                    //Debug.Log("MM");
                     continue;
                 }
-                if (name == "pestarzt")
+                if (name == "pestarzt" && pestarztRnd == false)
                 {
                     pestarzt = true;
+                    pestarztRnd = true;
+                    //Debug.Log("PA");
                     continue;
                 }
-                if (name == "polizist")
+                if (name == "polizist" && polizistRnd == false)
                 {
                     polizist = true;
+                    polizistRnd = true;
+                    //Debug.Log("P");
                     continue;
                 }
-                if (name == "raufbold")
+                if (name == "raufbold" && raufboldRnd == false)
                 {
                     raufbold = true;
+                    raufboldRnd = true;
+                    //Debug.Log("RB");
                     continue;
                 }
-                if (name == "scharfschuetze")
+                if (name == "scharfschuetze" && scharfschuetzeRnd == false)
                 {
                     scharfschuetze = true;
+                    scharfschuetzeRnd = true;
+                    //Debug.Log("SS");
                     continue;
                 }
-                if (name == "schlaeger")
+                if (name == "schlaeger" && schlaegerRnd == false)
                 {
                     schlaeger = true;
+                    schlaegerRnd = true;
+                    //Debug.Log("S");
                     continue;
                 }
-                if (name == "taschendieb")
+                if (name == "taschendieb" && taschendiebRnd == false)
                 {
                     taschendieb = true;
+                    taschendiebRnd = true;
+                    //Debug.Log("TD");
                     continue;
                 }
-                if (name == "tueftler")
+                if (name == "tueftler" && tueftlerRnd == false)
                 {
                     tueftler = true;
+                    tueftlerRnd = true;
+                    //Debug.Log("T");
                     continue;
                 }
                 
             }
+            rndlist.Clear();
         }
     }
 }
