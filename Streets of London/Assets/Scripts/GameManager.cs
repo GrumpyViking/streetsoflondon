@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour {
         //Pause GameFlow
         paused = true;
         PassthrougData.gameactiv = false;
-        
+        defaultPosition = timeLine.transform.localScale;
     }
 
     public void SetupScene()
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour {
         {
             if (count >= 0)
             {
-                defaultPosition = timeLine.transform.localScale;
+                
                 tTimer.text = count.ToString();
                 timeLine.transform.localScale += new Vector3(-1 / (timer + 1), 0, 0);
             }

@@ -65,7 +65,6 @@ public class UnitSelection : MonoBehaviour {
 
     public void StartTimer()
     {
-        zeitleiste.transform.localScale = defaultPosition;
         count = timer;
         paused = false;
         InvokeRepeating("TimeLine", 1.0f, 1.0f);
@@ -287,11 +286,11 @@ public class UnitSelection : MonoBehaviour {
     //OnClick-Methode für den Bestätigen-Button
     public void SubmitUnitSelection()
     {
-        Reset();
         if (unitsChosen == 5)
         {
-            
+
             SubmitToDatabase();
+            Reset();
             ResetSelection();
             unitSelectionScriptObject.SetActive(false);
             if ((PassthrougData.startPlayer = 1 - side) == 0)
@@ -306,7 +305,7 @@ public class UnitSelection : MonoBehaviour {
         }
         else {
             SelectRandomUnits();
-            SchlaegerSelected();
+            //SchlaegerSelected();
         }
     }
 
@@ -490,6 +489,7 @@ public class UnitSelection : MonoBehaviour {
         {
             if (count >= 0)
             {
+                
                 timerText.GetComponent<Text>().text = count.ToString();
                 zeitleiste.transform.localScale += new Vector3(-1 / (timer + 1), 0, 0);
             }
@@ -507,7 +507,6 @@ public class UnitSelection : MonoBehaviour {
     private void Reset()
     {
         paused = true;
-        Debug.Log(defaultPosition);
         zeitleiste.transform.localScale = defaultPosition;
         count = timer;
         timerText.GetComponent<Text>().text = timer.ToString();
@@ -583,11 +582,12 @@ public class UnitSelection : MonoBehaviour {
             }
 
             System.Random rnd = new System.Random();
-            for (int i = unitsChosen; i <= 5; i++)
+            for (int i = unitsChosen; i < 5; i++)
             {
-                int rndzahl = rnd.Next(0, 10-unitsChosen);
+                int rndzahl = rnd.Next(0, RandomUnits.Length);
                 String name = Convert.ToString(RandomUnits.GetValue(rndzahl));
                 unitsChosen += 1;
+                Debug.Log(name);
                 if (name == "boss")
                 {
                     boss = true;
@@ -641,6 +641,5 @@ public class UnitSelection : MonoBehaviour {
                 
             }
         }
-        SubmitUnitSelection();
     }
 }
