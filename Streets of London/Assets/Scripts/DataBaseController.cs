@@ -32,7 +32,8 @@ public class DataBaseController : MonoBehaviour {
         dbcmd = dbconn.CreateCommand();
         dbcmd.CommandText = "DELETE FROM Spieler";
         dbcmd.ExecuteNonQuery();
-
+        dbcmd.CommandText = "DELETE FROM Einheitentyp";
+        dbcmd.ExecuteNonQuery();
         dbcmd.CommandText = "VACUUM";
         dbcmd.ExecuteNonQuery();
         CloseDBConnection();

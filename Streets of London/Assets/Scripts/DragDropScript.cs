@@ -12,6 +12,8 @@ public class DragDropScript : MonoBehaviour
     Vector3 offsetValue;
     Vector3 positionOfScreen;
     Vector3 originalPosition;
+    Vector3 currentPosition;
+    
     // Use this for initialization
     void Start()
     {
@@ -46,6 +48,10 @@ public class DragDropScript : MonoBehaviour
             {
                 getTarget.transform.position = originalPosition;
             }
+            else
+            {
+                getTarget.transform.position = currentPosition;
+            }
             
         }
 
@@ -56,15 +62,32 @@ public class DragDropScript : MonoBehaviour
             Vector3 currentScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, positionOfScreen.z);
 
             //converting screen position to world position with offset changes.
-            Vector3 currentPosition = Camera.main.ScreenToWorldPoint(currentScreenSpace) + offsetValue;
+            currentPosition = Camera.main.ScreenToWorldPoint(currentScreenSpace) + offsetValue;
 
             //It will update target gameobject's current postion.
             getTarget.transform.position = currentPosition;
+            if (validPosition)
+                Debug.Log("Gültige Position");
+
         }
 
 
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "HexFields")
+        {
+            validPosition = true;
+        }
+    }
 
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "HexFields")
+        {
+            validPosition = false;
+        }
+    }
     //Method to Return Clicked Object
     GameObject ReturnClickedObject(out RaycastHit hit)
     {
