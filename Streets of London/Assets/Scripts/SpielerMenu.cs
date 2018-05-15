@@ -5,17 +5,24 @@ using UnityEngine.UI;
 
 public class SpielerMenu : MonoBehaviour {
 
+
     public GameObject spielerMenuScriptObject;
     public GameObject playerTextObject;
-    public GameManager gm;
 
-    int unitsSelected = 0;
+
+    public GameManager gm;
+    public DataBaseController dbc;
     public UnitSelection us;
 
+    
     bool init;
-    private void Start()
+    int unitsSelected;
+
+    //Initialisieren
+    void Start()
     {
         init = false;
+        unitsSelected = 0;
         if (PassthrougData.startPlayer == 0)
         {
             SetPlayer(PassthrougData.player1);
@@ -24,15 +31,16 @@ public class SpielerMenu : MonoBehaviour {
         {
             SetPlayer(PassthrougData.player2);
         }
-        Debug.Log("test");
     }
     
+    //Anzeige des Panels
     public void PanelState(bool state)
     {
         spielerMenuScriptObject.SetActive(state);
 
     }
 
+    //Name des Spielers setzen
     public void SetPlayer(string name)
     {
         playerTextObject.GetComponent<Text>().text = name;
@@ -40,28 +48,54 @@ public class SpielerMenu : MonoBehaviour {
 
     public void StartGame()
     {
-        if (unitsSelected < 1)
-        {
+        if (unitsSelected != 2)
+        { 
             unitsSelected++;
             us.Auswahl();
         }
         else
-        {           
-                if (!init)
-                {
-                    gm.SetupScene();
-                    init = true;
-                }
-                else
-                {
-                    gm.Continue();
-                }
+        {
+            if (!init)
+            {
+                
+                gm.SetupScene();
+                PassthrougData.gameactiv = true;
+                init = true;
+            }
+            else
+            {
+                
+                PassthrougData.gameactiv = true;
+                gm.Continue();
+            }
         }
+        //if (unitsSelected < 1)
+        //{
+        //    unitsSelected++;
+        //    us.Auswahl();
+        //}
+        //else
+        //{
+        //    if (!init)
+        //        {
+        //            gm.SetupScene();
+        //            init = true;
+        //        }
+        //        else
+        //        {
+        //            gm.Continue();
+        //        }
+        //}
     }
 
+
+
+    //Beenden des Programms
     public void ExitPorgram()
     {
         Application.Quit();
         UnityEditor.EditorApplication.isPlaying = false;
+        dbc.CleanDB();
+
     }
 }

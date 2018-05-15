@@ -5,28 +5,35 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     
+    //Variablen
     private float count;
-    public GameObject camera;
-    bool paused;
-    
-
     private int side;
-    
-    public GameObject timeLine;
-    Text tTimer;
+    bool paused;
     public float timer = 10f;
-    public GameObject myTimer;
+    Text tTimer;
 
-    public SpielerMenu pm;
-    public DataBaseController dbc;
-    public GameObject playerText;
+    //GameObjects
+    public GameObject camera;
+    public GameObject timeLine;
+
+    //TextFelder
     public GameObject goldText;
+    public GameObject myTimer;
+    public GameObject playerText;
+
+    //Scripte
     public CameraController cc;
+    public DataBaseController dbc;
+    public SpielerMenu pm;
+   
 
     private void Start()
     {
+        //Show SpielerMenu
         pm.PanelState(true);
+        //Pause GameFlow
         paused = true;
+        PassthrougData.gameactiv = false;
         
     }
 
@@ -57,7 +64,7 @@ public class GameManager : MonoBehaviour {
         {
             //Pause GameFlow
             paused = true;
-            
+            PassthrougData.gameactiv = false;
             //Show SpielerMenu
             pm.PanelState(true);
         }
@@ -80,13 +87,11 @@ public class GameManager : MonoBehaviour {
             else if (count == -1)
             {
                 paused = true;
+                PassthrougData.gameactiv = false;
                 Reset();
             }
             count--;
         }
-        
-
-        
         Debug.Log(count);
     }
 
@@ -98,6 +103,7 @@ public class GameManager : MonoBehaviour {
         if (side == 0)
         {
             side = 1;
+            PassthrougData.startPlayer = side;
             SetPlayer(PassthrougData.player2);
             pm.SetPlayer(PassthrougData.player2);
             
@@ -106,6 +112,7 @@ public class GameManager : MonoBehaviour {
         else
         {
             side = 0;
+            PassthrougData.startPlayer = side;
             SetPlayer(PassthrougData.player1);
             pm.SetPlayer(PassthrougData.player1);
         }
@@ -115,6 +122,7 @@ public class GameManager : MonoBehaviour {
     public void Continue()
     {
         paused = false;
+        PassthrougData.gameactiv = true;
         cc.cameraActiv = true;
     }
 

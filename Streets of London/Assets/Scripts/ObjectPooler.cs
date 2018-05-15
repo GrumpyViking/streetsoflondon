@@ -42,7 +42,7 @@ public class ObjectPooler : MonoBehaviour
                 obj.name = name+count;
                 count++;
                 
-                //obj.AddComponent<DragDropScript>();
+                obj.AddComponent<DragDropScript>();
                 obj.AddComponent <Outline> ();
                 obj.AddComponent<Rigidbody>();
                 obj.GetComponent<Rigidbody>().useGravity = false;

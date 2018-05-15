@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DragDropScript : MonoBehaviour
 {
-
     //Initialize Variables
     GameObject getTarget;
     bool isMouseDragging;
@@ -17,61 +16,62 @@ public class DragDropScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
     }
 
     void Update()
     {
-
-        //Mouse Button Press Down
-        if (Input.GetMouseButtonDown(0))
+        Debug.Log(PassthrougData.gameactiv == true);
+        if (PassthrougData.gameactiv)
         {
-            
-            RaycastHit hitInfo;
-            getTarget = ReturnClickedObject(out hitInfo);
-            if (getTarget != null)
+            //Mouse Button Press Down
+            if (Input.GetMouseButtonDown(0))
             {
-                isMouseDragging = true;
-                originalPosition = getTarget.transform.position;
-                //Converting world position to screen position.
 
-                positionOfScreen = Camera.main.WorldToScreenPoint(getTarget.transform.position);
-                offsetValue = getTarget.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, positionOfScreen.z));
+                RaycastHit hitInfo;
+                getTarget = ReturnClickedObject(out hitInfo);
+                if (getTarget != null)
+                {
+                    isMouseDragging = true;
+                    originalPosition = getTarget.transform.position;
+                    //Converting world position to screen position.
+
+                    positionOfScreen = Camera.main.WorldToScreenPoint(getTarget.transform.position);
+                    offsetValue = getTarget.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, positionOfScreen.z));
+                }
+            }
+
+            //Mouse Button Up
+            if (Input.GetMouseButtonUp(0) && isMouseDragging)
+            {
+                isMouseDragging = false;
+                if (!validPosition)
+                {
+                    getTarget.transform.position = originalPosition;
+                }
+                else
+                {
+                    getTarget.transform.position = currentPosition;
+                }
+
+            }
+
+            //Is mouse Moving
+            if (isMouseDragging)
+            {
+                //tracking mouse position.
+                Vector3 currentScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, positionOfScreen.z);
+
+                //converting screen position to world position with offset changes.
+                currentPosition = Camera.main.ScreenToWorldPoint(currentScreenSpace) + offsetValue;
+
+                //It will update target gameobject's current postion.
+                getTarget.transform.position = currentPosition;
+                if (validPosition)
+                    Debug.Log("Gültige Position");
+
             }
         }
-
-        //Mouse Button Up
-        if (Input.GetMouseButtonUp(0))
-        {
-            isMouseDragging = false;
-            if (!validPosition)
-            {
-                getTarget.transform.position = originalPosition;
-            }
-            //else
-            //{
-            //     getTarget.transform.position = currentPosition;
-            // }
-            
-        }
-
-        //Is mouse Moving
-        if (isMouseDragging)
-        {
-            //tracking mouse position.
-            Vector3 currentScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, positionOfScreen.z);
-
-            //converting screen position to world position with offset changes.
-            currentPosition = Camera.main.ScreenToWorldPoint(currentScreenSpace) + offsetValue;
-
-            //It will update target gameobject's current postion.
-            getTarget.transform.position = currentPosition;
-            if (validPosition)
-                Debug.Log("Gültige Position");
-
-        }
-
-
+        
     }
     void OnTriggerEnter(Collider other)
     {
@@ -88,6 +88,7 @@ public class DragDropScript : MonoBehaviour
             validPosition = false;
         }
     }
+
     //Method to Return Clicked Object
     GameObject ReturnClickedObject(out RaycastHit hit)
     {
@@ -99,5 +100,4 @@ public class DragDropScript : MonoBehaviour
         }
         return target;
     }
-
 }

@@ -7,10 +7,10 @@ public class UnitSelection : MonoBehaviour {
 
     //Spiel-Objekte
     public GameObject unitSelectionScriptObject;
-    //public GameObject playerMenuScriptObject;
     public GameObject playerTextSpielerMenu;
     public GameObject playerTextEinheitenAuswahl;
-    //public GameManager gm;
+    public GameObject zeitleiste;
+    public GameObject timerText;
     public SpielerMenu sm;
     public DataBaseController dbc;
 
@@ -26,6 +26,8 @@ public class UnitSelection : MonoBehaviour {
     public GameObject leuchten09;
     public GameObject leuchten10;
 
+    public float timer;
+    private float count;
     private int unitsChosen = 0;            //Counter der gewaehlten Einheiten
     private int side;                       //Angabe des aktuellen Spielers
 
@@ -40,8 +42,14 @@ public class UnitSelection : MonoBehaviour {
     private bool schlaeger = false;
     private bool taschendieb = false;
     private bool tueftler = false;
-
     private bool finish = false;            //Bool-Wert um die Auswahl für den zweiten Spieler zu ermöglichen
+
+
+    private void Start()
+    {
+        count = timer;
+        InvokeRepeating("TimeLine", 1.0f, 1.0f);
+    }
 
     //---------------------------------------------------------------------
     //Methode zum Aufrufen der ersten Auswahl
@@ -258,39 +266,22 @@ public class UnitSelection : MonoBehaviour {
     //OnClick-Methode für den Bestätigen-Button
     public void SubmitUnitSelection()
     {
-        SubmitToDatabase();
-        ResetSelection();
-        if (finish == true)
+        if(unitsChosen == 5)
         {
-            if (side == 0)
-            {
-                side = 1;
-                sm.SetPlayer(PassthrougData.player2);
-            }
-            else
-            {
-                side = 0;
-                sm.SetPlayer(PassthrougData.player1);
-            }
-            sm.PanelState(true);
+            Reset();
+            SubmitToDatabase();
+            ResetSelection();
             unitSelectionScriptObject.SetActive(false);
-        }
-        else
-        {
-            finish = true;
-            if (side == 0)
+            if ((PassthrougData.startPlayer = 1 - side) == 0)
             {
-                side = 1;
-                sm.SetPlayer(PassthrougData.player2);
+                sm.SetPlayer(PassthrougData.player1);
             }
             else
             {
-                side = 0;
-                sm.SetPlayer(PassthrougData.player1);
+                sm.SetPlayer(PassthrougData.player2);
             }
-            playerTextEinheitenAuswahl.GetComponent<Text>().text = playerTextSpielerMenu.GetComponent<Text>().text;
             sm.PanelState(true);
-        }      
+        } 
     }
 
     //---------------------------------------------------------------------
@@ -324,6 +315,7 @@ public class UnitSelection : MonoBehaviour {
     //Methode für die Übertragung der Auswahl an die Datenbank
     public void SubmitToDatabase()
     {
+        Debug.Log("Aktueller Spieler: " + side);
         if (boss == true)
         {
             if (side == 0)
@@ -454,5 +446,26 @@ public class UnitSelection : MonoBehaviour {
                 dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (20, 'Tueftler', 'Tueftler', 2, 2, 1, 2, 5, 5, 2)");
             }
         }
+    }
+
+    void TimeLine()
+    {
+        if (count >= 0)
+        { 
+            timerText.GetComponent<Text>().text = count.ToString();
+            zeitleiste.transform.localScale += new Vector3(-1 / (timer + 1), 0, 0);
+        }
+        else if (count == -1)
+        {
+            SubmitUnitSelection();
+            
+        }
+        count--;
+    }
+
+    private void Reset()
+    {
+        zeitleiste.transform.localScale += new Vector3(1 , 0, 0);
+        count = timer;
     }
 }
