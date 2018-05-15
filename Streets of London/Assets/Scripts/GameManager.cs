@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     bool paused;
     public float timer = 10f;
     Text tTimer;
+    private Vector3 defaultPosition;
 
     //GameObjects
     public GameObject camera;
@@ -81,6 +82,7 @@ public class GameManager : MonoBehaviour {
         {
             if (count >= 0)
             {
+                defaultPosition = timeLine.transform.localScale;
                 tTimer.text = count.ToString();
                 timeLine.transform.localScale += new Vector3(-1 / (timer + 1), 0, 0);
             }
@@ -97,7 +99,7 @@ public class GameManager : MonoBehaviour {
 
     private void Reset()
     {
-        timeLine.transform.localScale += new Vector3(1, 0, 0);
+        timeLine.transform.localScale = defaultPosition;
         count = timer;
         tTimer.text = timer.ToString();
         if (side == 0)
@@ -106,8 +108,6 @@ public class GameManager : MonoBehaviour {
             PassthrougData.startPlayer = side;
             SetPlayer(PassthrougData.player2);
             pm.SetPlayer(PassthrougData.player2);
-            
-
         }
         else
         {

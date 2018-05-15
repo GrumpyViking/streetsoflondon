@@ -29,8 +29,10 @@ public class UnitSelection : MonoBehaviour {
 
     public float timer;
     private float count;
+    private bool paused;
     private int unitsChosen = 0;            //Counter der gewaehlten Einheiten
     private int side;                       //Angabe des aktuellen Spielers
+    private Vector3 defaultPosition;
 
     //Bool-Werte für die Auswahl der Einheitentypen
     private bool boss = false;
@@ -59,7 +61,13 @@ public class UnitSelection : MonoBehaviour {
 
     private void Start()
     {
+    }
+
+    public void StartTimer()
+    {
+        zeitleiste.transform.localScale = defaultPosition;
         count = timer;
+        paused = false;
         InvokeRepeating("TimeLine", 1.0f, 1.0f);
     }
 
@@ -67,6 +75,7 @@ public class UnitSelection : MonoBehaviour {
     //Methode zum Aufrufen der ersten Auswahl
     public void Auswahl()
     {
+        defaultPosition = zeitleiste.transform.localScale;
         unitSelectionScriptObject.SetActive(true);
         playerTextEinheitenAuswahl.GetComponent<Text>().text = playerTextSpielerMenu.GetComponent<Text>().text;
         side = PassthrougData.startPlayer;
@@ -278,10 +287,10 @@ public class UnitSelection : MonoBehaviour {
     //OnClick-Methode für den Bestätigen-Button
     public void SubmitUnitSelection()
     {
-            SelectRandomUnits();
+        Reset();
         if (unitsChosen == 5)
         {
-            Reset();
+            
             SubmitToDatabase();
             ResetSelection();
             unitSelectionScriptObject.SetActive(false);
@@ -294,9 +303,9 @@ public class UnitSelection : MonoBehaviour {
                 sm.SetPlayer(PassthrougData.player2);
             }
             sm.PanelState(true);
-        } 
-        else
-        {
+        }
+        else {
+            SelectRandomUnits();
             SchlaegerSelected();
         }
     }
@@ -325,6 +334,16 @@ public class UnitSelection : MonoBehaviour {
         schlaeger = false;
         taschendieb = false;
         tueftler = false;
+        bossRnd = false;
+        diebinRnd = false;
+        meuchelmoerderRnd = false;
+        pestarztRnd = false;
+        polizistRnd = false;
+        raufboldRnd = false;
+        scharfschuetzeRnd = false;
+        schlaegerRnd = false;
+        taschendiebRnd = false;
+        tueftlerRnd = false;
         unitsChosen = 0;
     }
 
@@ -467,23 +486,31 @@ public class UnitSelection : MonoBehaviour {
 
     void TimeLine()
     {
-        if (count >= 0)
-        { 
-            timerText.GetComponent<Text>().text = count.ToString();
-            zeitleiste.transform.localScale += new Vector3(-1 / (timer + 1), 0, 0);
-        }
-        else if (count == -1)
+        if (!paused)
         {
-            SubmitUnitSelection();
-            
+            if (count >= 0)
+            {
+                timerText.GetComponent<Text>().text = count.ToString();
+                zeitleiste.transform.localScale += new Vector3(-1 / (timer + 1), 0, 0);
+            }
+            else if (count == 0)
+            {
+                paused = true;
+                Reset();
+                SubmitUnitSelection();
+            }
+            count--;
         }
-        count--;
+        
     }
 
     private void Reset()
     {
-        zeitleiste.transform.localScale += new Vector3(1 , 0, 0);
+        paused = true;
+        Debug.Log(defaultPosition);
+        zeitleiste.transform.localScale = defaultPosition;
         count = timer;
+        timerText.GetComponent<Text>().text = timer.ToString();
     }
 
     public void SelectRandomUnits()
@@ -554,8 +581,9 @@ public class UnitSelection : MonoBehaviour {
                     continue;
                 }
             }
+
             System.Random rnd = new System.Random();
-            for (int i = unitsChosen; i < 5; i++)
+            for (int i = unitsChosen; i <= 5; i++)
             {
                 int rndzahl = rnd.Next(0, 10-unitsChosen);
                 String name = Convert.ToString(RandomUnits.GetValue(rndzahl));
@@ -610,7 +638,9 @@ public class UnitSelection : MonoBehaviour {
                     tueftler = true;
                     continue;
                 }
+                
             }
         }
+        SubmitUnitSelection();
     }
 }

@@ -52,6 +52,7 @@ public class SpielerMenu : MonoBehaviour {
         { 
             unitsSelected++;
             us.Auswahl();
+            us.StartTimer();
         }
         else
         {
