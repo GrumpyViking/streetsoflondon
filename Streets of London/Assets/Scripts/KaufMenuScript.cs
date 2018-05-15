@@ -33,9 +33,21 @@ public class KaufMenuScript : MonoBehaviour
         //EinheitentypAktualisierung(1);
     }
 
-    public void SchließeKaufmenu()
+    public void SchliesseKaufmenu()
     {
         kaufMenuScriptObject.SetActive(false);
+        anzeige1.GetComponent<Text>().text = "0";
+        Preisaktualisierung1();
+        anzeige2.GetComponent<Text>().text = "0";
+        Preisaktualisierung2();
+        anzeige3.GetComponent<Text>().text = "0";
+        Preisaktualisierung3();
+        anzeige4.GetComponent<Text>().text = "0";
+        Preisaktualisierung4();
+        anzeige5.GetComponent<Text>().text = "0";
+        Preisaktualisierung5();
+        anzeigeTK.GetComponent<Text>().text = "0";
+        PreisaktualisierungTK();
     }
     //---------------------------------------------------------------------------------------------------------------
     //OnClick-Methoden der Buttons zum Erhöhen und Verringern der Kaufmenge der Einheitentypen 1-5 und Trickkarten
@@ -184,6 +196,12 @@ public class KaufMenuScript : MonoBehaviour
         preisTK.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeigeTK.GetComponent<Text>().text) * 4);
     }
     //---------------------------------------------------------------------------------------------------------------
+
+    public void KaufBestaetigen()
+    {
+
+        SchliesseKaufmenu();
+    }
 
     public void EinheitentypAktualisierung(int playerID)
     {

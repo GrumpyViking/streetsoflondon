@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="neue Trickkarte", menuName ="Trickkarte" )]
-public class Trickkarten : ScriptableObject {
+public class Trickkarten : MonoBehaviour {
 
     public string trickkartenname;
     public string wirung;
@@ -11,6 +11,18 @@ public class Trickkarten : ScriptableObject {
 
     public Sprite wirkungsbereich;
     public Sprite trickkartenbild;
+
+    public GameObject trickkartenMenu;
+
+    public void OeffneTrickkartenMenu()
+    {
+        trickkartenMenu.SetActive(true);
+    }
+
+    public void SchliesseTrickkartenMenu()
+    {
+        trickkartenMenu.SetActive(false);
+    }
 
 
 	}
