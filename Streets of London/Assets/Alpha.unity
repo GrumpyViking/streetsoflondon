@@ -19405,7 +19405,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 5
-  camera: {fileID: 1968099216}
   timeLine: {fileID: 449028800}
   goldText: {fileID: 1677896797}
   myTimer: {fileID: 409507441}
@@ -19413,6 +19412,7 @@ MonoBehaviour:
   cc: {fileID: 1968099221}
   dbc: {fileID: 1719293103}
   pm: {fileID: 868672217}
+  kms: {fileID: 920223860}
   rc: {fileID: 149742181}
 --- !u!4 &1565836640
 Transform:

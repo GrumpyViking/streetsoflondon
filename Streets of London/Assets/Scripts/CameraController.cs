@@ -107,6 +107,8 @@ public class CameraController : MonoBehaviour {
         {
             camOverHead.enabled = false;
             cameraPlayer.enabled = true;
+            cameraPlayer.transform.position = new Vector3(-20, 1000, -1625);
+            cameraPlayer.transform.rotation = Quaternion.Euler(65, 0, 0);
         }
         if (side == 1)
         {
