@@ -18,13 +18,13 @@ public class DataBaseController : MonoBehaviour {
     }
 
 
-    void Start () {
+    void Start() {
         if (!init)
         {
             CleanDB();
             init = true;
         }
-        
+
     }
     public void CleanDB()
     {
@@ -59,6 +59,23 @@ public class DataBaseController : MonoBehaviour {
         return buff;
     }
 
+    public int GetUnitId(int unittypid) {
+        int id = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select ID from Einheitentyp Where ID = '+unittypid'";
+        reader = dbcmd.ExecuteReader();
+        while (reader.Read())
+        {
+            id = reader.GetInt32(0);
+        }
+        reader.Close();
+        reader = null;
+        CloseDBConnection();
+
+        return id;
+    }      
+
     public void WriteToDB(string query)
     {
         OpenDBConnection();
@@ -70,7 +87,6 @@ public class DataBaseController : MonoBehaviour {
 
     void CloseDBConnection()
     {
-        
         dbcmd.Dispose();
         dbcmd = null;
         dbconn.Close();

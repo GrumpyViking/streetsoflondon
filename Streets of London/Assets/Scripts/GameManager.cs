@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour {
             {
                 Debug.Log("Hallo");
                 paused = true;
-                //PassthrougData.gameactiv = false;
+                PassthrougData.gameactiv = false;
                 Reset();
             }
             count--;

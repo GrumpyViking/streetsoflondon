@@ -1159,8 +1159,9 @@ GameObject:
   - component: {fileID: 132090599}
   - component: {fileID: 132090598}
   - component: {fileID: 132090597}
+  - component: {fileID: 132090601}
   m_Layer: 0
-  m_Name: Einheitenkarte1 (5)
+  m_Name: UnitCard1_P1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1181,7 +1182,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 0ce45e3eec775de4c8ba2034f8d92614, type: 2}
+  - {fileID: 2100000, guid: 2fe78f7e52880f44599c95b262bfbd64, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1233,6 +1234,18 @@ Transform:
   m_Father: {fileID: 1299586549}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &132090601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 132090596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 189912561a2384342b79c0fb43c2bcf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card: {fileID: 132090596}
 --- !u!1 &134612217
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,7 +1258,7 @@ GameObject:
   - component: {fileID: 134612219}
   - component: {fileID: 134612218}
   m_Layer: 0
-  m_Name: Einheitenkarte1
+  m_Name: UnitCard5_P2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1316,7 +1329,7 @@ Transform:
   m_LocalScale: {x: 252.10507, y: 11.2216215, z: 350.6219}
   m_Children: []
   m_Father: {fileID: 1738549418}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &135539496
 GameObject:
@@ -1520,7 +1533,7 @@ GameObject:
   - component: {fileID: 142837480}
   - component: {fileID: 142837479}
   m_Layer: 0
-  m_Name: Einheitenkarte1 (4)
+  m_Name: UnitCard4_P2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1591,7 +1604,7 @@ Transform:
   m_LocalScale: {x: 254.54994, y: 11.2216215, z: 350.6219}
   m_Children: []
   m_Father: {fileID: 1738549418}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &148720686
 GameObject:
@@ -3490,7 +3503,7 @@ GameObject:
   - component: {fileID: 249890931}
   - component: {fileID: 249890930}
   m_Layer: 0
-  m_Name: Einheitenkarte1 (9)
+  m_Name: UnitCard2_P1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3561,7 +3574,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1299586549}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &253888227
 GameObject:
@@ -5798,7 +5811,7 @@ GameObject:
   - component: {fileID: 472257839}
   - component: {fileID: 472257838}
   m_Layer: 0
-  m_Name: Einheitenkarte1 (1)
+  m_Name: UnitCard1_P2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5869,7 +5882,7 @@ Transform:
   m_LocalScale: {x: 243.78105, y: 11.2216215, z: 350.6219}
   m_Children: []
   m_Father: {fileID: 1738549418}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &479002040
 GameObject:
@@ -7197,7 +7210,7 @@ GameObject:
   - component: {fileID: 559917120}
   - component: {fileID: 559917119}
   m_Layer: 0
-  m_Name: Einheitenkarte1 (6)
+  m_Name: UnitCard5_P1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7268,7 +7281,7 @@ Transform:
   m_LocalScale: {x: 0.95769435, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1299586549}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &560301641
 GameObject:
@@ -7580,7 +7593,7 @@ GameObject:
   - component: {fileID: 565334707}
   - component: {fileID: 565334706}
   m_Layer: 0
-  m_Name: Einheitenkarte1 (7)
+  m_Name: UnitCard4_P1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7651,7 +7664,7 @@ Transform:
   m_LocalScale: {x: 0.95769435, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1299586549}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &582290397
 GameObject:
@@ -12444,7 +12457,7 @@ GameObject:
   - component: {fileID: 999778975}
   - component: {fileID: 999778974}
   m_Layer: 0
-  m_Name: Einheitenkarte1 (3)
+  m_Name: UnitCard3_P2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12515,7 +12528,7 @@ Transform:
   m_LocalScale: {x: 243.78105, y: 11.2216215, z: 350.6219}
   m_Children: []
   m_Father: {fileID: 1738549418}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1000719110
 GameObject:
@@ -15987,10 +16000,10 @@ Transform:
   m_LocalScale: {x: 254.54994, y: 11.2216215, z: 350.6219}
   m_Children:
   - {fileID: 132090600}
-  - {fileID: 559917122}
-  - {fileID: 565334709}
-  - {fileID: 1487597354}
   - {fileID: 249890933}
+  - {fileID: 1487597354}
+  - {fileID: 565334709}
+  - {fileID: 559917122}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18042,7 +18055,7 @@ GameObject:
   - component: {fileID: 1487597352}
   - component: {fileID: 1487597351}
   m_Layer: 0
-  m_Name: Einheitenkarte1 (8)
+  m_Name: UnitCard3_P1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18113,7 +18126,7 @@ Transform:
   m_LocalScale: {x: 0.95769435, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1299586549}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1492302473
 GameObject:
@@ -20867,7 +20880,7 @@ GameObject:
   - component: {fileID: 1733639051}
   - component: {fileID: 1733639050}
   m_Layer: 0
-  m_Name: Einheitenkarte1 (2)
+  m_Name: UnitCard2_P2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20938,7 +20951,7 @@ Transform:
   m_LocalScale: {x: 243.78105, y: 11.2216215, z: 350.6219}
   m_Children: []
   m_Father: {fileID: 1738549418}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1738549417
 GameObject:
@@ -20965,11 +20978,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 134612221}
   - {fileID: 472257841}
   - {fileID: 1733639053}
   - {fileID: 999778977}
   - {fileID: 142837482}
+  - {fileID: 134612221}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

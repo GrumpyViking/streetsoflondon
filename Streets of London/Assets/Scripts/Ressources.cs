@@ -14,7 +14,7 @@ public class Ressources : MonoBehaviour {
     public void AktualisiereGold(int playerID)
     {
         //gold.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '" + playerID + "'");
-        zusatzgold.GetComponent<Text>().text = "+ " + CalcIncome(playerID);
+        //zusatzgold.GetComponent<Text>().text = "+ " + CalcIncome(playerID);
     }
 
     public int CalcIncome(int playerID)
