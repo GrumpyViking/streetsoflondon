@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour {
     public SpielerMenu pm;
     public KaufMenuScript kms;
     public Ressources rc;
+    public UnitTypCards utc;
    
 
     private void Start()
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour {
             //rc.AktualisiereGold(2);
         }
         count = timer;
+        utc.Initialise();
         tTimer = myTimer.GetComponent<Text>();
         paused = false;
         cc.cameraActiv = true;

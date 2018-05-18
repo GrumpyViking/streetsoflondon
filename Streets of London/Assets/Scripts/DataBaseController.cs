@@ -59,15 +59,17 @@ public class DataBaseController : MonoBehaviour {
         return buff;
     }
 
-    public int GetUnitId(int unittypid) {
-        int id = 0;
+    public int[] GetUnitIds(int playerid) {
+        int[] id = new int[5];
+        int count = 0;
         OpenDBConnection();
         dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select ID from Einheitentyp Where ID = '+unittypid'";
+        dbcmd.CommandText = "Select ID from Einheitentyp Where SpielerID ="+playerid;
         reader = dbcmd.ExecuteReader();
         while (reader.Read())
         {
-            id = reader.GetInt32(0);
+            id[count] = reader.GetInt32(0);
+            count++;
         }
         reader.Close();
         reader = null;
