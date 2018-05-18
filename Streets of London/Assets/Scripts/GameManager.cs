@@ -45,12 +45,14 @@ public class GameManager : MonoBehaviour {
         side = PassthrougData.startPlayer;
         if (PassthrougData.startPlayer == 0)
         {
+            cc.SwitchSide(PassthrougData.startPlayer);
             playerText.GetComponent<Text>().text = PassthrougData.player1;
             goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '1'");
             rc.AktualisiereGold(1);
         }
         else
         {
+            cc.SwitchSide(PassthrougData.startPlayer);
             playerText.GetComponent<Text>().text = PassthrougData.player2;
             goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '2'");
             rc.AktualisiereGold(2);
@@ -58,6 +60,7 @@ public class GameManager : MonoBehaviour {
         count = timer;
         tTimer = myTimer.GetComponent<Text>();
         paused = false;
+        cc.cameraActiv = true;
         InvokeRepeating("TimeLine", 1.0f, 1.0f);
         
     }
@@ -78,7 +81,7 @@ public class GameManager : MonoBehaviour {
     public void SetPlayer(string name)
     {
         playerText.GetComponent<Text>().text = name;
-        rc.AktualisiereGold(Convert.ToInt32(dbc.RequestFromDB("Select ID from Spieler where Name = " + name)));
+        //rc.AktualisiereGold(Convert.ToInt32(dbc.RequestFromDB("Select ID from Spieler where Name = " + name)));
     }
 
     void TimeLine()
@@ -93,8 +96,9 @@ public class GameManager : MonoBehaviour {
             }
             else if (count == -1)
             {
+                Debug.Log("Hallo");
                 paused = true;
-                PassthrougData.gameactiv = false;
+                //PassthrougData.gameactiv = false;
                 Reset();
             }
             count--;
@@ -110,6 +114,7 @@ public class GameManager : MonoBehaviour {
         if (side == 0)
         {
             side = 1;
+            cc.SwitchSide(1);
             PassthrougData.startPlayer = side;
             SetPlayer(PassthrougData.player2);
             pm.SetPlayer(PassthrougData.player2);
@@ -117,6 +122,7 @@ public class GameManager : MonoBehaviour {
         else
         {
             side = 0;
+            cc.SwitchSide(0);
             PassthrougData.startPlayer = side;
             SetPlayer(PassthrougData.player1);
             pm.SetPlayer(PassthrougData.player1);
