@@ -19488,7 +19488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f74d083fcf51540ba7bc77a7fa8afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 5
+  timer: 15
   timeLine: {fileID: 449028800}
   goldText: {fileID: 1677896797}
   myTimer: {fileID: 409507441}

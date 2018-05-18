@@ -12,6 +12,9 @@ public class KaufMenuScript : MonoBehaviour
     public Sprite[] unitpictures;
     public GameObject[] units;
 
+    int gold;
+    int goldremaining;
+
     public GameObject goldvor;
     public GameObject goldnach;
 
@@ -34,11 +37,12 @@ public class KaufMenuScript : MonoBehaviour
     public void OeffneKaufmenue()
     {
         kaufMenuScriptObject.SetActive(true);
-
         playerTextKaufMenu.GetComponent<Text>().text = playerTextTop.GetComponent<Text>().text;
-        goldvor.GetComponent<Text>().text = dbc.RequestFromDB("Select Gold from Spieler where ID = " + PassthrougData.currentPlayer);
+        gold = Convert.ToInt32(dbc.RequestFromDB("Select Gold from Spieler where ID = " + PassthrougData.currentPlayer));
+        goldremaining = gold;
+        goldvor.GetComponent<Text>().text = Convert.ToString(gold);
+        goldnach.GetComponent<Text>().text = Convert.ToString(goldremaining);
         EinheitentypAktualisierung(PassthrougData.currentPlayer);
-
 
     }
 
@@ -178,6 +182,9 @@ public class KaufMenuScript : MonoBehaviour
     public void Preisaktualisierung1()
     {
         preis1.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige1.GetComponent<Text>().text) * 2);
+        goldremaining = gold - Convert.ToInt32(preis1.GetComponent<Text>().text);
+        goldnach.GetComponent<Text>().text = Convert.ToString(goldremaining);
+
     }
 
     public void Preisaktualisierung2()
