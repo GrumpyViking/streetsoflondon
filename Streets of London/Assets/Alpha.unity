@@ -11721,6 +11721,23 @@ MonoBehaviour:
   kaufMenuScriptObject: {fileID: 920223856}
   playerTextTop: {fileID: 1976897745}
   playerTextKaufMenu: {fileID: 264835357}
+  unitpictures:
+  - {fileID: 21300000, guid: e52ecb9d9b8e3fd46bbd145e1419af8e, type: 3}
+  - {fileID: 21300000, guid: eda080d219e76f748b56b85d7ca3d470, type: 3}
+  - {fileID: 21300000, guid: bdc84e5d37b742c489d43e6f05833d60, type: 3}
+  - {fileID: 21300000, guid: 5fb9dc4d21a9bd04c8a847ef03c35ed8, type: 3}
+  - {fileID: 21300000, guid: ade04c5205e8b8e458837fbb4cb6bc65, type: 3}
+  - {fileID: 21300000, guid: 3e8ff833ecb3c98499fa2e7720e9c95a, type: 3}
+  - {fileID: 21300000, guid: 09099f33ab90bae4f94d048c2dac5b79, type: 3}
+  - {fileID: 21300000, guid: cea9b0c8db363ec458df5e65435d2b92, type: 3}
+  - {fileID: 21300000, guid: a13b1e03744fb8442a160e69914eaa6a, type: 3}
+  - {fileID: 21300000, guid: 05af218296e77aa4b8e61ce11ad99e25, type: 3}
+  units:
+  - {fileID: 35236294}
+  - {fileID: 40343911}
+  - {fileID: 2062323841}
+  - {fileID: 908908682}
+  - {fileID: 2136359672}
   anzeige1: {fileID: 1200255038}
   anzeige2: {fileID: 1835883421}
   anzeige3: {fileID: 629426540}

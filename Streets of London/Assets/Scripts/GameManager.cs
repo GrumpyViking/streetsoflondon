@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour {
         pm.PanelState(true);
         //Pause GameFlow
         paused = true;
+        
         PassthrougData.gameactiv = false;
         defaultPosition = timeLine.transform.localScale;
     }
@@ -44,8 +45,10 @@ public class GameManager : MonoBehaviour {
     public void SetupScene()
     {
         side = PassthrougData.startPlayer;
+        
         if (PassthrougData.startPlayer == 0)
         {
+            PassthrougData.currentPlayer = 1;
             cc.SwitchSide(PassthrougData.startPlayer);
             playerText.GetComponent<Text>().text = PassthrougData.player1;
             goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '1'");
@@ -53,6 +56,7 @@ public class GameManager : MonoBehaviour {
         }
         else
         {
+            PassthrougData.currentPlayer = 2;
             cc.SwitchSide(PassthrougData.startPlayer);
             playerText.GetComponent<Text>().text = PassthrougData.player2;
             goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '2'");
@@ -118,6 +122,7 @@ public class GameManager : MonoBehaviour {
             side = 1;
             cc.SwitchSide(1);
             PassthrougData.startPlayer = side;
+            PassthrougData.currentPlayer = 2;
             SetPlayer(PassthrougData.player2);
             pm.SetPlayer(PassthrougData.player2);
         }
@@ -126,6 +131,7 @@ public class GameManager : MonoBehaviour {
             side = 0;
             cc.SwitchSide(0);
             PassthrougData.startPlayer = side;
+            PassthrougData.currentPlayer = 1;
             SetPlayer(PassthrougData.player1);
             pm.SetPlayer(PassthrougData.player1);
         }

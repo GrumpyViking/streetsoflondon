@@ -8,4 +8,5 @@ public class PassthrougData : MonoBehaviour {
     static public string player1;
     static public string player2;
     static public bool gameactiv;
+    static public int currentPlayer;
 }

@@ -9,6 +9,8 @@ public class KaufMenuScript : MonoBehaviour
     public GameObject kaufMenuScriptObject;
     public GameObject playerTextTop;
     public GameObject playerTextKaufMenu;
+    public Sprite[] unitpictures;
+    public GameObject[] units;
 
     public GameObject anzeige1;
     public GameObject anzeige2;
@@ -30,7 +32,7 @@ public class KaufMenuScript : MonoBehaviour
     {
         kaufMenuScriptObject.SetActive(true);
         playerTextKaufMenu.GetComponent<Text>().text = playerTextTop.GetComponent<Text>().text;
-        //EinheitentypAktualisierung(1);
+        EinheitentypAktualisierung(PassthrougData.currentPlayer);
     }
 
     public void SchliesseKaufmenu()
@@ -205,7 +207,61 @@ public class KaufMenuScript : MonoBehaviour
 
     public void EinheitentypAktualisierung(int playerID)
     {
-        Debug.Log(Convert.ToString(dbc.RequestFromDB("Select Name from Einheitentyp where SpielerID = " + playerID + "and ID = 1")));
+        int[] ids = new int[5];
+        ids = dbc.GetUnitIds(playerID);
+        for(int i = 0; i < units.Length; i++)
+        {
+            if (ids[i] == 1 || ids[i] == 2)
+            {
+                //material vom Boss zuweisen
+                units[i].GetComponent<Image>().sprite = unitpictures[0];
+            }
+            if (ids[i] == 3 || ids[i] == 4)
+            {
+                //material vom Diebin zuweisen
+                units[i].GetComponent<Image>().sprite = unitpictures[1];
+            }
+            if (ids[i] == 5 || ids[i] == 6)
+            {
+                //material vom Meuchelmörder zuweisen
+                units[i].GetComponent<Image>().sprite = unitpictures[2];
+            }
+            if (ids[i] == 7 || ids[i] == 8)
+            {
+                //material vom pestarzt zuweisen
+                units[i].GetComponent<Image>().sprite = unitpictures[3];
+            }
+            if (ids[i] == 9 || ids[i] == 10)
+            {
+                //material vom polizist zuweisen
+                units[i].GetComponent<Image>().sprite = unitpictures[4];
+            }
+            if (ids[i] == 11 || ids[i] == 12)
+            {
+                //material vom raufbold zuweisen
+                units[i].GetComponent<Image>().sprite = unitpictures[5];
+            }
+            if (ids[i] == 13 || ids[i] == 14)
+            {
+                //material vom scharfschuetze zuweisen
+                units[i].GetComponent<Image>().sprite = unitpictures[6];
+            }
+            if (ids[i] == 15 || ids[i] == 16)
+            {
+                //material vom schlaeger zuweisen
+                units[i].GetComponent<Image>().sprite = unitpictures[7];
+            }
+            if (ids[i] == 17 || ids[i] == 18)
+            {
+                //material vom taschendieb zuweisen
+                units[i].GetComponent<Image>().sprite = unitpictures[8];
+            }
+            if (ids[i] == 19 || ids[i] == 20)
+            {
+                //material vom tueftler zuweisen
+                units[i].GetComponent<Image>().sprite = unitpictures[9];
+            }
+        }
     }
 
 }
