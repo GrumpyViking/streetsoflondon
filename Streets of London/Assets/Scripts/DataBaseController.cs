@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Mono.Data.Sqlite;
 using System.Data;
 
@@ -10,24 +8,33 @@ public class DataBaseController : MonoBehaviour {
     IDataReader reader;
     IDbCommand dbcmd;
     static bool init = false;
+
+    void Initialise()
+    {    
+        init = true;
+        CleanDB();
+    }
     void OpenDBConnection()
     {
+        if (!init)
+        {
+            Initialise();
+        }
+        Debug.Log("open connection");
         string conn = "URI=file:" + Application.dataPath + "/DB/PlayerData.db"; //Path to database.
         dbconn = (IDbConnection)new SqliteConnection(conn);
         dbconn.Open(); //Open connection to the database.
     }
 
 
-    void Start() {
-        if (!init)
-        {
-            CleanDB();
-            init = true;
-        }
-
-    }
+    
     public void CleanDB()
     {
+        if (!init)
+        {
+            Initialise();
+        }
+        Debug.Log("clean");
         OpenDBConnection();
         dbcmd = dbconn.CreateCommand();
         dbcmd.CommandText = "DELETE FROM Spieler";
@@ -40,6 +47,10 @@ public class DataBaseController : MonoBehaviour {
     }
     public string RequestFromDB(string query)
     {
+        if (!init)
+        {
+            Initialise();
+        }
         string buff = "";
         OpenDBConnection();
         dbcmd = dbconn.CreateCommand();
@@ -59,7 +70,12 @@ public class DataBaseController : MonoBehaviour {
         return buff;
     }
 
-    public int[] GetUnitIds(int playerid) {
+    public int[] GetUnitIds(int playerid)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
         int[] id = new int[5];
         int count = 0;
         OpenDBConnection();
@@ -80,6 +96,11 @@ public class DataBaseController : MonoBehaviour {
 
     public void WriteToDB(string query)
     {
+        if (!init)
+        {
+            Initialise();
+        }
+        Debug.Log("test");
         OpenDBConnection();
         dbcmd = dbconn.CreateCommand();
         dbcmd.CommandText = query;
@@ -89,6 +110,11 @@ public class DataBaseController : MonoBehaviour {
 
     void CloseDBConnection()
     {
+        if (!init)
+        {
+            Initialise();
+        }
+        Debug.Log("close");
         dbcmd.Dispose();
         dbcmd = null;
         dbconn.Close();

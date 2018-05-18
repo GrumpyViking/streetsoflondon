@@ -348,7 +348,6 @@ public class UnitSelection : MonoBehaviour {
     //Methode für die Übertragung der Auswahl an die Datenbank
     public void SubmitToDatabase()
     {
-        Debug.Log("Aktueller Spieler: " + side);
         if (boss == true)
         {
             if (side == 0)
@@ -612,77 +611,67 @@ public class UnitSelection : MonoBehaviour {
                         }
                     }   
                 }
-                //Debug.Log(rndzahl);
+               
                 String name = Convert.ToString(RandomUnits.GetValue(rndzahl));
                 unitsChosen += 1;
                 if (name == "boss" && bossRnd == false)
                 {
                     boss = true;
-                    bossRnd = true;
-                    //Debug.Log("B");
+                    bossRnd = true;                    
                     continue;
                 }
                 if (name == "diebin" && diebinRnd == false)
                 {
                     diebin = true;
-                    diebinRnd = true;
-                    //Debug.Log("D");
+                    diebinRnd = true;                    
                     continue;
                 }
                 if (name == "meuchelmoerder" && meuchelmoerderRnd == false)
                 {
                     meuchelmoerder = true;
-                    meuchelmoerderRnd = true;
-                    //Debug.Log("MM");
+                    meuchelmoerderRnd = true;                    
                     continue;
                 }
                 if (name == "pestarzt" && pestarztRnd == false)
                 {
                     pestarzt = true;
-                    pestarztRnd = true;
-                    //Debug.Log("PA");
+                    pestarztRnd = true;                    
                     continue;
                 }
                 if (name == "polizist" && polizistRnd == false)
                 {
                     polizist = true;
-                    polizistRnd = true;
-                    //Debug.Log("P");
+                    polizistRnd = true;                   
                     continue;
                 }
                 if (name == "raufbold" && raufboldRnd == false)
                 {
                     raufbold = true;
-                    raufboldRnd = true;
-                    //Debug.Log("RB");
+                    raufboldRnd = true;                    
                     continue;
                 }
                 if (name == "scharfschuetze" && scharfschuetzeRnd == false)
                 {
                     scharfschuetze = true;
                     scharfschuetzeRnd = true;
-                    //Debug.Log("SS");
                     continue;
                 }
                 if (name == "schlaeger" && schlaegerRnd == false)
                 {
                     schlaeger = true;
                     schlaegerRnd = true;
-                    //Debug.Log("S");
                     continue;
                 }
                 if (name == "taschendieb" && taschendiebRnd == false)
                 {
                     taschendieb = true;
                     taschendiebRnd = true;
-                    //Debug.Log("TD");
                     continue;
                 }
                 if (name == "tueftler" && tueftlerRnd == false)
                 {
                     tueftler = true;
                     tueftlerRnd = true;
-                    //Debug.Log("T");
                     continue;
                 }
                 

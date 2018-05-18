@@ -70,23 +70,7 @@ public class SpielerMenu : MonoBehaviour {
                 gm.Continue();
             }
         }
-        //if (unitsSelected < 1)
-        //{
-        //    unitsSelected++;
-        //    us.Auswahl();
-        //}
-        //else
-        //{
-        //    if (!init)
-        //        {
-        //            gm.SetupScene();
-        //            init = true;
-        //        }
-        //        else
-        //        {
-        //            gm.Continue();
-        //        }
-        //}
+        
     }
 
 
@@ -97,6 +81,5 @@ public class SpielerMenu : MonoBehaviour {
         Application.Quit();
         UnityEditor.EditorApplication.isPlaying = false;
         dbc.CleanDB();
-
     }
 }

@@ -33,11 +33,24 @@ public class GameManager : MonoBehaviour {
 
     private void Start()
     {
+        if (PassthrougData.player1 == null)
+        {
+            dbc.WriteToDB("INSERT INTO Spieler(ID, Name, Gold) VALUES (1, 'Spieler 1', 20)");
+            PassthrougData.player1 = "Spieler 1";
+        }
+        if (PassthrougData.player2 == null)
+        {
+            dbc.WriteToDB("INSERT INTO Spieler(ID, Name, Gold) VALUES (2, 'Spieler 2', 20)");
+            PassthrougData.player2 = "Spieler 2";
+        }
+
         //Show SpielerMenu
         pm.PanelState(true);
         //Pause GameFlow
         paused = true;
         
+        
+
         PassthrougData.gameactiv = false;
         defaultPosition = timeLine.transform.localScale;
     }
@@ -102,7 +115,6 @@ public class GameManager : MonoBehaviour {
             }
             else if (count == -1)
             {
-                Debug.Log("Hallo");
                 paused = true;
                 PassthrougData.gameactiv = false;
                 Reset();

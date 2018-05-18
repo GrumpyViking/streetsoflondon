@@ -3717,7 +3717,7 @@ GameObject:
   - component: {fileID: 264835360}
   - component: {fileID: 264835359}
   m_Layer: 5
-  m_Name: Text
+  m_Name: kaufspielername
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11138,7 +11138,7 @@ MonoBehaviour:
   spielerMenuScriptObject: {fileID: 868672213}
   playerTextObject: {fileID: 1260320314}
   gm: {fileID: 1565836639}
-  dbc: {fileID: 0}
+  dbc: {fileID: 1719293103}
   us: {fileID: 560733779}
 --- !u!1 &876343386
 GameObject:
@@ -11738,6 +11738,8 @@ MonoBehaviour:
   - {fileID: 2062323841}
   - {fileID: 908908682}
   - {fileID: 2136359672}
+  goldvor: {fileID: 2029390791}
+  goldnach: {fileID: 1120057852}
   anzeige1: {fileID: 1200255038}
   anzeige2: {fileID: 1835883421}
   anzeige3: {fileID: 629426540}
@@ -13519,7 +13521,7 @@ GameObject:
   - component: {fileID: 1120057855}
   - component: {fileID: 1120057854}
   m_Layer: 5
-  m_Name: Text
+  m_Name: goldkaufnach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24633,7 +24635,7 @@ GameObject:
   - component: {fileID: 2029390794}
   - component: {fileID: 2029390793}
   m_Layer: 5
-  m_Name: Text
+  m_Name: goldkaufvor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

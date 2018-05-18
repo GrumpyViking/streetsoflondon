@@ -12,6 +12,9 @@ public class KaufMenuScript : MonoBehaviour
     public Sprite[] unitpictures;
     public GameObject[] units;
 
+    public GameObject goldvor;
+    public GameObject goldnach;
+
     public GameObject anzeige1;
     public GameObject anzeige2;
     public GameObject anzeige3;
@@ -31,8 +34,12 @@ public class KaufMenuScript : MonoBehaviour
     public void OeffneKaufmenue()
     {
         kaufMenuScriptObject.SetActive(true);
+
         playerTextKaufMenu.GetComponent<Text>().text = playerTextTop.GetComponent<Text>().text;
+        goldvor.GetComponent<Text>().text = dbc.RequestFromDB("Select Gold from Spieler where ID = " + PassthrougData.currentPlayer);
         EinheitentypAktualisierung(PassthrougData.currentPlayer);
+
+
     }
 
     public void SchliesseKaufmenu()
@@ -201,6 +208,13 @@ public class KaufMenuScript : MonoBehaviour
 
     public void KaufBestaetigen()
     {
+        //Schreibe Einheiten in DB
+        //dbc.WriteToDB("Insert into Einheit(ID,Name,Aktionspunkte,Angriffspunkte,Lebenspunkte, Verteidigungspunkte,Reichweite,Kosten, SpielerID) VALues()");
+       
+
+        //Spawne einheiten auf Spielfeld
+
+
 
         SchliesseKaufmenu();
     }
