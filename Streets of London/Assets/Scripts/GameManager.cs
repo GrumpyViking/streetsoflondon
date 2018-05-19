@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour {
     public GameObject goldText;
     public GameObject myTimer;
     public GameObject playerText;
+    public GameObject gesamtEinheiten;
+    public GameObject beweglicheEinheiten;
 
     //Scripte
     public CameraController cc;
@@ -48,8 +50,6 @@ public class GameManager : MonoBehaviour {
         pm.PanelState(true);
         //Pause GameFlow
         paused = true;
-        
-        
 
         PassthrougData.gameactiv = false;
         defaultPosition = timeLine.transform.localScale;
@@ -64,6 +64,8 @@ public class GameManager : MonoBehaviour {
             PassthrougData.currentPlayer = 1;
             cc.SwitchSide(PassthrougData.startPlayer);
             playerText.GetComponent<Text>().text = PassthrougData.player1;
+            gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " +Convert.ToString(dbc.NumOfUnits(1));
+            beweglicheEinheiten.GetComponent<Text>().text = "bewegliche Einheiten: 3";
             goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '1'");
             //rc.AktualisiereGold(1);
         }
@@ -72,6 +74,8 @@ public class GameManager : MonoBehaviour {
             PassthrougData.currentPlayer = 2;
             cc.SwitchSide(PassthrougData.startPlayer);
             playerText.GetComponent<Text>().text = PassthrougData.player2;
+            gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(2));
+            beweglicheEinheiten.GetComponent<Text>().text = "bewegliche Einheiten: 3";
             goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '2'");
             //rc.AktualisiereGold(2);
         }

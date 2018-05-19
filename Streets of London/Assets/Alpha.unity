@@ -21088,6 +21088,8 @@ MonoBehaviour:
   goldText: {fileID: 1677896797}
   myTimer: {fileID: 409507441}
   playerText: {fileID: 1976897745}
+  gesamtEinheiten: {fileID: 1496243677}
+  beweglicheEinheiten: {fileID: 1231863990}
   cc: {fileID: 1968099221}
   dbc: {fileID: 1719293103}
   pm: {fileID: 868672217}

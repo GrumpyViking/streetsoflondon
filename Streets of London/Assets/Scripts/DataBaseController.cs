@@ -60,11 +60,9 @@ public class DataBaseController : MonoBehaviour {
 
             buff = gold.ToString();
         }
-
         reader.Close();
         reader = null;
         CloseDBConnection();
-
         return buff;
     }
 
@@ -90,7 +88,30 @@ public class DataBaseController : MonoBehaviour {
         CloseDBConnection();
 
         return id;
-    }      
+    } 
+    
+    public int NumOfUnits(int playerid)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int num = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select ID from Einheit Where SpielerID =" + playerid;
+        reader = dbcmd.ExecuteReader();
+        while (reader.Read())
+        {
+            num++;
+        }
+        reader.Close();
+        reader = null;
+        CloseDBConnection();
+
+
+        return num;
+    }
 
     public void WriteToDB(string query)
     {
