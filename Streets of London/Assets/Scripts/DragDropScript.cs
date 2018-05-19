@@ -26,7 +26,6 @@ public class DragDropScript : MonoBehaviour
             //Mouse Button Press Down
             if (Input.GetMouseButtonDown(0))
             {
-
                 RaycastHit hitInfo;
                 getTarget = ReturnClickedObject(out hitInfo);
                 if (getTarget != null)
@@ -48,11 +47,6 @@ public class DragDropScript : MonoBehaviour
                 {
                     getTarget.transform.position = originalPosition;
                 }
-                else
-                {
-                    getTarget.transform.position = currentPosition;
-                }
-
             }
 
             //Is mouse Moving
@@ -66,9 +60,6 @@ public class DragDropScript : MonoBehaviour
 
                 //It will update target gameobject's current postion.
                 getTarget.transform.position = currentPosition;
-                if (validPosition)
-                    Debug.Log("Gültige Position");
-
             }
         }
         
@@ -78,6 +69,7 @@ public class DragDropScript : MonoBehaviour
         if (other.tag == "HexFields")
         {
             validPosition = true;
+            getTarget.transform.position = other.transform.position;
         }
     }
 

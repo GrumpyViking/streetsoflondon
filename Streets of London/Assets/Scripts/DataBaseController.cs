@@ -19,8 +19,7 @@ public class DataBaseController : MonoBehaviour {
         if (!init)
         {
             Initialise();
-        }
-        Debug.Log("open connection");
+        }        
         string conn = "URI=file:" + Application.dataPath + "/DB/PlayerData.db"; //Path to database.
         dbconn = (IDbConnection)new SqliteConnection(conn);
         dbconn.Open(); //Open connection to the database.
@@ -34,7 +33,6 @@ public class DataBaseController : MonoBehaviour {
         {
             Initialise();
         }
-        Debug.Log("clean");
         OpenDBConnection();
         dbcmd = dbconn.CreateCommand();
         dbcmd.CommandText = "DELETE FROM Spieler";
@@ -100,7 +98,6 @@ public class DataBaseController : MonoBehaviour {
         {
             Initialise();
         }
-        Debug.Log("test");
         OpenDBConnection();
         dbcmd = dbconn.CreateCommand();
         dbcmd.CommandText = query;
@@ -114,7 +111,6 @@ public class DataBaseController : MonoBehaviour {
         {
             Initialise();
         }
-        Debug.Log("close");
         dbcmd.Dispose();
         dbcmd = null;
         dbconn.Close();

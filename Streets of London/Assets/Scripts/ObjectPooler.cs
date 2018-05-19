@@ -41,9 +41,11 @@ public class ObjectPooler : MonoBehaviour
                 obj.SetActive(false);
                 obj.name = name+count;
                 count++;
-                
-                obj.AddComponent<DragDropScript>();
-                obj.AddComponent <Outline> ();
+
+                obj.tag = "Einheit";
+                obj.AddComponent<MoveUnit>();
+                obj.AddComponent<Outline>();
+                obj.GetComponent<Outline>().enabled = false;
                 obj.AddComponent<Rigidbody>();
                 obj.GetComponent<Rigidbody>().useGravity = false;
                 obj.GetComponent<Rigidbody>().isKinematic = true;
