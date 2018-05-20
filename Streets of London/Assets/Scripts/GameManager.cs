@@ -65,7 +65,9 @@ public class GameManager : MonoBehaviour {
             cc.SwitchSide(PassthrougData.startPlayer);
             playerText.GetComponent<Text>().text = PassthrougData.player1;
             gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " +Convert.ToString(dbc.NumOfUnits(1));
-            beweglicheEinheiten.GetComponent<Text>().text = "bewegliche Einheiten: 3";
+            beweglicheEinheiten.GetComponent<Text>().text = "3";
+            mu.DeselectUnit();
+            mu.DeselectFeld();
             goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '1'");
             //rc.AktualisiereGold(1);
         }
@@ -75,7 +77,9 @@ public class GameManager : MonoBehaviour {
             cc.SwitchSide(PassthrougData.startPlayer);
             playerText.GetComponent<Text>().text = PassthrougData.player2;
             gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(2));
-            beweglicheEinheiten.GetComponent<Text>().text = "bewegliche Einheiten: 3";
+            beweglicheEinheiten.GetComponent<Text>().text = "3";
+            mu.DeselectUnit();
+            mu.DeselectFeld();
             goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '2'");
             //rc.AktualisiereGold(2);
         }
@@ -137,6 +141,8 @@ public class GameManager : MonoBehaviour {
         {
             side = 1;
             cc.SwitchSide(1);
+            mu.DeselectUnit();
+            mu.DeselectFeld();
             PassthrougData.startPlayer = side;
             PassthrougData.currentPlayer = 2;
             SetPlayer(PassthrougData.player2);
@@ -146,6 +152,8 @@ public class GameManager : MonoBehaviour {
         {
             side = 0;
             cc.SwitchSide(0);
+            mu.DeselectUnit();
+            mu.DeselectFeld();
             PassthrougData.startPlayer = side;
             PassthrougData.currentPlayer = 1;
             SetPlayer(PassthrougData.player1);
@@ -167,7 +175,5 @@ public class GameManager : MonoBehaviour {
         paused = true;
         PassthrougData.gameactiv = false;
         Reset();
-    }
-
-    
+    } 
 }

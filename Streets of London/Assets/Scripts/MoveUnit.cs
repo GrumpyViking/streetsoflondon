@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -14,6 +15,7 @@ public class MoveUnit : MonoBehaviour {
     public GameObject angriffButtonText;
     public GameObject bewegenButton;
     public GameObject angriffButton;
+    public GameObject beweglicheEinheit;
 
     bool unitselected = false;
     bool feldselected = false;
@@ -37,17 +39,24 @@ public class MoveUnit : MonoBehaviour {
         }    
     }
 
-    void DeselectUnit()
+    public void DeselectUnit()
     {
-        unit.GetComponent<Outline>().enabled = false;
-        unit = null;
-        aktionsmenue.SetActive(false);
-        
+        if (unit != null)
+        {
+            unit.GetComponent<Outline>().enabled = false;
+            unit = null;
+            unitselected = false;
+            aktionsmenue.SetActive(false);
+        } 
     }
-    void DeselectFeld()
+    public void DeselectFeld()
     {
-        feld.GetComponent<Outline>().enabled = false;
-        feld = null;
+        if (feld != null)
+        {
+            feld.GetComponent<Outline>().enabled = false;
+            feld = null;
+            feldselected = false;
+        } 
     }
     void SelectUnit()
     {
@@ -122,18 +131,19 @@ public class MoveUnit : MonoBehaviour {
 
         if (phase != 0)
         {
+            
             anweisungText.GetComponent<TextMeshProUGUI>().text = "";
             bewegenButtonText.GetComponent<Text>().text = "Einheitbewegen";
             angriffButton.SetActive(true);
             buttonclicked = false;
-            if (unit != null && feld != null)
+            if (unit != null && feld != null && (Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) >0))
             {
                 unit.transform.position = feld.transform.position + (new Vector3(0, 10, 0));
                 DeselectFeld();
                 DeselectUnit();
+                beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
             }
             phase = -1;
-
         }
         phase++;
     }
