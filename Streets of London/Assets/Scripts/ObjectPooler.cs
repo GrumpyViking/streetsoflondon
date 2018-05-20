@@ -43,7 +43,7 @@ public class ObjectPooler : MonoBehaviour
                 count++;
 
                 obj.tag = "Einheit";
-                obj.AddComponent<MoveUnit>();
+                //obj.AddComponent<MoveUnit>();
                 obj.AddComponent<Outline>();
                 obj.GetComponent<Outline>().enabled = false;
                 obj.AddComponent<Rigidbody>();

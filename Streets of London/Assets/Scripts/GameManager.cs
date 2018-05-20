@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour {
     public KaufMenuScript kms;
     public Ressources rc;
     public UnitTypCards utc;
-   
+    public MoveUnit mu;
 
     private void Start()
     {
@@ -168,4 +168,6 @@ public class GameManager : MonoBehaviour {
         PassthrougData.gameactiv = false;
         Reset();
     }
+
+    
 }
