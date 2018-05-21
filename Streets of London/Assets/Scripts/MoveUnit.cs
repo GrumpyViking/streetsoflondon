@@ -8,18 +8,23 @@ using TMPro;
 public class MoveUnit : MonoBehaviour {
     GameObject select;
     GameObject unit;
+    GameObject gegner;
     GameObject feld;
     GameObject aktionsmenue;
+
     public GameObject anweisungText;
     public GameObject bewegenButtonText;
     public GameObject angriffButtonText;
     public GameObject bewegenButton;
     public GameObject angriffButton;
     public GameObject beweglicheEinheit;
+    public KampfMenu km;
 
     bool unitselected = false;
     bool feldselected = false;
     bool buttonclicked = false;
+    bool waehlegegner = false;
+    bool gegnergewaehlt = false;
     int phase = 0;
 
 
@@ -76,7 +81,7 @@ public class MoveUnit : MonoBehaviour {
         }
         if (select != null)
         {
-            if (select.tag == "Einheit" && unit == null && !unitselected)
+            if (select.tag == "Einheit" && unit == null && !unitselected )
             {
                 unit = select;
                 aktionsmenue.SetActive(true);
@@ -84,26 +89,20 @@ public class MoveUnit : MonoBehaviour {
                 unitselected = true;
             }
 
-            if(select.tag == "HexFields" && feld == null && !feldselected && unitselected)
+            if(select.tag == "Einheit" && gegner == null && waehlegegner)
+            {
+                gegner = select;
+                gegner.GetComponent<Outline>().enabled = true;
+                gegner.GetComponent<Outline>().OutlineColor = Color.red;
+                gegnergewaehlt = true;
+
+            }
+
+            if (select.tag == "HexFields" && feld == null && !feldselected && unitselected)
             {
                 feld = select;
                 feld.GetComponent<Outline>().enabled = true;
             }
-            //if (select.tag == "Einheit" && select == unit)
-            //{
-            //    unit.GetComponent<Outline>().enabled = false;
-            //    aktionsmenue.SetActive(false);
-            //    unit = null;
-            //    select = null;
-            //}
-            //if(unit != null && feld != null)
-            //{
-            //    unit.transform.position = feld.transform.position + (new Vector3(0, +10,0));
-            //    unit.GetComponent<Outline>().enabled = false;
-            //    unit = null;
-            //    feld.GetComponent<Outline>().enabled = false;
-            //    feld = null;
-            //}
         }
     }
     GameObject ReturnClickedObject(out RaycastHit hit)
@@ -153,6 +152,7 @@ public class MoveUnit : MonoBehaviour {
         if (!buttonclicked && phase == 0)
         {
             anweisungText.GetComponent<TextMeshProUGUI>().text = "Ziel wählen!";
+            waehlegegner = true;
             angriffButtonText.GetComponent<Text>().text = "Bestätigen";
             bewegenButton.SetActive(false);
         }
@@ -160,6 +160,11 @@ public class MoveUnit : MonoBehaviour {
         {
             anweisungText.GetComponent<TextMeshProUGUI>().text = "";
             angriffButtonText.GetComponent<Text>().text = "Angriff";
+            if (gegnergewaehlt)
+            {
+                km.ShowKampfMenu();
+                aktionsmenue.SetActive(false);
+            }
             bewegenButton.SetActive(true);
             buttonclicked = false;
             phase = -1;

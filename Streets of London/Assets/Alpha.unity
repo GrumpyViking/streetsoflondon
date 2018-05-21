@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -806,6 +806,7 @@ GameObject:
   - component: {fileID: 89270395}
   - component: {fileID: 89270397}
   - component: {fileID: 89270396}
+  - component: {fileID: 89270398}
   m_Layer: 5
   m_Name: wuerfel1
   m_TagString: Untagged
@@ -864,6 +865,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 89270394}
+--- !u!114 &89270398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 89270394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a66234a4148e9418d84bd5020162a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &91729646
 GameObject:
   m_ObjectHideFlags: 0
@@ -4348,6 +4360,7 @@ GameObject:
   - component: {fileID: 333606701}
   - component: {fileID: 333606703}
   - component: {fileID: 333606702}
+  - component: {fileID: 333606704}
   m_Layer: 5
   m_Name: wuerfel5
   m_TagString: Untagged
@@ -4406,6 +4419,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 333606700}
+--- !u!114 &333606704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 333606700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a66234a4148e9418d84bd5020162a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &334089799
 GameObject:
   m_ObjectHideFlags: 0
@@ -10014,6 +10038,7 @@ GameObject:
   - component: {fileID: 687553128}
   - component: {fileID: 687553130}
   - component: {fileID: 687553129}
+  - component: {fileID: 687553131}
   m_Layer: 5
   m_Name: wuerfel2
   m_TagString: Untagged
@@ -10072,6 +10097,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 687553127}
+--- !u!114 &687553131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 687553127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a66234a4148e9418d84bd5020162a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &695869932
 GameObject:
   m_ObjectHideFlags: 0
@@ -10082,6 +10118,7 @@ GameObject:
   - component: {fileID: 695869933}
   - component: {fileID: 695869935}
   - component: {fileID: 695869934}
+  - component: {fileID: 695869936}
   m_Layer: 5
   m_Name: wuerfel6
   m_TagString: Untagged
@@ -10140,6 +10177,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 695869932}
+--- !u!114 &695869936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 695869932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a66234a4148e9418d84bd5020162a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &701119535
 GameObject:
   m_ObjectHideFlags: 0
@@ -10427,6 +10475,7 @@ GameObject:
   - component: {fileID: 730929662}
   - component: {fileID: 730929664}
   - component: {fileID: 730929663}
+  - component: {fileID: 730929665}
   m_Layer: 5
   m_Name: wuerfel3
   m_TagString: Untagged
@@ -10485,6 +10534,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 730929661}
+--- !u!114 &730929665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 730929661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a66234a4148e9418d84bd5020162a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &742936355
 Prefab:
   m_ObjectHideFlags: 0
@@ -15893,6 +15953,7 @@ GameObject:
   - component: {fileID: 1188272028}
   - component: {fileID: 1188272030}
   - component: {fileID: 1188272029}
+  - component: {fileID: 1188272031}
   m_Layer: 5
   m_Name: wuerfel6
   m_TagString: Untagged
@@ -15951,6 +16012,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1188272027}
+--- !u!114 &1188272031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1188272027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a66234a4148e9418d84bd5020162a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1193676155
 GameObject:
   m_ObjectHideFlags: 0
@@ -17125,6 +17197,7 @@ GameObject:
   - component: {fileID: 1246932600}
   - component: {fileID: 1246932602}
   - component: {fileID: 1246932601}
+  - component: {fileID: 1246932603}
   m_Layer: 5
   m_Name: wuerfel3
   m_TagString: Untagged
@@ -17183,6 +17256,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1246932599}
+--- !u!114 &1246932603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1246932599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a66234a4148e9418d84bd5020162a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1248235098
 GameObject:
   m_ObjectHideFlags: 0
@@ -18113,6 +18197,7 @@ GameObject:
   - component: {fileID: 1309595177}
   - component: {fileID: 1309595179}
   - component: {fileID: 1309595178}
+  - component: {fileID: 1309595180}
   m_Layer: 5
   m_Name: wuerfel2
   m_TagString: Untagged
@@ -18171,6 +18256,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1309595176}
+--- !u!114 &1309595180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1309595176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a66234a4148e9418d84bd5020162a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1322295627
 GameObject:
   m_ObjectHideFlags: 0
@@ -21317,6 +21413,7 @@ GameObject:
   - component: {fileID: 1523066603}
   - component: {fileID: 1523066605}
   - component: {fileID: 1523066604}
+  - component: {fileID: 1523066606}
   m_Layer: 5
   m_Name: wuerfel4
   m_TagString: Untagged
@@ -21375,6 +21472,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1523066602}
+--- !u!114 &1523066606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1523066602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a66234a4148e9418d84bd5020162a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1531128232
 GameObject:
   m_ObjectHideFlags: 0
@@ -22110,6 +22218,7 @@ MonoBehaviour:
   bewegenButton: {fileID: 1862479884}
   angriffButton: {fileID: 1253440470}
   beweglicheEinheit: {fileID: 410089633}
+  km: {fileID: 1619626953}
 --- !u!1 &1572626672
 GameObject:
   m_ObjectHideFlags: 0
@@ -22557,6 +22666,21 @@ MonoBehaviour:
   - {fileID: 695869932}
   kampfbutton: {fileID: 1531128232}
   stoppButton: {fileID: 764630414}
+  km: {fileID: 1619626949}
+  heartsatk:
+  - {fileID: 2143377281}
+  - {fileID: 1496311806}
+  - {fileID: 408869744}
+  - {fileID: 194362281}
+  - {fileID: 1471029632}
+  - {fileID: 927215421}
+  heartsdef:
+  - {fileID: 1149598219}
+  - {fileID: 422537495}
+  - {fileID: 643277075}
+  - {fileID: 894240590}
+  - {fileID: 1942764118}
+  - {fileID: 40574832}
 --- !u!1 &1628033986
 GameObject:
   m_ObjectHideFlags: 0
@@ -26261,6 +26385,7 @@ GameObject:
   - component: {fileID: 1917719803}
   - component: {fileID: 1917719805}
   - component: {fileID: 1917719804}
+  - component: {fileID: 1917719806}
   m_Layer: 5
   m_Name: wuerfel1
   m_TagString: Untagged
@@ -26319,6 +26444,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1917719802}
+--- !u!114 &1917719806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1917719802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a66234a4148e9418d84bd5020162a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1921827989
 GameObject:
   m_ObjectHideFlags: 0
@@ -26700,6 +26836,7 @@ GameObject:
   - component: {fileID: 1926598276}
   - component: {fileID: 1926598278}
   - component: {fileID: 1926598277}
+  - component: {fileID: 1926598279}
   m_Layer: 5
   m_Name: wuerfel4
   m_TagString: Untagged
@@ -26758,6 +26895,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1926598275}
+--- !u!114 &1926598279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1926598275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a66234a4148e9418d84bd5020162a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1942764118
 GameObject:
   m_ObjectHideFlags: 0
@@ -27636,6 +27784,7 @@ GameObject:
   - component: {fileID: 1996822554}
   - component: {fileID: 1996822556}
   - component: {fileID: 1996822555}
+  - component: {fileID: 1996822557}
   m_Layer: 5
   m_Name: wuerfel5
   m_TagString: Untagged
@@ -27694,6 +27843,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1996822553}
+--- !u!114 &1996822557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1996822553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a66234a4148e9418d84bd5020162a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1997587095
 Prefab:
   m_ObjectHideFlags: 0
