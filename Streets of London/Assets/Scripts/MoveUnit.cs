@@ -20,6 +20,7 @@ public class MoveUnit : MonoBehaviour {
     public GameObject beweglicheEinheit;
     public KampfMenu km;
 
+    int gewinner;
     bool unitselected = false;
     bool feldselected = false;
     bool buttonclicked = false;
@@ -44,6 +45,22 @@ public class MoveUnit : MonoBehaviour {
         }    
     }
 
+    public void DeselectGegner()
+    {
+        if (gegner != null)
+        {
+            gegner.GetComponent<Outline>().enabled = false;
+            gegner = null;
+            gegnergewaehlt = false;
+            waehlegegner = true;
+            aktionsmenue.SetActive(false);
+        }
+        gegnergewaehlt = false;
+        waehlegegner = false;
+        gegner = null;
+        select = null;
+        gewinner = 2;
+    }
     public void DeselectUnit()
     {
         if (unit != null)
@@ -52,7 +69,12 @@ public class MoveUnit : MonoBehaviour {
             unit = null;
             unitselected = false;
             aktionsmenue.SetActive(false);
-        } 
+        }
+        unitselected = false;
+        unit = null;
+        select = null;
+        gewinner = 2;
+        gegnergewaehlt = false;
     }
     public void DeselectFeld()
     {
@@ -85,6 +107,7 @@ public class MoveUnit : MonoBehaviour {
             {
                 unit = select;
                 aktionsmenue.SetActive(true);
+                unit.GetComponent<Outline>().OutlineColor = Color.white;
                 unit.GetComponent<Outline>().enabled = true;
                 unitselected = true;
             }
@@ -92,8 +115,9 @@ public class MoveUnit : MonoBehaviour {
             if(select.tag == "Einheit" && gegner == null && waehlegegner)
             {
                 gegner = select;
-                gegner.GetComponent<Outline>().enabled = true;
                 gegner.GetComponent<Outline>().OutlineColor = Color.red;
+                gegner.GetComponent<Outline>().enabled = true;
+                
                 gegnergewaehlt = true;
 
             }
@@ -153,6 +177,7 @@ public class MoveUnit : MonoBehaviour {
         {
             anweisungText.GetComponent<TextMeshProUGUI>().text = "Ziel wählen!";
             waehlegegner = true;
+            buttonclicked = true;
             angriffButtonText.GetComponent<Text>().text = "Bestätigen";
             bewegenButton.SetActive(false);
         }
@@ -162,7 +187,20 @@ public class MoveUnit : MonoBehaviour {
             angriffButtonText.GetComponent<Text>().text = "Angriff";
             if (gegnergewaehlt)
             {
-                km.ShowKampfMenu();
+                km.Kampf(unit, gegner);
+                if(gewinner == 0)
+                {
+                    Destroy(gegner);
+                    DeselectGegner();
+                    DeselectUnit();
+                    
+                }
+                else
+                {
+                    Destroy(unit);
+                    DeselectUnit();
+                    DeselectGegner();
+                }
                 aktionsmenue.SetActive(false);
             }
             bewegenButton.SetActive(true);

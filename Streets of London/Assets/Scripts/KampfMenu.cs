@@ -17,6 +17,9 @@ public class KampfMenu : MonoBehaviour {
     public GameObject[] heartsatk;
     public GameObject[] heartsdef;
     public GameManager gm;
+    GameObject angreifer;
+    GameObject verteidiger;
+    int gewinner=2;
 
 
     private void Start()
@@ -35,9 +38,20 @@ public class KampfMenu : MonoBehaviour {
     public void ShowKampfMenu()
     {
         km.SetActive(true);
+        
         gm.Paused();
     }
 
+    public int Kampf(GameObject einheit1, GameObject einheit2)
+    {
+        this.angreifer = einheit1;
+        this.verteidiger = einheit2;
+        ShowKampfMenu();
+        
+        km.SetActive(false);
+        gm.Continue();
+        return gewinner;
+    }
     
     void ChangeDiceTexture()
     {
@@ -73,6 +87,8 @@ public class KampfMenu : MonoBehaviour {
 
     void ergebnis()
     {
+        int lpa=0;
+        int lpv=0;
 
         Array.Sort(attackvalues);
         Array.Sort(defencevalues);
@@ -82,13 +98,22 @@ public class KampfMenu : MonoBehaviour {
             if (defencevalues[i] >= attackvalues[i])
             {
                 heartsatk[i].SetActive(false);
+                lpa++;
             }
             else
             {
                 heartsdef[i].SetActive(false);
+                lpv++;
             }
-
-
+        }
+        Debug.Log("Test");
+        if (lpa <= lpv)
+        {
+            gewinner = 0;
+        }
+        else
+        {
+            gewinner = 1;
         }
     }
 }
