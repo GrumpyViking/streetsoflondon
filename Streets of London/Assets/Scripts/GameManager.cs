@@ -175,5 +175,10 @@ public class GameManager : MonoBehaviour {
         paused = true;
         PassthrougData.gameactiv = false;
         Reset();
-    } 
+    }
+
+    public void Paused()
+    {
+        paused = true;
+    }
 }

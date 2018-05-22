@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,12 +8,15 @@ public class KampfMenu : MonoBehaviour {
 
     public Sprite[] wuerfel;
     public GameObject[] attackDice;
+    int[] attackvalues;
+    int[] defencevalues;
     public GameObject[] defendDice;
     public GameObject kampfbutton;
     public GameObject stoppButton;
     public GameObject km;
     public GameObject[] heartsatk;
     public GameObject[] heartsdef;
+    public GameManager gm;
 
 
     private void Start()
@@ -31,25 +35,32 @@ public class KampfMenu : MonoBehaviour {
     public void ShowKampfMenu()
     {
         km.SetActive(true);
+        gm.Paused();
     }
 
     
     void ChangeDiceTexture()
-    { 
+    {
+        attackvalues = new int[6];
+        defencevalues = new int[6];
 
         int rnddice;
         for(int i = 0; i < attackDice.Length; i++)
         {
-            rnddice = Random.Range(0, 5);
+            rnddice = UnityEngine.Random.Range(1, 6);
             attackDice[i].GetComponent<DiceValue>().setDiceValue(rnddice);
+            attackvalues[i] = rnddice;
             attackDice[i].GetComponent<Image>().sprite = wuerfel[rnddice];
         }
+        
         for (int i = 0; i < defendDice.Length; i++)
         {
-            rnddice = Random.Range(0, 5);
+            rnddice = UnityEngine.Random.Range(1, 6);
             defendDice[i].GetComponent<DiceValue>().setDiceValue(rnddice);
+            defencevalues[i] = rnddice;
             defendDice[i].GetComponent<Image>().sprite = wuerfel[rnddice];
         }
+        
     }
 
     public void KampfStopp()
@@ -62,34 +73,22 @@ public class KampfMenu : MonoBehaviour {
 
     void ergebnis()
     {
-        int tempatk=0;
-        int tempdef=0;
 
-        for(int i = 0; i < attackDice.Length; i++)
-        {
-           if(attackDice[i].GetComponent<DiceValue>().getDiceValue() > tempatk)
-           {
-                tempatk = attackDice[i].GetComponent<DiceValue>().getDiceValue();
-           }
-        }
+        Array.Sort(attackvalues);
+        Array.Sort(defencevalues);
 
-        for (int i = 0; i <defendDice.Length; i++)
+        for(int i = 0; i < attackvalues.Length; i++)
         {
-            if (defendDice[i].GetComponent<DiceValue>().getDiceValue() > tempatk)
+            if (defencevalues[i] >= attackvalues[i])
             {
-                tempdef = attackDice[i].GetComponent<DiceValue>().getDiceValue();
+                heartsatk[i].SetActive(false);
             }
-        }
-
-        if(tempdef >= tempatk)
-        {
-            heartsatk[0].SetActive(false);
-        }
-        else
-        {
-            heartsdef[0].SetActive(false);
-        }
+            else
+            {
+                heartsdef[i].SetActive(false);
+            }
 
 
+        }
     }
 }
