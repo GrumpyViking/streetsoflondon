@@ -7,8 +7,8 @@ using TMPro;
 
 public class MoveUnit : MonoBehaviour {
     GameObject select;
-    GameObject unit;
-    GameObject gegner;
+    public GameObject unit;
+    public GameObject gegner;
     GameObject feld;
     GameObject aktionsmenue;
 
@@ -20,7 +20,7 @@ public class MoveUnit : MonoBehaviour {
     public GameObject beweglicheEinheit;
     public KampfMenu km;
 
-    int gewinner;
+    public GameObject gewinner;
     bool unitselected = false;
     bool feldselected = false;
     bool buttonclicked = false;
@@ -59,7 +59,7 @@ public class MoveUnit : MonoBehaviour {
         waehlegegner = false;
         gegner = null;
         select = null;
-        gewinner = 2;
+        gewinner = null;
     }
     public void DeselectUnit()
     {
@@ -73,7 +73,7 @@ public class MoveUnit : MonoBehaviour {
         unitselected = false;
         unit = null;
         select = null;
-        gewinner = 2;
+        gewinner = null;
         gegnergewaehlt = false;
     }
     public void DeselectFeld()
@@ -187,8 +187,8 @@ public class MoveUnit : MonoBehaviour {
             angriffButtonText.GetComponent<Text>().text = "Angriff";
             if (gegnergewaehlt)
             {
-                km.Kampf(unit, gegner);
-                if(gewinner == 0)
+                km.ShowKampfMenu();
+                if(gewinner == unit)
                 {
                     Destroy(gegner);
                     DeselectGegner();
@@ -210,8 +210,5 @@ public class MoveUnit : MonoBehaviour {
         phase++;
 
     }
-
-
-
-
+    
 }
