@@ -143,6 +143,7 @@ public class GameManager : MonoBehaviour {
             cc.SwitchSide(1);
             mu.DeselectUnit();
             mu.DeselectFeld();
+            beweglicheEinheiten.GetComponent<Text>().text = "3";
             PassthrougData.startPlayer = side;
             PassthrougData.currentPlayer = 2;
             SetPlayer(PassthrougData.player2);
@@ -154,6 +155,7 @@ public class GameManager : MonoBehaviour {
             cc.SwitchSide(0);
             mu.DeselectUnit();
             mu.DeselectFeld();
+            beweglicheEinheiten.GetComponent<Text>().text = "3";
             PassthrougData.startPlayer = side;
             PassthrougData.currentPlayer = 1;
             SetPlayer(PassthrougData.player1);

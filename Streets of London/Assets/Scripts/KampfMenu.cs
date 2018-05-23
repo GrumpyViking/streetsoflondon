@@ -13,6 +13,7 @@ public class KampfMenu : MonoBehaviour {
     public GameObject[] defendDice;
     public GameObject kampfbutton;
     public GameObject stoppButton;
+    public GameObject beendenButton;
     public GameObject km;
     public GameObject[] heartsatk;
     public GameObject[] heartsdef;
@@ -25,8 +26,7 @@ public class KampfMenu : MonoBehaviour {
 
     private void Start()
     {
-        kampfbutton.SetActive(true);
-        stoppButton.SetActive(false);
+        
     }
 
     public void KampfStart()
@@ -36,10 +36,31 @@ public class KampfMenu : MonoBehaviour {
         InvokeRepeating("ChangeDiceTexture", 0f, 0.1f);
     }
 
+    void Init()
+    {
+        for(int i = 0; i < heartsatk.Length; i++)
+        {
+            heartsatk[i].SetActive(true);
+            heartsdef[i].SetActive(true);
+            
+        }
+        kampfbutton.SetActive(true);
+        stoppButton.SetActive(false);
+        beendenButton.SetActive(false);
+
+    }
+
     public void ShowKampfMenu()
     {
         km.SetActive(true);
+        Init();
         gm.Paused();
+    }
+
+    public void HideKampfMenu()
+    {
+        km.SetActive(false);
+        gm.Continue();
     }
     
     void ChangeDiceTexture()
@@ -69,9 +90,10 @@ public class KampfMenu : MonoBehaviour {
     public void KampfStopp()
     {
         CancelInvoke();
-        kampfbutton.SetActive(true);
+        kampfbutton.SetActive(false);
         stoppButton.SetActive(false);
         ergebnis();
+        beendenButton.SetActive(true);
     }
 
     void ergebnis()
