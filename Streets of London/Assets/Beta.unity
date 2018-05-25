@@ -2440,7 +2440,7 @@ GameObject:
   - component: {fileID: 191881862}
   - component: {fileID: 191881861}
   m_Layer: 5
-  m_Name: Text
+  m_Name: gesamtEinheit2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10969,7 +10969,7 @@ GameObject:
   - component: {fileID: 755823967}
   - component: {fileID: 755823966}
   m_Layer: 5
-  m_Name: Text
+  m_Name: gesamtEinheit1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13249,7 +13249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &920223857
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13353,6 +13353,12 @@ MonoBehaviour:
   anzeige4: {fileID: 1109863631}
   anzeige5: {fileID: 448339544}
   anzeigeTK: {fileID: 1846997603}
+  gesamtEinheit:
+  - {fileID: 755823964}
+  - {fileID: 191881859}
+  - {fileID: 2006172938}
+  - {fileID: 1921827989}
+  - {fileID: 1382356975}
   preis1: {fileID: 1277231058}
   preis2: {fileID: 754175605}
   preis3: {fileID: 1536655861}
@@ -19128,7 +19134,7 @@ GameObject:
   - component: {fileID: 1382356978}
   - component: {fileID: 1382356977}
   m_Layer: 5
-  m_Name: Text
+  m_Name: gesamtEinheit5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26669,7 +26675,7 @@ GameObject:
   - component: {fileID: 1921827992}
   - component: {fileID: 1921827991}
   m_Layer: 5
-  m_Name: Text
+  m_Name: gesamtEinheit4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28269,7 +28275,7 @@ GameObject:
   - component: {fileID: 2006172941}
   - component: {fileID: 2006172940}
   m_Layer: 5
-  m_Name: Text
+  m_Name: gesamtEinheit3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

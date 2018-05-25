@@ -126,6 +126,88 @@ public class DataBaseController : MonoBehaviour {
         CloseDBConnection();
     }
 
+    public int GetMaxUnits(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int maxNum = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select MaxAnzahl from Einheitentyp Where ID =" + id;
+        reader = dbcmd.ExecuteReader();
+        while (reader.Read())
+        {
+            maxNum = reader.GetInt32(0);
+        }
+        reader.Close();
+        reader = null;
+        CloseDBConnection();
+        return maxNum;
+    }
+
+    public int GetNumofUnits(string name, int playerid)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int count = 0;
+        int check;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "SELECT COUNT(*) from Einheit";
+        check = dbcmd.ExecuteNonQuery();
+
+        if (check == 0)
+        {
+            CloseDBConnection();
+            return 0;
+        }
+        else
+        {
+            dbcmd.CommandText = "Select ID from Einheit Where Name =" + name;
+
+            reader = dbcmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                count++;
+            }
+            reader.Close();
+            reader = null;
+            CloseDBConnection();
+
+            return count;
+        }
+       
+        
+        
+    }
+
+    public string GetUnitName(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        string name="";
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Name from EinheitenTyp Where ID =" + id;
+        reader = dbcmd.ExecuteReader();
+        while (reader.Read())
+        {
+            name = reader.GetString(0);
+        }
+        reader.Close();
+        reader = null;
+        CloseDBConnection();
+
+        return name;
+    }
+
     void CloseDBConnection()
     {
         if (!init)

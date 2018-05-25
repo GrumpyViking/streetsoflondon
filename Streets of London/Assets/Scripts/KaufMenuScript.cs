@@ -25,6 +25,8 @@ public class KaufMenuScript : MonoBehaviour
     public GameObject anzeige5;
     public GameObject anzeigeTK;
 
+    public GameObject[] gesamtEinheit;
+    int[] einheitentypenid;
     public GameObject preis1;
     public GameObject preis2;
     public GameObject preis3;
@@ -229,13 +231,20 @@ public class KaufMenuScript : MonoBehaviour
     public void EinheitentypAktualisierung(int playerID)
     {
         int[] ids = new int[5];
+        einheitentypenid = new int[5];
         ids = dbc.GetUnitIds(playerID);
-        for(int i = 0; i < units.Length; i++)
+        for(int i = 0; i < gesamtEinheit.Length; i++)
+        {
+            
+            gesamtEinheit[i].GetComponent<Text>().text = Convert.ToString(dbc.GetNumofUnits(dbc.GetUnitName(ids[i]), playerID) + " / "+ Convert.ToString(dbc.GetMaxUnits(ids[i])));
+        }
+        for (int i = 0; i < units.Length; i++)
         {
             if (ids[i] == 1 || ids[i] == 2)
             {
                 //material vom Boss zuweisen
                 units[i].GetComponent<Image>().sprite = unitpictures[0];
+
             }
             if (ids[i] == 3 || ids[i] == 4)
             {
