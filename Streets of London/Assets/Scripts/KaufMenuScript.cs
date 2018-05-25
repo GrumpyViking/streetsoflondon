@@ -27,6 +27,7 @@ public class KaufMenuScript : MonoBehaviour
 
     public GameObject[] gesamtEinheit;
     int[] einheitentypenid;
+    int[] einheitenPrice;
     public GameObject preis1;
     public GameObject preis2;
     public GameObject preis3;
@@ -68,14 +69,20 @@ public class KaufMenuScript : MonoBehaviour
     //OnClick-Methoden der Buttons zum Erhöhen und Verringern der Kaufmenge der Einheitentypen 1-5 und Trickkarten
     public void ErhoeheAnzeige1()
     {
-        int x1 = Convert.ToInt32(anzeige1.GetComponent<Text>().text);
-        String text1 = Convert.ToString(x1 + 1);
-        anzeige1.GetComponent<Text>().text = text1;
-        Preisaktualisierung1();
+        if((Convert.ToInt32(preis1.GetComponent<Text>().text)+ Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
+            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis4.GetComponent<Text>().text)) < gold)
+        {
+            int x1 = Convert.ToInt32(anzeige1.GetComponent<Text>().text);
+            String text1 = Convert.ToString(x1 + 1);
+            anzeige1.GetComponent<Text>().text = text1;
+            Preisaktualisierung1();
+        }
+        
     }
 
     public void VerringereAnzeige1()
     {
+
         if (Convert.ToInt32(anzeige1.GetComponent<Text>().text) > 0)
         {
             int x1 = Convert.ToInt32(anzeige1.GetComponent<Text>().text);
@@ -87,10 +94,14 @@ public class KaufMenuScript : MonoBehaviour
 
     public void ErhoeheAnzeige2()
     {
-        int x2 = Convert.ToInt32(anzeige2.GetComponent<Text>().text);
-        String text2 = Convert.ToString(x2 + 1);
-        anzeige2.GetComponent<Text>().text = text2;
-        Preisaktualisierung2();
+        if ((Convert.ToInt32(preis1.GetComponent<Text>().text) + Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
+            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis4.GetComponent<Text>().text)) < gold)
+        {
+            int x2 = Convert.ToInt32(anzeige2.GetComponent<Text>().text);
+            String text2 = Convert.ToString(x2 + 1);
+            anzeige2.GetComponent<Text>().text = text2;
+            Preisaktualisierung2();
+        }
     }
 
     public void VerringereAnzeige2()
@@ -106,10 +117,14 @@ public class KaufMenuScript : MonoBehaviour
 
     public void ErhoeheAnzeige3()
     {
-        int x3 = Convert.ToInt32(anzeige3.GetComponent<Text>().text);
-        String text3 = Convert.ToString(x3 + 1);
-        anzeige3.GetComponent<Text>().text = text3;
-        Preisaktualisierung3();
+        if ((Convert.ToInt32(preis1.GetComponent<Text>().text) + Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
+            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis4.GetComponent<Text>().text)) < gold)
+        {
+            int x3 = Convert.ToInt32(anzeige3.GetComponent<Text>().text);
+            String text3 = Convert.ToString(x3 + 1);
+            anzeige3.GetComponent<Text>().text = text3;
+            Preisaktualisierung3();
+        }
     }
 
     public void VerringereAnzeige3()
@@ -125,10 +140,14 @@ public class KaufMenuScript : MonoBehaviour
 
     public void ErhoeheAnzeige4()
     {
-        int x4 = Convert.ToInt32(anzeige4.GetComponent<Text>().text);
-        String text4 = Convert.ToString(x4 + 1);
-        anzeige4.GetComponent<Text>().text = text4;
-        Preisaktualisierung4();
+        if ((Convert.ToInt32(preis1.GetComponent<Text>().text) + Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
+            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis4.GetComponent<Text>().text)) < gold)
+        {
+            int x4 = Convert.ToInt32(anzeige4.GetComponent<Text>().text);
+            String text4 = Convert.ToString(x4 + 1);
+            anzeige4.GetComponent<Text>().text = text4;
+            Preisaktualisierung4();
+        }
     }
 
     public void VerringereAnzeige4()
@@ -144,10 +163,14 @@ public class KaufMenuScript : MonoBehaviour
 
     public void ErhoeheAnzeige5()
     {
-        int x5 = Convert.ToInt32(anzeige5.GetComponent<Text>().text);
-        String text5 = Convert.ToString(x5 + 1);
-        anzeige5.GetComponent<Text>().text = text5;
-        Preisaktualisierung5();
+        if ((Convert.ToInt32(preis1.GetComponent<Text>().text) + Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
+            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis4.GetComponent<Text>().text)) < gold)
+        {
+            int x5 = Convert.ToInt32(anzeige5.GetComponent<Text>().text);
+            String text5 = Convert.ToString(x5 + 1);
+            anzeige5.GetComponent<Text>().text = text5;
+            Preisaktualisierung5();
+        }
     }
 
     public void VerringereAnzeige5()
@@ -163,10 +186,14 @@ public class KaufMenuScript : MonoBehaviour
 
     public void ErhoeheAnzeigeTK()
     {
-        int xTK = Convert.ToInt32(anzeigeTK.GetComponent<Text>().text);
-        String textTK = Convert.ToString(xTK + 1);
-        anzeigeTK.GetComponent<Text>().text = textTK;
-        PreisaktualisierungTK();
+        if ((Convert.ToInt32(preis1.GetComponent<Text>().text) + Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
+            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis4.GetComponent<Text>().text)) < gold)
+        {
+            int xTK = Convert.ToInt32(anzeigeTK.GetComponent<Text>().text);
+            String textTK = Convert.ToString(xTK + 1);
+            anzeigeTK.GetComponent<Text>().text = textTK;
+            PreisaktualisierungTK();
+        }
     }
 
     public void VerringereAnzeigeTK()
@@ -183,35 +210,32 @@ public class KaufMenuScript : MonoBehaviour
     //Aktualisierung der Gesamtpreisanzeigen für die Einheitentypen 1-5 und die Trickkarten
     public void Preisaktualisierung1()
     {
-        preis1.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige1.GetComponent<Text>().text) * 2);
-        goldremaining = gold - Convert.ToInt32(preis1.GetComponent<Text>().text);
-        goldnach.GetComponent<Text>().text = Convert.ToString(goldremaining);
-
+        preis1.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige1.GetComponent<Text>().text) * einheitenPrice[0]);
     }
 
     public void Preisaktualisierung2()
     {
-        preis2.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige2.GetComponent<Text>().text) * 2);
+        preis2.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige2.GetComponent<Text>().text) * einheitenPrice[1]);
     }
 
     public void Preisaktualisierung3()
     {
-        preis3.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige3.GetComponent<Text>().text) * 2);
+        preis3.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige3.GetComponent<Text>().text) * einheitenPrice[2]);
     }
 
     public void Preisaktualisierung4()
     {
-        preis4.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige4.GetComponent<Text>().text) * 2);
+        preis4.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige4.GetComponent<Text>().text) * einheitenPrice[3]);
     }
 
     public void Preisaktualisierung5()
     {
-        preis5.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige5.GetComponent<Text>().text) * 2);
+        preis5.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige5.GetComponent<Text>().text) * einheitenPrice[4]);
     }
 
     public void PreisaktualisierungTK()
     {
-        preisTK.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeigeTK.GetComponent<Text>().text) * 4);
+        preisTK.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeigeTK.GetComponent<Text>().text) * 2);
     }
     //---------------------------------------------------------------------------------------------------------------
 
@@ -232,12 +256,18 @@ public class KaufMenuScript : MonoBehaviour
     {
         int[] ids = new int[5];
         einheitentypenid = new int[5];
+        einheitenPrice = new int[5];
         ids = dbc.GetUnitIds(playerID);
+
+
         for(int i = 0; i < gesamtEinheit.Length; i++)
         {
-            
             gesamtEinheit[i].GetComponent<Text>().text = Convert.ToString(dbc.GetNumofUnits(dbc.GetUnitName(ids[i]), playerID) + " / "+ Convert.ToString(dbc.GetMaxUnits(ids[i])));
+            
+            einheitenPrice[i] = dbc.GetUnitPrice(ids[i]);
         }
+
+
         for (int i = 0; i < units.Length; i++)
         {
             if (ids[i] == 1 || ids[i] == 2)
@@ -293,6 +323,4 @@ public class KaufMenuScript : MonoBehaviour
             }
         }
     }
-
 }
-

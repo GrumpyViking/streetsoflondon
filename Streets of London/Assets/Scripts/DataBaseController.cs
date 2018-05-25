@@ -24,8 +24,6 @@ public class DataBaseController : MonoBehaviour {
         dbconn = (IDbConnection)new SqliteConnection(conn);
         dbconn.Open(); //Open connection to the database.
     }
-
-
     
     public void CleanDB()
     {
@@ -181,9 +179,29 @@ public class DataBaseController : MonoBehaviour {
 
             return count;
         }
-       
-        
-        
+    }
+
+    public int GetUnitPrice(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int price = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Kosten from EinheitenTyp Where ID =" + id;
+        reader = dbcmd.ExecuteReader();
+        while (reader.Read())
+        {
+            price = reader.GetInt32(0);
+        }
+        reader.Close();
+        reader = null;
+        CloseDBConnection();
+
+        return price;
+
     }
 
     public string GetUnitName(int id)
