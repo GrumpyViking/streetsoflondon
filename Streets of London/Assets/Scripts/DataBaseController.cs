@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using Mono.Data.Sqlite;
 using System.Data;
 
@@ -36,6 +37,8 @@ public class DataBaseController : MonoBehaviour {
         dbcmd.CommandText = "DELETE FROM Spieler";
         dbcmd.ExecuteNonQuery();
         dbcmd.CommandText = "DELETE FROM Einheitentyp";
+        dbcmd.ExecuteNonQuery();
+        dbcmd.CommandText = "DELETE FROM Einheit";
         dbcmd.ExecuteNonQuery();
         dbcmd.CommandText = "VACUUM";
         dbcmd.ExecuteNonQuery();
@@ -144,40 +147,70 @@ public class DataBaseController : MonoBehaviour {
         CloseDBConnection();
         return maxNum;
     }
-
-    public int GetNumofUnits(string name, int playerid)
+    public int GetNumUnitsofPlayer(int id)
     {
         if (!init)
         {
             Initialise();
         }
-        int count = 0;
-        int check;
+        int anz=0;
+        string check;
         OpenDBConnection();
         dbcmd = dbconn.CreateCommand();
         dbcmd.CommandText = "SELECT COUNT(*) from Einheit";
-        check = dbcmd.ExecuteNonQuery();
+        check = dbcmd.ExecuteScalar().ToString();
 
-        if (check == 0)
+        if (check.Equals("0"))
         {
             CloseDBConnection();
             return 0;
         }
         else
         {
-            dbcmd.CommandText = "Select ID from Einheit Where Name =" + name;
-
+            dbcmd.CommandText = "Select ID from Einheit Where SpielerID =" + id;
             reader = dbcmd.ExecuteReader();
 
             while (reader.Read())
             {
-                count++;
+                anz++;
             }
             reader.Close();
             reader = null;
             CloseDBConnection();
 
-            return count;
+            return anz;
+        }
+    }
+
+
+    public int GetNumofUnit(string name, int playerid)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int count = 0;
+        string check;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "SELECT COUNT(*) from Einheit";
+        check = dbcmd.ExecuteScalar().ToString();
+
+        if (check.Equals("0"))
+        {
+            CloseDBConnection();
+            return 0;
+        }
+        else
+        {
+            string anzahl;
+            dbcmd.CommandText = "Select COUNT(*) from Einheit Where Name =  '"+name+"' And SpielerID = "+playerid+"";
+
+            anzahl = dbcmd.ExecuteScalar().ToString();
+            Debug.Log(anzahl);
+            CloseDBConnection();
+
+            return Convert.ToInt32(anzahl);
         }
     }
 

@@ -210,55 +210,70 @@ public class KaufMenuScript : MonoBehaviour
     public void Preisaktualisierung1()
     {
         preis1.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige1.GetComponent<Text>().text) * einheitenPrice[0]);
+        refrechRemainingGold();
+
     }
 
     public void Preisaktualisierung2()
     {
         preis2.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige2.GetComponent<Text>().text) * einheitenPrice[1]);
+        refrechRemainingGold();
     }
 
     public void Preisaktualisierung3()
     {
         preis3.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige3.GetComponent<Text>().text) * einheitenPrice[2]);
+        refrechRemainingGold();
     }
 
     public void Preisaktualisierung4()
     {
         preis4.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige4.GetComponent<Text>().text) * einheitenPrice[3]);
+        refrechRemainingGold();
     }
 
     public void Preisaktualisierung5()
     {
         preis5.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige5.GetComponent<Text>().text) * einheitenPrice[4]);
+        refrechRemainingGold();
     }
 
     public void PreisaktualisierungTK()
     {
         preisTK.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeigeTK.GetComponent<Text>().text) * 2);
+        refrechRemainingGold();
     }
     //---------------------------------------------------------------------------------------------------------------
+
+    public void refrechRemainingGold()
+    {
+        goldnach.GetComponent<Text>().text = Convert.ToString(gold- (Convert.ToInt32(preis1.GetComponent<Text>().text) + Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
+            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis4.GetComponent<Text>().text)));
+    }
 
     public void KaufBestaetigen()
     {
         //Schreibe Einheiten in DB
         //dbc.WriteToDB("Insert into Einheit(ID,Name,Aktionspunkte,Angriffspunkte,Lebenspunkte, Verteidigungspunkte,Reichweite,Kosten, SpielerID) VALues()");
-        int[] boughtunits = { Convert.ToInt32(preis1.GetComponent<Text>().text), Convert.ToInt32(preis2.GetComponent<Text>().text), Convert.ToInt32(preis3.GetComponent<Text>().text), Convert.ToInt32(preis4.GetComponent<Text>().text), Convert.ToInt32(preis5.GetComponent<Text>().text) };
+        int[] boughtunits = { Convert.ToInt32(anzeige1.GetComponent<Text>().text), Convert.ToInt32(anzeige2.GetComponent<Text>().text), Convert.ToInt32(anzeige3.GetComponent<Text>().text), Convert.ToInt32(anzeige4.GetComponent<Text>().text), Convert.ToInt32(anzeige5.GetComponent<Text>().text) };
 
         for(int i = 0; i < boughtunits.Length; i++)
         {
-            for(int j = 1; j < boughtunits[i]; j++)
+            for(int j = 0; j < boughtunits[i]; j++)
             {
-                if (ids[i]==1 || ids[i] == 2)
+                Debug.Log(boughtunits[i]);
+                Debug.Log(dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer));
+                if (ids[i] == 1 || ids[i] == 2)
                 {
                     if (PassthrougData.currentPlayer == 1)
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values ("+10+"1, 'Boss',  3, 5, 3, 1, 5, 4, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Boss',  3, 5, 3, 1, 5, 4, 1)");
                     }
                     else
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "2, 'Boss',  3, 5, 3, 1, 5, 4, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Boss',  3, 5, 3, 1, 5, 4, 2)");
                     }
                 }
                 if (ids[i] == 3 || ids[i] == 4)
@@ -266,12 +281,12 @@ public class KaufMenuScript : MonoBehaviour
                     if (PassthrougData.currentPlayer == 1)
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "3, 'Diebin',  3, 3, 2, 2, 3, 3, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Diebin',  3, 3, 2, 2, 3, 3, 1)");
                     }
                     else
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "4, 'Diebin',  3, 3, 2, 2, 3, 3, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Diebin',  3, 3, 2, 2, 3, 3, 2)");
                     }
                 }
                 if (ids[i] == 5 || ids[i] == 6)
@@ -279,12 +294,12 @@ public class KaufMenuScript : MonoBehaviour
                     if (PassthrougData.currentPlayer == 1)
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "5, 'Meuchelmoerder',  4, 3, 1, 1, 4, 3, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Meuchelmoerder',  4, 3, 1, 1, 4, 3, 1)");
                     }
                     else
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "6, 'Meuchelmoerder',  4, 3, 1, 1, 4, 3, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + " , 'Meuchelmoerder',  4, 3, 1, 1, 4, 3, 2)");
                     }
                 }
                 if (ids[i] == 7 || ids[i] == 8)
@@ -292,12 +307,12 @@ public class KaufMenuScript : MonoBehaviour
                     if (PassthrougData.currentPlayer == 1)
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "7, 'Pestarzt',  3, 3, 4, 1, 4, 1, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Pestarzt',  3, 3, 4, 1, 4, 1, 1)");
                     }
                     else
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "8, 'Pestarzt',  3, 3, 4, 1, 4, 1, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Pestarzt',  3, 3, 4, 1, 4, 1, 2)");
                     }
                 }
                 if (ids[i] == 9 || ids[i] == 10)
@@ -305,12 +320,12 @@ public class KaufMenuScript : MonoBehaviour
                     if (PassthrougData.currentPlayer == 1)
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "9, 'Polizist',  2, 5, 3, 1, 3, 2, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Polizist',  2, 5, 3, 1, 3, 2, 1)");
                     }
                     else
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "10, 'Polizist',  2, 5, 3, 1, 3, 2, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Polizist',  2, 5, 3, 1, 3, 2, 2)");
                     }
                 }
                 if (ids[i] == 11 || ids[i] == 12)
@@ -318,12 +333,12 @@ public class KaufMenuScript : MonoBehaviour
                     if (PassthrougData.currentPlayer == 1)
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "11, 'Raufbold',  2, 6, 3, 1, 3, 1, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Raufbold',  2, 6, 3, 1, 3, 1, 1)");
                     }
                     else
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "12, 'Raufbold',  2, 6, 3, 1, 3, 1, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Raufbold',  2, 6, 3, 1, 3, 1, 2)");
                     }
                 }
                 if (ids[i] == 13 || ids[i] == 14)
@@ -331,12 +346,12 @@ public class KaufMenuScript : MonoBehaviour
                     if (PassthrougData.currentPlayer == 1)
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "13, 'Scharfschuetze',  3, 3, 2, 3, 4, 3, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Scharfschuetze',  3, 3, 2, 3, 4, 3, 1)");
                     }
                     else
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "14, 'Scharfschuetze',  3, 3, 2, 3, 4, 3, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Scharfschuetze',  3, 3, 2, 3, 4, 3, 2)");
                     }
                 }
                 if (ids[i] == 15 || ids[i] == 16)
@@ -344,12 +359,12 @@ public class KaufMenuScript : MonoBehaviour
                     if (PassthrougData.currentPlayer == 1)
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "15, 'Schlaeger',  2, 4, 2, 1, 2, 2, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Schlaeger',  2, 4, 2, 1, 2, 2, 1)");
                     }
                     else
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "16, 'Schlaeger',  2, 4, 2, 1, 2, 2, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Schlaeger',  2, 4, 2, 1, 2, 2, 2)");
                     }
                 }
                 if (ids[i] == 17 || ids[i] == 18)
@@ -357,12 +372,12 @@ public class KaufMenuScript : MonoBehaviour
                     if (PassthrougData.currentPlayer == 1)
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "17, 'Taschendieb',  4, 2, 1, 1, 2, 1, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Taschendieb',  4, 2, 1, 1, 2, 1, 1)");
                     }
                     else
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "18, 'Taschendieb',  4, 2, 1, 1, 2, 1, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Taschendieb',  4, 2, 1, 1, 2, 1, 2)");
                     }
                 }
                 if (ids[i] == 19 || ids[i] == 20)
@@ -370,17 +385,18 @@ public class KaufMenuScript : MonoBehaviour
                     if (PassthrougData.currentPlayer == 1)
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "19, 'Tueftler',  2, 2, 1, 2, 5, 5, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Tueftler',  2, 2, 1, 2, 5, 5, 1)");
                     }
                     else
                     {
                         //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 10 + "20, 'Tueftler',  2, 2, 1, 2, 5, 5, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Tueftler',  2, 2, 1, 2, 5, 5, 2)");
                     }
                 }
             }
         }
 
+        dbc.WriteToDB("UPDATE Spieler SET GOLD="+Convert.ToInt32(goldnach.GetComponent<Text>().text )+" Where ID ="+PassthrougData.currentPlayer);
         //Spawne einheiten auf Spielfeld
 
 
@@ -397,7 +413,7 @@ public class KaufMenuScript : MonoBehaviour
 
         for(int i = 0; i < gesamtEinheit.Length; i++)
         {
-            gesamtEinheit[i].GetComponent<Text>().text = Convert.ToString(dbc.GetNumofUnits(dbc.GetUnitName(ids[i]), playerID) + " / "+ Convert.ToString(dbc.GetMaxUnits(ids[i])));
+            gesamtEinheit[i].GetComponent<Text>().text = Convert.ToString(dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), playerID) + " / "+ Convert.ToString(dbc.GetMaxUnits(ids[i])));
             
             einheitenPrice[i] = dbc.GetUnitPrice(ids[i]);
         }
