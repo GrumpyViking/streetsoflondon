@@ -499,8 +499,7 @@ public class UnitSelection : MonoBehaviour {
                 SubmitUnitSelection();
             }
             count--;
-        }
-        
+        }  
     }
 
     private void Reset()

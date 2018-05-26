@@ -19,10 +19,10 @@ public class ObjectPooler : MonoBehaviour
     }
 
     #region Singleton
-    public static ObjectPooler Insatnce;
+    public static ObjectPooler Instance;
     private void Awake()
     {
-        Insatnce = this;
+        Instance = this;
     }
     #endregion
 
