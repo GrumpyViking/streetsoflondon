@@ -111,6 +111,10 @@ public class GameManager : MonoBehaviour {
         //rc.AktualisiereGold(Convert.ToInt32(dbc.RequestFromDB("Select ID from Spieler where Name = " + name)));
     }
 
+    public void RefreshGold()
+    {
+        goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '"+PassthrougData.currentPlayer+"'");
+    }
     void TimeLine()
     {
         if (!paused)

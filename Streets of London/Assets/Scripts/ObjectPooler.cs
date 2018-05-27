@@ -56,7 +56,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, int textureindex)
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
     {
         if (!poolDictonary.ContainsKey(tag))
         {
@@ -65,7 +65,94 @@ public class ObjectPooler : MonoBehaviour
         }
         GameObject objectToSpawn = poolDictonary[tag].Dequeue();
         objectToSpawn.SetActive(true);
-        objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[textureindex];
+        if (PassthrougData.currentPlayer == 1)
+        {
+            if (tag == "Boss")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[0];
+            }
+            if (tag == "Diebin")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[1];
+            }
+            if (tag == "Meuchelmoerder")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[2];
+            }
+            if (tag == "Pestarzt")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[3];
+            }
+            if (tag == "Polizist")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[4];
+            }
+            if (tag == "Raufbold")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[5];
+            }
+            if (tag == "Scharfschuetze")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[6];
+            }
+            if (tag == "Schlaeger")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[7];
+            }
+            if (tag == "Taschendieb")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[8];
+            }
+            if (tag == "Tueftler")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[9];
+            }
+        }
+        else
+        {
+            if (tag == "Boss")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[10];
+            }
+            if (tag == "Diebin")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[11];
+            }
+            if (tag == "Meuchelmoerder")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[12];
+            }
+            if (tag == "Pestarzt")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[13];
+            }
+            if (tag == "Polizist")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[14];
+            }
+            if (tag == "Raufbold")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[15];
+            }
+            if (tag == "Scharfschuetze")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[16];
+            }
+            if (tag == "Schlaeger")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[17];
+            }
+            if (tag == "Taschendieb")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[18];
+            }
+            if (tag == "Tueftler")
+            {
+                objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[19];
+            }
+        }
+        
+
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
         

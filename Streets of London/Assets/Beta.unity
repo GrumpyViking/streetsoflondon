@@ -13366,6 +13366,7 @@ MonoBehaviour:
   preis5: {fileID: 1572626672}
   preisTK: {fileID: 479217181}
   dbc: {fileID: 1719293103}
+  gm: {fileID: 1565836639}
 --- !u!1 &924052165
 GameObject:
   m_ObjectHideFlags: 0
@@ -14763,10 +14764,10 @@ MonoBehaviour:
   - tag: Tueftler
     prefab: {fileID: 1030904958661354, guid: 03b39a6e3d0815a4abb162f20356f3a9, type: 2}
     size: 5
-  - tag: Tueftler_w
+  - tag: Schlaeger
     prefab: {fileID: 1030904958661354, guid: 03b39a6e3d0815a4abb162f20356f3a9, type: 2}
     size: 5
-  - tag: "Meuchelm\xF6rder"
+  - tag: Meuchelmoerder
     prefab: {fileID: 1030904958661354, guid: 03b39a6e3d0815a4abb162f20356f3a9, type: 2}
     size: 5
   - tag: Polizist
