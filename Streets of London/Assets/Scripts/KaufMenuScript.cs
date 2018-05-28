@@ -64,7 +64,7 @@ public class KaufMenuScript : MonoBehaviour
         preis5.GetComponent<Text>().text = "0";
         anzeigeTK.GetComponent<Text>().text = "0";
         preisTK.GetComponent<Text>().text = "0";
-        gm.RefreshGold();
+        gm.Refresh();
     }
     //---------------------------------------------------------------------------------------------------------------
     //OnClick-Methoden der Buttons zum Erhöhen und Verringern der Kaufmenge der Einheitentypen 1-5 und Trickkarten

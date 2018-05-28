@@ -67,6 +67,23 @@ public class DataBaseController : MonoBehaviour {
         return buff;
     }
 
+    public int GoldPlayer(int playerid)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int gold = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Gold from Spieler Where ID =" + playerid+"";
+        gold = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+        
+        CloseDBConnection();
+
+        return gold;
+    }
+
     public int[] GetUnitIds(int playerid)
     {
         if (!init)

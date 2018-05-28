@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour {
 
     //TextFelder
     public GameObject goldText;
+    public GameObject zusatzGold;
     public GameObject myTimer;
     public GameObject playerText;
     public GameObject gesamtEinheiten;
@@ -68,8 +69,7 @@ public class GameManager : MonoBehaviour {
             beweglicheEinheiten.GetComponent<Text>().text = "3";
             mu.DeselectUnit();
             mu.DeselectFeld();
-            goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '1'");
-            //rc.AktualisiereGold(1);
+            rc.RefreshDisplay(1);
         }
         else
         {
@@ -80,8 +80,7 @@ public class GameManager : MonoBehaviour {
             beweglicheEinheiten.GetComponent<Text>().text = "3";
             mu.DeselectUnit();
             mu.DeselectFeld();
-            goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '2'");
-            //rc.AktualisiereGold(2);
+            rc.RefreshDisplay(2);
         }
         count = timer;
         utc.Initialise();
@@ -111,9 +110,10 @@ public class GameManager : MonoBehaviour {
         //rc.AktualisiereGold(Convert.ToInt32(dbc.RequestFromDB("Select ID from Spieler where Name = " + name)));
     }
 
-    public void RefreshGold()
+    public void Refresh()
     {
         goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '"+PassthrougData.currentPlayer+"'");
+        gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(PassthrougData.currentPlayer));
     }
     void TimeLine()
     {
@@ -121,7 +121,6 @@ public class GameManager : MonoBehaviour {
         {
             if (count >= 0)
             {
-                
                 tTimer.text = count.ToString();
                 timeLine.transform.localScale += new Vector3(-1 / (timer + 1), 0, 0);
             }
@@ -145,20 +144,25 @@ public class GameManager : MonoBehaviour {
         {
             side = 1;
             cc.SwitchSide(1);
+            rc.AktualisiereGold(1);
             mu.DeselectUnit();
             mu.DeselectFeld();
+            gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(1));
             beweglicheEinheiten.GetComponent<Text>().text = "3";
             PassthrougData.startPlayer = side;
             PassthrougData.currentPlayer = 2;
             SetPlayer(PassthrougData.player2);
             pm.SetPlayer(PassthrougData.player2);
+            
         }
         else
         {
             side = 0;
             cc.SwitchSide(0);
+            rc.AktualisiereGold(2);
             mu.DeselectUnit();
             mu.DeselectFeld();
+            gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(2));
             beweglicheEinheiten.GetComponent<Text>().text = "3";
             PassthrougData.startPlayer = side;
             PassthrougData.currentPlayer = 1;
