@@ -258,10 +258,54 @@ public class KaufMenuScript : MonoBehaviour
         //Schreibe Einheiten in DB
         //dbc.WriteToDB("Insert into Einheit(ID,Name,Aktionspunkte,Angriffspunkte,Lebenspunkte, Verteidigungspunkte,Reichweite,Kosten, SpielerID) VALues()");
         int[] boughtunits = { Convert.ToInt32(anzeige1.GetComponent<Text>().text), Convert.ToInt32(anzeige2.GetComponent<Text>().text), Convert.ToInt32(anzeige3.GetComponent<Text>().text), Convert.ToInt32(anzeige4.GetComponent<Text>().text), Convert.ToInt32(anzeige5.GetComponent<Text>().text) };
+        string[] unitnames = new string[5];
         int offset;
         for (int i = 0; i < boughtunits.Length; i++)
         {
-            for(int j = 0; j < boughtunits[i]; j++)
+            if (boughtunits[i] != 0)
+            {
+                if (ids[i] == 1 || ids[i] == 2)
+                {
+                    unitnames[i] = "Boss";
+                }
+                if (ids[i] == 3 || ids[i] == 4)
+                {
+                    unitnames[i] = "Diebin";
+                }
+                if (ids[i] == 5 || ids[i] == 6)
+                {
+                    unitnames[i] = "Meuchelmoerder";
+                }
+                if (ids[i] == 7 || ids[i] == 8)
+                {
+                    unitnames[i] = "Pestarzt";
+                }
+                if (ids[i] == 9 || ids[i] == 10)
+                {
+                    unitnames[i] = "Polizist";
+                }
+                if (ids[i] == 11 || ids[i] == 12)
+                {
+                    unitnames[i] = "Raufbold";
+                }
+                if (ids[i] == 13 || ids[i] == 14)
+                {
+                    unitnames[i] = "Scharfschuetze";
+                }
+                if (ids[i] == 15 || ids[i] == 16)
+                {
+                    unitnames[i] = "Schlaeger";
+                }
+                if (ids[i] == 17 || ids[i] == 18)
+                {
+                    unitnames[i] = "Taschendieb";
+                }
+                if (ids[i] == 19 || ids[i] == 20)
+                {
+                    unitnames[i] = "Tueftler";
+                }
+            }
+            for (int j = 0; j < boughtunits[i]; j++)
             {
                 if (ids[i] == 1 || ids[i] == 2)
                 {
@@ -393,64 +437,8 @@ public class KaufMenuScript : MonoBehaviour
                         dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthrougData.currentPlayer) + ", 'Tueftler',  2, 2, 1, 2, 5, 5, 2)");
                     }
                 }
-            }
-        }
 
-        dbc.WriteToDB("UPDATE Spieler SET GOLD="+Convert.ToInt32(goldnach.GetComponent<Text>().text )+" Where ID ="+PassthrougData.currentPlayer);
-        //Spawne einheiten auf Spielfeld
-        string[] unitnames = new string[5];
-        for(int i = 0; i < boughtunits.Length; i++)
-        {
-            if (boughtunits[i] != 0)
-            {
-                if (ids[i] == 1 || ids[i] == 2)
-                {
-                    unitnames[i] = "Boss";
-                }
-                if (ids[i] == 3 || ids[i] == 4)
-                {
-                    unitnames[i] = "Diebin";
-                }
-                if (ids[i] == 5 || ids[i] == 6)
-                {
-                    unitnames[i] = "Meuchelmoerder";
-                }
-                if (ids[i] == 7 || ids[i] == 8)
-                {
-                    unitnames[i] = "Pestarzt";
-                }
-                if (ids[i] == 9 || ids[i] == 10)
-                {
-                    unitnames[i] = "Polizist";
-                }
-                if (ids[i] == 11 || ids[i] == 12)
-                {
-                    unitnames[i] = "Raufbold";
-                }
-                if (ids[i] == 13 || ids[i] == 14)
-                {
-                    unitnames[i] = "Scharfschuetze";
-                }
-                if (ids[i] == 15 || ids[i] == 16)
-                {
-                    unitnames[i] = "Schlaeger";
-                }
-                if (ids[i] == 17 || ids[i] == 18)
-                {
-                    unitnames[i] = "Taschendieb";
-                }
-                if (ids[i] == 19 || ids[i] == 20)
-                {
-                    unitnames[i] = "Tueftler";
-                }
-            }
-        }
-
-        for(int i = 0; i < boughtunits.Length; i++)
-        {
-            for(int j = 0; j < boughtunits[i]; j++)
-            {
-                if(PassthrougData.currentPlayer == 2)
+                if (PassthrougData.currentPlayer == 2)
                 {
                     if (i == 0)
                     {
@@ -521,9 +509,10 @@ public class KaufMenuScript : MonoBehaviour
 
                     }
                 }
-                
             }
         }
+
+        dbc.WriteToDB("UPDATE Spieler SET GOLD="+Convert.ToInt32(goldnach.GetComponent<Text>().text )+" Where ID ="+PassthrougData.currentPlayer);
 
         SchliesseKaufmenu();
     }

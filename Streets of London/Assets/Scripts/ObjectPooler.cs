@@ -151,7 +151,7 @@ public class ObjectPooler : MonoBehaviour
         }
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
-        objectToSpawn.name = PassthrougData.currentPlayer + "_" + tag + "_";
+        objectToSpawn.name = PassthrougData.currentPlayer + "_" + tag + "_"+ dbc.GetNumofUnit(tag, PassthrougData.currentPlayer);
         poolDictonary[tag].Enqueue(objectToSpawn);
         count++;
         return objectToSpawn;
