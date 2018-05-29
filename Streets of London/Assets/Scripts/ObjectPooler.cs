@@ -7,8 +7,9 @@ public class ObjectPooler : MonoBehaviour
 
     public Dictionary<string, Queue<GameObject>> poolDictonary;
     public Texture[] texArray;
-    public string name="Test";
+    public string name="";
     public int count=0;
+    public DataBaseController dbc;
 
     [System.Serializable]
     public class Pool
@@ -30,7 +31,6 @@ public class ObjectPooler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
         poolDictonary = new Dictionary<string, Queue<GameObject>>();
         foreach (Pool pool in pools)
         {
@@ -39,8 +39,6 @@ public class ObjectPooler : MonoBehaviour
             {
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
-                obj.name = name+count;
-                count++;
 
                 obj.tag = "Einheit";
                 //obj.AddComponent<MoveUnit>();
@@ -151,12 +149,11 @@ public class ObjectPooler : MonoBehaviour
                 objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[19];
             }
         }
-        
-
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
-        
+        objectToSpawn.name = PassthrougData.currentPlayer + "_" + tag + "_";
         poolDictonary[tag].Enqueue(objectToSpawn);
+        count++;
         return objectToSpawn;
 
     }
