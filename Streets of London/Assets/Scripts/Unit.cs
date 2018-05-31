@@ -25,7 +25,107 @@ public class Unit : MonoBehaviour {
         this.cost = cost;
     }
 
-    
+    public int Id
+    {
+        get
+        {
+            return id;
+        }
 
+        set
+        {
+            id = value;
+        }
+    }
 
+    public string Name
+    {
+        get
+        {
+            return name;
+        }
+
+        set
+        {
+            name = value;
+        }
+    }
+
+    public int ActionValue
+    {
+        get
+        {
+            return actionValue;
+        }
+
+        set
+        {
+            actionValue = value;
+        }
+    }
+
+    public int AttValue
+    {
+        get
+        {
+            return attValue;
+        }
+
+        set
+        {
+            attValue = value;
+        }
+    }
+
+    public int LifeValue
+    {
+        get
+        {
+            return lifeValue;
+        }
+
+        set
+        {
+            lifeValue = value;
+        }
+    }
+
+    public int DefValue
+    {
+        get
+        {
+            return defValue;
+        }
+
+        set
+        {
+            defValue = value;
+        }
+    }
+
+    public int Reach
+    {
+        get
+        {
+            return reach;
+        }
+
+        set
+        {
+            reach = value;
+        }
+    }
+
+    public int Cost
+    {
+        get
+        {
+            return cost;
+        }
+
+        set
+        {
+            cost = value;
+        }
+    }
 }

@@ -12,6 +12,7 @@ public class MoveUnit : MonoBehaviour {
     GameObject feld;
     GameObject aktionsmenue;
 
+    Unit test;
     public GameObject anweisungText;
     public GameObject bewegenButtonText;
     public GameObject angriffButtonText;
@@ -19,6 +20,7 @@ public class MoveUnit : MonoBehaviour {
     public GameObject angriffButton;
     public GameObject beweglicheEinheit;
     public KampfMenu km;
+    public DataBaseController dbc;
 
     public GameObject gewinner;
     bool unitselected = false;
@@ -107,6 +109,7 @@ public class MoveUnit : MonoBehaviour {
             {
                 unit = select;
                 aktionsmenue.SetActive(true);
+                //test = dbc.GetUnitInfo();
                 unit.GetComponent<Outline>().OutlineColor = Color.white;
                 unit.GetComponent<Outline>().enabled = true;
                 unitselected = true;

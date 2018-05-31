@@ -39,9 +39,10 @@ public class ObjectPooler : MonoBehaviour
             {
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
-
+                
                 obj.tag = "Einheit";
                 //obj.AddComponent<MoveUnit>();
+                obj.AddComponent<UnitID>();
                 obj.AddComponent<Outline>();
                 obj.GetComponent<Outline>().enabled = false;
                 obj.AddComponent<Rigidbody>();
@@ -151,6 +152,7 @@ public class ObjectPooler : MonoBehaviour
         }
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
+        //objectToSpawn.GetComponent<UnitID>().unitID = ;
         objectToSpawn.name = PassthrougData.currentPlayer + "_" + tag + "_"+ dbc.GetNumofUnit(tag, PassthrougData.currentPlayer);
         poolDictonary[tag].Enqueue(objectToSpawn);
         count++;

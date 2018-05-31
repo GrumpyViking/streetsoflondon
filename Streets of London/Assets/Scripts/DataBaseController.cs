@@ -84,6 +84,23 @@ public class DataBaseController : MonoBehaviour {
         return gold;
     }
 
+    public Unit GetUnitInfo(int unitID)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        Unit unit = null;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select * from Einheit Where ID =" + unitID + "";
+        unit = (Unit) dbcmd.ExecuteScalar();
+
+        CloseDBConnection();
+
+        return unit;
+    }
+
     public int[] GetUnitIds(int playerid)
     {
         if (!init)
