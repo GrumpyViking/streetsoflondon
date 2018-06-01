@@ -92,7 +92,6 @@ public class SpielerMenu : MonoBehaviour {
         
     }
 
-
     //Beenden des Programms
     public void ExitPorgram()
     {

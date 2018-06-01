@@ -21,6 +21,10 @@ public class CameraController : MonoBehaviour {
     private void Start()
     {
         SetCameraActiv(false);
+        cameraPlayer.enabled = false;
+        cameraPlayer.tag = "untagged";
+        camOverHead.tag = "MainCamera";
+
     }
 
     public void SetCameraActiv(bool ca)
@@ -106,7 +110,9 @@ public class CameraController : MonoBehaviour {
         if(side == 0)
         {
             camOverHead.enabled = false;
+            camOverHead.tag = "untagged";
             cameraPlayer.enabled = true;
+            cameraPlayer.tag = "MainCamera";
             cameraPlayer.transform.position = new Vector3(-20, 1000, -1625);
             cameraPlayer.transform.rotation = Quaternion.Euler(65, 0, 0);
         }
