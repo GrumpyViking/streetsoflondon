@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour {
     //GameObjects
     public GameObject timeLine;
 
+    public GameObject mainUI;
+
     //TextFelder
     public GameObject goldText;
     public GameObject zusatzGold;
@@ -61,7 +63,7 @@ public class GameManager : MonoBehaviour {
     public void SetupScene()
     {
         side = PassthrougData.startPlayer;
-        
+        mainUI.SetActive(true);
         if (PassthrougData.startPlayer == 0)
         {
             PassthrougData.currentPlayer = 1;

@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour {
     {
         SetCameraActiv(false);
         cameraPlayer.enabled = false;
-        cameraPlayer.tag = "untagged";
+        cameraPlayer.tag = "Untagged";
         camOverHead.tag = "MainCamera";
 
     }
@@ -110,7 +110,7 @@ public class CameraController : MonoBehaviour {
         if(side == 0)
         {
             camOverHead.enabled = false;
-            camOverHead.tag = "untagged";
+            camOverHead.tag = "Untagged";
             cameraPlayer.enabled = true;
             cameraPlayer.tag = "MainCamera";
             cameraPlayer.transform.position = new Vector3(-20, 1000, -1625);

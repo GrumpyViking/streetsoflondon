@@ -10,14 +10,18 @@ public class FieldBuilder : MonoBehaviour {
     public GameObject playerText;
     public GameObject zeitleiste;
     public GameObject timerText;
+    public GameObject[] fields;
     public float timer;
     public DataBaseController dbc;
+    public Texture[] fieldImages;
 
     float count;
     bool timerstate;
+    bool fieldbuild;
     bool chooseField=false;
     Vector3 defaultPosition;
     GameObject select;
+    GameObject selectOpposit;
 
     void Initialise()
     {
@@ -31,7 +35,6 @@ public class FieldBuilder : MonoBehaviour {
             chooseField = true;
             InvokeRepeating("TimeLine", 1.0f, 1.0f);
         }
-        
     }
 
     public void PanelState(bool state)
@@ -55,7 +58,6 @@ public class FieldBuilder : MonoBehaviour {
             }
             count--;
         }
-        
         Debug.Log(count);
     }
 
@@ -80,28 +82,59 @@ public class FieldBuilder : MonoBehaviour {
             PassthrougData.currentPlayer = 1;
             sm.SetPlayer(PassthrougData.player1);
         }
+        
+        select.GetComponent<Outline>().OutlineColor = Color.green;
+        selectOpposit.GetComponent<Outline>().OutlineColor = Color.green;
+        for(int i = 0; i < fields.Length; i++)
+        {
+            fieldbuild = true;
+            if (fields[i].GetComponent<FieldHelper>().isSet == false)
+            {
+                fieldbuild = false;
+            }
+            Color temp = fields[i].GetComponent<Outline>().OutlineColor;
+            temp.a = 0f;
+            fields[i].GetComponent<Outline>().OutlineColor = temp;
+        }
         PanelState(false);
+        sm.SetFieldBuild(fieldbuild);
         sm.PanelState(true);
     }
 
     private void Update()
     {
-
         if (Input.GetMouseButtonDown(0) && chooseField)
         {
             SelectFeld();
-            Debug.Log("Pasta");
         }
     }
 
     void SelectFeld()
     {
         RaycastHit hitInfo;
+        int pos = 0;
         select = ReturnClickedObject(out hitInfo);
-        if (select.tag == "HexFields")
+        if (select.tag == "HexFields" && !select.GetComponent<FieldHelper>().isSet)
         {
+            for(int i = 0; i < fields.Length; i++)
+            {
+                if(fields[i] == select)
+                {
+                    pos = i;
+                }
+            }
             select.GetComponent<Outline>().OutlineColor = Color.red;
             select.GetComponent<Outline>().enabled = true;
+            if (pos < 24)
+            {
+                selectOpposit = fields[pos+23];
+            }
+            else
+            {
+                selectOpposit = fields[pos - 23];
+            }
+            selectOpposit.GetComponent<Outline>().enabled = true;
+            chooseField = false;
         }
     }
 
@@ -115,6 +148,16 @@ public class FieldBuilder : MonoBehaviour {
             Debug.Log(target);
         }
         return target;
+    }
+
+    public void SetFieldImage(int index)
+    {
+        Debug.Log(fieldImages[index]);
+        select.GetComponent<Renderer>().material.mainTexture = fieldImages[index];
+        select.GetComponent<FieldHelper>().isSet = true;
+        selectOpposit.GetComponent<Renderer>().material.mainTexture = fieldImages[index];
+        selectOpposit.GetComponent<FieldHelper>().isSet = true;
+        Reset();
     }
 
 }
