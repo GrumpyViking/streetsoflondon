@@ -8,21 +8,26 @@ public class SpielerMenu : MonoBehaviour {
 
     public GameObject spielerMenuScriptObject;
     public GameObject playerTextObject;
+    public GameObject mainUI;
 
 
     public GameManager gm;
     public DataBaseController dbc;
     public UnitSelection us;
+    public FieldBuilder fb;
 
     
     bool init;
+    bool fieldBuild;
     int unitsSelected;
 
     //Initialisieren
     void Start()
     {
         init = false;
+        fieldBuild = false;
         unitsSelected = 0;
+        mainUI.SetActive(false);
         if (PassthrougData.startPlayer == 0)
         {
             SetPlayer(PassthrougData.player1);
@@ -44,6 +49,20 @@ public class SpielerMenu : MonoBehaviour {
     public void SetPlayer(string name)
     {
         playerTextObject.GetComponent<Text>().text = name;
+    }
+
+    public void CheckAction()
+    {
+        if (!fieldBuild)
+        {
+            FieldBuilder();
+        }
+        
+    }
+
+    void FieldBuilder()
+    {
+        fb.PanelState(true);
     }
 
     public void StartGame()
@@ -72,7 +91,6 @@ public class SpielerMenu : MonoBehaviour {
         }
         
     }
-
 
 
     //Beenden des Programms

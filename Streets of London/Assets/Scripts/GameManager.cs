@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour {
     public CameraController cc;
     public DataBaseController dbc;
     public SpielerMenu pm;
+    public FieldBuilder fb;
     public KaufMenuScript kms;
     public Ressources rc;
     public UnitTypCards utc;
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour {
         {
             dbc.WriteToDB("INSERT INTO Spieler(ID, Name, Gold) VALUES (1, 'Spieler 1', 20)");
             PassthrougData.player1 = "Spieler 1";
+            PassthrougData.currentPlayer = 1;
         }
         if (PassthrougData.player2 == null)
         {

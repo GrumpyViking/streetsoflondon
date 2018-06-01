@@ -148,6 +148,22 @@ public class DataBaseController : MonoBehaviour {
         return num;
     }
 
+    public string GetName(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        string name = "";
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Name from Spieler Where ID ="+id;
+        name = dbcmd.ExecuteScalar().ToString();
+        CloseDBConnection();
+        Debug.Log(name);
+        return name;
+    }
+
     public void WriteToDB(string query)
     {
         if (!init)
