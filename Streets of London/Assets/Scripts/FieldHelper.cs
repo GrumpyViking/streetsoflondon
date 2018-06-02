@@ -5,5 +5,6 @@ using UnityEngine;
 public class FieldHelper : MonoBehaviour {
 
     public bool isSet;
+    public bool hasUnit;
     public int id;
 }

@@ -25,6 +25,8 @@ public class DataBaseController : MonoBehaviour {
         dbconn = (IDbConnection)new SqliteConnection(conn);
         dbconn.Open(); //Open connection to the database.
     }
+
+    
     
     public void CleanDB()
     {
@@ -68,6 +70,41 @@ public class DataBaseController : MonoBehaviour {
         CloseDBConnection();
         return buff;
     }
+
+    public int GetLP(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int lp = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Lebenspunkte from Einheit Where ID =" + id + "";
+        lp = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+
+        CloseDBConnection();
+
+        return lp;
+    }
+
+    public int GetRW(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int rw = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Reichweite from Einheit Where ID =" + id + "";
+        rw = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+
+        CloseDBConnection();
+
+        return rw;
+    }
+
 
     public int GoldPlayer(int playerid)
     {

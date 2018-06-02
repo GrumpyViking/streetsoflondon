@@ -18,11 +18,13 @@ public class KampfMenu : MonoBehaviour {
     public GameObject[] heartsatk;
     public GameObject[] heartsdef;
     public GameManager gm;
+    public DataBaseController dbc;
     public GameObject mu;
+    public GameObject rwAtt;
+    public GameObject rwDef;
     GameObject angreifer;
     GameObject verteidiger;
     int gewinner=2;
-
 
     private void Start()
     {
@@ -38,21 +40,36 @@ public class KampfMenu : MonoBehaviour {
 
     void Init()
     {
-        for(int i = 0; i < heartsatk.Length; i++)
+        //Angreifer
+        Debug.Log(angreifer.GetComponent<UnitHelper>().unitID);
+        Debug.Log(dbc.GetLP(angreifer.GetComponent<UnitHelper>().unitID));
+        for(int i = 0; i < dbc.GetLP(angreifer.GetComponent<UnitHelper>().unitID); i++)
         {
             heartsatk[i].SetActive(true);
-            heartsdef[i].SetActive(true);
-            
         }
+        rwAtt.GetComponent<Text>().text = "RW " + Convert.ToString(dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID));
+
+        //Verteidiger
+        Debug.Log(verteidiger.GetComponent<UnitHelper>().unitID);
+        Debug.Log(dbc.GetLP(verteidiger.GetComponent<UnitHelper>().unitID));
+        for (int i = 0; i < dbc.GetLP(verteidiger.GetComponent<UnitHelper>().unitID); i++)
+        {
+            heartsdef[i].SetActive(true);
+        }
+        rwDef.GetComponent<Text>().text = "RW " + Convert.ToString(dbc.GetRW(verteidiger.GetComponent<UnitHelper>().unitID));
+
         kampfbutton.SetActive(true);
         stoppButton.SetActive(false);
         beendenButton.SetActive(false);
 
     }
 
-    public void ShowKampfMenu()
+    public void ShowKampfMenu(GameObject angreifer, GameObject verteidiger)
     {
+
         km.SetActive(true);
+        this.angreifer = angreifer;
+        this.verteidiger = verteidiger;
         Init();
         gm.Paused();
     }

@@ -5,7 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class MoveUnit : MonoBehaviour {
+public class MoveUnit : MonoBehaviour
+{
     GameObject select;
     public GameObject unit;
     public GameObject gegner;
@@ -44,7 +45,7 @@ public class MoveUnit : MonoBehaviour {
             {
                 SelectUnit();
             }
-        }    
+        }
     }
 
     public void DeselectGegner()
@@ -85,19 +86,19 @@ public class MoveUnit : MonoBehaviour {
             feld.GetComponent<Outline>().enabled = false;
             feld = null;
             feldselected = false;
-        } 
+        }
     }
     void SelectUnit()
     {
         RaycastHit hitInfo;
         select = ReturnClickedObject(out hitInfo);
-        if(select == unit && unitselected)
-        {         
+        if (select == unit && unitselected)
+        {
             DeselectUnit();
             unitselected = false;
             select = null;
         }
-        if(select == feld && feldselected)
+        if (select == feld && feldselected)
         {
             DeselectFeld();
             feldselected = false;
@@ -105,7 +106,7 @@ public class MoveUnit : MonoBehaviour {
         }
         if (select != null)
         {
-            if (select.tag == "Einheit" && unit == null && !unitselected )
+            if (select.tag == "Einheit" && unit == null && !unitselected && !waehlegegner)
             {
                 unit = select;
                 aktionsmenue.SetActive(true);
@@ -115,7 +116,7 @@ public class MoveUnit : MonoBehaviour {
                 unitselected = true;
             }
 
-            if(select.tag == "Einheit" && gegner == null && waehlegegner)
+            if (select.tag == "Einheit" && gegner == null && waehlegegner)
             {
                 gegner = select;
                 gegner.GetComponent<Outline>().OutlineColor = Color.red;
@@ -151,7 +152,6 @@ public class MoveUnit : MonoBehaviour {
             bewegenButtonText.GetComponent<Text>().text = "Bestätigen";
             angriffButton.SetActive(false);
             buttonclicked = true;
-            
         }
 
         if (phase != 0)
@@ -160,12 +160,11 @@ public class MoveUnit : MonoBehaviour {
             bewegenButtonText.GetComponent<Text>().text = "Einheitbewegen";
             angriffButton.SetActive(true);
             buttonclicked = false;
-            if (unit != null && feld != null && (Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) >0) && dbc.GetFieldBonus(feld.GetComponent<FieldHelper>().id)<10)
+            if (unit != null && feld != null && (Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) > 0) && dbc.GetFieldBonus(feld.GetComponent<FieldHelper>().id) < 10)
             {
                 unit.transform.position = feld.transform.position + (new Vector3(0, 10, 0));
                 //Update Datenbank
-                
-                string buff = unit.name.Substring(unit.name.Length-2);
+                string buff = unit.name.Substring(unit.name.Length - 2);
                 unit.GetComponent<UnitHelper>().unitID = Convert.ToInt32(buff);
                 dbc.WriteToDB("Update Gelaendefelder Set EinheitID = " + Convert.ToInt32(buff) + " Where ID=" + feld.GetComponent<FieldHelper>().id + " ");
                 DeselectFeld();
@@ -192,19 +191,18 @@ public class MoveUnit : MonoBehaviour {
             angriffButtonText.GetComponent<Text>().text = "Bestätigen";
             bewegenButton.SetActive(false);
         }
-        if(phase != 0)
+        if (phase != 0)
         {
             anweisungText.GetComponent<TextMeshProUGUI>().text = "";
             angriffButtonText.GetComponent<Text>().text = "Angriff";
             if (gegnergewaehlt)
             {
-                km.ShowKampfMenu();
-                if(gewinner == unit)
+                km.ShowKampfMenu(unit, gegner);
+                if (gewinner == unit)
                 {
                     Destroy(gegner);
                     DeselectGegner();
                     DeselectUnit();
-                    
                 }
                 else
                 {
@@ -214,12 +212,15 @@ public class MoveUnit : MonoBehaviour {
                 }
                 aktionsmenue.SetActive(false);
             }
+            else
+            {
+                DeselectFeld();
+                DeselectUnit();
+            }
             bewegenButton.SetActive(true);
             buttonclicked = false;
             phase = -1;
         }
         phase++;
-
     }
-    
 }
