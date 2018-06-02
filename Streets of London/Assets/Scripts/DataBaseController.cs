@@ -184,7 +184,6 @@ public class DataBaseController : MonoBehaviour {
         dbcmd.CommandText = "Select Name from Spieler Where ID ="+id;
         name = dbcmd.ExecuteScalar().ToString();
         CloseDBConnection();
-        Debug.Log(name);
         return name;
     }
 

@@ -86,14 +86,12 @@ public class SpielerMenu : MonoBehaviour {
         {
             if (!init)
             {
-                
                 gm.SetupScene();
                 PassthrougData.gameactiv = true;
                 init = true;
             }
             else
             {
-                
                 PassthrougData.gameactiv = true;
                 gm.Continue();
             }

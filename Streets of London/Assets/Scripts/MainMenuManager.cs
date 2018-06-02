@@ -32,25 +32,26 @@ public class MainMenuManager : MonoBehaviour {
         PassthrougData.player1 = pot.text;
         PassthrougData.player2 = ptt.text;
 
-
         //Wechsel zur Spielansicht
         switchSceneScript = GameObject.FindGameObjectWithTag("Scene").GetComponent<SwitchScene>();
         switchSceneScript.ChangeScene(2);
-
     }
 
     int StartingPlayer(string choise)
     {
+        Debug.Log(choise);
         if(choise.Equals("Spieler 1"))
         {
-            return 0;
+            PassthrougData.currentPlayer = 1;
+            return 1;
         }else if (choise.Equals("Spieler 2"))
         {
-            return 1;
+            PassthrougData.currentPlayer = 2;
+            return 2;
         }
         else if (choise.Equals("Zufall"))
         {
-            return Random.Range(0, 1);
+            return Random.Range(1, 2);
         }
         else
         {
