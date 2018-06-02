@@ -82,15 +82,24 @@ public class FieldBuilder : MonoBehaviour {
             PassthrougData.currentPlayer = 1;
             sm.SetPlayer(PassthrougData.player1);
         }
+
         
-        select.GetComponent<Outline>().OutlineColor = Color.green;
-        selectOpposit.GetComponent<Outline>().OutlineColor = Color.green;
+        select = null;
+        selectOpposit = null;
+
         fieldbuild = true;
         for (int i = 0; i < fields.Length; i++)
         {
             if (fields[i].GetComponent<FieldHelper>().isSet == false)
             {
                 fieldbuild = false;
+            }
+        }
+        if (fieldbuild)
+        {
+            for(int i = 0; i < fields.Length; i++)
+            {
+                fields[i].GetComponent<Outline>().enabled = false;
             }
         }
         PanelState(false);
@@ -149,11 +158,17 @@ public class FieldBuilder : MonoBehaviour {
 
     public void SetFieldImage(int index)
     {
-        Debug.Log(fieldImages[index]);
+        select.GetComponent<Outline>().enabled = false;
         select.GetComponent<Renderer>().material.mainTexture = fieldImages[index];
         select.GetComponent<FieldHelper>().isSet = true;
+        select.GetComponent<Outline>().enabled = true;
+        select.GetComponent<Outline>().OutlineColor = Color.green;
+
+        selectOpposit.GetComponent<Outline>().enabled = false;
         selectOpposit.GetComponent<Renderer>().material.mainTexture = fieldImages[index];
         selectOpposit.GetComponent<FieldHelper>().isSet = true;
+        selectOpposit.GetComponent<Outline>().enabled = true;
+        selectOpposit.GetComponent<Outline>().OutlineColor = Color.green;
         Reset();
     }
 
