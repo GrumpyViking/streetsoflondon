@@ -42,7 +42,7 @@ public class ObjectPooler : MonoBehaviour
                 
                 obj.tag = "Einheit";
                 //obj.AddComponent<MoveUnit>();
-                obj.AddComponent<UnitID>();
+                obj.AddComponent<UnitHelper>();
                 obj.AddComponent<Outline>();
                 obj.GetComponent<Outline>().enabled = false;
                 obj.AddComponent<Rigidbody>();
@@ -152,8 +152,8 @@ public class ObjectPooler : MonoBehaviour
         }
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
-        //objectToSpawn.GetComponent<UnitID>().unitID = ;
-        objectToSpawn.name = PassthrougData.currentPlayer + "_" + tag + "_"+ dbc.GetNumofUnit(tag, PassthrougData.currentPlayer);
+        
+        objectToSpawn.name = PassthrougData.currentPlayer + "_" + tag + "_"+ 1+ (dbc.GetNumofUnit(tag, PassthrougData.currentPlayer)-1);
         poolDictonary[tag].Enqueue(objectToSpawn);
         count++;
         return objectToSpawn;

@@ -164,6 +164,10 @@ public class MoveUnit : MonoBehaviour {
             {
                 unit.transform.position = feld.transform.position + (new Vector3(0, 10, 0));
                 //Update Datenbank
+                
+                string buff = unit.name.Substring(unit.name.Length-2);
+                unit.GetComponent<UnitHelper>().unitID = Convert.ToInt32(buff);
+                dbc.WriteToDB("Update Gelaendefelder Set EinheitID = " + Convert.ToInt32(buff) + " Where ID=" + feld.GetComponent<FieldHelper>().id + " ");
                 DeselectFeld();
                 DeselectUnit();
                 beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
