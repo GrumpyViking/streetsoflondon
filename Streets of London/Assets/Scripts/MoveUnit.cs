@@ -120,15 +120,14 @@ public class MoveUnit : MonoBehaviour {
                 gegner = select;
                 gegner.GetComponent<Outline>().OutlineColor = Color.red;
                 gegner.GetComponent<Outline>().enabled = true;
-                
                 gegnergewaehlt = true;
-
             }
 
             if (select.tag == "HexFields" && feld == null && !feldselected && unitselected)
             {
                 feld = select;
                 feld.GetComponent<Outline>().enabled = true;
+                feldselected = true;
             }
         }
     }
@@ -157,14 +156,14 @@ public class MoveUnit : MonoBehaviour {
 
         if (phase != 0)
         {
-            
             anweisungText.GetComponent<TextMeshProUGUI>().text = "";
             bewegenButtonText.GetComponent<Text>().text = "Einheitbewegen";
             angriffButton.SetActive(true);
             buttonclicked = false;
-            if (unit != null && feld != null && (Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) >0))
+            if (unit != null && feld != null && (Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) >0) && dbc.GetFieldBonus(feld.GetComponent<FieldHelper>().id)<10)
             {
                 unit.transform.position = feld.transform.position + (new Vector3(0, 10, 0));
+                //Update Datenbank
                 DeselectFeld();
                 DeselectUnit();
                 beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);

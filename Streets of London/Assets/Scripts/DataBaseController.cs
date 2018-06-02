@@ -187,6 +187,21 @@ public class DataBaseController : MonoBehaviour {
         return name;
     }
 
+    public int GetFieldBonus(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int bonus = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Bonus from Gelaendefelder Where ID =" + id;
+        bonus= Convert.ToInt32(dbcmd.ExecuteScalar());
+        CloseDBConnection();
+        return bonus;
+    }
+
     public void WriteToDB(string query)
     {
         if (!init)

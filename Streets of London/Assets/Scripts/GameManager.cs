@@ -119,6 +119,7 @@ public class GameManager : MonoBehaviour {
         goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '"+PassthrougData.currentPlayer+"'");
         gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(PassthrougData.currentPlayer));
     }
+
     void TimeLine()
     {
         if (!paused)

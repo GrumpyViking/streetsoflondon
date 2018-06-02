@@ -28,7 +28,7 @@ public class SpielerMenu : MonoBehaviour {
         fieldBuild = false;
         unitsSelected = 0;
         mainUI.SetActive(false);
-        if (PassthrougData.startPlayer == 0)
+        if (PassthrougData.currentPlayer == 1)
         {
             SetPlayer(PassthrougData.player1);
         }
@@ -61,7 +61,6 @@ public class SpielerMenu : MonoBehaviour {
         {
             StartGame();
         }
-        
     }
 
     public void SetFieldBuild(bool value)
@@ -96,7 +95,6 @@ public class SpielerMenu : MonoBehaviour {
                 gm.Continue();
             }
         }
-        
     }
 
     //Beenden des Programms

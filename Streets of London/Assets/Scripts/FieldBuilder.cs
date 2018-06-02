@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -65,7 +64,6 @@ public class FieldBuilder : MonoBehaviour {
             }
             count--;
         }
-        Debug.Log(count);
     }
 
     private void Reset()
@@ -89,8 +87,10 @@ public class FieldBuilder : MonoBehaviour {
             PassthrougData.currentPlayer = 1;
             sm.SetPlayer(PassthrougData.player1);
         }
+
         select = null;
         selectOpposit = null;
+
         fieldbuild = true;
         for (int i = 0; i < fields.Length; i++)
         {
@@ -106,6 +106,7 @@ public class FieldBuilder : MonoBehaviour {
                 fields[i].GetComponent<Outline>().enabled = false;
             }
         }
+
         PanelState(false);
         sm.SetFieldBuild(fieldbuild);
         sm.PanelState(true);
@@ -113,12 +114,14 @@ public class FieldBuilder : MonoBehaviour {
 
     private void Update()
     {
+        //Prüft bei jedem neuen Frame ob die Maustaste betätigt wurde wenn kein Feldgewählt wurde
         if (Input.GetMouseButtonDown(0) && chooseField)
         {
             SelectFeld();
         }
     }
 
+    //Auswahl des Feldes und des entsprechenden gegenüberliegenden Feld
     void SelectFeld()
     {
         RaycastHit hitInfo;
@@ -135,6 +138,7 @@ public class FieldBuilder : MonoBehaviour {
             }
             select.GetComponent<Outline>().OutlineColor = Color.red;
             select.GetComponent<Outline>().enabled = true;
+            //Auswahl des gegenüberliegenden Feldes
             if (pos < 24)
             {
                 selectOpposit = fields[pos+23];
@@ -148,6 +152,7 @@ public class FieldBuilder : MonoBehaviour {
         }
     }
 
+    //Liefert nach Mausklick ein Objekt zurück
     GameObject ReturnClickedObject(out RaycastHit hit)
     {
         GameObject target = null;
@@ -162,52 +167,131 @@ public class FieldBuilder : MonoBehaviour {
 
     public void SetFieldImage(int index)
     {
+        int id;
+
+        //Setzt GeländefeldBild auf ausgewähltes Feld
         select.GetComponent<Outline>().enabled = false;
         select.GetComponent<Renderer>().material.mainTexture = fieldImages[index];
         select.GetComponent<FieldHelper>().isSet = true;
         select.GetComponent<Outline>().enabled = true;
         select.GetComponent<Outline>().OutlineColor = Color.green;
 
+        //Setzt GeländefeldBild auf das gegenüberliegende Feld
         selectOpposit.GetComponent<Outline>().enabled = false;
         selectOpposit.GetComponent<Renderer>().material.mainTexture = fieldImages[index];
         selectOpposit.GetComponent<FieldHelper>().isSet = true;
         selectOpposit.GetComponent<Outline>().enabled = true;
         selectOpposit.GetComponent<Outline>().OutlineColor = Color.green;
-        for(int i = 0; i < 2; i++)
+
+        //Schreibt das Feld in die Datenbank
+        for (int i = 0; i < 2; i++)
         {
             if (index == 0)
             {
-                dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 1 + (dbc.NumofFields("Geschäft 1") + 1) + ",'Geschäft 1',2)");
+                if (i == 0)
+                {
+                    id = Convert.ToInt32("1" + Convert.ToString(dbc.NumofFields("Geschäft 1") + 1));
+                    dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + id + ",'Geschäft 1',2)");
+                    select.GetComponent<FieldHelper>().id = id;
+                }
+                else
+                {
+                    id = Convert.ToInt32("1" + Convert.ToString(dbc.NumofFields("Geschäft 1") + 1));
+                    dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + id + ",'Geschäft 1',2)");
+                    selectOpposit.GetComponent<FieldHelper>().id = id;
+                }
             }
             if (index == 1)
             {
-                dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 2 + (dbc.NumofFields("Geschäft 2") + 1) + ",'Geschäft 2',2)");
-
+                if (i == 0)
+                {
+                    id = Convert.ToInt32("2" + Convert.ToString(dbc.NumofFields("Geschäft 2") + 1));
+                    dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + id + ",'Geschäft 2',2)");
+                    select.GetComponent<FieldHelper>().id = id;
+                }
+                else
+                {
+                    id = Convert.ToInt32("2" + Convert.ToString(dbc.NumofFields("Geschäft 2") + 1));
+                    dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + id + ",'Geschäft 2',2)");
+                    selectOpposit.GetComponent<FieldHelper>().id = id;
+                }
             }
             if (index == 2)
             {
-                dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 3 + (dbc.NumofFields("Strasse") + 1) + ",'Strasse',2)");
-
+                if (i == 0)
+                {
+                    id = Convert.ToInt32("3" + Convert.ToString(dbc.NumofFields("Strasse") + 1));
+                    dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + id + ",'Strasse',2)");
+                    select.GetComponent<FieldHelper>().id = id;
+                }
+                else
+                {
+                    id = Convert.ToInt32("3" + Convert.ToString(dbc.NumofFields("Strasse") + 1));
+                    dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + id + ",'Strasse',2)");
+                    selectOpposit.GetComponent<FieldHelper>().id = id;
+                }
             }
             if (index == 3)
             {
-                dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 4 + (dbc.NumofFields("Gasse") + 1) + ",'Gasse',3)");
-
+                if (i == 0)
+                {
+                    id = Convert.ToInt32("4" + Convert.ToString(dbc.NumofFields("Gasse") + 1));
+                    dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + id + ",'Gasse',3)");
+                    select.GetComponent<FieldHelper>().id = id;
+                }
+                else
+                {
+                    id = Convert.ToInt32("4" + Convert.ToString(dbc.NumofFields("Gasse") + 1));
+                    dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + id + ",'Gasse',3)");
+                    selectOpposit.GetComponent<FieldHelper>().id = id;
+                }
             }
             if (index == 4)
             {
-                dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 5 + (dbc.NumofFields("Park") + 1) + ",'Park',1)");
+                if (i == 0)
+                {
+                    id = Convert.ToInt32("5" + Convert.ToString(dbc.NumofFields("Park") + 1));
+                    dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + id + ",'Park',1)");
+                    select.GetComponent<FieldHelper>().id = id;
+                }
+                else
+                {
+                    id = Convert.ToInt32("5" + Convert.ToString(dbc.NumofFields("Park") + 1));
+                    dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + id + ",'Park',1)");
+                    selectOpposit.GetComponent<FieldHelper>().id = id;
+                }
             }
             if (index == 5)
             {
-                dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 6 + (dbc.NumofFields("Dach") + 1) + ",'Dach',4)");
+                if (i == 0)
+                {
+                    id = Convert.ToInt32("6" + Convert.ToString(dbc.NumofFields("Dach") + 1));
+                    dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + id + ",'Dach',4)");
+                    select.GetComponent<FieldHelper>().id = id;
+                }
+                else
+                {
+                    id = Convert.ToInt32("6" + Convert.ToString(dbc.NumofFields("Dach") + 1));
+                    dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + id + ",'Dach',4)");
+                    selectOpposit.GetComponent<FieldHelper>().id = id;
+                }
             }
             if (index == 6)
             {
-                dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 7 + (dbc.NumofFields("Turm") + 1) + ",'Turm',99)");
+                if (i == 0)
+                {
+                    id = Convert.ToInt32("7" + Convert.ToString(dbc.NumofFields("Turm") + 1));
+                    dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + id + ",'Turm',99)");
+                    select.GetComponent<FieldHelper>().id = id;
+                }
+                else
+                {
+                    id = Convert.ToInt32("7" + Convert.ToString(dbc.NumofFields("Turm") + 1));
+                    dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + id + ",'Turm',99)");
+                    selectOpposit.GetComponent<FieldHelper>().id = id;
+                }
             }
         }
         Reset();
     }
-
 }
