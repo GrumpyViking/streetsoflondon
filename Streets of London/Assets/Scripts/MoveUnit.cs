@@ -168,6 +168,11 @@ public class MoveUnit : MonoBehaviour {
                 DeselectUnit();
                 beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
             }
+            else
+            {
+                DeselectFeld();
+                DeselectUnit();
+            }
             phase = -1;
         }
         phase++;
