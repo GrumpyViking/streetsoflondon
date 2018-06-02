@@ -40,6 +40,8 @@ public class DataBaseController : MonoBehaviour {
         dbcmd.ExecuteNonQuery();
         dbcmd.CommandText = "DELETE FROM Einheit";
         dbcmd.ExecuteNonQuery();
+        dbcmd.CommandText = "DELETE FROM Gelaendefelder";
+        dbcmd.ExecuteNonQuery();
         dbcmd.CommandText = "VACUUM";
         dbcmd.ExecuteNonQuery();
         CloseDBConnection();
@@ -124,6 +126,28 @@ public class DataBaseController : MonoBehaviour {
 
         return id;
     } 
+
+    public int NumofFields(string name)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int num = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select ID from Gelaendefelder Where Name = '"+name+"'";
+        reader = dbcmd.ExecuteReader();
+        while (reader.Read())
+        {
+            num++;
+        }
+        reader.Close();
+        reader = null;
+        CloseDBConnection();
+
+        return num;
+    }
     
     public int NumOfUnits(int playerid)
     {

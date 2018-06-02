@@ -23,6 +23,13 @@ public class FieldBuilder : MonoBehaviour {
     GameObject select;
     GameObject selectOpposit;
 
+    private void Start()
+    {
+        dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 0 + 1 + ",'Bank',0)");
+        dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 0 + 2 +  ",'Fabrik',99)");
+        dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 0 + 3 + ",'Fabrik',99)");
+    }
+
     void Initialise()
     {
         if (isActiveAndEnabled == true)
@@ -82,11 +89,8 @@ public class FieldBuilder : MonoBehaviour {
             PassthrougData.currentPlayer = 1;
             sm.SetPlayer(PassthrougData.player1);
         }
-
-        
         select = null;
         selectOpposit = null;
-
         fieldbuild = true;
         for (int i = 0; i < fields.Length; i++)
         {
@@ -169,6 +173,40 @@ public class FieldBuilder : MonoBehaviour {
         selectOpposit.GetComponent<FieldHelper>().isSet = true;
         selectOpposit.GetComponent<Outline>().enabled = true;
         selectOpposit.GetComponent<Outline>().OutlineColor = Color.green;
+        for(int i = 0; i < 2; i++)
+        {
+            if (index == 0)
+            {
+                dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 1 + (dbc.NumofFields("Geschäft 1") + 1) + ",'Geschäft 1',2)");
+            }
+            if (index == 1)
+            {
+                dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 2 + (dbc.NumofFields("Geschäft 2") + 1) + ",'Geschäft 2',2)");
+
+            }
+            if (index == 2)
+            {
+                dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 3 + (dbc.NumofFields("Strasse") + 1) + ",'Strasse',2)");
+
+            }
+            if (index == 3)
+            {
+                dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 4 + (dbc.NumofFields("Gasse") + 1) + ",'Gasse',3)");
+
+            }
+            if (index == 4)
+            {
+                dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 5 + (dbc.NumofFields("Park") + 1) + ",'Park',1)");
+            }
+            if (index == 5)
+            {
+                dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 6 + (dbc.NumofFields("Dach") + 1) + ",'Dach',4)");
+            }
+            if (index == 6)
+            {
+                dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 7 + (dbc.NumofFields("Turm") + 1) + ",'Turm',99)");
+            }
+        }
         Reset();
     }
 
