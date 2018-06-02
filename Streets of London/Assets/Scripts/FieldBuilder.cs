@@ -85,16 +85,13 @@ public class FieldBuilder : MonoBehaviour {
         
         select.GetComponent<Outline>().OutlineColor = Color.green;
         selectOpposit.GetComponent<Outline>().OutlineColor = Color.green;
-        for(int i = 0; i < fields.Length; i++)
+        fieldbuild = true;
+        for (int i = 0; i < fields.Length; i++)
         {
-            fieldbuild = true;
             if (fields[i].GetComponent<FieldHelper>().isSet == false)
             {
                 fieldbuild = false;
             }
-            Color temp = fields[i].GetComponent<Outline>().OutlineColor;
-            temp.a = 0f;
-            fields[i].GetComponent<Outline>().OutlineColor = temp;
         }
         PanelState(false);
         sm.SetFieldBuild(fieldbuild);
