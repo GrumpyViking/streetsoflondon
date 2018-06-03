@@ -5,4 +5,5 @@ using UnityEngine;
 public class UnitHelper : MonoBehaviour {
 
     public int unitID;
+    public int fieldID;
 }

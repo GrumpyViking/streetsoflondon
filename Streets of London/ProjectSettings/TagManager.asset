@@ -9,6 +9,8 @@ TagManager:
   - HexFields
   - Einheit
   - Bewegen
+  - Fabrik_L
+  - Fabrik_R
   layers:
   - Default
   - TransparentFX

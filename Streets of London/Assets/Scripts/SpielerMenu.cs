@@ -53,14 +53,14 @@ public class SpielerMenu : MonoBehaviour {
 
     public void CheckAction()
     {
-        //if (!fieldBuild)
-        //{
-        //    FieldBuilder();
-        //}
-        //else
-        //{
+        if (!fieldBuild)
+        {
+            FieldBuilder();
+        }
+        else
+        {
             StartGame();
-        //}
+        }
     }
 
     public void SetFieldBuild(bool value)

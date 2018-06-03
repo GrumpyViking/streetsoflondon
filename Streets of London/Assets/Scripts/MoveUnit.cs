@@ -167,10 +167,10 @@ public class MoveUnit : MonoBehaviour
             if (unit != null && feld != null && (Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) > 0) && dbc.GetFieldBonus(feld.GetComponent<FieldHelper>().id) < 10)
             {
                 unit.transform.position = feld.transform.position + (new Vector3(0, 10, 0));
-                //Update Datenbank
                 string buff = unit.name.Substring(unit.name.Length - 2);
                 unit.GetComponent<UnitHelper>().unitID = Convert.ToInt32(buff);
                 dbc.WriteToDB("Update Gelaendefelder Set EinheitID = " + Convert.ToInt32(buff) + " Where ID=" + feld.GetComponent<FieldHelper>().id + " ");
+                unit.GetComponent<UnitHelper>().fieldID = feld.GetComponent<FieldHelper>().id;
                 beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
                 DeselectFeld();
                 DeselectUnit();

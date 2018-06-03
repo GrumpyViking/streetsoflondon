@@ -22,6 +22,8 @@ public class KampfMenu : MonoBehaviour {
     public MoveUnit mu;
     public GameObject rwAtt;
     public GameObject rwDef;
+    public GameObject gwAtt;
+    public GameObject gwDef;
     GameObject angreifer;
     GameObject verteidiger;
     int gewinner=2;
@@ -61,7 +63,8 @@ public class KampfMenu : MonoBehaviour {
         {
             heartsatk[i].SetActive(true);
         }
-        rwAtt.GetComponent<Text>().text = "RW " + Convert.ToString(dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID));
+        rwAtt.GetComponent<Text>().text = "RW: " + Convert.ToString(dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID));
+        gwAtt.GetComponent<Text>().text = "GW: " + Convert.ToString(dbc.GetGw(angreifer.GetComponent<UnitHelper>().fieldID));
         attdice = dbc.GetAtt(angreifer.GetComponent<UnitHelper>().unitID);
         for (int i = 0; i < attdice; i++)
         {
@@ -77,7 +80,7 @@ public class KampfMenu : MonoBehaviour {
             heartsdef[i].SetActive(true);
         }
         rwDef.GetComponent<Text>().text = "RW " + Convert.ToString(dbc.GetRW(verteidiger.GetComponent<UnitHelper>().unitID));
-
+        gwDef.GetComponent<Text>().text = "GW: " + Convert.ToString(dbc.GetGw(verteidiger.GetComponent<UnitHelper>().fieldID));
         defdice = dbc.GetDef(verteidiger.GetComponent<UnitHelper>().unitID);
         for (int i = 0; i < defdice; i++)
         {
@@ -176,9 +179,23 @@ public class KampfMenu : MonoBehaviour {
                 }
                 else
                 {
-                    //Hole Geländefeld boni und vergleiche
-                    heartsatk[i].SetActive(false);
-                    lostlpatk++;
+                    if(dbc.GetGw(verteidiger.GetComponent<UnitHelper>().fieldID)> dbc.GetGw(angreifer.GetComponent<UnitHelper>().fieldID))
+                    {
+                        heartsatk[i].SetActive(false);
+                        lostlpatk++;
+                    }else if(dbc.GetGw(verteidiger.GetComponent<UnitHelper>().fieldID) < dbc.GetGw(angreifer.GetComponent<UnitHelper>().fieldID))
+                    {
+                        heartsdef[i].SetActive(false);
+                        lostlpdef++;
+                    }
+                    else
+                    {
+                        heartsdef[i].SetActive(false);
+                        lostlpdef++;
+                        heartsatk[i].SetActive(false);
+                        lostlpatk++;
+                    }
+                    
                 }
             }
         }
@@ -199,9 +216,24 @@ public class KampfMenu : MonoBehaviour {
                 }
                 else
                 {
-                    //Hole Geländefeld boni und vergleiche
-                    heartsatk[i].SetActive(false);
-                    lostlpatk++;
+
+                    if (dbc.GetGw(verteidiger.GetComponent<UnitHelper>().fieldID) > dbc.GetGw(angreifer.GetComponent<UnitHelper>().fieldID))
+                    {
+                        heartsatk[i].SetActive(false);
+                        lostlpatk++;
+                    }
+                    else if (dbc.GetGw(verteidiger.GetComponent<UnitHelper>().fieldID) < dbc.GetGw(angreifer.GetComponent<UnitHelper>().fieldID))
+                    {
+                        heartsdef[i].SetActive(false);
+                        lostlpdef++;
+                    }
+                    else
+                    {
+                        heartsdef[i].SetActive(false);
+                        lostlpdef++;
+                        heartsatk[i].SetActive(false);
+                        lostlpatk++;
+                    }
                 }
             }
         }
@@ -222,9 +254,23 @@ public class KampfMenu : MonoBehaviour {
                 }
                 else
                 {
-                    //Hole Geländefeld boni und vergleiche
-                    heartsatk[i].SetActive(false);
-                    lostlpatk++;
+                    if (dbc.GetGw(verteidiger.GetComponent<UnitHelper>().fieldID) > dbc.GetGw(angreifer.GetComponent<UnitHelper>().fieldID))
+                    {
+                        heartsatk[i].SetActive(false);
+                        lostlpatk++;
+                    }
+                    else if (dbc.GetGw(verteidiger.GetComponent<UnitHelper>().fieldID) < dbc.GetGw(angreifer.GetComponent<UnitHelper>().fieldID))
+                    {
+                        heartsdef[i].SetActive(false);
+                        lostlpdef++;
+                    }
+                    else
+                    {
+                        heartsdef[i].SetActive(false);
+                        lostlpdef++;
+                        heartsatk[i].SetActive(false);
+                        lostlpatk++;
+                    }
                 }
             }
         }

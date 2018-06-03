@@ -139,6 +139,23 @@ public class DataBaseController : MonoBehaviour {
         return def;
     }
 
+    public int GetGw(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int gw = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Bonus from Gelaendefelder Where ID =" + id + "";
+        gw = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+
+        CloseDBConnection();
+
+        return gw;
+    }
+
     public int GoldPlayer(int playerid)
     {
         if (!init)
