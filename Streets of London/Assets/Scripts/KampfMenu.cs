@@ -41,8 +41,8 @@ public class KampfMenu : MonoBehaviour {
     void Init()
     {
         //Angreifer
-        Debug.Log(angreifer.GetComponent<UnitHelper>().unitID);
-        Debug.Log(dbc.GetLP(angreifer.GetComponent<UnitHelper>().unitID));
+        Debug.Log("ID" + angreifer.GetComponent<UnitHelper>().unitID);
+        Debug.Log("LP" + dbc.GetLP(angreifer.GetComponent<UnitHelper>().unitID));
         for(int i = 0; i < dbc.GetLP(angreifer.GetComponent<UnitHelper>().unitID); i++)
         {
             heartsatk[i].SetActive(true);
@@ -50,8 +50,8 @@ public class KampfMenu : MonoBehaviour {
         rwAtt.GetComponent<Text>().text = "RW " + Convert.ToString(dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID));
 
         //Verteidiger
-        Debug.Log(verteidiger.GetComponent<UnitHelper>().unitID);
-        Debug.Log(dbc.GetLP(verteidiger.GetComponent<UnitHelper>().unitID));
+        Debug.Log("ID" + verteidiger.GetComponent<UnitHelper>().unitID);
+        Debug.Log("LP" + dbc.GetLP(verteidiger.GetComponent<UnitHelper>().unitID));
         for (int i = 0; i < dbc.GetLP(verteidiger.GetComponent<UnitHelper>().unitID); i++)
         {
             heartsdef[i].SetActive(true);
@@ -64,14 +64,22 @@ public class KampfMenu : MonoBehaviour {
 
     }
 
-    public void ShowKampfMenu(GameObject angreifer, GameObject verteidiger)
+    public void ShowKampfMenu()
     {
-
         km.SetActive(true);
-        this.angreifer = angreifer;
-        this.verteidiger = verteidiger;
         Init();
         gm.Paused();
+    }
+
+    public void SetAngreifer(GameObject unit)
+    {
+        Debug.Log(unit);
+        this.angreifer = unit;
+    }
+    public void SetVerteidiger(GameObject gegner)
+    {
+        Debug.Log(gegner);
+        this.verteidiger = gegner;
     }
 
     public void HideKampfMenu()

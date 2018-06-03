@@ -26,6 +26,7 @@ public class MoveUnit : MonoBehaviour
     public GameObject gewinner;
     bool unitselected = false;
     bool feldselected = false;
+    bool zielfeldsuche = false;
     bool buttonclicked = false;
     bool waehlegegner = false;
     bool gegnergewaehlt = false;
@@ -86,6 +87,7 @@ public class MoveUnit : MonoBehaviour
             feld.GetComponent<Outline>().enabled = false;
             feld = null;
             feldselected = false;
+            zielfeldsuche = false;
         }
     }
     void SelectUnit()
@@ -110,10 +112,10 @@ public class MoveUnit : MonoBehaviour
             {
                 unit = select;
                 aktionsmenue.SetActive(true);
-                //test = dbc.GetUnitInfo();
                 unit.GetComponent<Outline>().OutlineColor = Color.white;
                 unit.GetComponent<Outline>().enabled = true;
                 unitselected = true;
+                select = null;
             }
 
             if (select.tag == "Einheit" && gegner == null && waehlegegner)
@@ -122,9 +124,10 @@ public class MoveUnit : MonoBehaviour
                 gegner.GetComponent<Outline>().OutlineColor = Color.red;
                 gegner.GetComponent<Outline>().enabled = true;
                 gegnergewaehlt = true;
+                select = null;
             }
 
-            if (select.tag == "HexFields" && feld == null && !feldselected && unitselected)
+            if (select.tag == "HexFields" && feld == null && !feldselected && unitselected && zielfeldsuche)
             {
                 feld = select;
                 feld.GetComponent<Outline>().enabled = true;
@@ -150,6 +153,7 @@ public class MoveUnit : MonoBehaviour
         {
             anweisungText.GetComponent<TextMeshProUGUI>().text = "Zielfeld wählen!";
             bewegenButtonText.GetComponent<Text>().text = "Bestätigen";
+            zielfeldsuche = true;
             angriffButton.SetActive(false);
             buttonclicked = true;
         }
@@ -167,9 +171,9 @@ public class MoveUnit : MonoBehaviour
                 string buff = unit.name.Substring(unit.name.Length - 2);
                 unit.GetComponent<UnitHelper>().unitID = Convert.ToInt32(buff);
                 dbc.WriteToDB("Update Gelaendefelder Set EinheitID = " + Convert.ToInt32(buff) + " Where ID=" + feld.GetComponent<FieldHelper>().id + " ");
+                beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
                 DeselectFeld();
                 DeselectUnit();
-                beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
             }
             else
             {
@@ -197,7 +201,9 @@ public class MoveUnit : MonoBehaviour
             angriffButtonText.GetComponent<Text>().text = "Angriff";
             if (gegnergewaehlt)
             {
-                km.ShowKampfMenu(unit, gegner);
+                km.SetAngreifer(unit);
+                km.SetVerteidiger(gegner);
+                km.ShowKampfMenu();
                 if (gewinner == unit)
                 {
                     Destroy(gegner);
@@ -216,6 +222,7 @@ public class MoveUnit : MonoBehaviour
             {
                 DeselectFeld();
                 DeselectUnit();
+                DeselectGegner();
             }
             bewegenButton.SetActive(true);
             buttonclicked = false;
