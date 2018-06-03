@@ -1205,6 +1205,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1619626953}
+        m_MethodName: Reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &112653884
@@ -23535,7 +23546,7 @@ MonoBehaviour:
   - {fileID: 40574832}
   gm: {fileID: 1565836639}
   dbc: {fileID: 1719293103}
-  mu: {fileID: 1565836638}
+  mu: {fileID: 1565836641}
   rwAtt: {fileID: 1506135000}
   rwDef: {fileID: 1443489351}
 --- !u!1 &1628033986

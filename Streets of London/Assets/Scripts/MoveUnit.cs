@@ -204,19 +204,6 @@ public class MoveUnit : MonoBehaviour
                 km.SetAngreifer(unit);
                 km.SetVerteidiger(gegner);
                 km.ShowKampfMenu();
-                if (gewinner == unit)
-                {
-                    Destroy(gegner);
-                    DeselectGegner();
-                    DeselectUnit();
-                }
-                else
-                {
-                    Destroy(unit);
-                    DeselectUnit();
-                    DeselectGegner();
-                }
-                aktionsmenue.SetActive(false);
             }
             else
             {
@@ -229,5 +216,31 @@ public class MoveUnit : MonoBehaviour
             phase = -1;
         }
         phase++;
+    }
+
+    public void Continue()
+    {
+        DeselectUnit();
+        DeselectGegner();
+        aktionsmenue.SetActive(false);
+    }
+    
+    public void FightWinner(GameObject winner)
+    {
+        this.gewinner = winner;
+
+        if (gewinner == unit)
+        {
+            Destroy(gegner);
+            DeselectGegner();
+            DeselectUnit();
+        }
+        else
+        {
+            Destroy(unit);
+            DeselectUnit();
+            DeselectGegner();
+        }
+        aktionsmenue.SetActive(false);
     }
 }

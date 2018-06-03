@@ -19,12 +19,14 @@ public class KampfMenu : MonoBehaviour {
     public GameObject[] heartsdef;
     public GameManager gm;
     public DataBaseController dbc;
-    public GameObject mu;
+    public MoveUnit mu;
     public GameObject rwAtt;
     public GameObject rwDef;
     GameObject angreifer;
     GameObject verteidiger;
     int gewinner=2;
+    int attdice;
+    int defdice;
 
     private void Start()
     {
@@ -38,6 +40,19 @@ public class KampfMenu : MonoBehaviour {
         InvokeRepeating("ChangeDiceTexture", 0f, 0.1f);
     }
 
+    public void Reset()
+    {
+        for(int i = 0; i < 6; i++)
+        {
+            attackDice[i].SetActive(false);
+            defendDice[i].SetActive(false);
+            heartsatk[i].SetActive(false);
+            heartsdef[i].SetActive(false);
+        }
+        angreifer = null;
+        verteidiger = null;
+    }
+
     void Init()
     {
         //Angreifer
@@ -47,8 +62,8 @@ public class KampfMenu : MonoBehaviour {
             heartsatk[i].SetActive(true);
         }
         rwAtt.GetComponent<Text>().text = "RW " + Convert.ToString(dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID));
-
-        for (int i = 0; i < dbc.GetAtt(angreifer.GetComponent<UnitHelper>().unitID); i++)
+        attdice = dbc.GetAtt(angreifer.GetComponent<UnitHelper>().unitID);
+        for (int i = 0; i < attdice; i++)
         {
             attackDice[i].SetActive(true);
             attackDice[i].GetComponent<DiceValue>().setDiceValue(1);
@@ -63,7 +78,8 @@ public class KampfMenu : MonoBehaviour {
         }
         rwDef.GetComponent<Text>().text = "RW " + Convert.ToString(dbc.GetRW(verteidiger.GetComponent<UnitHelper>().unitID));
 
-        for (int i = 0; i < dbc.GetDef(verteidiger.GetComponent<UnitHelper>().unitID); i++)
+        defdice = dbc.GetDef(verteidiger.GetComponent<UnitHelper>().unitID);
+        for (int i = 0; i < defdice; i++)
         {
             defendDice[i].SetActive(true);
             defendDice[i].GetComponent<DiceValue>().setDiceValue(1);
@@ -102,11 +118,11 @@ public class KampfMenu : MonoBehaviour {
     
     void ChangeDiceTexture()
     {
-        attackvalues = new int[6];
-        defencevalues = new int[6];
+        attackvalues = new int[attdice];
+        defencevalues = new int[defdice];
 
         int rnddice;
-        int attdice = angreifer.GetComponent<UnitHelper>().unitID;
+       
         for (int i = 0; i < attdice; i++)
         {
             rnddice = UnityEngine.Random.Range(1, 6);
@@ -116,7 +132,6 @@ public class KampfMenu : MonoBehaviour {
             attackDice[i].GetComponent<Image>().sprite = wuerfel[rnddice];
         }
 
-        int defdice = verteidiger.GetComponent<UnitHelper>().unitID;
         for (int i = 0; i < defdice; i++)
         {
             rnddice = UnityEngine.Random.Range(1, 6);
@@ -139,24 +154,100 @@ public class KampfMenu : MonoBehaviour {
 
     void ergebnis()
     {
-        int lpa=0;
-        int lpv=0;
-
         Array.Sort(attackvalues);
         Array.Sort(defencevalues);
 
-        for (int i = 0; i < attackvalues.Length; i++)
+        int lostlpatk = 0;
+        int lostlpdef = 0;
+
+        if(attdice == defdice)
         {
-            if (defencevalues[i] > attackvalues[i])
+            for(int i = attdice-1; i >= 0; i--)
             {
-                heartsatk[i].SetActive(false);
-                lpa++;
+                if (defencevalues[i] < attackvalues[i])
+                {
+                    heartsdef[i].SetActive(false);
+                    lostlpdef++;
+                }
+                else if(defencevalues[i] > attackvalues[i])
+                {
+                    heartsatk[i].SetActive(false);
+                    lostlpatk++;
+                }
+                else
+                {
+                    //Hole Geländefeld boni und vergleiche
+                    heartsatk[i].SetActive(false);
+                    lostlpatk++;
+                }
             }
-            else
+        }
+        else if(attdice > defdice)
+        {
+            int diff = attdice - defdice;
+            for (int i = defdice-1; i >= 0; i--)
             {
-                heartsdef[i].SetActive(false);
-                lpv++;
+                if (defencevalues[i] < attackvalues[i+diff])
+                {
+                    heartsdef[i].SetActive(false);
+                    lostlpdef++;
+                }
+                else if (defencevalues[i] > attackvalues[i+diff])
+                {
+                    heartsatk[i].SetActive(false);
+                    lostlpatk++;
+                }
+                else
+                {
+                    //Hole Geländefeld boni und vergleiche
+                    heartsatk[i].SetActive(false);
+                    lostlpatk++;
+                }
             }
+        }
+        else if(attdice < defdice)
+        {
+            int diff = defdice - attdice;
+            for (int i = attdice - 1; i >= 0; i--)
+            {
+                if (defencevalues[i + diff] < attackvalues[i])
+                {
+                    heartsdef[i].SetActive(false);
+                    lostlpdef++;
+                }
+                else if (defencevalues[i + diff] > attackvalues[i])
+                {
+                    heartsatk[i].SetActive(false);
+                    lostlpatk++;
+                }
+                else
+                {
+                    //Hole Geländefeld boni und vergleiche
+                    heartsatk[i].SetActive(false);
+                    lostlpatk++;
+                }
+            }
+        }
+        if ((dbc.GetLP(angreifer.GetComponent<UnitHelper>().unitID) - lostlpatk) <= 0)
+        {
+            dbc.WriteToDB("Delete From Einheit Where ID = "+ angreifer.GetComponent<UnitHelper>().unitID);
+            mu.FightWinner(verteidiger);
+        }
+        else 
+        {
+            dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(angreifer.GetComponent<UnitHelper>().unitID) - lostlpatk) + " Where ID = " + angreifer.GetComponent<UnitHelper>().unitID);
+            mu.Continue();
+        }
+
+        if ((dbc.GetLP(verteidiger.GetComponent<UnitHelper>().unitID) - lostlpdef) <= 0)
+        {
+            dbc.WriteToDB("Delete From Einheit Where ID = " + verteidiger.GetComponent<UnitHelper>().unitID);
+            mu.FightWinner(angreifer);
+        }
+        else
+        {
+            dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(verteidiger.GetComponent<UnitHelper>().unitID) - lostlpdef) + " Where ID = " + verteidiger.GetComponent<UnitHelper>().unitID);
+            mu.Continue();
         }
     }
 }
