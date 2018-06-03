@@ -41,22 +41,34 @@ public class KampfMenu : MonoBehaviour {
     void Init()
     {
         //Angreifer
-        Debug.Log("ID" + angreifer.GetComponent<UnitHelper>().unitID);
-        Debug.Log("LP" + dbc.GetLP(angreifer.GetComponent<UnitHelper>().unitID));
+        
         for(int i = 0; i < dbc.GetLP(angreifer.GetComponent<UnitHelper>().unitID); i++)
         {
             heartsatk[i].SetActive(true);
         }
         rwAtt.GetComponent<Text>().text = "RW " + Convert.ToString(dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID));
 
+        for (int i = 0; i < dbc.GetAtt(angreifer.GetComponent<UnitHelper>().unitID); i++)
+        {
+            attackDice[i].SetActive(true);
+            attackDice[i].GetComponent<DiceValue>().setDiceValue(1);
+            attackDice[i].GetComponent<Image>().sprite = wuerfel[0];
+        }
+
         //Verteidiger
-        Debug.Log("ID" + verteidiger.GetComponent<UnitHelper>().unitID);
-        Debug.Log("LP" + dbc.GetLP(verteidiger.GetComponent<UnitHelper>().unitID));
+
         for (int i = 0; i < dbc.GetLP(verteidiger.GetComponent<UnitHelper>().unitID); i++)
         {
             heartsdef[i].SetActive(true);
         }
         rwDef.GetComponent<Text>().text = "RW " + Convert.ToString(dbc.GetRW(verteidiger.GetComponent<UnitHelper>().unitID));
+
+        for (int i = 0; i < dbc.GetDef(verteidiger.GetComponent<UnitHelper>().unitID); i++)
+        {
+            defendDice[i].SetActive(true);
+            defendDice[i].GetComponent<DiceValue>().setDiceValue(1);
+            defendDice[i].GetComponent<Image>().sprite = wuerfel[0];
+        }
 
         kampfbutton.SetActive(true);
         stoppButton.SetActive(false);
@@ -94,17 +106,21 @@ public class KampfMenu : MonoBehaviour {
         defencevalues = new int[6];
 
         int rnddice;
-        for(int i = 0; i < attackDice.Length; i++)
+        int attdice = angreifer.GetComponent<UnitHelper>().unitID;
+        for (int i = 0; i < attdice; i++)
         {
             rnddice = UnityEngine.Random.Range(1, 6);
+            attackDice[i].SetActive(true);
             attackDice[i].GetComponent<DiceValue>().setDiceValue(rnddice);
             attackvalues[i] = rnddice;
             attackDice[i].GetComponent<Image>().sprite = wuerfel[rnddice];
         }
-        
-        for (int i = 0; i < defendDice.Length; i++)
+
+        int defdice = verteidiger.GetComponent<UnitHelper>().unitID;
+        for (int i = 0; i < defdice; i++)
         {
             rnddice = UnityEngine.Random.Range(1, 6);
+            defendDice[i].SetActive(true);
             defendDice[i].GetComponent<DiceValue>().setDiceValue(rnddice);
             defencevalues[i] = rnddice;
             defendDice[i].GetComponent<Image>().sprite = wuerfel[rnddice];
@@ -129,9 +145,9 @@ public class KampfMenu : MonoBehaviour {
         Array.Sort(attackvalues);
         Array.Sort(defencevalues);
 
-        for(int i = 0; i < attackvalues.Length; i++)
+        for (int i = 0; i < attackvalues.Length; i++)
         {
-            if (defencevalues[i] >= attackvalues[i])
+            if (defencevalues[i] > attackvalues[i])
             {
                 heartsatk[i].SetActive(false);
                 lpa++;
@@ -141,15 +157,6 @@ public class KampfMenu : MonoBehaviour {
                 heartsdef[i].SetActive(false);
                 lpv++;
             }
-        }
-
-        if (lpa <= lpv)
-        {
-            
-        }
-        else
-        {
-            gewinner = 1;
         }
     }
 }

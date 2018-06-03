@@ -105,6 +105,39 @@ public class DataBaseController : MonoBehaviour {
         return rw;
     }
 
+    public int GetAtt(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int att = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Angriffspunkte from Einheit Where ID =" + id + "";
+        att = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+
+        CloseDBConnection();
+
+        return att;
+    }
+
+    public int GetDef(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int def = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Verteidigungspunkte from Einheit Where ID =" + id + "";
+        def = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+
+        CloseDBConnection();
+
+        return def;
+    }
 
     public int GoldPlayer(int playerid)
     {
