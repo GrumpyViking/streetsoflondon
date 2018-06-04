@@ -33,7 +33,6 @@ public class FieldBuilder : MonoBehaviour {
     {
         if (isActiveAndEnabled == true)
         {
-            Debug.Log(PassthrougData.currentPlayer);
             playerText.GetComponent<Text>().text = dbc.GetName(PassthrougData.currentPlayer);
             defaultPosition = zeitleiste.transform.localScale;
             count = timer;
@@ -77,16 +76,7 @@ public class FieldBuilder : MonoBehaviour {
 
     void EndTurn()
     {
-        if(PassthrougData.currentPlayer == 1)
-        {
-            PassthrougData.currentPlayer = 2;
-            sm.SetPlayer(PassthrougData.player2);
-        }
-        else
-        {
-            PassthrougData.currentPlayer = 1;
-            sm.SetPlayer(PassthrougData.player1);
-        }
+        
 
         select = null;
         selectOpposit = null;
@@ -104,6 +94,20 @@ public class FieldBuilder : MonoBehaviour {
             for(int i = 0; i < fields.Length; i++)
             {
                 fields[i].GetComponent<Outline>().enabled = false;
+                
+            }
+        }
+        else
+        {
+            if (PassthrougData.currentPlayer == 1)
+            {
+                PassthrougData.currentPlayer = 2;
+                sm.SetPlayer(PassthrougData.player2);
+            }
+            else
+            {
+                PassthrougData.currentPlayer = 1;
+                sm.SetPlayer(PassthrougData.player1);
             }
         }
 
