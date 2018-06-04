@@ -27,6 +27,7 @@ public class KaufMenuScript : MonoBehaviour
     public GameObject[] gesamtEinheit;
     int[] einheitenPrice;
     int[] ids;
+    int gekaufteTK = 0;
     public GameObject preis1;
     public GameObject preis2;
     public GameObject preis3;
@@ -36,6 +37,7 @@ public class KaufMenuScript : MonoBehaviour
 
     public DataBaseController dbc;
     public GameManager gm;
+    public TKPicker tkp;
 
     public void OeffneKaufmenue()
     {
@@ -489,9 +491,18 @@ public class KaufMenuScript : MonoBehaviour
             }
         }
 
-        dbc.WriteToDB("UPDATE Spieler SET GOLD="+Convert.ToInt32(goldnach.GetComponent<Text>().text )+" Where ID ="+PassthrougData.currentPlayer);
+        dbc.WriteToDB("UPDATE Spieler SET GOLD=" + Convert.ToInt32(goldnach.GetComponent<Text>().text) + " Where ID =" + PassthrougData.currentPlayer);
 
-        SchliesseKaufmenu();
+        if (Convert.ToInt32(anzeigeTK) != 0)
+        {
+            gekaufteTK = Convert.ToInt32(anzeigeTK);
+            SchliesseKaufmenu();
+            tkp.OeffnePickerMenu(gekaufteTK);
+        }
+        else
+        {
+            SchliesseKaufmenu();
+        }
     }
 
     public void EinheitentypAktualisierung(int playerID)

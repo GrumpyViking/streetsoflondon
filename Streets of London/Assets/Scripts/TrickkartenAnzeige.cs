@@ -14,7 +14,7 @@ public class TrickkartenAnzeige : MonoBehaviour {
     public Image wirkungsbereich;
 
 	// Use this for initialization
-	void Start () {
+	/*void Start () {
         trickkartenname.text = trickkarte.trickkartenname;
         preis.text = trickkarte.preis.ToString();
         wirkung.text = trickkarte.wirung;
@@ -22,5 +22,5 @@ public class TrickkartenAnzeige : MonoBehaviour {
         trickkartenbild.sprite = trickkarte.trickkartenbild;
 
    
-	}
+	}*/
 }
