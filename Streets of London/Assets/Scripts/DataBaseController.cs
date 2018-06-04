@@ -173,6 +173,23 @@ public class DataBaseController : MonoBehaviour {
         return gold;
     }
 
+    public int GetUnitID(string name)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int id = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select ID from Einheit Where Name = '" + name + "' Order by ID DESC Limit 1";
+        id = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+
+        CloseDBConnection();
+
+        return id;
+    }
+
     public Unit GetUnitInfo(int unitID)
     {
         if (!init)

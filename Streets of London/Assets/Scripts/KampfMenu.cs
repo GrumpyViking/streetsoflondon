@@ -279,20 +279,16 @@ public class KampfMenu : MonoBehaviour {
             dbc.WriteToDB("Delete From Einheit Where ID = "+ angreifer.GetComponent<UnitHelper>().unitID);
             mu.FightWinner(verteidiger);
         }
-        else 
-        {
-            dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(angreifer.GetComponent<UnitHelper>().unitID) - lostlpatk) + " Where ID = " + angreifer.GetComponent<UnitHelper>().unitID);
-            mu.Continue();
-        }
-
-        if ((dbc.GetLP(verteidiger.GetComponent<UnitHelper>().unitID) - lostlpdef) <= 0)
+        else if ((dbc.GetLP(verteidiger.GetComponent<UnitHelper>().unitID) - lostlpdef) <= 0)
         {
             dbc.WriteToDB("Delete From Einheit Where ID = " + verteidiger.GetComponent<UnitHelper>().unitID);
             mu.FightWinner(angreifer);
         }
         else
         {
+            dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(angreifer.GetComponent<UnitHelper>().unitID) - lostlpatk) + " Where ID = " + angreifer.GetComponent<UnitHelper>().unitID);
             dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(verteidiger.GetComponent<UnitHelper>().unitID) - lostlpdef) + " Where ID = " + verteidiger.GetComponent<UnitHelper>().unitID);
+
             mu.Continue();
         }
     }
