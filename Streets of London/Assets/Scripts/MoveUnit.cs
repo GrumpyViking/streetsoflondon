@@ -12,6 +12,7 @@ public class MoveUnit : MonoBehaviour
     public GameObject gegner;
     GameObject feld;
     GameObject aktionsmenue;
+    public GameObject[] grid;
 
     Unit test;
     public GameObject anweisungText;
@@ -170,8 +171,11 @@ public class MoveUnit : MonoBehaviour
                 string buff = unit.name.Substring(unit.name.Length - 2);
                 unit.GetComponent<UnitHelper>().unitID = Convert.ToInt32(buff);
                 dbc.WriteToDB("Update Gelaendefelder Set EinheitID = " + Convert.ToInt32(buff) + " Where ID=" + feld.GetComponent<FieldHelper>().id + " ");
+
+
                 unit.GetComponent<UnitHelper>().fieldID = feld.GetComponent<FieldHelper>().id;
                 beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
+                feld.GetComponent<FieldHelper>().hasUnit = true;
                 DeselectFeld();
                 DeselectUnit();
             }
