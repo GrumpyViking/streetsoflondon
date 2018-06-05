@@ -23,6 +23,7 @@ public class MoveUnit : MonoBehaviour
     public GameObject beweglicheEinheit;
     public KampfMenu km;
     public DataBaseController dbc;
+    public GameManager gm;
 
     public GameObject gewinner;
     bool unitselected = false;
@@ -179,6 +180,7 @@ public class MoveUnit : MonoBehaviour
                     feld.GetComponent<FieldHelper>().unitID = unit.GetComponent<UnitHelper>().unitID;
                     beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
                     feld.GetComponent<FieldHelper>().hasUnit = true;
+                    CheckVictory(unit, feld);
                 }
                 else if(unit.GetComponent<UnitHelper>().fieldID != feld.GetComponent<FieldHelper>().id)
                 {
@@ -193,6 +195,7 @@ public class MoveUnit : MonoBehaviour
                             feld.GetComponent<FieldHelper>().unitID = unit.GetComponent<UnitHelper>().unitID;
                             beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
                             feld.GetComponent<FieldHelper>().hasUnit = true;
+                            CheckVictory(unit, feld);
                         }
                     }
                 } 
@@ -208,6 +211,41 @@ public class MoveUnit : MonoBehaviour
             phase = -1;
         }
         phase++;
+    }
+
+    void CheckVictory(GameObject unit, GameObject feld)
+    {
+        GameObject fabrik=null;
+        if(PassthrougData.currentPlayer == 1)
+        {
+            for(int i = 0; i < grid.Length; i++)
+            {
+                if(grid[i].GetComponent<FieldHelper>().x==8 && grid[i].GetComponent<FieldHelper>().y == 0)
+                {
+                    fabrik=grid[i];
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < grid.Length; i++)
+            {
+                if (grid[i].GetComponent<FieldHelper>().x == 1 && grid[i].GetComponent<FieldHelper>().y == 0)
+                {
+                    fabrik = grid[i];
+                    fabrik.GetComponent<Outline>().enabled = true;
+                }
+            }
+        }
+        if (fabrik.GetComponent<FieldHelper>().hasUnit)
+        {
+            Debug.Log(dbc.GetUnitPlayerID(fabrik.GetComponent<FieldHelper>().unitID));
+            if(dbc.GetUnitPlayerID(fabrik.GetComponent<FieldHelper>().unitID) == PassthrougData.currentPlayer)
+            {
+
+                gm.GameOver();   
+            }
+        }
     }
 
     public void Angriff()

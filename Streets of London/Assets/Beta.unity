@@ -450,6 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 4
@@ -4955,6 +4956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 5
@@ -5251,7 +5253,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1132249081946856, guid: fa233bc5ada23374586bdacea6920238, type: 2}
       propertyPath: m_TagString
-      value: Fabrik_L
+      value: HexFields
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa233bc5ada23374586bdacea6920238, type: 2}
@@ -5321,6 +5323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 6
@@ -5533,6 +5536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 2
@@ -5671,6 +5675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 1
@@ -5815,6 +5820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 3
@@ -5948,6 +5954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 5
@@ -6511,7 +6518,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1132249081946856, guid: fa233bc5ada23374586bdacea6920238, type: 2}
       propertyPath: m_TagString
-      value: Fabrik_R
+      value: HexFields
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa233bc5ada23374586bdacea6920238, type: 2}
@@ -6769,6 +6776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 4
@@ -7062,6 +7070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 7
@@ -7915,6 +7924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 1
@@ -9065,6 +9075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 1
@@ -9479,6 +9490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 6
@@ -10253,6 +10265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 7
@@ -10598,6 +10611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 5
@@ -11123,8 +11137,9 @@ GameObject:
   - component: {fileID: 713179746}
   - component: {fileID: 713179748}
   - component: {fileID: 713179747}
+  - component: {fileID: 713179749}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11184,6 +11199,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 713179745}
+--- !u!114 &713179749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 713179745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f5c53afc43f8094ca8fb239ca3582c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winnerText: {fileID: 1076107905}
 --- !u!1 &730929661
 GameObject:
   m_ObjectHideFlags: 0
@@ -11870,6 +11897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 6
@@ -11934,6 +11962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 3
@@ -12434,6 +12463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 5
@@ -13817,6 +13847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 7
@@ -14348,6 +14379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 2
@@ -14730,6 +14762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 5
@@ -15145,6 +15178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 1
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 1
@@ -15348,6 +15382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 0
@@ -15930,6 +15965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 6
@@ -17653,6 +17689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 3
@@ -18851,6 +18888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 5
@@ -19190,6 +19228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 3
@@ -20075,6 +20114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 1
@@ -20696,6 +20736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 6
@@ -22226,6 +22267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 3
@@ -22351,6 +22393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 1
@@ -23407,6 +23450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 3
@@ -23528,6 +23572,7 @@ MonoBehaviour:
   playerText: {fileID: 1976897745}
   gesamtEinheiten: {fileID: 1496243677}
   beweglicheEinheiten: {fileID: 410089633}
+  endScreen: {fileID: 713179745}
   cc: {fileID: 1968099221}
   dbc: {fileID: 1719293103}
   pm: {fileID: 868672217}
@@ -23616,6 +23661,7 @@ MonoBehaviour:
   beweglicheEinheit: {fileID: 410089633}
   km: {fileID: 1619626953}
   dbc: {fileID: 1719293103}
+  gm: {fileID: 1565836639}
   gewinner: {fileID: 0}
 --- !u!1 &1572626672
 GameObject:
@@ -23825,6 +23871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 1
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 8
@@ -25379,6 +25426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 2
@@ -25443,6 +25491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 4
@@ -25666,6 +25715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 5
@@ -25730,6 +25780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 2
@@ -26189,6 +26240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 6
@@ -27808,6 +27860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 2
@@ -27939,6 +27992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 7
@@ -28886,6 +28940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 4
@@ -28950,6 +29005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 4
@@ -29117,6 +29173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 1
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 4
@@ -29471,6 +29528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 2
@@ -30058,6 +30116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 3
@@ -30895,6 +30954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSet: 0
+  unitID: 0
   hasUnit: 0
   id: 0
   x: 4

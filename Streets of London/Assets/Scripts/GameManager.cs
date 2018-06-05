@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour {
     public GameObject playerText;
     public GameObject gesamtEinheiten;
     public GameObject beweglicheEinheiten;
+    public GameObject endScreen;
 
     //Scripte
     public CameraController cc;
@@ -204,6 +205,12 @@ public class GameManager : MonoBehaviour {
         paused = true;
         PassthrougData.gameactiv = false;
         Reset();
+    }
+
+    public void GameOver()
+    {
+        paused = true;
+        endScreen.SetActive(true);
     }
 
     public void Paused()

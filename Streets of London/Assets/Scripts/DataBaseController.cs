@@ -190,6 +190,23 @@ public class DataBaseController : MonoBehaviour {
         return id;
     }
 
+    public int GetUnitPlayerID(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int pid = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select SpielerID from Einheit Where ID = " + id +"" ;
+        pid = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+
+        CloseDBConnection();
+
+        return pid;
+    }
+
     public Unit GetUnitInfo(int unitID)
     {
         if (!init)
