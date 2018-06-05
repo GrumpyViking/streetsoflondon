@@ -243,7 +243,7 @@ public class KaufMenuScript : MonoBehaviour
 
     public void PreisaktualisierungTK()
     {
-        preisTK.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeigeTK.GetComponent<Text>().text) * 2);
+        preisTK.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeigeTK.GetComponent<Text>().text) * 4);
         refrechRemainingGold();
     }
     //---------------------------------------------------------------------------------------------------------------
@@ -251,7 +251,7 @@ public class KaufMenuScript : MonoBehaviour
     public void refrechRemainingGold()
     {
         goldnach.GetComponent<Text>().text = Convert.ToString(gold- (Convert.ToInt32(preis1.GetComponent<Text>().text) + Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
-            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis5.GetComponent<Text>().text)));
+            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis5.GetComponent<Text>().text) + Convert.ToInt32(preisTK.GetComponent<Text>().text)));
         goldremaining = Convert.ToInt32(goldnach.GetComponent<Text>().text);
     }
 

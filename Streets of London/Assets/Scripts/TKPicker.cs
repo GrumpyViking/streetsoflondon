@@ -10,6 +10,8 @@ public class TKPicker : MonoBehaviour {
     public string nameTK;
     public string wirkungTK;
     public string[] poolTK = {"Fusel", "Infektion", "Verstärkter Mantel", "Ration"};
+    public static string[] player1TK = {" ", " ", " ", " ", " ", " ", " ", " "};
+    public static string[] player2TK = {" ", " ", " ", " ", " ", " ", " ", " "};
 
     public GameObject anzeigeName1;
     public GameObject anzeigeWirkung1;
@@ -113,7 +115,30 @@ public class TKPicker : MonoBehaviour {
     {
         if (gewaehlteTK != null)
         {
-            //(gewaehlteTK);
+            if (PassthrougData.currentPlayer == 1)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    if (player1TK[i] == " ")
+                    {
+                        player1TK[i] = gewaehlteTK;
+                        Debug.Log("Spieler 1 kriegt " + gewaehlteTK);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    if (player2TK[i] == " ")
+                    {
+                        player2TK[i] = gewaehlteTK;
+                        Debug.Log("Spieler 2 kriegt " + gewaehlteTK);
+                        break;
+                    }
+                }
+            }
             aufleuchtenTK1.SetActive(false);
             aufleuchtenTK2.SetActive(false);
             aufleuchtenTK3.SetActive(false);
