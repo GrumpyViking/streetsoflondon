@@ -161,6 +161,7 @@ public class MoveUnit : MonoBehaviour
 
         if (phase != 0)
         {
+            GameObject oldfeld=null;
             anweisungText.GetComponent<TextMeshProUGUI>().text = "";
             bewegenButtonText.GetComponent<Text>().text = "Einheitbewegen";
             angriffButton.SetActive(true);
@@ -172,10 +173,30 @@ public class MoveUnit : MonoBehaviour
                 unit.GetComponent<UnitHelper>().unitID = Convert.ToInt32(buff);
                 dbc.WriteToDB("Update Gelaendefelder Set EinheitID = " + Convert.ToInt32(buff) + " Where ID=" + feld.GetComponent<FieldHelper>().id + " ");
 
-
-                unit.GetComponent<UnitHelper>().fieldID = feld.GetComponent<FieldHelper>().id;
-                beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
-                feld.GetComponent<FieldHelper>().hasUnit = true;
+                if(unit.GetComponent<UnitHelper>().fieldID == 0 && !feld.GetComponent<FieldHelper>().hasUnit)
+                {
+                    unit.GetComponent<UnitHelper>().fieldID = feld.GetComponent<FieldHelper>().id;
+                    feld.GetComponent<FieldHelper>().unitID = unit.GetComponent<UnitHelper>().unitID;
+                    beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
+                    feld.GetComponent<FieldHelper>().hasUnit = true;
+                }
+                else if(unit.GetComponent<UnitHelper>().fieldID != feld.GetComponent<FieldHelper>().id)
+                {
+                    for(int i = 0; i < grid.Length; i++)
+                    {
+                        if(grid[i].GetComponent<FieldHelper>().id == unit.GetComponent<UnitHelper>().fieldID)
+                        {
+                            oldfeld = grid[i];
+                            oldfeld.GetComponent<FieldHelper>().hasUnit = false;
+                            oldfeld.GetComponent<FieldHelper>().unitID = 0;
+                            unit.GetComponent<UnitHelper>().fieldID = feld.GetComponent<FieldHelper>().id;
+                            feld.GetComponent<FieldHelper>().unitID = unit.GetComponent<UnitHelper>().unitID;
+                            beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
+                            feld.GetComponent<FieldHelper>().hasUnit = true;
+                        }
+                    }
+                } 
+                
                 DeselectFeld();
                 DeselectUnit();
             }
