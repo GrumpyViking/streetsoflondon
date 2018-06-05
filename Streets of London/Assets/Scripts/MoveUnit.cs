@@ -233,7 +233,6 @@ public class MoveUnit : MonoBehaviour
                 if (grid[i].GetComponent<FieldHelper>().x == 1 && grid[i].GetComponent<FieldHelper>().y == 0)
                 {
                     fabrik = grid[i];
-                    fabrik.GetComponent<Outline>().enabled = true;
                 }
             }
         }
