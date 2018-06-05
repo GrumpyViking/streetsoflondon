@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
     public float timer = 10f;
     Text tTimer;
     private Vector3 defaultPosition;
-
+    int turn;
     //GameObjects
     public GameObject timeLine;
 
@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour {
     {
         side = PassthrougData.startPlayer;
         mainUI.SetActive(true);
+        turn = 0;
         if (PassthrougData.startPlayer == 0)
         {
             PassthrougData.currentPlayer = 1;
@@ -149,7 +150,7 @@ public class GameManager : MonoBehaviour {
         {
             side = 1;
             cc.SwitchSide(1);
-            rc.AktualisiereGold(1);
+            
             mu.DeselectUnit();
             mu.DeselectFeld();
             gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(1));
@@ -158,13 +159,12 @@ public class GameManager : MonoBehaviour {
             PassthrougData.currentPlayer = 2;
             SetPlayer(PassthrougData.player2);
             pm.SetPlayer(PassthrougData.player2);
-            
+            turn++;
         }
         else
         {
             side = 0;
             cc.SwitchSide(0);
-            rc.AktualisiereGold(2);
             mu.DeselectUnit();
             mu.DeselectFeld();
             gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(2));
@@ -173,9 +173,21 @@ public class GameManager : MonoBehaviour {
             PassthrougData.currentPlayer = 1;
             SetPlayer(PassthrougData.player1);
             pm.SetPlayer(PassthrougData.player1);
+            turn++;
+        }
+        if(turn == 2)
+        {
+            TurnOver();
         }
         pm.PanelState(true);
         kms.SchliesseKaufmenu();
+    }
+
+    void TurnOver()
+    {
+        rc.AktualisiereGold(1);
+        rc.AktualisiereGold(2);
+        turn = 0;
     }
 
     public void Continue()

@@ -164,7 +164,6 @@ public class FieldBuilder : MonoBehaviour {
         if (Physics.Raycast(ray.origin, ray.direction * 10, out hit))
         {
             target = hit.collider.gameObject;
-            Debug.Log(target);
         }
         return target;
     }

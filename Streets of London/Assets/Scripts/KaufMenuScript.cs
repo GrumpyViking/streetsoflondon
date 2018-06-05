@@ -493,9 +493,9 @@ public class KaufMenuScript : MonoBehaviour
 
         dbc.WriteToDB("UPDATE Spieler SET GOLD=" + Convert.ToInt32(goldnach.GetComponent<Text>().text) + " Where ID =" + PassthrougData.currentPlayer);
 
-        if (Convert.ToInt32(anzeigeTK) != 0)
+        if (Convert.ToInt32(anzeigeTK.GetComponent<Text>().text) != 0)
         {
-            gekaufteTK = Convert.ToInt32(anzeigeTK);
+            gekaufteTK = Convert.ToInt32(anzeigeTK.GetComponent<Text>().text);
             SchliesseKaufmenu();
             tkp.OeffnePickerMenu(gekaufteTK);
         }
