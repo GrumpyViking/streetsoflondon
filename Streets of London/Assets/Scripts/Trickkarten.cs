@@ -103,6 +103,22 @@ public class Trickkarten : MonoBehaviour {
                 nameTK = name;
                 wirkungTK = "Heile alle Verbündeten im Wirkungsbereich um 2 LP.";
                 break;
+            case "Sabotage":
+                nameTK = name;
+                wirkungTK = "Beende den Effekt einer beliebigen, aktiven Trickkarte (auch Sabotage).";
+                break;
+            case "Investition":
+                nameTK = name;
+                wirkungTK = "Erhalte 3 Gold pro Runde für 3 Runden. Nach jeder Runde wird ein Schadensmarker als Rundenzähler auf die Karte gelegt.";
+                break;
+            case "Verführung":
+                nameTK = name;
+                wirkungTK = "Übernimm für eine Runde die Kontrolle über eine beliebige gegnerische Einheit.";
+                break;
+            case "Verstärkung":
+                nameTK = name;
+                wirkungTK = "Platziere einen Schläger an einer beliebigen Stelle auf deiner Spielfeldseite.";
+                break;
         }
     }
 
@@ -331,6 +347,12 @@ public class Trickkarten : MonoBehaviour {
     public void useSlot8()
     {
         slot8.SetActive(false);
+    }
+
+    public void InvestitionEffect()
+    {
+
+
     }
 }
 
