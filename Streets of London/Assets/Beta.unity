@@ -452,6 +452,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 3
+  y: 2
 --- !u!1 &33304278
 GameObject:
   m_ObjectHideFlags: 0
@@ -4832,6 +4834,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 2
+  y: 0
 --- !u!1 &340242228
 GameObject:
   m_ObjectHideFlags: 0
@@ -5196,6 +5200,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 5
+  y: 1
 --- !u!1 &360910876
 GameObject:
   m_ObjectHideFlags: 0
@@ -5406,6 +5412,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 5
+  y: 6
 --- !u!1 &369693082
 GameObject:
   m_ObjectHideFlags: 0
@@ -5542,6 +5550,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 0
+  y: 4
 --- !u!1001 &387396311
 Prefab:
   m_ObjectHideFlags: 0
@@ -5684,6 +5694,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 2
+  y: 2
 --- !u!1 &397668060
 GameObject:
   m_ObjectHideFlags: 0
@@ -5815,6 +5827,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 4
+  y: 2
 --- !u!1 &405011303
 GameObject:
   m_ObjectHideFlags: 0
@@ -6634,6 +6648,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 3
+  y: 0
 --- !u!1 &444876532
 GameObject:
   m_ObjectHideFlags: 0
@@ -6925,6 +6941,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 6
+  y: 1
 --- !u!1 &472257837
 GameObject:
   m_ObjectHideFlags: 0
@@ -7776,6 +7794,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 0
+  y: 5
 --- !u!1 &514100941
 GameObject:
   m_ObjectHideFlags: 0
@@ -8924,6 +8944,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 0
+  y: 6
 --- !u!1 &579467459
 GameObject:
   m_ObjectHideFlags: 0
@@ -9336,6 +9358,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 5
+  y: 0
 --- !u!1001 &605004339
 Prefab:
   m_ObjectHideFlags: 0
@@ -10108,6 +10132,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 6
+  y: 0
 --- !u!1 &653488579
 GameObject:
   m_ObjectHideFlags: 0
@@ -10451,6 +10477,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 4
+  y: 5
 --- !u!1 &684806310
 GameObject:
   m_ObjectHideFlags: 0
@@ -11650,6 +11678,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 5
+  y: 2
 --- !u!1 &797701787 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1811726890462408, guid: 23d562071da262f4680be3f27405e11d,
@@ -11712,6 +11742,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 2
+  y: 6
 --- !u!1 &801065400
 GameObject:
   m_ObjectHideFlags: 0
@@ -12210,6 +12242,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 4
+  y: 3
 --- !u!1 &818786337
 GameObject:
   m_ObjectHideFlags: 0
@@ -13517,6 +13551,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 6
+  y: 3
 --- !u!1 &908908682
 GameObject:
   m_ObjectHideFlags: 0
@@ -14046,6 +14082,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 1
+  y: 3
 --- !u!1001 &936861792
 Prefab:
   m_ObjectHideFlags: 0
@@ -14426,6 +14464,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 4
+  y: 1
 --- !u!1 &977775676
 GameObject:
   m_ObjectHideFlags: 0
@@ -14839,6 +14879,8 @@ MonoBehaviour:
   isSet: 1
   hasUnit: 0
   id: 0
+  x: 5
+  y: 5
 --- !u!1 &1014473706
 GameObject:
   m_ObjectHideFlags: 0
@@ -15040,6 +15082,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 0
+  y: 0
 --- !u!1 &1070574673
 GameObject:
   m_ObjectHideFlags: 0
@@ -15467,6 +15511,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 5
+  y: 4
 --- !u!1 &1096073954
 GameObject:
   m_ObjectHideFlags: 0
@@ -17188,6 +17234,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 2
+  y: 3
 --- !u!1 &1212568496
 GameObject:
   m_ObjectHideFlags: 0
@@ -18384,6 +18432,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 4
+  y: 0
 --- !u!1 &1268355741
 GameObject:
   m_ObjectHideFlags: 0
@@ -18721,6 +18771,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 6
+  y: 6
 --- !u!1 &1296501997
 GameObject:
   m_ObjectHideFlags: 0
@@ -19604,6 +19656,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 0
+  y: 3
 --- !u!1001 &1349577851
 Prefab:
   m_ObjectHideFlags: 0
@@ -20223,6 +20277,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 5
+  y: 3
 --- !u!1001 &1416774044
 Prefab:
   m_ObjectHideFlags: 0
@@ -21751,6 +21807,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 2
+  y: 4
 --- !u!1 &1500046405
 GameObject:
   m_ObjectHideFlags: 0
@@ -21874,6 +21932,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 4
+  y: 6
 --- !u!1 &1504534275
 GameObject:
   m_ObjectHideFlags: 0
@@ -22928,6 +22988,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 2
+  y: 5
 --- !u!1001 &1553356851
 Prefab:
   m_ObjectHideFlags: 0
@@ -23298,6 +23360,8 @@ MonoBehaviour:
   isSet: 1
   hasUnit: 0
   id: 0
+  x: 1
+  y: 1
 --- !u!1 &1607131940
 GameObject:
   m_ObjectHideFlags: 0
@@ -24697,6 +24761,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 1
+  y: 2
 --- !u!1 &1723268466 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1811726890462408, guid: 23d562071da262f4680be3f27405e11d,
@@ -24759,6 +24825,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 3
+  y: 1
 --- !u!1 &1728511659
 GameObject:
   m_ObjectHideFlags: 0
@@ -24980,6 +25048,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 4
+  y: 4
 --- !u!1 &1737467299 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1811726890462408, guid: 23d562071da262f4680be3f27405e11d,
@@ -25042,6 +25112,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 1
+  y: 6
 --- !u!1 &1738549417
 GameObject:
   m_ObjectHideFlags: 0
@@ -25499,6 +25571,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 1
+  y: 0
 --- !u!1 &1784757135
 GameObject:
   m_ObjectHideFlags: 0
@@ -27116,6 +27190,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 1
+  y: 5
 --- !u!1 &1912719299
 GameObject:
   m_ObjectHideFlags: 0
@@ -27245,6 +27321,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 6
+  y: 2
 --- !u!1 &1915943824
 GameObject:
   m_ObjectHideFlags: 0
@@ -28190,6 +28268,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 3
+  y: 4
 --- !u!1 &1962194261 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1811726890462408, guid: 23d562071da262f4680be3f27405e11d,
@@ -28252,6 +28332,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 3
+  y: 5
 --- !u!1 &1968099216
 GameObject:
   m_ObjectHideFlags: 0
@@ -28417,6 +28499,8 @@ MonoBehaviour:
   isSet: 1
   hasUnit: 0
   id: 0
+  x: 3
+  y: 3
 --- !u!1 &1970551293
 GameObject:
   m_ObjectHideFlags: 0
@@ -28769,6 +28853,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 1
+  y: 4
 --- !u!1 &1996822553
 GameObject:
   m_ObjectHideFlags: 0
@@ -29354,6 +29440,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 2
+  y: 1
 --- !u!1 &2029390791
 GameObject:
   m_ObjectHideFlags: 0
@@ -30189,6 +30277,8 @@ MonoBehaviour:
   isSet: 0
   hasUnit: 0
   id: 0
+  x: 3
+  y: 6
 --- !u!1 &2114508669
 GameObject:
   m_ObjectHideFlags: 0

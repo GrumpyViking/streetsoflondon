@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     Text tTimer;
     private Vector3 defaultPosition;
     int turn;
+    int overallTurns;
     //GameObjects
     public GameObject timeLine;
 
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour {
         pm.PanelState(true);
         //Pause GameFlow
         paused = true;
-
+        overallTurns = 0;
         PassthrougData.gameactiv = false;
         defaultPosition = timeLine.transform.localScale;
     }
@@ -188,6 +189,7 @@ public class GameManager : MonoBehaviour {
         rc.AktualisiereGold(1);
         rc.AktualisiereGold(2);
         turn = 0;
+        overallTurns++;
     }
 
     public void Continue()
