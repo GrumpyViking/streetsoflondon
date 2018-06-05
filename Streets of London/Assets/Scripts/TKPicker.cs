@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TKPicker : MonoBehaviour {
 
     public int anzahlTK;
+    public string gewaehlteTK;
     public string nameTK;
     public string wirkungTK;
     public string[] poolTK = {"Fusel", "Infektion", "Verstärkter Mantel", "Ration"};
@@ -16,6 +17,10 @@ public class TKPicker : MonoBehaviour {
     public GameObject anzeigeWirkung2;
     public GameObject anzeigeName3;
     public GameObject anzeigeWirkung3;
+
+    public GameObject aufleuchtenTK1;
+    public GameObject aufleuchtenTK2;
+    public GameObject aufleuchtenTK3;
 
     public GameObject TKPickerScriptObject;
     
@@ -60,6 +65,7 @@ public class TKPicker : MonoBehaviour {
         }
     }
 
+    //Anzeige der Kartendetails in den einzelnen Slots
     public void ShowSlot1()
     {
         anzeigeName1.GetComponent<Text>().text = nameTK;
@@ -77,4 +83,49 @@ public class TKPicker : MonoBehaviour {
         anzeigeName3.GetComponent<Text>().text = nameTK;
         anzeigeWirkung3.GetComponent<Text>().text = wirkungTK;
     }
+    //----------------------------------------------------------------------------------------------
+    //Auswahl der Kartenslots (OnClick-Methoden)
+    public void ChooseCard1()
+    {
+        aufleuchtenTK1.SetActive(true);
+        aufleuchtenTK2.SetActive(false);
+        aufleuchtenTK3.SetActive(false);
+        gewaehlteTK = anzeigeName1.GetComponent<Text>().text;
+    }
+
+    public void ChooseCard2()
+    {
+        aufleuchtenTK1.SetActive(false);
+        aufleuchtenTK2.SetActive(true);
+        aufleuchtenTK3.SetActive(false);
+        gewaehlteTK = anzeigeName2.GetComponent<Text>().text;
+    }
+
+    public void ChooseCard3()
+    {
+        aufleuchtenTK1.SetActive(false);
+        aufleuchtenTK2.SetActive(false);
+        aufleuchtenTK3.SetActive(true);
+        gewaehlteTK = anzeigeName1.GetComponent<Text>().text;
+    }
+
+    public void SubmitChoice()
+    {
+        if (gewaehlteTK != null)
+        {
+            //(gewaehlteTK);
+            aufleuchtenTK1.SetActive(false);
+            aufleuchtenTK2.SetActive(false);
+            aufleuchtenTK3.SetActive(false);
+            TKPickerScriptObject.SetActive(false);
+            anzahlTK--;
+            gewaehlteTK = null;
+            if (anzahlTK != 0)
+            {
+                OeffnePickerMenu(anzahlTK);
+            }
+        }
+    }
+
+
 }
