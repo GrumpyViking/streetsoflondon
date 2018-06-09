@@ -90,6 +90,10 @@ public class MoveUnit : MonoBehaviour
             feld = null;
             feldselected = false;
             zielfeldsuche = false;
+            for(int i = 0; i < grid.Length; i++)
+            {
+                grid[i].GetComponent<Outline>().enabled = false;
+            }
         }
     }
     void SelectUnit()
@@ -132,6 +136,7 @@ public class MoveUnit : MonoBehaviour
             if (select.tag == "HexFields" && feld == null && !feldselected && unitselected && zielfeldsuche)
             {
                 feld = select;
+                unit.GetComponent<Outline>().OutlineColor = Color.white;
                 feld.GetComponent<Outline>().enabled = true;
                 feldselected = true;
             }
@@ -158,6 +163,77 @@ public class MoveUnit : MonoBehaviour
             zielfeldsuche = true;
             angriffButton.SetActive(false);
             buttonclicked = true;
+            if (unit.GetComponent<UnitHelper>().fieldID == 0)
+            {
+                if (PassthrougData.currentPlayer == 1)
+                {
+                    for (int i = 2; i < 9; i++)
+                    {
+                        if (grid[i].GetComponent<FieldHelper>().hasUnit == false)
+                        {
+                            grid[i].GetComponent<Outline>().OutlineColor = Color.blue;
+                            grid[i].GetComponent<Outline>().enabled = true;
+                        }
+                        
+                    }
+                }
+                else
+                {
+                    for (int i = 24; i < 31; i++)
+                    {
+                        if (grid[i].GetComponent<FieldHelper>().hasUnit == false)
+                        {
+                            grid[i].GetComponent<Outline>().OutlineColor = Color.blue;
+                            grid[i].GetComponent<Outline>().enabled = true;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                int aktionsp = dbc.GetAP(unit.GetComponent<UnitHelper>().unitID);
+                for(int ap = aktionsp; ap >= 0; ap--)
+                {
+                    for (int i = 0; i < grid.Length; i++)
+                    {
+                        if (grid[i].GetComponent<FieldHelper>().id == unit.GetComponent<UnitHelper>().fieldID)
+                        {
+                            grid[i].GetComponent<Outline>().enabled = true;
+                            for (int j = 0; j < grid.Length; j++)
+                            {
+                                grid[j].GetComponent<Outline>().OutlineColor = Color.yellow;
+                                if ((grid[j].GetComponent<FieldHelper>().x == grid[i].GetComponent<FieldHelper>().x - ap) && (grid[j].GetComponent<FieldHelper>().y == grid[i].GetComponent<FieldHelper>().y))
+                                {
+                                    grid[j].GetComponent<Outline>().enabled = true;
+                                }
+                                if ((grid[j].GetComponent<FieldHelper>().x == grid[i].GetComponent<FieldHelper>().x + ap) && (grid[j].GetComponent<FieldHelper>().y == grid[i].GetComponent<FieldHelper>().y))
+                                {
+                                    grid[j].GetComponent<Outline>().enabled = true;
+                                }
+                                if ((grid[j].GetComponent<FieldHelper>().y == grid[i].GetComponent<FieldHelper>().y - ap) && (grid[j].GetComponent<FieldHelper>().x == grid[i].GetComponent<FieldHelper>().x))
+                                {
+                                    grid[j].GetComponent<Outline>().enabled = true;
+                                }
+                                if ((grid[j].GetComponent<FieldHelper>().y == grid[i].GetComponent<FieldHelper>().y - ap) && (grid[j].GetComponent<FieldHelper>().x == grid[i].GetComponent<FieldHelper>().x + ap))
+                                {
+                                    grid[j].GetComponent<Outline>().enabled = true;
+                                }
+                                if ((grid[j].GetComponent<FieldHelper>().y == grid[i].GetComponent<FieldHelper>().y + ap) && (grid[j].GetComponent<FieldHelper>().x == grid[i].GetComponent<FieldHelper>().x))
+                                {
+                                    grid[j].GetComponent<Outline>().enabled = true;
+                                }
+                                if ((grid[j].GetComponent<FieldHelper>().y == grid[i].GetComponent<FieldHelper>().y + ap) && (grid[j].GetComponent<FieldHelper>().x == grid[i].GetComponent<FieldHelper>().x - ap))
+                                {
+                                    grid[j].GetComponent<Outline>().enabled = true;
+                                }
+
+                            }
+                        }
+                    }
+                }
+                    
+                
+            }
         }
 
         if (phase != 0)

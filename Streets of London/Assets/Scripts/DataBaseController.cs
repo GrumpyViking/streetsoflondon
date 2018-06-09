@@ -107,6 +107,24 @@ public class DataBaseController : MonoBehaviour {
         return id;
     }
 
+    //Eimheit Aktionspunkte
+    public int GetAP(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int ap = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Aktionspunkte from Einheit Where ID =" + id + "";
+        ap = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+
+        CloseDBConnection();
+
+        return ap;
+    }
+
     //Einheit Lebenspunkte
     public int GetLP(int id)
     {
