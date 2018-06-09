@@ -64,7 +64,7 @@ public class KampfMenu : MonoBehaviour {
             heartsatk[i].SetActive(true);
         }
         rwAtt.GetComponent<Text>().text = "RW: " + Convert.ToString(dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID));
-        gwAtt.GetComponent<Text>().text = "GW: " + Convert.ToString(dbc.GetGw(angreifer.GetComponent<UnitHelper>().fieldID));
+        gwAtt.GetComponent<Text>().text = "GW: " + Convert.ToString(dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID));
         attdice = dbc.GetAtt(angreifer.GetComponent<UnitHelper>().unitID);
         for (int i = 0; i < attdice; i++)
         {
@@ -80,7 +80,7 @@ public class KampfMenu : MonoBehaviour {
             heartsdef[i].SetActive(true);
         }
         rwDef.GetComponent<Text>().text = "RW " + Convert.ToString(dbc.GetRW(verteidiger.GetComponent<UnitHelper>().unitID));
-        gwDef.GetComponent<Text>().text = "GW: " + Convert.ToString(dbc.GetGw(verteidiger.GetComponent<UnitHelper>().fieldID));
+        gwDef.GetComponent<Text>().text = "GW: " + Convert.ToString(dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID));
         defdice = dbc.GetDef(verteidiger.GetComponent<UnitHelper>().unitID);
         for (int i = 0; i < defdice; i++)
         {
@@ -179,11 +179,11 @@ public class KampfMenu : MonoBehaviour {
                 }
                 else
                 {
-                    if(dbc.GetGw(verteidiger.GetComponent<UnitHelper>().fieldID)> dbc.GetGw(angreifer.GetComponent<UnitHelper>().fieldID))
+                    if(dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID)> dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID))
                     {
                         heartsatk[i].SetActive(false);
                         lostlpatk++;
-                    }else if(dbc.GetGw(verteidiger.GetComponent<UnitHelper>().fieldID) < dbc.GetGw(angreifer.GetComponent<UnitHelper>().fieldID))
+                    }else if(dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID) < dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID))
                     {
                         heartsdef[i].SetActive(false);
                         lostlpdef++;
@@ -217,12 +217,12 @@ public class KampfMenu : MonoBehaviour {
                 else
                 {
 
-                    if (dbc.GetGw(verteidiger.GetComponent<UnitHelper>().fieldID) > dbc.GetGw(angreifer.GetComponent<UnitHelper>().fieldID))
+                    if (dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID) > dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID))
                     {
                         heartsatk[i].SetActive(false);
                         lostlpatk++;
                     }
-                    else if (dbc.GetGw(verteidiger.GetComponent<UnitHelper>().fieldID) < dbc.GetGw(angreifer.GetComponent<UnitHelper>().fieldID))
+                    else if (dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID) < dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID))
                     {
                         heartsdef[i].SetActive(false);
                         lostlpdef++;
@@ -254,12 +254,12 @@ public class KampfMenu : MonoBehaviour {
                 }
                 else
                 {
-                    if (dbc.GetGw(verteidiger.GetComponent<UnitHelper>().fieldID) > dbc.GetGw(angreifer.GetComponent<UnitHelper>().fieldID))
+                    if (dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID) > dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID))
                     {
                         heartsatk[i].SetActive(false);
                         lostlpatk++;
                     }
-                    else if (dbc.GetGw(verteidiger.GetComponent<UnitHelper>().fieldID) < dbc.GetGw(angreifer.GetComponent<UnitHelper>().fieldID))
+                    else if (dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID) < dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID))
                     {
                         heartsdef[i].SetActive(false);
                         lostlpdef++;

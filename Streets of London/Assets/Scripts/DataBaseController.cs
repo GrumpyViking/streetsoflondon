@@ -10,11 +10,14 @@ public class DataBaseController : MonoBehaviour {
     IDbCommand dbcmd;
     static bool init = false;
 
+    //Initialisiert Datenbank wenn noch nicht initialisiert wurde
     void Initialise()
     {    
         init = true;
         CleanDB();
     }
+
+    //stellt die verbindung zur Datenbank her
     void OpenDBConnection()
     {
         if (!init)
@@ -25,9 +28,8 @@ public class DataBaseController : MonoBehaviour {
         dbconn = (IDbConnection)new SqliteConnection(conn);
         dbconn.Open(); //Open connection to the database.
     }
-
     
-    
+    //Leert die Tabellen
     public void CleanDB()
     {
         if (!init)
@@ -48,6 +50,21 @@ public class DataBaseController : MonoBehaviour {
         dbcmd.ExecuteNonQuery();
         CloseDBConnection();
     }
+
+    //schließt die Datenbank verbindung
+    void CloseDBConnection()
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        dbcmd.Dispose();
+        dbcmd = null;
+        dbconn.Close();
+        dbconn = null;
+    }
+
+
     public string RequestFromDB(string query)
     {
         if (!init)
@@ -71,108 +88,8 @@ public class DataBaseController : MonoBehaviour {
         return buff;
     }
 
-    public int GetLP(int id)
-    {
-        if (!init)
-        {
-            Initialise();
-        }
-        int lp = 0;
-        OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Lebenspunkte from Einheit Where ID =" + id + "";
-        lp = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
-
-        CloseDBConnection();
-
-        return lp;
-    }
-
-    public int GetRW(int id)
-    {
-        if (!init)
-        {
-            Initialise();
-        }
-        int rw = 0;
-        OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Reichweite from Einheit Where ID =" + id + "";
-        rw = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
-
-        CloseDBConnection();
-
-        return rw;
-    }
-
-    public int GetAtt(int id)
-    {
-        if (!init)
-        {
-            Initialise();
-        }
-        int att = 0;
-        OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Angriffspunkte from Einheit Where ID =" + id + "";
-        att = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
-
-        CloseDBConnection();
-
-        return att;
-    }
-
-    public int GetDef(int id)
-    {
-        if (!init)
-        {
-            Initialise();
-        }
-        int def = 0;
-        OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Verteidigungspunkte from Einheit Where ID =" + id + "";
-        def = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
-
-        CloseDBConnection();
-
-        return def;
-    }
-
-    public int GetGw(int id)
-    {
-        if (!init)
-        {
-            Initialise();
-        }
-        int gw = 0;
-        OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Bonus from Gelaendefelder Where ID =" + id + "";
-        gw = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
-
-        CloseDBConnection();
-
-        return gw;
-    }
-
-    public int GoldPlayer(int playerid)
-    {
-        if (!init)
-        {
-            Initialise();
-        }
-        int gold = 0;
-        OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Gold from Spieler Where ID =" + playerid+"";
-        gold = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
-        
-        CloseDBConnection();
-
-        return gold;
-    }
-
+    //Einheiten relevante Informationen
+    //Einheiten Name
     public int GetUnitID(string name)
     {
         if (!init)
@@ -190,6 +107,79 @@ public class DataBaseController : MonoBehaviour {
         return id;
     }
 
+    //Einheit Lebenspunkte
+    public int GetLP(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int lp = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Lebenspunkte from Einheit Where ID =" + id + "";
+        lp = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+
+        CloseDBConnection();
+
+        return lp;
+    }
+
+    //Einheit Reichweite
+    public int GetRW(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int rw = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Reichweite from Einheit Where ID =" + id + "";
+        rw = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+
+        CloseDBConnection();
+
+        return rw;
+    }
+
+    //Einheit Angriffswert
+    public int GetAtt(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int att = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Angriffspunkte from Einheit Where ID =" + id + "";
+        att = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+
+        CloseDBConnection();
+
+        return att;
+    }
+
+    //Einheit Verteidigungswert
+    public int GetDef(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int def = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Verteidigungspunkte from Einheit Where ID =" + id + "";
+        def = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+
+        CloseDBConnection();
+
+        return def;
+    }
+
+    //Spieler dem die Einheit zugeordnet ist
     public int GetUnitPlayerID(int id)
     {
         if (!init)
@@ -199,7 +189,7 @@ public class DataBaseController : MonoBehaviour {
         int pid = 0;
         OpenDBConnection();
         dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select SpielerID from Einheit Where ID = " + id +"" ;
+        dbcmd.CommandText = "Select SpielerID from Einheit Where ID = " + id + "";
         pid = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
 
         CloseDBConnection();
@@ -207,47 +197,70 @@ public class DataBaseController : MonoBehaviour {
         return pid;
     }
 
-    public Unit GetUnitInfo(int unitID)
+    //Einheiten Preis
+    public int GetUnitPrice(int id)
     {
         if (!init)
         {
             Initialise();
         }
-        Unit unit = null;
+        int price = 0;
         OpenDBConnection();
         dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select * from Einheit Where ID =" + unitID + "";
-        unit = (Unit) dbcmd.ExecuteScalar();
-
-        CloseDBConnection();
-
-        return unit;
-    }
-
-    public int[] GetUnitIds(int playerid)
-    {
-        if (!init)
-        {
-            Initialise();
-        }
-        int[] id = new int[5];
-        int count = 0;
-        OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select ID from Einheitentyp Where SpielerID ="+playerid;
+        dbcmd.CommandText = "Select Kosten from EinheitenTyp Where ID =" + id;
         reader = dbcmd.ExecuteReader();
         while (reader.Read())
         {
-            id[count] = reader.GetInt32(0);
-            count++;
+            price = reader.GetInt32(0);
         }
         reader.Close();
         reader = null;
         CloseDBConnection();
 
-        return id;
-    } 
+        return price;
+    }
 
+    //Einheiten Name
+    public string GetUnitName(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        string name = "";
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Name from EinheitenTyp Where ID =" + id;
+        reader = dbcmd.ExecuteReader();
+        while (reader.Read())
+        {
+            name = reader.GetString(0);
+        }
+        reader.Close();
+        reader = null;
+        CloseDBConnection();
+
+        return name;
+    }
+
+    //Geländefeld Relevanteinformationen
+    //Geldändefeld Bonus
+    public int GetFieldBonus(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int bonus = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Bonus from Gelaendefelder Where ID =" + id+"";
+        bonus = Convert.ToInt32(dbcmd.ExecuteScalar());
+        CloseDBConnection();
+        return bonus;
+    }
+
+    //Anzahl von einem Geländefeld
     public int NumofFields(string name)
     {
         if (!init)
@@ -257,7 +270,7 @@ public class DataBaseController : MonoBehaviour {
         int num = 0;
         OpenDBConnection();
         dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select ID from Gelaendefelder Where Name = '"+name+"'";
+        dbcmd.CommandText = "Select ID from Gelaendefelder Where Name = '" + name + "'";
         reader = dbcmd.ExecuteReader();
         while (reader.Read())
         {
@@ -269,7 +282,69 @@ public class DataBaseController : MonoBehaviour {
 
         return num;
     }
+
+    //Spieler Relevante Informationen
+    //Spielername
+    public string GetName(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        string name = "";
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Name from Spieler Where ID =" + id;
+        name = dbcmd.ExecuteScalar().ToString();
+        CloseDBConnection();
+        return name;
+    }
+
+    //Spieler Gold
+    public int GoldPlayer(int playerid)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int gold = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Gold from Spieler Where ID =" + playerid+"";
+        gold = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+        
+        CloseDBConnection();
+
+        return gold;
+    }
+
+    //Alle Einheitentypen eines Spielers
+    public int[] GetUnitIds(int playerid)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int[] id = new int[5];
+        int count = 0;
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select ID from Einheitentyp Where SpielerID =" + playerid;
+        reader = dbcmd.ExecuteReader();
+        while (reader.Read())
+        {
+            id[count] = reader.GetInt32(0);
+            count++;
+        }
+        reader.Close();
+        reader = null;
+        CloseDBConnection();
+
+        return id;
+    }
+
     
+    //Anzahl der einheiten eines Spielers
     public int NumOfUnits(int playerid)
     {
         if (!init)
@@ -293,36 +368,10 @@ public class DataBaseController : MonoBehaviour {
         return num;
     }
 
-    public string GetName(int id)
-    {
-        if (!init)
-        {
-            Initialise();
-        }
-        string name = "";
-        OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Name from Spieler Where ID ="+id;
-        name = dbcmd.ExecuteScalar().ToString();
-        CloseDBConnection();
-        return name;
-    }
+    
 
-    public int GetFieldBonus(int id)
-    {
-        if (!init)
-        {
-            Initialise();
-        }
-        int bonus = 0;
-        OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Bonus from Gelaendefelder Where ID =" + id;
-        bonus= Convert.ToInt32(dbcmd.ExecuteScalar());
-        CloseDBConnection();
-        return bonus;
-    }
-
+    
+    //Methode zum schreiben in die Datenbank
     public void WriteToDB(string query)
     {
         if (!init)
@@ -336,6 +385,7 @@ public class DataBaseController : MonoBehaviour {
         CloseDBConnection();
     }
 
+    //
     public int GetMaxUnits(int id)
     {
         if (!init)
@@ -356,6 +406,8 @@ public class DataBaseController : MonoBehaviour {
         CloseDBConnection();
         return maxNum;
     }
+
+
     public int GetNumUnitsofPlayer(int id)
     {
         if (!init)
@@ -422,63 +474,9 @@ public class DataBaseController : MonoBehaviour {
             return Convert.ToInt32(anzahl);
         }
     }
+    
 
-    public int GetUnitPrice(int id)
-    {
-        if (!init)
-        {
-            Initialise();
-        }
-        int price = 0;
-        OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Kosten from EinheitenTyp Where ID =" + id;
-        reader = dbcmd.ExecuteReader();
-        while (reader.Read())
-        {
-            price = reader.GetInt32(0);
-        }
-        reader.Close();
-        reader = null;
-        CloseDBConnection();
-
-        return price;
-
-    }
-
-    public string GetUnitName(int id)
-    {
-        if (!init)
-        {
-            Initialise();
-        }
-        string name="";
-        OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Name from EinheitenTyp Where ID =" + id;
-        reader = dbcmd.ExecuteReader();
-        while (reader.Read())
-        {
-            name = reader.GetString(0);
-        }
-        reader.Close();
-        reader = null;
-        CloseDBConnection();
-
-        return name;
-    }
-
-    void CloseDBConnection()
-    {
-        if (!init)
-        {
-            Initialise();
-        }
-        dbcmd.Dispose();
-        dbcmd = null;
-        dbconn.Close();
-        dbconn = null;
-    }
+    
 	
 	
 }
