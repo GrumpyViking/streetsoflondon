@@ -303,6 +303,10 @@ public class MoveUnit : MonoBehaviour
 
     public void Angriff()
     {
+        bool validtarget;
+        GameObject fieldunit = null;
+        GameObject fieldopponent = null;
+        int rw;
         if (!buttonclicked && phase == 0)
         {
             anweisungText.GetComponent<TextMeshProUGUI>().text = "Ziel wählen!";
@@ -315,7 +319,31 @@ public class MoveUnit : MonoBehaviour
         {
             anweisungText.GetComponent<TextMeshProUGUI>().text = "";
             angriffButtonText.GetComponent<Text>().text = "Angriff";
-            if (gegnergewaehlt)
+            for(int i = 0; i < grid.Length; i++)
+            {
+                if(grid[i].GetComponent<FieldHelper>().id == unit.GetComponent<UnitHelper>().fieldID)
+                {
+                    fieldunit = grid[i];
+                }
+
+                if (grid[i].GetComponent<FieldHelper>().id == gegner.GetComponent<UnitHelper>().fieldID)
+                {
+                    fieldopponent = grid[i];
+                }
+            }
+
+            rw = dbc.GetRW(unit.GetComponent<UnitHelper>().unitID);
+
+            if((Math.Abs(fieldunit.GetComponent<FieldHelper>().x - fieldunit.GetComponent<FieldHelper>().y) - Math.Abs(fieldopponent.GetComponent<FieldHelper>().x - fieldopponent.GetComponent<FieldHelper>().y)) <= rw){
+                validtarget = true;
+            }
+            else
+            {
+                validtarget = false;
+            }
+           
+
+            if (gegnergewaehlt && validtarget)
             {
                 km.SetAngreifer(unit);
                 km.SetVerteidiger(gegner);

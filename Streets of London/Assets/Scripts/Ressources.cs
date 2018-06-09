@@ -7,6 +7,7 @@ public class Ressources : MonoBehaviour {
     public GameObject gold;
     public GameObject zusatzgold;
     public DataBaseController dbc;
+    public GameObject[] fields;
 
     int goldIncome = 0;
     int baseIncome = 1;
@@ -29,7 +30,11 @@ public class Ressources : MonoBehaviour {
     public int CalcIncome(int playerID)
     {
         //prüfen ob geschäftsfelder von einheiten besetzt sind
+        
+        for(int i = 0; i < fields.Length; i++)
+        {
 
+        }
 
         return goldIncome+baseIncome;
     }

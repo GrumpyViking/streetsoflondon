@@ -2129,6 +2129,52 @@ MonoBehaviour:
   gold: {fileID: 1677896797}
   zusatzgold: {fileID: 834525199}
   dbc: {fileID: 1719293103}
+  fields:
+  - {fileID: 1968718533}
+  - {fileID: 1606642806}
+  - {fileID: 1059000556}
+  - {fileID: 1784588519}
+  - {fileID: 338196917}
+  - {fileID: 652328891}
+  - {fileID: 604906323}
+  - {fileID: 1267734021}
+  - {fileID: 438056281}
+  - {fileID: 461809867}
+  - {fileID: 352271472}
+  - {fileID: 956792129}
+  - {fileID: 1723268466}
+  - {fileID: 2026375881}
+  - {fileID: 1913894683}
+  - {fileID: 794838696}
+  - {fileID: 398888911}
+  - {fileID: 26109602}
+  - {fileID: 395100580}
+  - {fileID: 1721635158}
+  - {fileID: 907297214}
+  - {fileID: 1415917582}
+  - {fileID: 818576638}
+  - {fileID: 1006690163}
+  - {fileID: 1500046405}
+  - {fileID: 368822541}
+  - {fileID: 1280297286}
+  - {fileID: 579270300}
+  - {fileID: 1737467299}
+  - {fileID: 797701787}
+  - {fileID: 2114234899}
+  - {fileID: 503546008}
+  - {fileID: 1911528947}
+  - {fileID: 1544764404}
+  - {fileID: 1962194261}
+  - {fileID: 673248105}
+  - {fileID: 381364131}
+  - {fileID: 1994088771}
+  - {fileID: 1498382154}
+  - {fileID: 1960720384}
+  - {fileID: 1734954993}
+  - {fileID: 1092245459}
+  - {fileID: 1335041187}
+  - {fileID: 936182113}
+  - {fileID: 1212138836}
 --- !u!1 &150827335
 GameObject:
   m_ObjectHideFlags: 0

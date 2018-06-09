@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -172,14 +170,14 @@ public class KampfMenu : MonoBehaviour {
                     heartsdef[i].SetActive(false);
                     lostlpdef++;
                 }
-                else if(defencevalues[i] > attackvalues[i])
+                else if(defencevalues[i] > attackvalues[i] && dbc.GetRW(verteidiger.GetComponent<UnitHelper>().unitID)>= dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID))
                 {
                     heartsatk[i].SetActive(false);
                     lostlpatk++;
                 }
                 else
                 {
-                    if(dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID)> dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID))
+                    if(dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID)> dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID) && dbc.GetRW(verteidiger.GetComponent<UnitHelper>().unitID) >= dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID))
                     {
                         heartsatk[i].SetActive(false);
                         lostlpatk++;
@@ -192,8 +190,12 @@ public class KampfMenu : MonoBehaviour {
                     {
                         heartsdef[i].SetActive(false);
                         lostlpdef++;
-                        heartsatk[i].SetActive(false);
-                        lostlpatk++;
+                        if(dbc.GetRW(verteidiger.GetComponent<UnitHelper>().unitID) >= dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID))
+                        {
+                            heartsatk[i].SetActive(false);
+                            lostlpatk++;
+                        }
+                        
                     }
                     
                 }
@@ -209,7 +211,7 @@ public class KampfMenu : MonoBehaviour {
                     heartsdef[i].SetActive(false);
                     lostlpdef++;
                 }
-                else if (defencevalues[i] > attackvalues[i+diff])
+                else if (defencevalues[i] > attackvalues[i+diff] && dbc.GetRW(verteidiger.GetComponent<UnitHelper>().unitID) >= dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID))
                 {
                     heartsatk[i].SetActive(false);
                     lostlpatk++;
@@ -217,7 +219,7 @@ public class KampfMenu : MonoBehaviour {
                 else
                 {
 
-                    if (dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID) > dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID))
+                    if (dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID) > dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID) && dbc.GetRW(verteidiger.GetComponent<UnitHelper>().unitID) >= dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID))
                     {
                         heartsatk[i].SetActive(false);
                         lostlpatk++;
@@ -231,8 +233,12 @@ public class KampfMenu : MonoBehaviour {
                     {
                         heartsdef[i].SetActive(false);
                         lostlpdef++;
-                        heartsatk[i].SetActive(false);
-                        lostlpatk++;
+                        if(dbc.GetRW(verteidiger.GetComponent<UnitHelper>().unitID) >= dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID))
+                        {
+                            heartsatk[i].SetActive(false);
+                            lostlpatk++;
+                        }
+                        
                     }
                 }
             }
@@ -247,14 +253,14 @@ public class KampfMenu : MonoBehaviour {
                     heartsdef[i].SetActive(false);
                     lostlpdef++;
                 }
-                else if (defencevalues[i + diff] > attackvalues[i])
+                else if (defencevalues[i + diff] > attackvalues[i] && dbc.GetRW(verteidiger.GetComponent<UnitHelper>().unitID) >= dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID))
                 {
                     heartsatk[i].SetActive(false);
                     lostlpatk++;
                 }
                 else
                 {
-                    if (dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID) > dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID))
+                    if (dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID) > dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID) && dbc.GetRW(verteidiger.GetComponent<UnitHelper>().unitID) >= dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID))
                     {
                         heartsatk[i].SetActive(false);
                         lostlpatk++;
@@ -268,8 +274,12 @@ public class KampfMenu : MonoBehaviour {
                     {
                         heartsdef[i].SetActive(false);
                         lostlpdef++;
-                        heartsatk[i].SetActive(false);
-                        lostlpatk++;
+                        if(dbc.GetRW(verteidiger.GetComponent<UnitHelper>().unitID) >= dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID))
+                        {
+                            heartsatk[i].SetActive(false);
+                            lostlpatk++;
+                        }
+                        
                     }
                 }
             }

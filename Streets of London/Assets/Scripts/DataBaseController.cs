@@ -278,6 +278,21 @@ public class DataBaseController : MonoBehaviour {
         return bonus;
     }
 
+    public string GetFieldName(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        string name = "";
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Name from Gelaendefelder Where ID =" + id + "";
+        name = dbcmd.ExecuteScalar().ToString();
+        CloseDBConnection();
+        return name;
+    }
+
     //Anzahl von einem Geländefeld
     public int NumofFields(string name)
     {
