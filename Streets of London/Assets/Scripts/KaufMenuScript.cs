@@ -427,7 +427,7 @@ public class KaufMenuScript : MonoBehaviour
                     {
                         offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthrougData.currentPlayer);
                         offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
-                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-900, ((j * 10f) + (10f * offset)), 1239), Quaternion.Euler(-90, 0, 0));
+                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-386, ((j * 10f) + (10f * offset)), 1239), Quaternion.Euler(-90, 0, 0));
 
                     }
                     if (i == 1)

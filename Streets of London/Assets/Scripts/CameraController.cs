@@ -33,7 +33,7 @@ public class CameraController : MonoBehaviour {
     }
 
     void LateUpdate () {
-        if (cameraActiv && side == 0)   //Kamera Spieler1
+        if (cameraActiv && side == 1)   //Kamera Spieler1
         {
             Vector3 pos = transform.position;
 
@@ -67,7 +67,7 @@ public class CameraController : MonoBehaviour {
                 currentZoom = cameraPlayer.fieldOfView;
             }
             transform.position = pos;
-        }else if (cameraActiv && side == 1){ //Kamera Spieler 2
+        }else if (cameraActiv && side == 2){ //Kamera Spieler 2
             Vector3 pos = transform.position;
 
             if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
@@ -107,7 +107,7 @@ public class CameraController : MonoBehaviour {
     public void SwitchSide(int side)
     {
         this.side = side;
-        if(side == 0)
+        if(side == 1)
         {
             camOverHead.enabled = false;
             camOverHead.tag = "Untagged";
@@ -116,7 +116,7 @@ public class CameraController : MonoBehaviour {
             cameraPlayer.transform.position = new Vector3(-20, 1000, -1625);
             cameraPlayer.transform.rotation = Quaternion.Euler(65, 0, 0);
         }
-        if (side == 1)
+        if (side == 2)
         {
             camOverHead.enabled = false;
             cameraPlayer.enabled = true;

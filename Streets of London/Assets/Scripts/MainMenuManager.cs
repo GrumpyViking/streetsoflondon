@@ -34,12 +34,12 @@ public class MainMenuManager : MonoBehaviour {
 
         //Wechsel zur Spielansicht
         switchSceneScript = GameObject.FindGameObjectWithTag("Scene").GetComponent<SwitchScene>();
-        switchSceneScript.ChangeScene(2);
+        switchSceneScript.ChangeScene(1);
     }
 
     int StartingPlayer(string choise)
     {
-        Debug.Log(choise);
+        Debug.Log("Choise: " + choise);
         if(choise.Equals("Spieler 1"))
         {
             PassthrougData.currentPlayer = 1;
@@ -49,13 +49,9 @@ public class MainMenuManager : MonoBehaviour {
             PassthrougData.currentPlayer = 2;
             return 2;
         }
-        else if (choise.Equals("Zufall"))
-        {
-            return Random.Range(1, 2);
-        }
         else
         {
-            return 0; //Default Player 1
+            return Random.Range(1, 2);
         }
     }
 

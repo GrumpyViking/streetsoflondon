@@ -81,7 +81,14 @@ public class UnitSelection : MonoBehaviour {
         defaultPosition = zeitleiste.transform.localScale;
         unitSelectionScriptObject.SetActive(true);
         playerTextEinheitenAuswahl.GetComponent<Text>().text = playerTextSpielerMenu.GetComponent<Text>().text;
-        side = PassthrougData.startPlayer;
+        if (PassthrougData.currentPlayer == 1)
+        {
+            side = 0;
+        }
+        else
+        {
+            side = 1;
+        }
     }
 
     //---------------------------------------------------------------------
@@ -297,13 +304,15 @@ public class UnitSelection : MonoBehaviour {
             Reset();
             ResetSelection();
             unitSelectionScriptObject.SetActive(false);
-            if ((PassthrougData.startPlayer = 1 - side) == 0)
+            if (PassthrougData.currentPlayer == 1 )
             {
-                sm.SetPlayer(PassthrougData.player1);
+                PassthrougData.currentPlayer = 2;
+                sm.SetPlayer(PassthrougData.player2);
             }
             else
             {
-                sm.SetPlayer(PassthrougData.player2);
+                PassthrougData.currentPlayer = 1;
+                sm.SetPlayer(PassthrougData.player1);
             }
             sm.PanelState(true);
         }

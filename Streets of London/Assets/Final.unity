@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: 388ad47cfd5ad5b4cb828a7bc3cf6092,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -31934,7 +31935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraActiv: 1
-  panSpeed: 100
+  panSpeed: 200
   panBorderThickness: 10
   panLimit: {x: 200, y: 100}
   camOverHead: {fileID: 1458336325}

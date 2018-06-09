@@ -41,11 +41,13 @@ public class GameManager : MonoBehaviour {
 
     private void Start()
     {
+        //Default werte für test zwecke
         if (PassthrougData.player1 == null)
         {
             dbc.WriteToDB("INSERT INTO Spieler(ID, Name, Gold) VALUES (1, 'Spieler 1', 20)");
             PassthrougData.player1 = "Spieler 1";
             PassthrougData.currentPlayer = 1;
+            PassthrougData.startPlayer = 1;
         }
         if (PassthrougData.player2 == null)
         {
@@ -64,13 +66,13 @@ public class GameManager : MonoBehaviour {
 
     public void SetupScene()
     {
-        side = PassthrougData.startPlayer;
         mainUI.SetActive(true);
         turn = 0;
-        if (PassthrougData.startPlayer == 0)
+        if (PassthrougData.startPlayer == 1)
         {
+            side = 1;
             PassthrougData.currentPlayer = 1;
-            cc.SwitchSide(PassthrougData.startPlayer);
+            cc.SwitchSide(side);
             playerText.GetComponent<Text>().text = PassthrougData.player1;
             gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " +Convert.ToString(dbc.NumOfUnits(1));
             beweglicheEinheiten.GetComponent<Text>().text = "3";
@@ -80,8 +82,9 @@ public class GameManager : MonoBehaviour {
         }
         else
         {
+            side = 2;
             PassthrougData.currentPlayer = 2;
-            cc.SwitchSide(PassthrougData.startPlayer);
+            cc.SwitchSide(side);
             playerText.GetComponent<Text>().text = PassthrougData.player2;
             gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(2));
             beweglicheEinheiten.GetComponent<Text>().text = "3";
@@ -148,10 +151,10 @@ public class GameManager : MonoBehaviour {
         timeLine.transform.localScale = defaultPosition;
         count = timer;
         tTimer.text = timer.ToString();
-        if (side == 0)
+        if (side == 1)
         {
-            side = 1;
-            cc.SwitchSide(1);
+            side = 2;
+            cc.SwitchSide(side);
             
             mu.DeselectUnit();
             mu.DeselectFeld();
@@ -165,8 +168,8 @@ public class GameManager : MonoBehaviour {
         }
         else
         {
-            side = 0;
-            cc.SwitchSide(0);
+            side = 1;
+            cc.SwitchSide(side);
             mu.DeselectUnit();
             mu.DeselectFeld();
             gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(2));

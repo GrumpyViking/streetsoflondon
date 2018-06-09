@@ -89,6 +89,7 @@ public class FieldBuilder : MonoBehaviour {
                 fieldbuild = false;
             }
         }
+
         if (fieldbuild)
         {
             for(int i = 0; i < fields.Length; i++)
