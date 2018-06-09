@@ -192,47 +192,25 @@ public class MoveUnit : MonoBehaviour
             else
             {
                 int aktionsp = dbc.GetAP(unit.GetComponent<UnitHelper>().unitID);
-                for(int ap = aktionsp; ap >= 0; ap--)
+                int offset;
+                int compare;
+                for (int i = 0; i < grid.Length; i++)
                 {
-                    for (int i = 0; i < grid.Length; i++)
+                    if (grid[i].GetComponent<FieldHelper>().id == unit.GetComponent<UnitHelper>().fieldID)
                     {
-                        if (grid[i].GetComponent<FieldHelper>().id == unit.GetComponent<UnitHelper>().fieldID)
+                        grid[i].GetComponent<Outline>().enabled = true;
+                        compare = (grid[i].GetComponent<FieldHelper>().x - grid[i].GetComponent<FieldHelper>().y);
+                        for (int j = 0; j < grid.Length; j++)
                         {
-                            grid[i].GetComponent<Outline>().enabled = true;
-                            for (int j = 0; j < grid.Length; j++)
+                            Debug.Log("Test " + Math.Abs(compare - (grid[j].GetComponent<FieldHelper>().x - grid[j].GetComponent<FieldHelper>().y)));
+                            if(compare - (grid[j].GetComponent<FieldHelper>().x - grid[j].GetComponent<FieldHelper>().y) <= aktionsp && compare - (grid[j].GetComponent<FieldHelper>().x - grid[j].GetComponent<FieldHelper>().y)>= -1*aktionsp)
                             {
-                                grid[j].GetComponent<Outline>().OutlineColor = Color.yellow;
-                                if ((grid[j].GetComponent<FieldHelper>().x == grid[i].GetComponent<FieldHelper>().x - ap) && (grid[j].GetComponent<FieldHelper>().y == grid[i].GetComponent<FieldHelper>().y))
-                                {
-                                    grid[j].GetComponent<Outline>().enabled = true;
-                                }
-                                if ((grid[j].GetComponent<FieldHelper>().x == grid[i].GetComponent<FieldHelper>().x + ap) && (grid[j].GetComponent<FieldHelper>().y == grid[i].GetComponent<FieldHelper>().y))
-                                {
-                                    grid[j].GetComponent<Outline>().enabled = true;
-                                }
-                                if ((grid[j].GetComponent<FieldHelper>().y == grid[i].GetComponent<FieldHelper>().y - ap) && (grid[j].GetComponent<FieldHelper>().x == grid[i].GetComponent<FieldHelper>().x))
-                                {
-                                    grid[j].GetComponent<Outline>().enabled = true;
-                                }
-                                if ((grid[j].GetComponent<FieldHelper>().y == grid[i].GetComponent<FieldHelper>().y - ap) && (grid[j].GetComponent<FieldHelper>().x == grid[i].GetComponent<FieldHelper>().x + ap))
-                                {
-                                    grid[j].GetComponent<Outline>().enabled = true;
-                                }
-                                if ((grid[j].GetComponent<FieldHelper>().y == grid[i].GetComponent<FieldHelper>().y + ap) && (grid[j].GetComponent<FieldHelper>().x == grid[i].GetComponent<FieldHelper>().x))
-                                {
-                                    grid[j].GetComponent<Outline>().enabled = true;
-                                }
-                                if ((grid[j].GetComponent<FieldHelper>().y == grid[i].GetComponent<FieldHelper>().y + ap) && (grid[j].GetComponent<FieldHelper>().x == grid[i].GetComponent<FieldHelper>().x - ap))
-                                {
-                                    grid[j].GetComponent<Outline>().enabled = true;
-                                }
-
+                                grid[j].GetComponent<Outline>().enabled = true;
                             }
+                                                  
                         }
                     }
                 }
-                    
-                
             }
         }
 

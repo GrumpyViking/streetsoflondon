@@ -297,4 +297,14 @@ public class FieldBuilder : MonoBehaviour {
         }
         Reset();
     }
+
+    public void AutoComplete()
+    {
+        for(int i = 1; i < 22; i++)
+        {
+            select = fields[i];
+            selectOpposit = fields[i + 23];
+            SetFieldImage(UnityEngine.Random.Range(0, 7));
+        }
+    }
 }
