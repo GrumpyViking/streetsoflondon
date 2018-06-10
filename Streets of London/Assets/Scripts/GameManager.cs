@@ -143,7 +143,6 @@ public class GameManager : MonoBehaviour {
             }
             count--;
         }
-        Debug.Log(count);
     }
 
     private void Reset()
@@ -180,7 +179,8 @@ public class GameManager : MonoBehaviour {
             pm.SetPlayer(PassthrougData.player1);
             turn++;
         }
-        if(turn == 2)
+        rc.RefreshDisplay(PassthrougData.currentPlayer);
+        if (turn == 2)
         {
             TurnOver();
         }

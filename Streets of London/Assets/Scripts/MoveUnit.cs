@@ -9,6 +9,7 @@ public class MoveUnit : MonoBehaviour
 {
     GameObject select;
     public GameObject unit;
+    public Ressources rm;
     public GameObject gegner;
     GameObject feld;
     GameObject aktionsmenue;
@@ -252,6 +253,7 @@ public class MoveUnit : MonoBehaviour
                     beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
                     feld.GetComponent<FieldHelper>().hasUnit = true;
                     CheckVictory(unit, feld);
+                    rm.RefreshDisplay(PassthrougData.currentPlayer);
                 }
                 else if(unit.GetComponent<UnitHelper>().fieldID != feld.GetComponent<FieldHelper>().id)
                 {
@@ -267,6 +269,7 @@ public class MoveUnit : MonoBehaviour
                             beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
                             feld.GetComponent<FieldHelper>().hasUnit = true;
                             CheckVictory(unit, feld);
+                            rm.RefreshDisplay(PassthrougData.currentPlayer);
                         }
                     }
                 } 
@@ -318,6 +321,8 @@ public class MoveUnit : MonoBehaviour
         }
     }
 
+   
+
     public void Angriff()
     {
         bool validtarget;
@@ -351,19 +356,22 @@ public class MoveUnit : MonoBehaviour
 
             rw = dbc.GetRW(unit.GetComponent<UnitHelper>().unitID);
 
-            if((Math.Abs(fieldunit.GetComponent<FieldHelper>().x - fieldunit.GetComponent<FieldHelper>().y) - Math.Abs(fieldopponent.GetComponent<FieldHelper>().x - fieldopponent.GetComponent<FieldHelper>().y)) <= rw){
+            if((Math.Abs(fieldunit.GetComponent<FieldHelper>().x - fieldunit.GetComponent<FieldHelper>().y) - Math.Abs(fieldopponent.GetComponent<FieldHelper>().x - fieldopponent.GetComponent<FieldHelper>().y)) < rw+1){
                 validtarget = true;
             }
             else
             {
                 validtarget = false;
             }
-           
+
+            int distance = (Math.Abs(fieldunit.GetComponent<FieldHelper>().x - fieldunit.GetComponent<FieldHelper>().y) - Math.Abs(fieldopponent.GetComponent<FieldHelper>().x - fieldopponent.GetComponent<FieldHelper>().y));
 
             if (gegnergewaehlt && validtarget)
             {
                 km.SetAngreifer(unit);
                 km.SetVerteidiger(gegner);
+                Debug.Log("Distanz " + distance);
+                km.SetDistance(distance);
                 km.ShowKampfMenu();
             }
             else
