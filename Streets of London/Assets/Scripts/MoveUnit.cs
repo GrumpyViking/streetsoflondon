@@ -25,6 +25,13 @@ public class MoveUnit : MonoBehaviour
     public DataBaseController dbc;
     public GameManager gm;
 
+    public GameObject nametext;
+    public GameObject aptext;
+    public GameObject lptext;
+    public GameObject attext;
+    public GameObject dftext;
+    public GameObject rwtext;
+
     public GameObject gewinner;
     bool unitselected = false;
     bool feldselected = false;
@@ -118,6 +125,7 @@ public class MoveUnit : MonoBehaviour
             {
                 unit = select;
                 aktionsmenue.SetActive(true);
+                SetUnitStatText(unit);
                 unit.GetComponent<Outline>().OutlineColor = Color.white;
                 unit.GetComponent<Outline>().enabled = true;
                 unitselected = true;
@@ -136,7 +144,11 @@ public class MoveUnit : MonoBehaviour
             if (select.tag == "HexFields" && feld == null && !feldselected && unitselected && zielfeldsuche)
             {
                 feld = select;
-                unit.GetComponent<Outline>().OutlineColor = Color.white;
+                if(feld.GetComponent<Outline>().enabled == true)
+                {
+                    feld.GetComponent<Outline>().enabled = false;
+                }
+                feld.GetComponent<Outline>().OutlineColor = Color.cyan;
                 feld.GetComponent<Outline>().enabled = true;
                 feldselected = true;
             }
@@ -171,7 +183,7 @@ public class MoveUnit : MonoBehaviour
                     {
                         if (grid[i].GetComponent<FieldHelper>().hasUnit == false)
                         {
-                            grid[i].GetComponent<Outline>().OutlineColor = Color.blue;
+                            grid[i].GetComponent<Outline>().OutlineColor = Color.white;
                             grid[i].GetComponent<Outline>().enabled = true;
                         }
                         
@@ -183,7 +195,7 @@ public class MoveUnit : MonoBehaviour
                     {
                         if (grid[i].GetComponent<FieldHelper>().hasUnit == false)
                         {
-                            grid[i].GetComponent<Outline>().OutlineColor = Color.blue;
+                            grid[i].GetComponent<Outline>().OutlineColor = Color.white;
                             grid[i].GetComponent<Outline>().enabled = true;
                         }
                     }
@@ -386,5 +398,15 @@ public class MoveUnit : MonoBehaviour
             DeselectGegner();
         }
         aktionsmenue.SetActive(false);
+    }
+
+    void SetUnitStatText(GameObject unit)
+    {
+        nametext.GetComponent<TextMeshProUGUI>().text = dbc.GetUnitNamedif(unit.GetComponent<UnitHelper>().unitID);
+        aptext.GetComponent<TextMeshProUGUI>().text = dbc.GetAP(unit.GetComponent<UnitHelper>().unitID).ToString();
+        lptext.GetComponent<TextMeshProUGUI>().text = dbc.GetLP(unit.GetComponent<UnitHelper>().unitID).ToString();
+        attext.GetComponent<TextMeshProUGUI>().text = dbc.GetAtt(unit.GetComponent<UnitHelper>().unitID).ToString();
+        dftext.GetComponent<TextMeshProUGUI>().text = dbc.GetDef(unit.GetComponent<UnitHelper>().unitID).ToString();
+        rwtext.GetComponent<TextMeshProUGUI>().text = dbc.GetRW(unit.GetComponent<UnitHelper>().unitID).ToString();
     }
 }

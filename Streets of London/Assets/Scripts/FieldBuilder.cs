@@ -10,6 +10,7 @@ public class FieldBuilder : MonoBehaviour {
     public GameObject zeitleiste;
     public GameObject timerText;
     public GameObject[] fields;
+    public Texture[] staticTextures; 
     public float timer;
     public DataBaseController dbc;
     public Texture[] fieldImages;
@@ -27,6 +28,9 @@ public class FieldBuilder : MonoBehaviour {
         dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 0 + 1 + ",'Bank',0)");
         dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 0 + 2 +  ",'Fabrik',99)");
         dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 0 + 3 + ",'Fabrik',99)");
+        fields[0].GetComponent<Renderer>().material.mainTexture = staticTextures[0];
+        fields[23].GetComponent<Renderer>().material.mainTexture = staticTextures[0];
+        fields[22].GetComponent<Renderer>().material.mainTexture = staticTextures[1];
     }
 
     void Initialise()

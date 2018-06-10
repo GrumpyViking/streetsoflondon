@@ -89,7 +89,7 @@ public class DataBaseController : MonoBehaviour {
     }
 
     //Einheiten relevante Informationen
-    //Einheiten Name
+    //Einheiten ID
     public int GetUnitID(string name)
     {
         if (!init)
@@ -107,6 +107,23 @@ public class DataBaseController : MonoBehaviour {
         return id;
     }
 
+    //Einheiten Name
+    public string GetUnitNamedif(int id)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        string name = "";
+        OpenDBConnection();
+        dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = "Select Name from Einheit Where ID = " + id + "";
+        name = dbcmd.ExecuteScalar().ToString();
+
+        CloseDBConnection();
+
+        return name;
+    }
     //Eimheit Aktionspunkte
     public int GetAP(int id)
     {
@@ -238,7 +255,7 @@ public class DataBaseController : MonoBehaviour {
         return price;
     }
 
-    //Einheiten Name
+    //Einheitentyp Name
     public string GetUnitName(int id)
     {
         if (!init)
