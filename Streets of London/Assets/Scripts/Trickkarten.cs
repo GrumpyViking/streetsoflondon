@@ -509,14 +509,26 @@ public class Trickkarten : MonoBehaviour {
         SchliesseTrickkartenMenu();
     }
 
-    public void GetEffect(string effekt)
+    public void GetEffect(string effect)
     {
+        switch (effect) {
+            case "Investition":
+                InvestitionEffect();
+                break;
 
+        }
     }
 
     public void InvestitionEffect()
     {
+        if (PassthrougData.currentPlayer == 1)
+        {
 
+        }
+        else
+        {
+            
+        }
 
     }
 }
