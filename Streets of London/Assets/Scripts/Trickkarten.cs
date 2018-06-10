@@ -8,6 +8,7 @@ public class Trickkarten : MonoBehaviour {
 
     public string nameTK;
     public string wirkungTK;
+    public string effekt;
  
     public Sprite wirkungsbereich;
     public Sprite trickkartenbild;
@@ -318,35 +319,199 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot1()
     {
+        if (PassthrougData.currentPlayer == 1)
+        {
+            string effekt = TKPicker.player1TK[0];
+            TKPicker.player1TK[0] = TKPicker.player1TK[1];
+            TKPicker.player1TK[1] = TKPicker.player1TK[2];
+            TKPicker.player1TK[2] = TKPicker.player1TK[3];
+            TKPicker.player1TK[3] = TKPicker.player1TK[4];
+            TKPicker.player1TK[4] = TKPicker.player1TK[5];
+            TKPicker.player1TK[5] = TKPicker.player1TK[6];
+            TKPicker.player1TK[6] = TKPicker.player1TK[7];
+            TKPicker.player1TK[7] = null;
+        }
+        else
+        {
+            string effekt = TKPicker.player2TK[0];
+            TKPicker.player2TK[0] = TKPicker.player2TK[1];
+            TKPicker.player2TK[1] = TKPicker.player2TK[2];
+            TKPicker.player2TK[2] = TKPicker.player2TK[3];
+            TKPicker.player2TK[3] = TKPicker.player2TK[4];
+            TKPicker.player2TK[4] = TKPicker.player2TK[5];
+            TKPicker.player2TK[5] = TKPicker.player2TK[6];
+            TKPicker.player2TK[6] = TKPicker.player2TK[7];
+            TKPicker.player2TK[7] = null;
+        }
         slot1.SetActive(false);
+        GetEffect(effekt);
+        SchliesseTrickkartenMenu();
     }
+
     public void useSlot2()
     {
+        if (PassthrougData.currentPlayer == 1)
+        {
+            string effekt = TKPicker.player1TK[1];
+            TKPicker.player1TK[1] = TKPicker.player1TK[2];
+            TKPicker.player1TK[2] = TKPicker.player1TK[3];
+            TKPicker.player1TK[3] = TKPicker.player1TK[4];
+            TKPicker.player1TK[4] = TKPicker.player1TK[5];
+            TKPicker.player1TK[5] = TKPicker.player1TK[6];
+            TKPicker.player1TK[6] = TKPicker.player1TK[7];
+            TKPicker.player1TK[7] = null;
+        }
+        else
+        {
+            string effekt = TKPicker.player2TK[1];
+            TKPicker.player2TK[1] = TKPicker.player2TK[2];
+            TKPicker.player2TK[2] = TKPicker.player2TK[3];
+            TKPicker.player2TK[3] = TKPicker.player2TK[4];
+            TKPicker.player2TK[4] = TKPicker.player2TK[5];
+            TKPicker.player2TK[5] = TKPicker.player2TK[6];
+            TKPicker.player2TK[6] = TKPicker.player2TK[7];
+            TKPicker.player2TK[7] = null;
+        }
         slot2.SetActive(false);
+        GetEffect(effekt);
+        SchliesseTrickkartenMenu();
     }
+
     public void useSlot3()
     {
+        if (PassthrougData.currentPlayer == 1)
+        {
+            string effekt = TKPicker.player1TK[2];
+            TKPicker.player1TK[2] = TKPicker.player1TK[3];
+            TKPicker.player1TK[3] = TKPicker.player1TK[4];
+            TKPicker.player1TK[4] = TKPicker.player1TK[5];
+            TKPicker.player1TK[5] = TKPicker.player1TK[6];
+            TKPicker.player1TK[6] = TKPicker.player1TK[7];
+            TKPicker.player1TK[7] = null;
+        }
+        else
+        {
+            string effekt = TKPicker.player2TK[2];
+            TKPicker.player2TK[2] = TKPicker.player2TK[3];
+            TKPicker.player2TK[3] = TKPicker.player2TK[4];
+            TKPicker.player2TK[4] = TKPicker.player2TK[5];
+            TKPicker.player2TK[5] = TKPicker.player2TK[6];
+            TKPicker.player2TK[6] = TKPicker.player2TK[7];
+            TKPicker.player2TK[7] = null;
+        }
         slot3.SetActive(false);
+        GetEffect(effekt);
+        SchliesseTrickkartenMenu();
     }
+
     public void useSlot4()
     {
+        if (PassthrougData.currentPlayer == 1)
+        {
+            string effekt = TKPicker.player1TK[3];
+            TKPicker.player1TK[3] = TKPicker.player1TK[4];
+            TKPicker.player1TK[4] = TKPicker.player1TK[5];
+            TKPicker.player1TK[5] = TKPicker.player1TK[6];
+            TKPicker.player1TK[6] = TKPicker.player1TK[7];
+            TKPicker.player1TK[7] = null;
+        }
+        else
+        {
+            string effekt = TKPicker.player2TK[3];
+            TKPicker.player2TK[3] = TKPicker.player2TK[4];
+            TKPicker.player2TK[4] = TKPicker.player2TK[5];
+            TKPicker.player2TK[5] = TKPicker.player2TK[6];
+            TKPicker.player2TK[6] = TKPicker.player2TK[7];
+            TKPicker.player2TK[7] = null;
+        }
         slot4.SetActive(false);
+        GetEffect(effekt);
+        SchliesseTrickkartenMenu();
     }
+
     public void useSlot5()
     {
+        if (PassthrougData.currentPlayer == 1)
+        {
+            string effekt = TKPicker.player1TK[4];
+            TKPicker.player1TK[4] = TKPicker.player1TK[5];
+            TKPicker.player1TK[5] = TKPicker.player1TK[6];
+            TKPicker.player1TK[6] = TKPicker.player1TK[7];
+            TKPicker.player1TK[7] = null;
+        }
+        else
+        {
+            string effekt = TKPicker.player2TK[4];
+            TKPicker.player2TK[4] = TKPicker.player2TK[5];
+            TKPicker.player2TK[5] = TKPicker.player2TK[6];
+            TKPicker.player2TK[6] = TKPicker.player2TK[7];
+            TKPicker.player2TK[7] = null;
+        }
         slot5.SetActive(false);
+        GetEffect(effekt);
+        SchliesseTrickkartenMenu();
     }
+
     public void useSlot6()
     {
+        if (PassthrougData.currentPlayer == 1)
+        {
+            string effekt = TKPicker.player1TK[5];
+            TKPicker.player1TK[5] = TKPicker.player1TK[6];
+            TKPicker.player1TK[6] = TKPicker.player1TK[7];
+            TKPicker.player1TK[7] = null;
+        }
+        else
+        {
+            string effekt = TKPicker.player2TK[5];
+            TKPicker.player2TK[5] = TKPicker.player2TK[6];
+            TKPicker.player2TK[6] = TKPicker.player2TK[7];
+            TKPicker.player2TK[7] = null;
+        }
         slot6.SetActive(false);
+        GetEffect(effekt);
+        SchliesseTrickkartenMenu();
     }
+
     public void useSlot7()
     {
+        if (PassthrougData.currentPlayer == 1)
+        {
+            string effekt = TKPicker.player1TK[6];
+            TKPicker.player1TK[6] = TKPicker.player1TK[7];
+            TKPicker.player1TK[7] = null;
+        }
+        else
+        {
+            string effekt = TKPicker.player2TK[6];
+            TKPicker.player2TK[6] = TKPicker.player2TK[7];
+            TKPicker.player2TK[7] = null;
+        }
         slot7.SetActive(false);
+        GetEffect(effekt);
+        SchliesseTrickkartenMenu();
     }
+
     public void useSlot8()
     {
+        if (PassthrougData.currentPlayer == 1)
+        {
+            string effekt = TKPicker.player1TK[7];
+            TKPicker.player1TK[7] = null;
+        }
+        else
+        {
+            string effekt = TKPicker.player2TK[7];
+            TKPicker.player2TK[7] = null;
+        }
         slot8.SetActive(false);
+        GetEffect(effekt);
+        SchliesseTrickkartenMenu();
+    }
+
+    public void GetEffect(string effekt)
+    {
+
     }
 
     public void InvestitionEffect()
