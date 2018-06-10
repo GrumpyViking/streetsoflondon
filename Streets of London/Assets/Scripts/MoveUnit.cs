@@ -113,6 +113,11 @@ public class MoveUnit : MonoBehaviour
             unitselected = false;
             select = null;
         }
+        if(select != unit && unitselected && select!=null && !zielfeldsuche && !waehlegegner)
+        {
+            DeselectUnit();
+            SelectUnit();
+        }
         if (select == feld && feldselected)
         {
             DeselectFeld();
