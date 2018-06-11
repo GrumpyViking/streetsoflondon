@@ -8,12 +8,15 @@ using TMPro;
 public class MoveUnit : MonoBehaviour
 {
     GameObject select;
-    public GameObject unit;
+    GameObject unit;
     public Ressources rm;
-    public GameObject gegner;
+    GameObject gegner;
+    public Texture[] fabrikDamage; 
     GameObject feld;
+    GameObject fabrik;
     GameObject aktionsmenue;
     public GameObject[] grid;
+    public Fabrik fb;
 
     Unit test;
     public GameObject anweisungText;
@@ -34,11 +37,13 @@ public class MoveUnit : MonoBehaviour
     public GameObject rwtext;
 
     public GameObject gewinner;
+    
     bool unitselected = false;
     bool feldselected = false;
     bool zielfeldsuche = false;
     bool buttonclicked = false;
     bool waehlegegner = false;
+    bool waehlefabrik = false;
     bool gegnergewaehlt = false;
     int phase = 0;
 
@@ -140,12 +145,24 @@ public class MoveUnit : MonoBehaviour
 
             if (select.tag == "Einheit" && gegner == null && waehlegegner)
             {
+                waehlefabrik = false;
                 gegner = select;
                 gegner.GetComponent<Outline>().OutlineColor = Color.red;
                 gegner.GetComponent<Outline>().enabled = true;
                 gegnergewaehlt = true;
                 select = null;
             }
+
+            if(select.tag == "HexFields" && fabrik==null && waehlefabrik)
+            {
+                waehlegegner = false;
+                fabrik = select;
+                fabrik.GetComponent<Outline>().OutlineColor = Color.red;
+                fabrik.GetComponent<Outline>().enabled = true;
+
+                select = null;
+            }
+
 
             if (select.tag == "HexFields" && feld == null && !feldselected && unitselected && zielfeldsuche)
             {
@@ -251,7 +268,7 @@ public class MoveUnit : MonoBehaviour
                     feld.GetComponent<FieldHelper>().unitID = unit.GetComponent<UnitHelper>().unitID;
                     beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
                     feld.GetComponent<FieldHelper>().hasUnit = true;
-                    CheckVictory(unit, feld);
+                    //CheckVictory(unit, feld);
                     rm.RefreshDisplay(PassthrougData.currentPlayer);
                 }
                 else if(unit.GetComponent<UnitHelper>().fieldID != feld.GetComponent<FieldHelper>().id)
@@ -267,7 +284,7 @@ public class MoveUnit : MonoBehaviour
                             feld.GetComponent<FieldHelper>().unitID = unit.GetComponent<UnitHelper>().unitID;
                             beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
                             feld.GetComponent<FieldHelper>().hasUnit = true;
-                            CheckVictory(unit, feld);
+                            //CheckVictory(unit, feld);
                             rm.RefreshDisplay(PassthrougData.currentPlayer);
                         }
                     }
@@ -330,6 +347,7 @@ public class MoveUnit : MonoBehaviour
         {
             anweisungText.GetComponent<TextMeshProUGUI>().text = "Ziel wählen!";
             waehlegegner = true;
+            waehlefabrik = true;
             buttonclicked = true;
             angriffButtonText.GetComponent<Text>().text = "Bestätigen";
             bewegenButton.SetActive(false);
@@ -338,45 +356,62 @@ public class MoveUnit : MonoBehaviour
         {
             anweisungText.GetComponent<TextMeshProUGUI>().text = "";
             angriffButtonText.GetComponent<Text>().text = "Angriff";
-            for(int i = 0; i < grid.Length; i++)
+            if(waehlegegner && !waehlefabrik)
             {
-                if(grid[i].GetComponent<FieldHelper>().id == unit.GetComponent<UnitHelper>().fieldID)
+                for (int i = 0; i < grid.Length; i++)
                 {
-                    fieldunit = grid[i];
+                    if (grid[i].GetComponent<FieldHelper>().id == unit.GetComponent<UnitHelper>().fieldID)
+                    {
+                        fieldunit = grid[i];
+                    }
+
+                    if (grid[i].GetComponent<FieldHelper>().id == gegner.GetComponent<UnitHelper>().fieldID)
+                    {
+                        fieldopponent = grid[i];
+                    }
                 }
 
-                if (grid[i].GetComponent<FieldHelper>().id == gegner.GetComponent<UnitHelper>().fieldID)
+                rw = dbc.GetRW(unit.GetComponent<UnitHelper>().unitID);
+
+                if ((Math.Abs(fieldunit.GetComponent<FieldHelper>().x - fieldunit.GetComponent<FieldHelper>().y) - Math.Abs(fieldopponent.GetComponent<FieldHelper>().x - fieldopponent.GetComponent<FieldHelper>().y)) < rw + 1)
                 {
-                    fieldopponent = grid[i];
+                    validtarget = true;
                 }
-            }
+                else
+                {
+                    validtarget = false;
+                }
 
-            rw = dbc.GetRW(unit.GetComponent<UnitHelper>().unitID);
+                int distance = (Math.Abs(fieldunit.GetComponent<FieldHelper>().x - fieldunit.GetComponent<FieldHelper>().y) - Math.Abs(fieldopponent.GetComponent<FieldHelper>().x - fieldopponent.GetComponent<FieldHelper>().y));
 
-            if((Math.Abs(fieldunit.GetComponent<FieldHelper>().x - fieldunit.GetComponent<FieldHelper>().y) - Math.Abs(fieldopponent.GetComponent<FieldHelper>().x - fieldopponent.GetComponent<FieldHelper>().y)) < rw+1){
-                validtarget = true;
+                if (gegnergewaehlt && validtarget)
+                {
+                    km.SetAngreifer(unit);
+                    km.SetVerteidiger(gegner);
+                    km.SetDistance(distance);
+                    km.ShowKampfMenu();
+                }
+                else
+                {
+                    DeselectFeld();
+                    DeselectUnit();
+                    DeselectGegner();
+                }
+                bewegenButton.SetActive(true);
+
             }
             else
             {
-                validtarget = false;
+                int schaden = dbc.GetAtt(unit.GetComponent<UnitHelper>().unitID);
+                if(PassthrougData.currentPlayer == 1)
+                {
+                    fb.SetLPFabrikR(schaden);
+                }
+                else
+                {
+                    fb.SetLPFabrikL(schaden);
+                }
             }
-
-            int distance = (Math.Abs(fieldunit.GetComponent<FieldHelper>().x - fieldunit.GetComponent<FieldHelper>().y) - Math.Abs(fieldopponent.GetComponent<FieldHelper>().x - fieldopponent.GetComponent<FieldHelper>().y));
-
-            if (gegnergewaehlt && validtarget)
-            {
-                km.SetAngreifer(unit);
-                km.SetVerteidiger(gegner);
-                km.SetDistance(distance);
-                km.ShowKampfMenu();
-            }
-            else
-            {
-                DeselectFeld();
-                DeselectUnit();
-                DeselectGegner();
-            }
-            bewegenButton.SetActive(true);
             buttonclicked = false;
             phase = -1;
         }

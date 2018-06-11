@@ -17334,6 +17334,23 @@ MonoBehaviour:
   id: 0
   x: 1
   y: 0
+--- !u!114 &1006690170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1006690163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e8cd91b26e6f748adba51d96f67661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fabrikLPL: 0
+  fabrikLPR: 0
+  fabrikL: {fileID: 1006690163}
+  fabrikR: {fileID: 1606642806}
+  fabrikDamage: []
+  gm: {fileID: 0}
 --- !u!1 &1014473706
 GameObject:
   m_ObjectHideFlags: 0
@@ -27179,9 +27196,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c1ac6af45e8094da4de9e3413b6328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 0}
   rm: {fileID: 149742181}
-  gegner: {fileID: 0}
+  fabrikDamage:
+  - {fileID: 2800000, guid: ee8a905356a35b84aaa59d61b38f974f, type: 3}
+  - {fileID: 2800000, guid: 6e5b9f5482e1eec49b25d015684cf0d1, type: 3}
+  - {fileID: 2800000, guid: c1b619752d9978e4fb6ba03c8ce077eb, type: 3}
+  - {fileID: 2800000, guid: 5f2168821ce9f0d49b140a12e3eb37d6, type: 3}
+  - {fileID: 2800000, guid: 57a0e3f492f6a0b489be66ba636a875e, type: 3}
+  - {fileID: 2800000, guid: d44d1656c11035e44a374b81c75ace2b, type: 3}
+  - {fileID: 2800000, guid: 0247b90b6e7689d44a257ea665c03763, type: 3}
+  - {fileID: 2800000, guid: 549dd65696da920428586ddd3cf43390, type: 3}
+  - {fileID: 2800000, guid: 160cdcb0f3b5e354e9381b1060f8a951, type: 3}
+  - {fileID: 2800000, guid: e6d6186f08982964ea0d1975712f17a8, type: 3}
   grid:
   - {fileID: 1968718533}
   - {fileID: 1006690163}
@@ -27228,6 +27254,7 @@ MonoBehaviour:
   - {fileID: 907297214}
   - {fileID: 1415917582}
   - {fileID: 818576638}
+  fb: {fileID: 1606642813}
   anweisungText: {fileID: 340242228}
   bewegenButtonText: {fileID: 1901940527}
   angriffButtonText: {fileID: 1114001106}
@@ -27533,6 +27560,34 @@ MonoBehaviour:
   id: 0
   x: 8
   y: 0
+--- !u!114 &1606642813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1606642806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e8cd91b26e6f748adba51d96f67661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fabrikLPL: 0
+  fabrikLPR: 0
+  fabrikL: {fileID: 1006690163}
+  fabrikR: {fileID: 1606642806}
+  fabrikDamage:
+  - {fileID: 2800000, guid: ee8a905356a35b84aaa59d61b38f974f, type: 3}
+  - {fileID: 2800000, guid: 6e5b9f5482e1eec49b25d015684cf0d1, type: 3}
+  - {fileID: 2800000, guid: c1b619752d9978e4fb6ba03c8ce077eb, type: 3}
+  - {fileID: 2800000, guid: 5f2168821ce9f0d49b140a12e3eb37d6, type: 3}
+  - {fileID: 2800000, guid: 57a0e3f492f6a0b489be66ba636a875e, type: 3}
+  - {fileID: 2800000, guid: d44d1656c11035e44a374b81c75ace2b, type: 3}
+  - {fileID: 2800000, guid: 0247b90b6e7689d44a257ea665c03763, type: 3}
+  - {fileID: 2800000, guid: 549dd65696da920428586ddd3cf43390, type: 3}
+  - {fileID: 2800000, guid: 160cdcb0f3b5e354e9381b1060f8a951, type: 3}
+  - {fileID: 2800000, guid: e6d6186f08982964ea0d1975712f17a8, type: 3}
+  - {fileID: 2800000, guid: 120eea32af7337d478d4c8d76372e1ea, type: 3}
+  gm: {fileID: 1565836639}
 --- !u!1 &1607131940
 GameObject:
   m_ObjectHideFlags: 0
