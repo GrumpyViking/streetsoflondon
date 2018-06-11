@@ -27154,6 +27154,7 @@ MonoBehaviour:
   rc: {fileID: 149742181}
   utc: {fileID: 702810906}
   mu: {fileID: 1565836641}
+  b: {fileID: 1968718534}
 --- !u!4 &1565836640
 Transform:
   m_ObjectHideFlags: 0
@@ -33613,6 +33614,20 @@ GameObject:
   m_PrefabParentObject: {fileID: 1811726890462408, guid: 23d562071da262f4680be3f27405e11d,
     type: 2}
   m_PrefabInternal: {fileID: 1472500093}
+--- !u!114 &1968718534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1968718533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c576c3f3ec635540975f945bfaeadf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gold: 0
+  bank: {fileID: 1968718533}
+  dbc: {fileID: 1719293103}
 --- !u!114 &1968718536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36728,6 +36743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameTK: 
   wirkungTK: 
+  effekt: 
   wirkungsbereich: {fileID: 0}
   trickkartenbild: {fileID: 0}
   trickkartenMenu: {fileID: 2136368423}

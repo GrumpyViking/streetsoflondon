@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour {
     public Ressources rc;
     public UnitTypCards utc;
     public MoveUnit mu;
+    public Bank b;
 
     private void Start()
     {
@@ -192,6 +193,8 @@ public class GameManager : MonoBehaviour {
     {
         rc.AktualisiereGold(1);
         rc.AktualisiereGold(2);
+        b.HasUnit();
+        b.IncreaseGold();
         turn = 0;
         overallTurns++;
     }

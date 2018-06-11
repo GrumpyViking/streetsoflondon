@@ -29,8 +29,11 @@ public class FieldBuilder : MonoBehaviour {
         dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 0 + 2 +  ",'Fabrik',99)");
         dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 0 + 3 + ",'Fabrik',99)");
         fields[0].GetComponent<Renderer>().material.mainTexture = staticTextures[0];
+        fields[0].GetComponent<FieldHelper>().id = 2;
         fields[23].GetComponent<Renderer>().material.mainTexture = staticTextures[0];
+        fields[23].GetComponent<FieldHelper>().id = 3;
         fields[22].GetComponent<Renderer>().material.mainTexture = staticTextures[1];
+        fields[22].GetComponent<FieldHelper>().id = 1;
     }
 
     void Initialise()

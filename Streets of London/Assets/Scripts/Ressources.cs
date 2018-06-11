@@ -15,15 +15,12 @@ public class Ressources : MonoBehaviour {
     public void AktualisiereGold(int playerID)
     {
         int goldNextRound=0;
-        //RefreshDisplay(playerID);
         goldNextRound = dbc.GoldPlayer(playerID) + CalcIncome(playerID);
-
         dbc.WriteToDB("Update Spieler Set Gold = " + goldNextRound + " Where ID="+playerID+"");
     }
 
     public void RefreshDisplay(int playerID)
     {
-        Debug.Log("Test");
         gold.GetComponent<Text>().text = "Gold: " + Convert.ToString(dbc.GoldPlayer(playerID));
         zusatzgold.GetComponent<Text>().text = "+ " + CalcIncome(playerID);
     }
@@ -52,7 +49,6 @@ public class Ressources : MonoBehaviour {
                     
                 }
             }
-            
         }
 
         return (goldIncome+baseIncome);

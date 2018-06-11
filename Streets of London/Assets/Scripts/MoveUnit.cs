@@ -179,6 +179,7 @@ public class MoveUnit : MonoBehaviour
             anweisungText.GetComponent<TextMeshProUGUI>().text = "Zielfeld wählen!";
             bewegenButtonText.GetComponent<Text>().text = "Bestätigen";
             zielfeldsuche = true;
+            waehlegegner = false;
             angriffButton.SetActive(false);
             buttonclicked = true;
             if (unit.GetComponent<UnitHelper>().fieldID == 0)
@@ -210,7 +211,6 @@ public class MoveUnit : MonoBehaviour
             else
             {
                 int aktionsp = dbc.GetAP(unit.GetComponent<UnitHelper>().unitID);
-                int offset;
                 int compare;
                 for (int i = 0; i < grid.Length; i++)
                 {
@@ -220,7 +220,6 @@ public class MoveUnit : MonoBehaviour
                         compare = (grid[i].GetComponent<FieldHelper>().x - grid[i].GetComponent<FieldHelper>().y);
                         for (int j = 0; j < grid.Length; j++)
                         {
-                            Debug.Log("Test " + Math.Abs(compare - (grid[j].GetComponent<FieldHelper>().x - grid[j].GetComponent<FieldHelper>().y)));
                             if(compare - (grid[j].GetComponent<FieldHelper>().x - grid[j].GetComponent<FieldHelper>().y) <= aktionsp && compare - (grid[j].GetComponent<FieldHelper>().x - grid[j].GetComponent<FieldHelper>().y)>= -1*aktionsp)
                             {
                                 grid[j].GetComponent<Outline>().enabled = true;
@@ -312,10 +311,8 @@ public class MoveUnit : MonoBehaviour
         }
         if (fabrik.GetComponent<FieldHelper>().hasUnit)
         {
-            Debug.Log(dbc.GetUnitPlayerID(fabrik.GetComponent<FieldHelper>().unitID));
             if(dbc.GetUnitPlayerID(fabrik.GetComponent<FieldHelper>().unitID) == PassthrougData.currentPlayer)
             {
-
                 gm.GameOver();   
             }
         }
@@ -370,7 +367,6 @@ public class MoveUnit : MonoBehaviour
             {
                 km.SetAngreifer(unit);
                 km.SetVerteidiger(gegner);
-                Debug.Log("Distanz " + distance);
                 km.SetDistance(distance);
                 km.ShowKampfMenu();
             }
