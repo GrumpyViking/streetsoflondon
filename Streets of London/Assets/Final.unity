@@ -3763,7 +3763,7 @@ MonoBehaviour:
   - {fileID: 818576638}
   staticTextures:
   - {fileID: 2800000, guid: 8572c6ee12fd5044592e327986821146, type: 3}
-  - {fileID: 2800000, guid: 30e5ca8f5d1052347a73b6e1b834dfe9, type: 3}
+  - {fileID: 2800000, guid: 0705852707b898144b132191b848c4a1, type: 3}
   timer: 10
   dbc: {fileID: 1719293103}
   fieldImages:
@@ -33627,6 +33627,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   bank: {fileID: 1968718533}
+  bankGold:
+  - {fileID: 2800000, guid: 0705852707b898144b132191b848c4a1, type: 3}
+  - {fileID: 2800000, guid: e8ee7eae282b2f44da227832621d4f08, type: 3}
+  - {fileID: 2800000, guid: 7bd62b2d986f8924e8fc21a34c6a4c79, type: 3}
+  - {fileID: 2800000, guid: efeccf7feeb13c34b9769c81df4b8ff2, type: 3}
+  - {fileID: 2800000, guid: 96623330a1ad1a14c88a643a80ca4e6d, type: 3}
+  - {fileID: 2800000, guid: 91db45b247000c84b825aaa7da9e22a3, type: 3}
+  - {fileID: 2800000, guid: 56241ac6689bb3c44be5b48be17d2b9c, type: 3}
+  - {fileID: 2800000, guid: ab792316c84076e4699f537610b5d4c3, type: 3}
+  - {fileID: 2800000, guid: a571a01c81156ef40a399dde20f08d9f, type: 3}
   dbc: {fileID: 1719293103}
 --- !u!114 &1968718536
 MonoBehaviour:

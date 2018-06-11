@@ -6,6 +6,7 @@ public class Bank : MonoBehaviour {
 
     public int gold;
     public GameObject bank;
+    public Texture[] bankGold;
 
     public DataBaseController dbc;
 
@@ -23,6 +24,7 @@ public class Bank : MonoBehaviour {
             int goldNew = dbc.GoldPlayer(playerID) + gold;
             dbc.WriteToDB("Update Spieler Set Gold = " + goldNew + " Where ID=" + playerID + "");
             gold = 0;
+            bank.GetComponent<Renderer>().material.mainTexture = bankGold[gold];
         }
     }
 
@@ -31,6 +33,7 @@ public class Bank : MonoBehaviour {
         if(!bank.GetComponent<FieldHelper>().hasUnit && gold < 8)
         {
             gold++;
+            bank.GetComponent<Renderer>().material.mainTexture = bankGold[gold];
         }
     }
 }
