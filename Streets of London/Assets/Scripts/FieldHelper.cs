@@ -10,4 +10,10 @@ public class FieldHelper : MonoBehaviour {
     public int id;
     public int x;
     public int y;
+    public int z;
+
+    public bool isfabrik;
+    public int x2;
+    public int y2;
+    public int z2;
 }

@@ -199,6 +199,7 @@ public class MoveUnit : MonoBehaviour
             waehlegegner = false;
             angriffButton.SetActive(false);
             buttonclicked = true;
+            //Markierung der Felder wenn einheit nicht auf dem Spielfeld ist
             if (unit.GetComponent<UnitHelper>().fieldID == 0)
             {
                 if (PassthrougData.currentPlayer == 1)
@@ -225,23 +226,36 @@ public class MoveUnit : MonoBehaviour
                     }
                 }
             }
+            //Markierung der Felder in reichweite
             else
             {
                 int aktionsp = dbc.GetAP(unit.GetComponent<UnitHelper>().unitID);
-                int compare;
-                for (int i = 0; i < grid.Length; i++)
+                GameObject unitfield=null;
+                for(int i = 0; i < grid.Length; i++)
                 {
-                    if (grid[i].GetComponent<FieldHelper>().id == unit.GetComponent<UnitHelper>().fieldID)
+                    if(unit.GetComponent<UnitHelper>().fieldID == grid[i].GetComponent<FieldHelper>().id)
                     {
-                        grid[i].GetComponent<Outline>().enabled = true;
-                        compare = (grid[i].GetComponent<FieldHelper>().x - grid[i].GetComponent<FieldHelper>().y);
-                        for (int j = 0; j < grid.Length; j++)
+                        unitfield = grid[i];
+                    }
+                }
+                for (int x = (-1 * aktionsp); x <= aktionsp; x++)
+                {
+                    for (int y = (-1 * aktionsp); y <= aktionsp; y++)
+                    {
+                        for (int z = (-1 * aktionsp); z <= aktionsp; z++)
                         {
-                            if(compare - (grid[j].GetComponent<FieldHelper>().x - grid[j].GetComponent<FieldHelper>().y) <= aktionsp && compare - (grid[j].GetComponent<FieldHelper>().x - grid[j].GetComponent<FieldHelper>().y)>= -1*aktionsp)
+                            foreach(GameObject e in grid)
                             {
-                                grid[j].GetComponent<Outline>().enabled = true;
+                                if((((e.GetComponent<FieldHelper>().x + x) + (e.GetComponent<FieldHelper>().y + y) + (e.GetComponent<FieldHelper>().z + z)) == 0) && !e.GetComponent<FieldHelper>().isfabrik)
+                                {
+                                    if(Distance(unitfield, e) <= aktionsp)
+                                    {
+                                        e.GetComponent<Outline>().OutlineColor = Color.white;
+                                        e.GetComponent<Outline>().enabled = true;
+                                    }
+                                    
+                                }
                             }
-                                                  
                         }
                     }
                 }
@@ -302,6 +316,13 @@ public class MoveUnit : MonoBehaviour
         }
         phase++;
     }
+
+    int Distance(GameObject unitfield, GameObject fieldinreach)
+    {
+        int maxxy = Math.Max(Math.Abs(unitfield.GetComponent<FieldHelper>().x - fieldinreach.GetComponent<FieldHelper>().x), Math.Abs(unitfield.GetComponent<FieldHelper>().y - fieldinreach.GetComponent<FieldHelper>().y));
+        return Math.Max(maxxy, Math.Abs(unitfield.GetComponent<FieldHelper>().z - fieldinreach.GetComponent<FieldHelper>().z));
+    }
+    
 
     void CheckVictory(GameObject unit, GameObject feld)
     {
