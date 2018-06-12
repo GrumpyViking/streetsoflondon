@@ -109,6 +109,15 @@ public class MoveUnit : MonoBehaviour
             }
         }
     }
+    public void DeselectFabrik()
+    {
+        if (fabrik != null)
+        {
+            fabrik.GetComponent<Outline>().enabled = false;
+            fabrik = null;
+            waehlefabrik = false;
+        }
+    }
     void SelectUnit()
     {
         RaycastHit hitInfo;
@@ -296,14 +305,15 @@ public class MoveUnit : MonoBehaviour
                             oldfeld.GetComponent<FieldHelper>().unitID = 0;
                             unit.GetComponent<UnitHelper>().fieldID = feld.GetComponent<FieldHelper>().id;
                             feld.GetComponent<FieldHelper>().unitID = unit.GetComponent<UnitHelper>().unitID;
-                            beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
                             feld.GetComponent<FieldHelper>().hasUnit = true;
                             //CheckVictory(unit, feld);
                             rm.RefreshDisplay(PassthrougData.currentPlayer);
                         }
                     }
-                } 
-                
+                    beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
+
+                }
+
                 DeselectFeld();
                 DeselectUnit();
             }
@@ -432,6 +442,8 @@ public class MoveUnit : MonoBehaviour
                 {
                     fb.SetLPFabrikL(schaden);
                 }
+                DeselectUnit();
+                DeselectFabrik();
             }
             buttonclicked = false;
             phase = -1;
