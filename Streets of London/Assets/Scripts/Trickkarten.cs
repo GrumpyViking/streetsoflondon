@@ -8,10 +8,14 @@ public class Trickkarten : MonoBehaviour {
 
     public string nameTK;
     public string wirkungTK;
-    public string effekt;
- 
+    public string effekt; 
     public Sprite wirkungsbereich;
     public Sprite trickkartenbild;
+
+    public string[] activeTKSpieler1 = { null, null, null, null, null, null, null, null };
+    public string[] activeTKSpieler2 = { null, null, null, null, null, null, null, null };
+    public int[] activeTKDauer1 = { 0, 0, 0, 0, 0, 0, 0, 0 };
+    public int[] activeTKDauer2 = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
     public GameObject trickkartenMenu;
     public GameObject slot1;
@@ -521,15 +525,115 @@ public class Trickkarten : MonoBehaviour {
 
     public void InvestitionEffect()
     {
+        SaveEffect("Investition", 2);
         if (PassthrougData.currentPlayer == 1)
         {
-
+            
         }
         else
         {
             
         }
 
+    }
+
+    public void SaveEffect(string effectname, int effectduration)
+    {
+        if (PassthrougData.currentPlayer == 1)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                if (activeTKSpieler1[i] == null)
+                {
+                    break;
+                }
+                else
+                {
+                    activeTKSpieler1[i] = effectname;
+                    activeTKDauer1[i] = effectduration;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                if (activeTKSpieler2[i] == null)
+                {
+                    break;
+                }
+                else
+                {
+                    activeTKSpieler2[i] = effectname;
+                    activeTKDauer2[i] = effectduration;
+                    break;
+                }
+            }
+        }
+    }
+
+    public void CheckActiveEffects()
+    {
+        if (PassthrougData.currentPlayer == 1)
+        {
+            for ( int i = 0; i < 8; i++ )
+            {
+                if (activeTKSpieler1[i] == null)
+                {
+                    Debug.Log(activeTKSpieler1[i]);
+                    break;
+                }
+                else
+                {
+                    if (activeTKDauer1[i] != 0)
+                    {
+                        activeTKDauer1[i]--;
+                    }
+                    else
+                    {
+                        activeTKSpieler1[i] = null;
+                        for (int j = i; j < 7; j++)
+                        {
+                            activeTKSpieler1[i] = activeTKSpieler1[i + 1];
+                            activeTKDauer1[i] = activeTKDauer1[i + 1];
+                        }
+                        activeTKSpieler1[7] = null;
+                        activeTKDauer1[7] = 0;
+                    }
+                        
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                if (activeTKSpieler2[i] == null)
+                {
+                    Debug.Log(activeTKSpieler2[i]);
+                    break;
+                }
+                else
+                {
+                    if (activeTKDauer2[i] != 0)
+                    {
+                        activeTKDauer2[i]--;
+                    }
+                    else
+                    {
+                        activeTKSpieler2[i] = null;
+                        for (int j = i; j < 7; j++)
+                        {
+                            activeTKSpieler2[i] = activeTKSpieler2[i + 1];
+                            activeTKDauer2[i] = activeTKDauer2[i + 1];
+                        }
+                        activeTKSpieler2[7] = null;
+                        activeTKDauer2[7] = 0;
+                    }
+
+                }
+            }
+        }
     }
 }
 
