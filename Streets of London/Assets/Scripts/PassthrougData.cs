@@ -1,12 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PassthrougData : MonoBehaviour {
+/*
+ * Ermöglicht zugriff auf grundlegende Informationen für andere Skripte
+ * 
+ */
+ 
+public class PassthroughData : MonoBehaviour {
 
-    static public int startPlayer;
-    static public string player1;
-    static public string player2;
-    static public bool gameactiv;
-    static public int currentPlayer;
+    static public int startPlayer; //Beginnender Spieler
+    static public string player1; //Name Spieler1
+    static public string player2; //Name Spieler2
+    static public bool gameActiv; //Läuft das Spiel
+    static public int currentPlayer; //Spieler der Aktuell am zug ist
 }

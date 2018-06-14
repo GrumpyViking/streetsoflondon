@@ -1,22 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+/*
+ * CameraController Skript beinhaltet die Bewegung der Camera sowie das wechseln der Perspektiven für die Verschiedenen Aktionen.
+ */ 
 
 public class CameraController : MonoBehaviour {
 
-    public bool cameraActiv;
-    public float panSpeed = 20f;
-    public float panBorderThickness = 10f;
-    public Vector2 panLimit;
+    //Die beiden Kameraobjekte camOverHead dient zum Spielfeldaufbau cameraPlayer dient zur eigentlichen Spielansicht
     public Camera camOverHead;
     public Camera cameraPlayer;
 
+    //bietet möglichkeit die Kamera zu Aktivieren bzw Deaktivieren
+    public bool cameraActiv;
+    
+    //Geschwindigkeit der Kamera
+    public float panSpeed = 40f;
+    public float panBorderThickness = 10f;
+
+    //Zoom einstellungen
     public float maxZoom = 90f;
-    int side;
     public float zoomSpeed = 20f;
     public float minZoom = 20f;
     public float currentZoom = 65f;
+
+    //Hilfsvariablen side um zu Bestimmen welcher Spieler Aktiv ist und scroll zur vewendung des Mausrads bei der Zoom Funktion.
     float scroll;
+    int side;
+
+    /* 
+     * Deaktiviert das Bewegen der Kamera beim Start der Szene
+     * 
+     * Deaktiviert die SpielerKamera und setzt die Kamera für die draufansicht als Hauptkamera
+     */ 
 
     private void Start()
     {
@@ -24,14 +39,22 @@ public class CameraController : MonoBehaviour {
         cameraPlayer.enabled = false;
         cameraPlayer.tag = "Untagged";
         camOverHead.tag = "MainCamera";
-
     }
 
+    //Zusändig für das Aktivieren und Deaktivieren der Kamerabewegung
     public void SetCameraActiv(bool ca)
     {
         cameraActiv = ca;
     }
 
+    /*
+     * LateUpdate führt den Code nach allen anderen Update funktionen aus.
+     * 
+     * Verhindert so das unerwünschte anzeigen enstehen können z.B.: texturen noch nicht geladen, alte Anzeigen etc.
+     * 
+     * Führt entsprechend des Tastendruckes bzw der MousePosition die Bewegung der Kamera aus falls diese aktiv ist.
+     */
+     
     void LateUpdate () {
         if (cameraActiv && side == 1)   //Kamera Spieler1
         {
@@ -104,6 +127,10 @@ public class CameraController : MonoBehaviour {
 
     }
 
+    /*
+     * Wechselt die Kamerasicht entsprechend welcher Spieler am zug ist. 
+     */
+     
     public void SwitchSide(int side)
     {
         this.side = side;

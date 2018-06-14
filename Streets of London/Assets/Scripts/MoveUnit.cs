@@ -55,7 +55,7 @@ public class MoveUnit : MonoBehaviour
 
     private void Update()
     {
-        if (PassthrougData.gameactiv)
+        if (PassthroughData.gameActiv)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -211,7 +211,7 @@ public class MoveUnit : MonoBehaviour
             //Markierung der Felder wenn einheit nicht auf dem Spielfeld ist
             if (unit.GetComponent<UnitHelper>().fieldID == 0)
             {
-                if (PassthrougData.currentPlayer == 1)
+                if (PassthroughData.currentPlayer == 1)
                 {
                     for (int i = 2; i < 9; i++)
                     {
@@ -292,7 +292,7 @@ public class MoveUnit : MonoBehaviour
                     beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
                     feld.GetComponent<FieldHelper>().hasUnit = true;
                     //CheckVictory(unit, feld);
-                    rm.RefreshDisplay(PassthrougData.currentPlayer);
+                    rm.RefreshDisplay(PassthroughData.currentPlayer);
                 }
                 else if(unit.GetComponent<UnitHelper>().fieldID != feld.GetComponent<FieldHelper>().id)
                 {
@@ -307,7 +307,7 @@ public class MoveUnit : MonoBehaviour
                             feld.GetComponent<FieldHelper>().unitID = unit.GetComponent<UnitHelper>().unitID;
                             feld.GetComponent<FieldHelper>().hasUnit = true;
                             //CheckVictory(unit, feld);
-                            rm.RefreshDisplay(PassthrougData.currentPlayer);
+                            rm.RefreshDisplay(PassthroughData.currentPlayer);
                         }
                     }
                     beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
@@ -337,7 +337,7 @@ public class MoveUnit : MonoBehaviour
     void CheckVictory(GameObject unit, GameObject feld)
     {
         GameObject fabrik=null;
-        if(PassthrougData.currentPlayer == 1)
+        if(PassthroughData.currentPlayer == 1)
         {
             for(int i = 0; i < grid.Length; i++)
             {
@@ -359,7 +359,7 @@ public class MoveUnit : MonoBehaviour
         }
         if (fabrik.GetComponent<FieldHelper>().hasUnit)
         {
-            if(dbc.GetUnitPlayerID(fabrik.GetComponent<FieldHelper>().unitID) == PassthrougData.currentPlayer)
+            if(dbc.GetUnitPlayerID(fabrik.GetComponent<FieldHelper>().unitID) == PassthroughData.currentPlayer)
             {
                 gm.GameOver();   
             }
@@ -434,7 +434,7 @@ public class MoveUnit : MonoBehaviour
             else
             {
                 int schaden = dbc.GetAtt(unit.GetComponent<UnitHelper>().unitID);
-                if(PassthrougData.currentPlayer == 1)
+                if(PassthroughData.currentPlayer == 1)
                 {
                     fb.SetLPFabrikR(schaden);
                 }

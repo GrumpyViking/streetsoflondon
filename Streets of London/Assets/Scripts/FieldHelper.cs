@@ -1,6 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+/*
+ * Das FieldHelper Skript stellt den einzelnen feldern die informationen über die ID und die Koordinaten zur verfügung.
+ * 
+ * Des weiteren ob sich eine Einheit auf dem Feld befindet und wenn ja welche ID die hat.
+ * 
+ * Ist das feld eine Fabrik hat es zudem ein zweites koordinaten Set. 
+ */ 
 
 public class FieldHelper : MonoBehaviour {
 

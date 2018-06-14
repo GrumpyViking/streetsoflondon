@@ -131,7 +131,7 @@ public class TKPicker : MonoBehaviour {
     {
         if (gewaehlteTK != null)
         {
-            if (PassthrougData.currentPlayer == 1)
+            if (PassthroughData.currentPlayer == 1)
             {
                 for (int i = 0; i < 8; i++)
                 {

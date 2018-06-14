@@ -1,52 +1,67 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;  
 using UnityEngine.UI;
-using Mono.Data.Sqlite;
-using System.Data;
 
-
+/*
+ * MainMenuManager Klasse:
+ * 
+ * Dient der verwaltung der Hauptmenu Szene. 
+ * Sorgt dafür das die Namen der Spieler in die Datenbank geschrieben werden.
+ * Bestimmt entsprechend der Auswahl den Beginnenden Spieler
+ * 
+ * 
+ */
+ 
 public class MainMenuManager : MonoBehaviour {
 
+    //Variablen zur Bearbitung der Textobjekte
     public GameObject playerOneText;
     Text pot;
+
     public GameObject playerTwoText;
     Text ptt;
-    
+
     public GameObject ChooseStartingPlayer;
     Text ctp;
+
+    //Scripte auf die Zugegriffen wird
     private SwitchScene switchSceneScript;
     public DataBaseController dbc;
 
+    //Wird mit dem Klick auf den Startbutton ausgeführt
     public void StartGame()
     {
-        pot = playerOneText.GetComponent<Text>();
+        //Schreibt den Namen der spieler auf die variablen pot (playeronetext) & ptt (playertwotext)
+        pot = playerOneText.GetComponent<Text>(); 
         ptt = playerTwoText.GetComponent<Text>();
 
+        //Die auswahl welcher Spieler beginnt wird auf die variable ctp(choosestartingplayer) geschrieben
         ctp = ChooseStartingPlayer.GetComponent<Text>();
 
+        //Schreibt den Namen der Spieler und das dazugehörige Startgold in die Datenbank
         dbc.WriteToDB("INSERT INTO Spieler(ID, Name, Gold) VALUES (1,'" + pot.text + "',20)");
         dbc.WriteToDB("INSERT INTO Spieler(ID, Name, Gold) VALUES (2,'" + ptt.text + "' ,20)");
 
-        PassthrougData.startPlayer = StartingPlayer(ctp.text);
-        PassthrougData.player1 = pot.text;
-        PassthrougData.player2 = ptt.text;
+        //Das PassthroughData Script bietet die möglichkeit grundlegende Daten zurverfügungzustellen
+        PassthroughData.startPlayer = StartingPlayer(ctp.text);
+        PassthroughData.player1 = pot.text;
+        PassthroughData.player2 = ptt.text;
 
         //Wechsel zur Spielansicht
         switchSceneScript = GameObject.FindGameObjectWithTag("Scene").GetComponent<SwitchScene>();
-        switchSceneScript.ChangeScene(1);
+        switchSceneScript.ChangeScene(1);//Lädt die Szene 1 
     }
 
+    //Festlegen des aktuellen Spielern
     int StartingPlayer(string choise)
     {
         Debug.Log("Choise: " + choise);
         if(choise.Equals("Spieler 1"))
         {
-            PassthrougData.currentPlayer = 1;
+            PassthroughData.currentPlayer = 1;
             return 1;
         }else if (choise.Equals("Spieler 2"))
         {
-            PassthrougData.currentPlayer = 2;
+            PassthroughData.currentPlayer = 2;
             return 2;
         }
         else

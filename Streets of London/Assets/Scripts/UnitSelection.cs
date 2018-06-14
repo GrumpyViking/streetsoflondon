@@ -81,7 +81,7 @@ public class UnitSelection : MonoBehaviour {
         defaultPosition = zeitleiste.transform.localScale;
         unitSelectionScriptObject.SetActive(true);
         playerTextEinheitenAuswahl.GetComponent<Text>().text = playerTextSpielerMenu.GetComponent<Text>().text;
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             side = 0;
         }
@@ -304,15 +304,15 @@ public class UnitSelection : MonoBehaviour {
             Reset();
             ResetSelection();
             unitSelectionScriptObject.SetActive(false);
-            if (PassthrougData.currentPlayer == 1 )
+            if (PassthroughData.currentPlayer == 1 )
             {
-                PassthrougData.currentPlayer = 2;
-                sm.SetPlayer(PassthrougData.player2);
+                PassthroughData.currentPlayer = 2;
+                sm.SetPlayer(PassthroughData.player2);
             }
             else
             {
-                PassthrougData.currentPlayer = 1;
-                sm.SetPlayer(PassthrougData.player1);
+                PassthroughData.currentPlayer = 1;
+                sm.SetPlayer(PassthroughData.player1);
             }
             sm.PanelState(true);
         }

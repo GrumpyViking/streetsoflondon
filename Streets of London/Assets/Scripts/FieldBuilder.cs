@@ -40,7 +40,7 @@ public class FieldBuilder : MonoBehaviour {
     {
         if (isActiveAndEnabled == true)
         {
-            playerText.GetComponent<Text>().text = dbc.GetName(PassthrougData.currentPlayer);
+            playerText.GetComponent<Text>().text = dbc.GetName(PassthroughData.currentPlayer);
             defaultPosition = zeitleiste.transform.localScale;
             count = timer;
             timerstate = true;
@@ -107,15 +107,15 @@ public class FieldBuilder : MonoBehaviour {
         }
         else
         {
-            if (PassthrougData.currentPlayer == 1)
+            if (PassthroughData.currentPlayer == 1)
             {
-                PassthrougData.currentPlayer = 2;
-                sm.SetPlayer(PassthrougData.player2);
+                PassthroughData.currentPlayer = 2;
+                sm.SetPlayer(PassthroughData.player2);
             }
             else
             {
-                PassthrougData.currentPlayer = 1;
-                sm.SetPlayer(PassthrougData.player1);
+                PassthroughData.currentPlayer = 1;
+                sm.SetPlayer(PassthroughData.player1);
             }
         }
 

@@ -3,11 +3,17 @@ using System;
 using Mono.Data.Sqlite;
 using System.Data;
 
+/*
+ * Das DataBaseController Skript ist zuständig für die verwaltung der Datenbank.
+ * 
+ * 
+ */ 
+
 public class DataBaseController : MonoBehaviour {
 
-    IDbConnection dbconn;
+    IDbConnection dbConn;
     IDataReader reader;
-    IDbCommand dbcmd;
+    IDbCommand dbCMD;
     static bool init = false;
 
     //Initialisiert Datenbank wenn noch nicht initialisiert wurde
@@ -24,9 +30,9 @@ public class DataBaseController : MonoBehaviour {
         {
             Initialise();
         }        
-        string conn = "URI=file:" + Application.dataPath + "/DB/PlayerData.db"; //Path to database.
-        dbconn = (IDbConnection)new SqliteConnection(conn);
-        dbconn.Open(); //Open connection to the database.
+        string conn = "URI=file:" + Application.dataPath + "/DB/PlayerData.db"; //Pfad zur Datenbank
+        dbConn = (IDbConnection)new SqliteConnection(conn);
+        dbConn.Open(); //Öffnet die Verbindung
     }
     
     //Leert die Tabellen
@@ -37,17 +43,17 @@ public class DataBaseController : MonoBehaviour {
             Initialise();
         }
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "DELETE FROM Spieler";
-        dbcmd.ExecuteNonQuery();
-        dbcmd.CommandText = "DELETE FROM Einheitentyp";
-        dbcmd.ExecuteNonQuery();
-        dbcmd.CommandText = "DELETE FROM Einheit";
-        dbcmd.ExecuteNonQuery();
-        dbcmd.CommandText = "DELETE FROM Gelaendefelder";
-        dbcmd.ExecuteNonQuery();
-        dbcmd.CommandText = "VACUUM";
-        dbcmd.ExecuteNonQuery();
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "DELETE FROM Spieler";
+        dbCMD.ExecuteNonQuery(); //Führt dén Befehl ohne rückgabe von Informationen aus
+        dbCMD.CommandText = "DELETE FROM Einheitentyp";
+        dbCMD.ExecuteNonQuery(); //Führt dén Befehl ohne rückgabe von Informationen aus
+        dbCMD.CommandText = "DELETE FROM Einheit";
+        dbCMD.ExecuteNonQuery(); //Führt dén Befehl ohne rückgabe von Informationen aus
+        dbCMD.CommandText = "DELETE FROM Gelaendefelder";
+        dbCMD.ExecuteNonQuery(); //Führt dén Befehl ohne rückgabe von Informationen aus
+        dbCMD.CommandText = "VACUUM";
+        dbCMD.ExecuteNonQuery(); //Führt dén Befehl ohne rückgabe von Informationen aus
         CloseDBConnection();
     }
 
@@ -58,13 +64,13 @@ public class DataBaseController : MonoBehaviour {
         {
             Initialise();
         }
-        dbcmd.Dispose();
-        dbcmd = null;
-        dbconn.Close();
-        dbconn = null;
+        dbCMD.Dispose();
+        dbCMD = null;
+        dbConn.Close();
+        dbConn = null;
     }
 
-
+    //Alte funktion für universele abfrage
     public string RequestFromDB(string query)
     {
         if (!init)
@@ -73,9 +79,9 @@ public class DataBaseController : MonoBehaviour {
         }
         string buff = "";
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = query;
-        reader = dbcmd.ExecuteReader();
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = query;
+        reader = dbCMD.ExecuteReader();
         while (reader.Read())
         {
             int gold = reader.GetInt32(0);
@@ -98,9 +104,9 @@ public class DataBaseController : MonoBehaviour {
         }
         int id = 0;
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select ID from Einheit Where Name = '" + name + "' Order by ID DESC Limit 1";
-        id = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select ID from Einheit Where Name = '" + name + "' Order by ID DESC Limit 1";
+        id = Convert.ToInt32(dbCMD.ExecuteScalar().ToString());
 
         CloseDBConnection();
 
@@ -116,15 +122,15 @@ public class DataBaseController : MonoBehaviour {
         }
         string name = "";
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Name from Einheit Where ID = " + id + "";
-        name = dbcmd.ExecuteScalar().ToString();
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select Name from Einheit Where ID = " + id + "";
+        name = dbCMD.ExecuteScalar().ToString();
 
         CloseDBConnection();
 
         return name;
     }
-    //Eimheit Aktionspunkte
+    //Einheit Aktionspunkte
     public int GetAP(int id)
     {
         if (!init)
@@ -133,9 +139,9 @@ public class DataBaseController : MonoBehaviour {
         }
         int ap = 0;
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Aktionspunkte from Einheit Where ID =" + id + "";
-        ap = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select Aktionspunkte from Einheit Where ID =" + id + "";
+        ap = Convert.ToInt32(dbCMD.ExecuteScalar().ToString());
 
         CloseDBConnection();
 
@@ -151,9 +157,9 @@ public class DataBaseController : MonoBehaviour {
         }
         int lp = 0;
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Lebenspunkte from Einheit Where ID =" + id + "";
-        lp = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select Lebenspunkte from Einheit Where ID =" + id + "";
+        lp = Convert.ToInt32(dbCMD.ExecuteScalar().ToString());
 
         CloseDBConnection();
 
@@ -169,9 +175,9 @@ public class DataBaseController : MonoBehaviour {
         }
         int rw = 0;
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Reichweite from Einheit Where ID =" + id + "";
-        rw = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select Reichweite from Einheit Where ID =" + id + "";
+        rw = Convert.ToInt32(dbCMD.ExecuteScalar().ToString());
 
         CloseDBConnection();
 
@@ -187,9 +193,9 @@ public class DataBaseController : MonoBehaviour {
         }
         int att = 0;
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Angriffspunkte from Einheit Where ID =" + id + "";
-        att = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select Angriffspunkte from Einheit Where ID =" + id + "";
+        att = Convert.ToInt32(dbCMD.ExecuteScalar().ToString());
 
         CloseDBConnection();
 
@@ -205,9 +211,9 @@ public class DataBaseController : MonoBehaviour {
         }
         int def = 0;
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Verteidigungspunkte from Einheit Where ID =" + id + "";
-        def = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select Verteidigungspunkte from Einheit Where ID =" + id + "";
+        def = Convert.ToInt32(dbCMD.ExecuteScalar().ToString());
 
         CloseDBConnection();
 
@@ -223,9 +229,9 @@ public class DataBaseController : MonoBehaviour {
         }
         int pid = 0;
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select SpielerID from Einheit Where ID = " + id + "";
-        pid = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select SpielerID from Einheit Where ID = " + id + "";
+        pid = Convert.ToInt32(dbCMD.ExecuteScalar().ToString());
 
         CloseDBConnection();
 
@@ -241,9 +247,9 @@ public class DataBaseController : MonoBehaviour {
         }
         int price = 0;
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Kosten from EinheitenTyp Where ID =" + id;
-        reader = dbcmd.ExecuteReader();
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select Kosten from EinheitenTyp Where ID =" + id;
+        reader = dbCMD.ExecuteReader();
         while (reader.Read())
         {
             price = reader.GetInt32(0);
@@ -264,9 +270,9 @@ public class DataBaseController : MonoBehaviour {
         }
         string name = "";
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Name from EinheitenTyp Where ID =" + id;
-        reader = dbcmd.ExecuteReader();
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select Name from EinheitenTyp Where ID =" + id;
+        reader = dbCMD.ExecuteReader();
         while (reader.Read())
         {
             name = reader.GetString(0);
@@ -288,13 +294,14 @@ public class DataBaseController : MonoBehaviour {
         }
         int bonus = 0;
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Bonus from Gelaendefelder Where ID =" + id+"";
-        bonus = Convert.ToInt32(dbcmd.ExecuteScalar());
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select Bonus from Gelaendefelder Where ID =" + id+"";
+        bonus = Convert.ToInt32(dbCMD.ExecuteScalar());
         CloseDBConnection();
         return bonus;
     }
 
+    //Name des Geländefeldes
     public string GetFieldName(int id)
     {
         if (!init)
@@ -303,9 +310,9 @@ public class DataBaseController : MonoBehaviour {
         }
         string name = "";
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Name from Gelaendefelder Where ID =" + id + "";
-        name = dbcmd.ExecuteScalar().ToString();
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select Name from Gelaendefelder Where ID =" + id + "";
+        name = dbCMD.ExecuteScalar().ToString();
         CloseDBConnection();
         return name;
     }
@@ -319,9 +326,9 @@ public class DataBaseController : MonoBehaviour {
         }
         int num = 0;
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select ID from Gelaendefelder Where Name = '" + name + "'";
-        reader = dbcmd.ExecuteReader();
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select ID from Gelaendefelder Where Name = '" + name + "'";
+        reader = dbCMD.ExecuteReader();
         while (reader.Read())
         {
             num++;
@@ -343,9 +350,9 @@ public class DataBaseController : MonoBehaviour {
         }
         string name = "";
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Name from Spieler Where ID =" + id;
-        name = dbcmd.ExecuteScalar().ToString();
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select Name from Spieler Where ID =" + id;
+        name = dbCMD.ExecuteScalar().ToString();
         CloseDBConnection();
         return name;
     }
@@ -359,9 +366,9 @@ public class DataBaseController : MonoBehaviour {
         }
         int gold = 0;
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select Gold from Spieler Where ID =" + playerid+"";
-        gold = Convert.ToInt32(dbcmd.ExecuteScalar().ToString());
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select Gold from Spieler Where ID =" + playerid+"";
+        gold = Convert.ToInt32(dbCMD.ExecuteScalar().ToString());
         
         CloseDBConnection();
 
@@ -378,9 +385,9 @@ public class DataBaseController : MonoBehaviour {
         int[] id = new int[5];
         int count = 0;
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select ID from Einheitentyp Where SpielerID =" + playerid;
-        reader = dbcmd.ExecuteReader();
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select ID from Einheitentyp Where SpielerID =" + playerid;
+        reader = dbCMD.ExecuteReader();
         while (reader.Read())
         {
             id[count] = reader.GetInt32(0);
@@ -403,9 +410,9 @@ public class DataBaseController : MonoBehaviour {
         }
         int num = 0;
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select ID from Einheit Where SpielerID =" + playerid;
-        reader = dbcmd.ExecuteReader();
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select ID from Einheit Where SpielerID =" + playerid;
+        reader = dbCMD.ExecuteReader();
         while (reader.Read())
         {
             num++;
@@ -417,10 +424,7 @@ public class DataBaseController : MonoBehaviour {
 
         return num;
     }
-
-    
-
-    
+        
     //Methode zum schreiben in die Datenbank
     public void WriteToDB(string query)
     {
@@ -429,9 +433,9 @@ public class DataBaseController : MonoBehaviour {
             Initialise();
         }
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = query;
-        dbcmd.ExecuteNonQuery();
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = query;
+        dbCMD.ExecuteNonQuery();
         CloseDBConnection();
     }
 
@@ -444,9 +448,9 @@ public class DataBaseController : MonoBehaviour {
         }
         int maxNum = 0;
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "Select MaxAnzahl from Einheitentyp Where ID =" + id;
-        reader = dbcmd.ExecuteReader();
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select MaxAnzahl from Einheitentyp Where ID =" + id;
+        reader = dbCMD.ExecuteReader();
         while (reader.Read())
         {
             maxNum = reader.GetInt32(0);
@@ -467,9 +471,9 @@ public class DataBaseController : MonoBehaviour {
         int anz=0;
         string check;
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "SELECT COUNT(*) from Einheit";
-        check = dbcmd.ExecuteScalar().ToString();
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "SELECT COUNT(*) from Einheit";
+        check = dbCMD.ExecuteScalar().ToString();
 
         if (check.Equals("0"))
         {
@@ -478,8 +482,8 @@ public class DataBaseController : MonoBehaviour {
         }
         else
         {
-            dbcmd.CommandText = "Select ID from Einheit Where SpielerID =" + id;
-            reader = dbcmd.ExecuteReader();
+            dbCMD.CommandText = "Select ID from Einheit Where SpielerID =" + id;
+            reader = dbCMD.ExecuteReader();
 
             while (reader.Read())
             {
@@ -503,9 +507,9 @@ public class DataBaseController : MonoBehaviour {
         int count = 0;
         string check;
         OpenDBConnection();
-        dbcmd = dbconn.CreateCommand();
-        dbcmd.CommandText = "SELECT COUNT(*) from Einheit";
-        check = dbcmd.ExecuteScalar().ToString();
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "SELECT COUNT(*) from Einheit";
+        check = dbCMD.ExecuteScalar().ToString();
 
         if (check.Equals("0"))
         {
@@ -515,9 +519,9 @@ public class DataBaseController : MonoBehaviour {
         else
         {
             string anzahl;
-            dbcmd.CommandText = "Select COUNT(*) from Einheit Where Name =  '"+name+"' And SpielerID = "+playerid+"";
+            dbCMD.CommandText = "Select COUNT(*) from Einheit Where Name =  '"+name+"' And SpielerID = "+playerid+"";
 
-            anzahl = dbcmd.ExecuteScalar().ToString();
+            anzahl = dbCMD.ExecuteScalar().ToString();
             Debug.Log(anzahl);
             CloseDBConnection();
 

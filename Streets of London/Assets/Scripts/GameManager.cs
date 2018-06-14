@@ -43,17 +43,17 @@ public class GameManager : MonoBehaviour {
     private void Start()
     {
         //Default werte für test zwecke
-        if (PassthrougData.player1 == null)
+        if (PassthroughData.player1 == null)
         {
             dbc.WriteToDB("INSERT INTO Spieler(ID, Name, Gold) VALUES (1, 'Spieler 1', 20)");
-            PassthrougData.player1 = "Spieler 1";
-            PassthrougData.currentPlayer = 1;
-            PassthrougData.startPlayer = 1;
+            PassthroughData.player1 = "Spieler 1";
+            PassthroughData.currentPlayer = 1;
+            PassthroughData.startPlayer = 1;
         }
-        if (PassthrougData.player2 == null)
+        if (PassthroughData.player2 == null)
         {
             dbc.WriteToDB("INSERT INTO Spieler(ID, Name, Gold) VALUES (2, 'Spieler 2', 20)");
-            PassthrougData.player2 = "Spieler 2";
+            PassthroughData.player2 = "Spieler 2";
         }
 
         //Show SpielerMenu
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour {
         //Pause GameFlow
         paused = true;
         overallTurns = 0;
-        PassthrougData.gameactiv = false;
+        PassthroughData.gameActiv = false;
         defaultPosition = timeLine.transform.localScale;
     }
 
@@ -69,12 +69,12 @@ public class GameManager : MonoBehaviour {
     {
         mainUI.SetActive(true);
         turn = 0;
-        if (PassthrougData.startPlayer == 1)
+        if (PassthroughData.startPlayer == 1)
         {
             side = 1;
-            PassthrougData.currentPlayer = 1;
+            PassthroughData.currentPlayer = 1;
             cc.SwitchSide(side);
-            playerText.GetComponent<Text>().text = PassthrougData.player1;
+            playerText.GetComponent<Text>().text = PassthroughData.player1;
             gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " +Convert.ToString(dbc.NumOfUnits(1));
             beweglicheEinheiten.GetComponent<Text>().text = "3";
             mu.DeselectUnit();
@@ -84,9 +84,9 @@ public class GameManager : MonoBehaviour {
         else
         {
             side = 2;
-            PassthrougData.currentPlayer = 2;
+            PassthroughData.currentPlayer = 2;
             cc.SwitchSide(side);
-            playerText.GetComponent<Text>().text = PassthrougData.player2;
+            playerText.GetComponent<Text>().text = PassthroughData.player2;
             gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(2));
             beweglicheEinheiten.GetComponent<Text>().text = "3";
             mu.DeselectUnit();
@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour {
         {
             //Pause GameFlow
             paused = true;
-            PassthrougData.gameactiv = false;
+            PassthroughData.gameActiv = false;
             //Show SpielerMenu
             pm.PanelState(true);
         }
@@ -123,8 +123,8 @@ public class GameManager : MonoBehaviour {
 
     public void Refresh()
     {
-        goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '"+PassthrougData.currentPlayer+"'");
-        gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(PassthrougData.currentPlayer));
+        goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '"+PassthroughData.currentPlayer+"'");
+        gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(PassthroughData.currentPlayer));
     }
 
     void TimeLine()
@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour {
             else if (count == -1)
             {
                 paused = true;
-                PassthrougData.gameactiv = false;
+                PassthroughData.gameActiv = false;
                 Reset();
             }
             count--;
@@ -160,10 +160,10 @@ public class GameManager : MonoBehaviour {
             mu.DeselectFeld();
             gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(1));
             beweglicheEinheiten.GetComponent<Text>().text = "3";
-            PassthrougData.startPlayer = side;
-            PassthrougData.currentPlayer = 2;
-            SetPlayer(PassthrougData.player2);
-            pm.SetPlayer(PassthrougData.player2);
+            PassthroughData.startPlayer = side;
+            PassthroughData.currentPlayer = 2;
+            SetPlayer(PassthroughData.player2);
+            pm.SetPlayer(PassthroughData.player2);
             turn++;
         }
         else
@@ -174,13 +174,13 @@ public class GameManager : MonoBehaviour {
             mu.DeselectFeld();
             gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(2));
             beweglicheEinheiten.GetComponent<Text>().text = "3";
-            PassthrougData.startPlayer = side;
-            PassthrougData.currentPlayer = 1;
-            SetPlayer(PassthrougData.player1);
-            pm.SetPlayer(PassthrougData.player1);
+            PassthroughData.startPlayer = side;
+            PassthroughData.currentPlayer = 1;
+            SetPlayer(PassthroughData.player1);
+            pm.SetPlayer(PassthroughData.player1);
             turn++;
         }
-        rc.RefreshDisplay(PassthrougData.currentPlayer);
+        rc.RefreshDisplay(PassthroughData.currentPlayer);
         if (turn == 2)
         {
             TurnOver();
@@ -202,14 +202,14 @@ public class GameManager : MonoBehaviour {
     public void Continue()
     {
         paused = false;
-        PassthrougData.gameactiv = true;
+        PassthroughData.gameActiv = true;
         cc.cameraActiv = true;
     }
 
     public void ZugBeenden()
     {
         paused = true;
-        PassthrougData.gameactiv = false;
+        PassthroughData.gameActiv = false;
         Reset();
     }
 

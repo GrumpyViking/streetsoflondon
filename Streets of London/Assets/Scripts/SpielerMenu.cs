@@ -28,13 +28,13 @@ public class SpielerMenu : MonoBehaviour {
         fieldBuild = false;
         unitsSelected = 0;
         mainUI.SetActive(false);
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
-            SetPlayer(PassthrougData.player1);
+            SetPlayer(PassthroughData.player1);
         }
         else
         {
-            SetPlayer(PassthrougData.player2);
+            SetPlayer(PassthroughData.player2);
         }
     }
     
@@ -86,12 +86,12 @@ public class SpielerMenu : MonoBehaviour {
             if (!init)
             {
                 gm.SetupScene();
-                PassthrougData.gameactiv = true;
+                PassthroughData.gameActiv = true;
                 init = true;
             }
             else
             {
-                PassthrougData.gameactiv = true;
+                PassthroughData.gameActiv = true;
                 gm.Continue();
             }
         }

@@ -49,7 +49,7 @@ public class Trickkarten : MonoBehaviour {
     {
         
         trickkartenMenu.SetActive(true);
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             for (int i = 0; i < 8; i++)
             {
@@ -205,7 +205,7 @@ public class Trickkarten : MonoBehaviour {
     public void showSlot1()
     {
         slot1.SetActive(true);
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             name1.GetComponent<Text>().text = TKPicker.player1TK[0];
             desc1.GetComponent<Text>().text = getEffect(TKPicker.player1TK[0]);
@@ -219,7 +219,7 @@ public class Trickkarten : MonoBehaviour {
     public void showSlot2()
     {
         slot2.SetActive(true);
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             name2.GetComponent<Text>().text = TKPicker.player1TK[1];
             desc2.GetComponent<Text>().text = getEffect(TKPicker.player1TK[1]);
@@ -234,7 +234,7 @@ public class Trickkarten : MonoBehaviour {
     public void showSlot3()
     {
         slot3.SetActive(true);
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             name3.GetComponent<Text>().text = TKPicker.player1TK[2];
             desc3.GetComponent<Text>().text = getEffect(TKPicker.player1TK[2]);
@@ -249,7 +249,7 @@ public class Trickkarten : MonoBehaviour {
     public void showSlot4()
     {
         slot4.SetActive(true);
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             name4.GetComponent<Text>().text = TKPicker.player1TK[3];
             desc4.GetComponent<Text>().text = getEffect(TKPicker.player1TK[3]);
@@ -264,7 +264,7 @@ public class Trickkarten : MonoBehaviour {
     public void showSlot5()
     {
         slot5.SetActive(true);
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             name5.GetComponent<Text>().text = TKPicker.player1TK[4];
             desc5.GetComponent<Text>().text = getEffect(TKPicker.player1TK[5]);
@@ -279,7 +279,7 @@ public class Trickkarten : MonoBehaviour {
     public void showSlot6()
     {
         slot6.SetActive(true);
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             name6.GetComponent<Text>().text = TKPicker.player1TK[5];
             desc6.GetComponent<Text>().text = getEffect(TKPicker.player1TK[5]);
@@ -294,7 +294,7 @@ public class Trickkarten : MonoBehaviour {
     public void showSlot7()
     {
         slot7.SetActive(true);
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             name7.GetComponent<Text>().text = TKPicker.player1TK[6];
             desc7.GetComponent<Text>().text = getEffect(TKPicker.player1TK[6]);
@@ -309,7 +309,7 @@ public class Trickkarten : MonoBehaviour {
     public void showSlot8()
     {
         slot8.SetActive(true);
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             name8.GetComponent<Text>().text = TKPicker.player1TK[7];
             desc8.GetComponent<Text>().text = getEffect(TKPicker.player1TK[7]);
@@ -323,7 +323,7 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot1()
     {
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             string effekt = TKPicker.player1TK[0];
             TKPicker.player1TK[0] = TKPicker.player1TK[1];
@@ -354,7 +354,7 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot2()
     {
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             string effekt = TKPicker.player1TK[1];
             TKPicker.player1TK[1] = TKPicker.player1TK[2];
@@ -383,7 +383,7 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot3()
     {
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             string effekt = TKPicker.player1TK[2];
             TKPicker.player1TK[2] = TKPicker.player1TK[3];
@@ -410,7 +410,7 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot4()
     {
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             string effekt = TKPicker.player1TK[3];
             TKPicker.player1TK[3] = TKPicker.player1TK[4];
@@ -435,7 +435,7 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot5()
     {
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             string effekt = TKPicker.player1TK[4];
             TKPicker.player1TK[4] = TKPicker.player1TK[5];
@@ -458,7 +458,7 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot6()
     {
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             string effekt = TKPicker.player1TK[5];
             TKPicker.player1TK[5] = TKPicker.player1TK[6];
@@ -479,7 +479,7 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot7()
     {
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             string effekt = TKPicker.player1TK[6];
             TKPicker.player1TK[6] = TKPicker.player1TK[7];
@@ -498,7 +498,7 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot8()
     {
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             string effekt = TKPicker.player1TK[7];
             TKPicker.player1TK[7] = null;
@@ -526,7 +526,7 @@ public class Trickkarten : MonoBehaviour {
     public void InvestitionEffect()
     {
         SaveEffect("Investition", 2);
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             
         }
@@ -539,7 +539,7 @@ public class Trickkarten : MonoBehaviour {
 
     public void SaveEffect(string effectname, int effectduration)
     {
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             for (int i = 0; i < 8; i++)
             {
@@ -574,7 +574,7 @@ public class Trickkarten : MonoBehaviour {
 
     public void CheckActiveEffects()
     {
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             for ( int i = 0; i < 8; i++ )
             {

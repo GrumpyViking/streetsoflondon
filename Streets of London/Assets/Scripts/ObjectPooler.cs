@@ -64,7 +64,7 @@ public class ObjectPooler : MonoBehaviour
         }
         GameObject objectToSpawn = poolDictonary[tag].Dequeue();
         objectToSpawn.SetActive(true);
-        if (PassthrougData.currentPlayer == 1)
+        if (PassthroughData.currentPlayer == 1)
         {
             if (tag == "Boss")
             {
@@ -153,7 +153,7 @@ public class ObjectPooler : MonoBehaviour
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
         
-        objectToSpawn.name = PassthrougData.currentPlayer + "_" + tag + "_"+ dbc.GetUnitID(tag);
+        objectToSpawn.name = PassthroughData.currentPlayer + "_" + tag + "_"+ dbc.GetUnitID(tag);
         objectToSpawn.GetComponent<UnitHelper>().unitID = dbc.GetUnitID(tag);
         poolDictonary[tag].Enqueue(objectToSpawn);
         count++;
