@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -16,9 +14,9 @@ public class MoveUnit : MonoBehaviour
     GameObject fabrik;
     GameObject aktionsmenue;
     public GameObject[] grid;
+    public GameObject[] units;
     public Fabrik fb;
 
-    Unit test;
     public GameObject anweisungText;
     public GameObject bewegenButtonText;
     public GameObject angriffButtonText;
@@ -118,11 +116,12 @@ public class MoveUnit : MonoBehaviour
             waehlefabrik = false;
         }
     }
+
     void SelectUnit()
     {
         RaycastHit hitInfo;
         select = ReturnClickedObject(out hitInfo);
-        if (select == unit && unitselected)
+        if (select == unit && unitselected && (!waehlegegner || !waehlefabrik))
         {
             DeselectUnit();
             unitselected = false;
@@ -141,6 +140,7 @@ public class MoveUnit : MonoBehaviour
         }
         if (select != null)
         {
+            
             if (select.tag == "Einheit" && unit == null && !unitselected && !waehlegegner)
             {
                 unit = select;
@@ -208,7 +208,7 @@ public class MoveUnit : MonoBehaviour
             waehlegegner = false;
             angriffButton.SetActive(false);
             buttonclicked = true;
-            //Markierung der Felder wenn einheit nicht auf dem Spielfeld ist
+            //Markierung der Felder wenn die Einheit nicht auf dem Spielfeld ist
             if (unit.GetComponent<UnitHelper>().fieldID == 0)
             {
                 if (PassthroughData.currentPlayer == 1)
@@ -262,7 +262,6 @@ public class MoveUnit : MonoBehaviour
                                         e.GetComponent<Outline>().OutlineColor = Color.white;
                                         e.GetComponent<Outline>().enabled = true;
                                     }
-                                    
                                 }
                             }
                         }
@@ -285,13 +284,14 @@ public class MoveUnit : MonoBehaviour
                 unit.GetComponent<UnitHelper>().unitID = Convert.ToInt32(buff);
                 dbc.WriteToDB("Update Gelaendefelder Set EinheitID = " + Convert.ToInt32(buff) + " Where ID=" + feld.GetComponent<FieldHelper>().id + " ");
 
+                //Einheit kommt vom Stapel
                 if(unit.GetComponent<UnitHelper>().fieldID == 0 && !feld.GetComponent<FieldHelper>().hasUnit)
                 {
                     unit.GetComponent<UnitHelper>().fieldID = feld.GetComponent<FieldHelper>().id;
                     feld.GetComponent<FieldHelper>().unitID = unit.GetComponent<UnitHelper>().unitID;
                     beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
                     feld.GetComponent<FieldHelper>().hasUnit = true;
-                    //CheckVictory(unit, feld);
+                    
                     rm.RefreshDisplay(PassthroughData.currentPlayer);
                 }
                 else if(unit.GetComponent<UnitHelper>().fieldID != feld.GetComponent<FieldHelper>().id)
@@ -306,7 +306,6 @@ public class MoveUnit : MonoBehaviour
                             unit.GetComponent<UnitHelper>().fieldID = feld.GetComponent<FieldHelper>().id;
                             feld.GetComponent<FieldHelper>().unitID = unit.GetComponent<UnitHelper>().unitID;
                             feld.GetComponent<FieldHelper>().hasUnit = true;
-                            //CheckVictory(unit, feld);
                             rm.RefreshDisplay(PassthroughData.currentPlayer);
                         }
                     }
@@ -381,8 +380,40 @@ public class MoveUnit : MonoBehaviour
             waehlefabrik = true;
             buttonclicked = true;
             angriffButtonText.GetComponent<Text>().text = "Bestätigen";
+            //Markiere gültige Ziele
+            int unitRW = dbc.GetRW(unit.GetComponent<UnitHelper>().unitID);
+            GameObject unitfield = null;
+            for (int i = 0; i < grid.Length; i++)
+            {
+                if (unit.GetComponent<UnitHelper>().fieldID == grid[i].GetComponent<FieldHelper>().id)
+                {
+                    unitfield = grid[i];
+                }
+            }
+            for (int x = (-1 * unitRW); x <= unitRW; x++)
+            {
+                for (int y = (-1 * unitRW); y <= unitRW; y++)
+                {
+                    for (int z = (-1 * unitRW); z <= unitRW; z++)
+                    {
+                        foreach (GameObject e in grid)
+                        {
+                            if ((((e.GetComponent<FieldHelper>().x + x) + (e.GetComponent<FieldHelper>().y + y) + (e.GetComponent<FieldHelper>().z + z)) == 0) && !e.GetComponent<FieldHelper>().isfabrik)
+                            {
+                                if (Distance(unitfield, e) <= unitRW)
+                                {
+                                    e.GetComponent<Outline>().OutlineColor = Color.red;
+                                    e.GetComponent<Outline>().enabled = true;
+                                }
+           
+                            }
+                        }
+                    }
+                }
+            }
             bewegenButton.SetActive(false);
         }
+
         if (phase != 0)
         {
             anweisungText.GetComponent<TextMeshProUGUI>().text = "";

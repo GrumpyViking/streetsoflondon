@@ -3715,10 +3715,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582b8bedef3d1294b90596bf418f8fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fieldbuildermenu: {fileID: 223394497}
   sm: {fileID: 868672217}
+  dbc: {fileID: 1719293103}
+  fieldBuilderMenu: {fileID: 223394497}
   playerText: {fileID: 1816370267}
-  zeitleiste: {fileID: 323395989}
+  timeLine: {fileID: 323395989}
   timerText: {fileID: 1592967764}
   fields:
   - {fileID: 1006690163}
@@ -3766,11 +3767,6 @@ MonoBehaviour:
   - {fileID: 907297214}
   - {fileID: 1415917582}
   - {fileID: 818576638}
-  staticTextures:
-  - {fileID: 2800000, guid: 8572c6ee12fd5044592e327986821146, type: 3}
-  - {fileID: 2800000, guid: 0705852707b898144b132191b848c4a1, type: 3}
-  timer: 10
-  dbc: {fileID: 1719293103}
   fieldImages:
   - {fileID: 2800000, guid: c0a396ddc562a8c42904691b06a274d8, type: 3}
   - {fileID: 2800000, guid: 7f153dcc93056694c8bf3b0729d6dd2c, type: 3}
@@ -3779,6 +3775,10 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 8e3bd92e26c781048b7417def456a793, type: 3}
   - {fileID: 2800000, guid: 1bf2e1b8fd053e940b1538c9b1122b01, type: 3}
   - {fileID: 2800000, guid: b68787c5f2d1f2740a94956709f37097, type: 3}
+  staticTextures:
+  - {fileID: 2800000, guid: 8572c6ee12fd5044592e327986821146, type: 3}
+  - {fileID: 2800000, guid: 0705852707b898144b132191b848c4a1, type: 3}
+  timer: 10
 --- !u!1001 &229845828
 Prefab:
   m_ObjectHideFlags: 0
@@ -17450,12 +17450,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e8cd91b26e6f748adba51d96f67661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fabrikLPL: 0
-  fabrikLPR: 0
   fabrikL: {fileID: 1006690163}
   fabrikR: {fileID: 1606642806}
-  fabrikDamage: []
   gm: {fileID: 0}
+  fabrikLPL: 0
+  fabrikLPR: 0
+  fabrikDamage: []
 --- !u!1 &1014473706
 GameObject:
   m_ObjectHideFlags: 0
@@ -27409,6 +27409,7 @@ MonoBehaviour:
   - {fileID: 907297214}
   - {fileID: 1415917582}
   - {fileID: 818576638}
+  units: []
   fb: {fileID: 1606642813}
   anweisungText: {fileID: 340242228}
   bewegenButtonText: {fileID: 1901940527}
@@ -27731,10 +27732,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e8cd91b26e6f748adba51d96f67661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fabrikLPL: 0
-  fabrikLPR: 0
   fabrikL: {fileID: 1006690163}
   fabrikR: {fileID: 1606642806}
+  gm: {fileID: 1565836639}
+  fabrikLPL: 0
+  fabrikLPR: 0
   fabrikDamage:
   - {fileID: 2800000, guid: ee8a905356a35b84aaa59d61b38f974f, type: 3}
   - {fileID: 2800000, guid: 6e5b9f5482e1eec49b25d015684cf0d1, type: 3}
@@ -27747,7 +27749,6 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 160cdcb0f3b5e354e9381b1060f8a951, type: 3}
   - {fileID: 2800000, guid: e6d6186f08982964ea0d1975712f17a8, type: 3}
   - {fileID: 2800000, guid: 120eea32af7337d478d4c8d76372e1ea, type: 3}
-  gm: {fileID: 1565836639}
 --- !u!1 &1607131940
 GameObject:
   m_ObjectHideFlags: 0
@@ -33859,12 +33860,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7109dc6d7db0401429499b4261a44a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camOverHead: {fileID: 1458336325}
+  cameraPlayer: {fileID: 1968099219}
   cameraActiv: 1
   panSpeed: 200
   panBorderThickness: 10
-  panLimit: {x: 200, y: 100}
-  camOverHead: {fileID: 1458336325}
-  cameraPlayer: {fileID: 1968099219}
   maxZoom: 90
   zoomSpeed: 20
   minZoom: 20
@@ -37036,6 +37036,26 @@ MonoBehaviour:
   effekt: 
   wirkungsbereich: {fileID: 0}
   trickkartenbild: {fileID: 0}
+  activeTKSpieler1:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  activeTKSpieler2:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  activeTKDauer1: 0000000000000000000000000000000000000000000000000000000000000000
+  activeTKDauer2: 0000000000000000000000000000000000000000000000000000000000000000
   trickkartenMenu: {fileID: 2136368423}
   slot1: {fileID: 167981294}
   slot2: {fileID: 1820018282}

@@ -1,21 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+/*
+ * BankSkript
+ * 
+ * fügt dem Bankfeld nach jeder runde wenn keine Einheit auf dem Bankfeld steht eine GoldMünze hinzu
+ * Prüft ob am runden Ende eine Einheit auf der Bank sich befindet und gibt dem Spieler dem die Einheit gehört den
+ * vorhandenen Goldbetrag.
+ * 
+ */ 
 
 public class Bank : MonoBehaviour {
 
+    //Gold variable
     public int gold;
+    //Das Bankfeld
     public GameObject bank;
+    //Texturen für die Einzelnen Münzen
     public Texture[] bankGold;
 
+    //Datenbank Skript
     public DataBaseController dbc;
 
-
+    //Zu Beginn gold wird auf 0 gesetzt
     private void Start()
     {
         gold = 0;
     }
 
+    // Wird vom GameManager aufgerufen am ende einer Runde wenn Einheit auf der Bank ist wird dem Entsprechenden Spieler
+    // das Gold gutgeschrieben
+    // und der Goldvorrat auf 0 gesetzt
     public void HasUnit()
     {
         if (bank.GetComponent<FieldHelper>().hasUnit)
@@ -28,6 +42,9 @@ public class Bank : MonoBehaviour {
         }
     }
 
+    // Wird vom GameManager aufgerufen am ende einer Runde 
+    // Jede Runde wo keine Einheit auf der Bank ist wird das Gold erhöht
+    // und die Textur geändert
     public void IncreaseGold()
     {
         if(!bank.GetComponent<FieldHelper>().hasUnit && gold < 8)

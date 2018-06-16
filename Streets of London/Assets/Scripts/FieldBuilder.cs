@@ -2,27 +2,51 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * FieldBuilder Skript:
+ * 
+ * Beinhaltet alles für den Spielfeldaufbau.
+ * Die Spieler haben abwechselnd 10 Sekunden zeit ein Spielfeld zu setzen.
+ * Entsprechend der auswahl wird auf der anderen Spielfeldseite das gegerüberliegende Feld gesetzt.
+ * Dadurch wird die Balance erhalten.
+ * 
+ */ 
 
 public class FieldBuilder : MonoBehaviour {
-    public GameObject fieldbuildermenu;
-    public SpielerMenu sm;
-    public GameObject playerText;
-    public GameObject zeitleiste;
-    public GameObject timerText;
-    public GameObject[] fields;
-    public Texture[] staticTextures; 
-    public float timer;
-    public DataBaseController dbc;
-    public Texture[] fieldImages;
 
+    //Skripte die genutzt werden
+    
+    public SpielerMenu sm;
+    public DataBaseController dbc;
+
+    //Beeinflussbare Spielobjekte
+    public GameObject fieldBuilderMenu;
+    public GameObject playerText;
+    public GameObject timeLine;
+    public GameObject timerText;
+
+    //Array mit allen Spielfeldern
+    public GameObject[] fields;
+
+    //Texture Arrays die die Unterschiedlichen Geländetexturen bereithalten
+    public Texture[] fieldImages;
+    public Texture[] staticTextures;
+
+    //Timer Relevante variablen
     float count;
-    bool timerstate;
-    bool fieldbuild;
-    bool chooseField=false;
+    public float timer;
     Vector3 defaultPosition;
+    bool timerState;
+
+    //Statuswerte
+    bool fieldBuild;
+    bool chooseField=false;
+    
+    //Hilfsvariablen für das gewählte Geländefeld und das gegenüberliegende feld
     GameObject select;
     GameObject selectOpposit;
 
+    //Schreibt die beiden Geländefelder sowie die Bank in die Datenbank und setzt die Texturen
     private void Start()
     {
         dbc.WriteToDB("INSERT INTO Gelaendefelder(ID, Name, Bonus) VALUES(" + 0 + 1 + ",'Bank',0)");
@@ -38,31 +62,35 @@ public class FieldBuilder : MonoBehaviour {
 
     void Initialise()
     {
+        //Wenn das Menu aktiviert wird wird der Aktuelle Spieler dargestellt und der Timer Gestartet
         if (isActiveAndEnabled == true)
         {
             playerText.GetComponent<Text>().text = dbc.GetName(PassthroughData.currentPlayer);
-            defaultPosition = zeitleiste.transform.localScale;
+            defaultPosition = timeLine.transform.localScale;
             count = timer;
-            timerstate = true;
+            timerState = true;
             chooseField = true;
+            //InvokeRepeating führt nach 1 Sekunde jede Sekunde die funktion TimeLine aus
             InvokeRepeating("TimeLine", 1.0f, 1.0f);
         }
     }
 
+    //Ein- und Ausblenden des Menus
     public void PanelState(bool state)
     {
-        fieldbuildermenu.SetActive(state);
+        fieldBuilderMenu.SetActive(state);
         Initialise();
     }
 
+    //TimeLine funktion beinhaltet den Timer der die gegebene Zeitspanne(10s) ablaufen lässt
     void TimeLine()
     {
-        if (timerstate)
+        if (timerState)
         {
             if (count > 0)
             {
                 timerText.GetComponent<Text>().text = count.ToString();
-                zeitleiste.transform.localScale += new Vector3(-1 / (timer + 1), 0, 0);
+                timeLine.transform.localScale += new Vector3(-1 / (timer + 1), 0, 0);
             }
             else if (count == 0)
             {
@@ -72,32 +100,32 @@ public class FieldBuilder : MonoBehaviour {
         }
     }
 
+    //Setzt den Timer zurück 
     private void Reset()
     {
-        zeitleiste.transform.localScale = defaultPosition;
-        timerstate = false;
+        timeLine.transform.localScale = defaultPosition;
+        timerState = false;
         chooseField = false;
         CancelInvoke();
         EndTurn();
     }
 
+    //Beendet den aktuellen Zug wenn Timer abgelaufen ist oder ein feld gesetzt wurde
     void EndTurn()
     {
-        
-
         select = null;
         selectOpposit = null;
 
-        fieldbuild = true;
+        fieldBuild = true;
         for (int i = 0; i < fields.Length; i++)
         {
             if (fields[i].GetComponent<FieldHelper>().isSet == false)
             {
-                fieldbuild = false;
+                fieldBuild = false;
             }
         }
 
-        if (fieldbuild)
+        if (fieldBuild)
         {
             for(int i = 0; i < fields.Length; i++)
             {
@@ -120,7 +148,7 @@ public class FieldBuilder : MonoBehaviour {
         }
 
         PanelState(false);
-        sm.SetFieldBuild(fieldbuild);
+        sm.SetFieldBuild(fieldBuild);
         sm.PanelState(true);
     }
 
@@ -161,6 +189,10 @@ public class FieldBuilder : MonoBehaviour {
             }
             selectOpposit.GetComponent<Outline>().enabled = true;
             chooseField = false;
+        }
+        else
+        {
+
         }
     }
 
@@ -306,6 +338,7 @@ public class FieldBuilder : MonoBehaviour {
         Reset();
     }
 
+    //Funktion für Testzwecke füllt das feld zufällig auf
     public void AutoComplete()
     {
         for(int i = 1; i < 22; i++)

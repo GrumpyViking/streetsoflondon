@@ -1,22 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+/*
+ * Fabrik Skript
+ * Verwaltet die Lebenspunkte der Beiden Fabriken
+ * 
+ */ 
 
 public class Fabrik : MonoBehaviour {
 
-    public int fabrikLPL;
-    public int fabrikLPR;
+    //Beide Fabriken
     public GameObject fabrikL;
     public GameObject fabrikR;
-    public Texture[] fabrikDamage;
+    
+    //GameManger Skript zum Aufruf des GameOver Bildschirms
     public GameManager gm;
+    
+    //Variablen für die Lebenspunkte der Fabriken
+    public int fabrikLPL;
+    public int fabrikLPR;
 
-	// Use this for initialization
+    //Texturen mit den Schadenswerten
+    public Texture[] fabrikDamage;
+    
+
+	// Bei Spielstart beide Fabriken volle Lebenspunkte
 	void Start () {
         fabrikLPL = 10;
         fabrikLPR = 10;
     }
 
+    // Wird bei einem Angriff auf die Fabrik des Spieler 1 aufgerufen
+    // der Schaden wird entsprechend von den gesamt Lebenspunkten abgezogen und die Texture geändert
+    // es wird geprüft ob Fabrik zerstört ist
     public void SetLPFabrikL(int damage)
     {
         this.fabrikLPL = this.fabrikLPL - damage;
@@ -26,9 +41,11 @@ public class Fabrik : MonoBehaviour {
             fabrikLPL = 0;
         }
         fabrikL.GetComponent<Renderer>().material.mainTexture = fabrikDamage[fabrikLPL];
-        
     }
 
+    // Wird bei einem Angriff auf die Fabrik des Spieler 2 aufgerufen
+    // der Schaden wird entsprechend von den gesamt Lebenspunkten abgezogen und die Texture geändert
+    // es wird geprüft ob Fabrik zerstört ist
     public void SetLPFabrikR(int damage)
     {
         this.fabrikLPR = this.fabrikLPR - damage;
@@ -39,7 +56,6 @@ public class Fabrik : MonoBehaviour {
 
         }
         fabrikR.GetComponent<Renderer>().material.mainTexture = fabrikDamage[fabrikLPR];
-        
     }
 
 
