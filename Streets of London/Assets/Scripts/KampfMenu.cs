@@ -22,17 +22,14 @@ public class KampfMenu : MonoBehaviour {
     public GameObject rwDef;
     public GameObject gwAtt;
     public GameObject gwDef;
-    GameObject angreifer;
-    GameObject verteidiger;
+    GameObject attacker;
+    GameObject defField;
+    GameObject attField;
+    GameObject defender;
     int gewinner=2;
     int attdice;
     int defdice;
     int distance;
-
-    private void Start()
-    {
-        
-    }
 
     public void KampfStart()
     {
@@ -50,21 +47,21 @@ public class KampfMenu : MonoBehaviour {
             heartsatk[i].SetActive(false);
             heartsdef[i].SetActive(false);
         }
-        angreifer = null;
-        verteidiger = null;
+        attacker = null;
+        defender = null;
     }
 
     void Init()
     {
         //Angreifer
         
-        for(int i = 0; i < dbc.GetLP(angreifer.GetComponent<UnitHelper>().unitID); i++)
+        for(int i = 0; i < dbc.GetLP(attacker.GetComponent<UnitHelper>().unitID); i++)
         {
             heartsatk[i].SetActive(true);
         }
-        rwAtt.GetComponent<Text>().text = "RW: " + Convert.ToString(dbc.GetRW(angreifer.GetComponent<UnitHelper>().unitID));
-        gwAtt.GetComponent<Text>().text = "GW: " + Convert.ToString(dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID));
-        attdice = dbc.GetAtt(angreifer.GetComponent<UnitHelper>().unitID);
+        rwAtt.GetComponent<Text>().text = "RW: " + Convert.ToString(dbc.GetRW(attacker.GetComponent<UnitHelper>().unitID));
+        gwAtt.GetComponent<Text>().text = "GW: " + Convert.ToString(dbc.GetFieldBonus(attacker.GetComponent<UnitHelper>().fieldID));
+        attdice = dbc.GetAtt(attacker.GetComponent<UnitHelper>().unitID);
         for (int i = 0; i < attdice; i++)
         {
             attackDice[i].SetActive(true);
@@ -74,13 +71,13 @@ public class KampfMenu : MonoBehaviour {
 
         //Verteidiger
 
-        for (int i = 0; i < dbc.GetLP(verteidiger.GetComponent<UnitHelper>().unitID); i++)
+        for (int i = 0; i < dbc.GetLP(defender.GetComponent<UnitHelper>().unitID); i++)
         {
             heartsdef[i].SetActive(true);
         }
-        rwDef.GetComponent<Text>().text = "RW " + Convert.ToString(dbc.GetRW(verteidiger.GetComponent<UnitHelper>().unitID));
-        gwDef.GetComponent<Text>().text = "GW: " + Convert.ToString(dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID));
-        defdice = dbc.GetDef(verteidiger.GetComponent<UnitHelper>().unitID);
+        rwDef.GetComponent<Text>().text = "RW " + Convert.ToString(dbc.GetRW(defender.GetComponent<UnitHelper>().unitID));
+        gwDef.GetComponent<Text>().text = "GW: " + Convert.ToString(dbc.GetFieldBonus(defender.GetComponent<UnitHelper>().fieldID));
+        defdice = dbc.GetDef(defender.GetComponent<UnitHelper>().unitID);
         for (int i = 0; i < defdice; i++)
         {
             defendDice[i].SetActive(true);
@@ -88,10 +85,18 @@ public class KampfMenu : MonoBehaviour {
             defendDice[i].GetComponent<Image>().sprite = wuerfel[0];
         }
 
+        distance = Distance(attField, defField);
+
         kampfbutton.SetActive(true);
         stoppButton.SetActive(false);
         beendenButton.SetActive(false);
 
+    }
+
+    int Distance(GameObject unitfield, GameObject gegnerfield)
+    {
+        int maxxy = Math.Max(Math.Abs(unitfield.GetComponent<FieldHelper>().x - gegnerfield.GetComponent<FieldHelper>().x), Math.Abs(unitfield.GetComponent<FieldHelper>().y - gegnerfield.GetComponent<FieldHelper>().y));
+        return Math.Max(maxxy, Math.Abs(unitfield.GetComponent<FieldHelper>().z - gegnerfield.GetComponent<FieldHelper>().z));
     }
 
     public void ShowKampfMenu()
@@ -103,11 +108,22 @@ public class KampfMenu : MonoBehaviour {
 
     public void SetAngreifer(GameObject unit)
     {
-        this.angreifer = unit;
+        this.attacker = unit;
     }
+
+    public void SetAttField(GameObject unitField)
+    {
+        this.attField = unitField;
+    }
+
     public void SetVerteidiger(GameObject gegner)
     {
-        this.verteidiger = gegner;
+        this.defender = gegner;
+    }
+
+    public void SetDefField(GameObject gegnerField)
+    {
+        this.defField = gegnerField;
     }
 
     public void SetDistance(int distance)
@@ -176,7 +192,7 @@ public class KampfMenu : MonoBehaviour {
                 }
                 else if(defencevalues[i] > attackvalues[i])
                 {
-                    if (distance <= dbc.GetRW(verteidiger.GetComponent<UnitHelper>().unitID))
+                    if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
                     {
                         heartsatk[i].SetActive(false);
                         lostlpatk++;
@@ -185,11 +201,15 @@ public class KampfMenu : MonoBehaviour {
                 }
                 else
                 {
-                    if(dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID)> dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID))
+                    if(dbc.GetFieldBonus(defender.GetComponent<UnitHelper>().fieldID)> dbc.GetFieldBonus(attacker.GetComponent<UnitHelper>().fieldID))
                     {
-                        heartsatk[i].SetActive(false);
-                        lostlpatk++;
-                    }else if(dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID) < dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID))
+                        if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
+                        {
+                            heartsatk[i].SetActive(false);
+                            lostlpatk++;
+                        }
+                    }
+                    else if(dbc.GetFieldBonus(defender.GetComponent<UnitHelper>().fieldID) < dbc.GetFieldBonus(attacker.GetComponent<UnitHelper>().fieldID))
                     {
                         heartsdef[i].SetActive(false);
                         lostlpdef++;
@@ -198,8 +218,11 @@ public class KampfMenu : MonoBehaviour {
                     {
                         heartsdef[i].SetActive(false);
                         lostlpdef++;
-                        heartsatk[i].SetActive(false);
-                        lostlpatk++;
+                        if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
+                        {
+                            heartsatk[i].SetActive(false);
+                            lostlpatk++;
+                        }
                     }
                     
                 }
@@ -217,18 +240,24 @@ public class KampfMenu : MonoBehaviour {
                 }
                 else if (defencevalues[i] > attackvalues[i+diff] )
                 {
-                    heartsatk[i].SetActive(false);
-                    lostlpatk++;
-                }
-                else
-                {
-
-                    if (dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID) > dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID))
+                    if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
                     {
                         heartsatk[i].SetActive(false);
                         lostlpatk++;
                     }
-                    else if (dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID) < dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID))
+                }
+                else
+                {
+
+                    if (dbc.GetFieldBonus(defender.GetComponent<UnitHelper>().fieldID) > dbc.GetFieldBonus(attacker.GetComponent<UnitHelper>().fieldID))
+                    {
+                        if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
+                        {
+                            heartsatk[i].SetActive(false);
+                            lostlpatk++;
+                        }
+                    }
+                    else if (dbc.GetFieldBonus(defender.GetComponent<UnitHelper>().fieldID) < dbc.GetFieldBonus(attacker.GetComponent<UnitHelper>().fieldID))
                     {
                         heartsdef[i].SetActive(false);
                         lostlpdef++;
@@ -237,10 +266,13 @@ public class KampfMenu : MonoBehaviour {
                     {
                         heartsdef[i].SetActive(false);
                         lostlpdef++;
-                        heartsatk[i].SetActive(false);
-                        lostlpatk++;
-                        
-                        
+                        if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
+                        {
+                            heartsatk[i].SetActive(false);
+                            lostlpatk++;
+                        }
+
+
                     }
                 }
             }
@@ -257,17 +289,23 @@ public class KampfMenu : MonoBehaviour {
                 }
                 else if (defencevalues[i + diff] > attackvalues[i])
                 {
-                    heartsatk[i].SetActive(false);
-                    lostlpatk++;
-                }
-                else
-                {
-                    if (dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID) > dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID))
+                    if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
                     {
                         heartsatk[i].SetActive(false);
                         lostlpatk++;
                     }
-                    else if (dbc.GetFieldBonus(verteidiger.GetComponent<UnitHelper>().fieldID) < dbc.GetFieldBonus(angreifer.GetComponent<UnitHelper>().fieldID))
+                }
+                else
+                {
+                    if (dbc.GetFieldBonus(defender.GetComponent<UnitHelper>().fieldID) > dbc.GetFieldBonus(attacker.GetComponent<UnitHelper>().fieldID))
+                    {
+                        if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
+                        {
+                            heartsatk[i].SetActive(false);
+                            lostlpatk++;
+                        }
+                    }
+                    else if (dbc.GetFieldBonus(defender.GetComponent<UnitHelper>().fieldID) < dbc.GetFieldBonus(attacker.GetComponent<UnitHelper>().fieldID))
                     {
                         heartsdef[i].SetActive(false);
                         lostlpdef++;
@@ -276,26 +314,29 @@ public class KampfMenu : MonoBehaviour {
                     {
                         heartsdef[i].SetActive(false);
                         lostlpdef++;
-                        heartsatk[i].SetActive(false);
-                        lostlpatk++;
+                        if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
+                        {
+                            heartsatk[i].SetActive(false);
+                            lostlpatk++;
+                        }
                     }
                 }
             }
         }
-        if ((dbc.GetLP(angreifer.GetComponent<UnitHelper>().unitID) - lostlpatk) <= 0)
+        if ((dbc.GetLP(attacker.GetComponent<UnitHelper>().unitID) - lostlpatk) <= 0)
         {
-            dbc.WriteToDB("Delete From Einheit Where ID = "+ angreifer.GetComponent<UnitHelper>().unitID);
-            mu.FightWinner(verteidiger);
+            dbc.WriteToDB("Delete From Einheit Where ID = "+ attacker.GetComponent<UnitHelper>().unitID);
+            mu.FightWinner(defender);
         }
-        else if ((dbc.GetLP(verteidiger.GetComponent<UnitHelper>().unitID) - lostlpdef) <= 0)
+        else if ((dbc.GetLP(defender.GetComponent<UnitHelper>().unitID) - lostlpdef) <= 0)
         {
-            dbc.WriteToDB("Delete From Einheit Where ID = " + verteidiger.GetComponent<UnitHelper>().unitID);
-            mu.FightWinner(angreifer);
+            dbc.WriteToDB("Delete From Einheit Where ID = " + defender.GetComponent<UnitHelper>().unitID);
+            mu.FightWinner(attacker);
         }
         else
         {
-            dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(angreifer.GetComponent<UnitHelper>().unitID) - lostlpatk) + " Where ID = " + angreifer.GetComponent<UnitHelper>().unitID);
-            dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(verteidiger.GetComponent<UnitHelper>().unitID) - lostlpdef) + " Where ID = " + verteidiger.GetComponent<UnitHelper>().unitID);
+            dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(attacker.GetComponent<UnitHelper>().unitID) - lostlpatk) + " Where ID = " + attacker.GetComponent<UnitHelper>().unitID);
+            dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(defender.GetComponent<UnitHelper>().unitID) - lostlpdef) + " Where ID = " + defender.GetComponent<UnitHelper>().unitID);
 
             mu.Continue();
         }

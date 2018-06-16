@@ -13,6 +13,8 @@ public class MoveUnit : MonoBehaviour
     GameObject feld;
     GameObject fabrik;
     GameObject aktionsmenue;
+    GameObject unitField;
+    GameObject gegnerField;
     public GameObject[] grid;
     public GameObject[] units;
     public Fabrik fb;
@@ -445,11 +447,23 @@ public class MoveUnit : MonoBehaviour
                 }
 
                 int distance = (Math.Abs(fieldunit.GetComponent<FieldHelper>().x - fieldunit.GetComponent<FieldHelper>().y) - Math.Abs(fieldopponent.GetComponent<FieldHelper>().x - fieldopponent.GetComponent<FieldHelper>().y));
-
+                for(int i = 0; i < grid.Length; i++)
+                {
+                    if(grid[i].GetComponent<FieldHelper>().id == unit.GetComponent<UnitHelper>().fieldID)
+                    {
+                        unitField = grid[i];
+                    }
+                    if (grid[i].GetComponent<FieldHelper>().id == gegner.GetComponent<UnitHelper>().fieldID)
+                    {
+                        gegnerField = grid[i];
+                    }
+                }
                 if (gegnergewaehlt && validtarget)
                 {
                     km.SetAngreifer(unit);
+                    km.SetAttField(unitField);
                     km.SetVerteidiger(gegner);
+                    km.SetDefField(gegnerField);
                     km.SetDistance(distance);
                     km.ShowKampfMenu();
                 }
