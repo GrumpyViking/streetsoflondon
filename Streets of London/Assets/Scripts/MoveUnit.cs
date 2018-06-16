@@ -3,6 +3,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/*
+ * TODO:
+ * 
+ * - AP beachten
+ * - Anzeige von Gegnern/Fabrik in reichweite wenn angriffs option gewählt
+ * - Fehler behebung wenn angriffsoption nicht gültig (nur unter bestimmten bedingungen)
+ * - Kommentieren
+ */
+
+
 public class MoveUnit : MonoBehaviour
 {
     GameObject select;
@@ -426,7 +436,7 @@ public class MoveUnit : MonoBehaviour
 
                 rw = dbc.GetRW(unit.GetComponent<UnitHelper>().unitID);
 
-                if ((Math.Abs(fieldunit.GetComponent<FieldHelper>().x - fieldunit.GetComponent<FieldHelper>().y) - Math.Abs(fieldopponent.GetComponent<FieldHelper>().x - fieldopponent.GetComponent<FieldHelper>().y)) < rw + 1)
+                if (Distance(fieldunit, fieldopponent)<=rw)
                 {
                     validtarget = true;
                 }
@@ -468,12 +478,14 @@ public class MoveUnit : MonoBehaviour
             else
             {
                 int schaden = dbc.GetAtt(unit.GetComponent<UnitHelper>().unitID);
-                if(PassthroughData.currentPlayer == 1)
+                rw = dbc.GetRW(unit.GetComponent<UnitHelper>().unitID);
+                if (PassthroughData.currentPlayer == 1)
                 {
                     if (fabrik != null)
                     {
                         fb.SetLPFabrikR(schaden);
-                    }                }
+                    }
+                }
                 else
                 {
                     if (fabrik != null)
