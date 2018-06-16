@@ -24,6 +24,14 @@ public class FieldBuilder : MonoBehaviour {
     public GameObject playerText;
     public GameObject timeLine;
     public GameObject timerText;
+    public GameObject anzahlTurm;
+    public GameObject anzahlDach;
+    public GameObject anzahlGeschaeft1;
+    public GameObject anzahlGeschaeft2;
+    public GameObject buttonTurm;
+    public GameObject buttonDach;
+    public GameObject buttonGeschaeft1;
+    public GameObject buttonGeschaeft2;
 
     //Array mit allen Spielfeldern
     public GameObject[] fields;
@@ -211,7 +219,6 @@ public class FieldBuilder : MonoBehaviour {
     public void SetFieldImage(int index)
     {
         int id;
-
         //Setzt GeländefeldBild auf ausgewähltes Feld
         select.GetComponent<Outline>().enabled = false;
         select.GetComponent<Renderer>().material.mainTexture = fieldImages[index];
@@ -225,6 +232,39 @@ public class FieldBuilder : MonoBehaviour {
         selectOpposit.GetComponent<FieldHelper>().isSet = true;
         selectOpposit.GetComponent<Outline>().enabled = true;
         selectOpposit.GetComponent<Outline>().OutlineColor = Color.green;
+
+        if (index == 0)
+        {
+            anzahlGeschaeft1.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzahlGeschaeft1.GetComponent<Text>().text) - 2);
+            if (Convert.ToInt32(anzahlGeschaeft1.GetComponent<Text>().text) == 0)
+            {
+                buttonGeschaeft1.SetActive(false);
+            }
+        }
+        if (index == 1)
+        {
+            anzahlGeschaeft2.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzahlGeschaeft2.GetComponent<Text>().text) - 2);
+            if (Convert.ToInt32(anzahlGeschaeft2.GetComponent<Text>().text) == 0)
+            {
+                buttonGeschaeft2.SetActive(false);
+            }
+        }
+        if (index == 5)
+        {
+            anzahlDach.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzahlDach.GetComponent<Text>().text) - 2);
+            if (Convert.ToInt32(anzahlDach.GetComponent<Text>().text) == 0)
+            {
+                buttonDach.SetActive(false);
+            }
+        }
+        if (index == 6)
+        {
+            anzahlTurm.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzahlTurm.GetComponent<Text>().text) - 2);
+            if (Convert.ToInt32(anzahlTurm.GetComponent<Text>().text) == 0)
+            {
+                buttonTurm.SetActive(false);
+            }
+        }
 
         //Schreibt das Feld in die Datenbank
         for (int i = 0; i < 2; i++)
