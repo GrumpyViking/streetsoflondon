@@ -166,15 +166,32 @@ public class MoveUnit : MonoBehaviour
                 select = null;
             }
 
-            if(select.tag == "HexFields" && fabrik==null && waehlefabrik)
+            if (PassthroughData.currentPlayer == 1)
             {
-                waehlegegner = false;
-                fabrik = select;
-                fabrik.GetComponent<Outline>().OutlineColor = Color.red;
-                fabrik.GetComponent<Outline>().enabled = true;
+                if (select.tag == "Fabrik_R" && fabrik == null && waehlefabrik)
+                {
+                    
+                    waehlegegner = false;
+                    fabrik = select;
+                    fabrik.GetComponent<Outline>().OutlineColor = Color.red;
+                    fabrik.GetComponent<Outline>().enabled = true;
 
-                select = null;
+                    select = null;
+                }
             }
+            else
+            {
+                if (select.tag == "Fabrik_L" && fabrik == null && waehlefabrik)
+                {
+                    waehlegegner = false;
+                    fabrik = select;
+                    fabrik.GetComponent<Outline>().OutlineColor = Color.red;
+                    fabrik.GetComponent<Outline>().enabled = true;
+
+                    select = null;
+                }
+            }
+            
 
 
             if (select.tag == "HexFields" && feld == null && !feldselected && unitselected && zielfeldsuche && select.GetComponent<FieldHelper>().isSelectable)
@@ -453,14 +470,22 @@ public class MoveUnit : MonoBehaviour
                 int schaden = dbc.GetAtt(unit.GetComponent<UnitHelper>().unitID);
                 if(PassthroughData.currentPlayer == 1)
                 {
-                    fb.SetLPFabrikR(schaden);
-                }
+                    if (fabrik != null)
+                    {
+                        fb.SetLPFabrikR(schaden);
+                    }                }
                 else
                 {
-                    fb.SetLPFabrikL(schaden);
+                    if (fabrik != null)
+                    {
+                        fb.SetLPFabrikL(schaden);
+                    }
                 }
                 DeselectUnit();
+                DeselectFeld();
+                DeselectGegner();
                 DeselectFabrik();
+                bewegenButton.SetActive(true);
             }
             buttonclicked = false;
             phase = -1;

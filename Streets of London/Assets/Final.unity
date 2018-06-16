@@ -6006,7 +6006,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1132249081946856, guid: fa233bc5ada23374586bdacea6920238, type: 2}
       propertyPath: m_TagString
-      value: HexFields
+      value: Fabrik_L
       objectReference: {fileID: 0}
     - target: {fileID: 23973467006842896, guid: fa233bc5ada23374586bdacea6920238,
         type: 2}
@@ -7374,7 +7374,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1132249081946856, guid: fa233bc5ada23374586bdacea6920238, type: 2}
       propertyPath: m_TagString
-      value: HexFields
+      value: Fabrik_R
       objectReference: {fileID: 0}
     - target: {fileID: 23973467006842896, guid: fa233bc5ada23374586bdacea6920238,
         type: 2}
