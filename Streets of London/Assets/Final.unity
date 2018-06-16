@@ -28131,13 +28131,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c733d1ccc6799de43ad20d43124e79e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wuerfel:
-  - {fileID: 21300000, guid: dae96cd6047c399459d127e11e062260, type: 3}
-  - {fileID: 21300000, guid: 14df4b9e4624af2488ddf2907e12421d, type: 3}
-  - {fileID: 21300000, guid: e2d719126fe27734ba2cf77fa4021f41, type: 3}
-  - {fileID: 21300000, guid: 01bbc7b3b8407bc438b4281566386f71, type: 3}
-  - {fileID: 21300000, guid: 5aa9ebac47d89e848aafe37131a10f56, type: 3}
-  - {fileID: 21300000, guid: 51be7758e64b0134eaee5c08ad8465ea, type: 3}
+  mu: {fileID: 1565836641}
+  gm: {fileID: 1565836639}
+  dbc: {fileID: 1719293103}
+  km: {fileID: 1619626949}
+  kampfButton: {fileID: 1531128232}
+  stoppButton: {fileID: 764630414}
+  beendenButton: {fileID: 112653881}
   attackDice:
   - {fileID: 1917719802}
   - {fileID: 1309595176}
@@ -28145,6 +28145,13 @@ MonoBehaviour:
   - {fileID: 1926598275}
   - {fileID: 333606700}
   - {fileID: 1188272027}
+  wuerfel:
+  - {fileID: 21300000, guid: dae96cd6047c399459d127e11e062260, type: 3}
+  - {fileID: 21300000, guid: 14df4b9e4624af2488ddf2907e12421d, type: 3}
+  - {fileID: 21300000, guid: e2d719126fe27734ba2cf77fa4021f41, type: 3}
+  - {fileID: 21300000, guid: 01bbc7b3b8407bc438b4281566386f71, type: 3}
+  - {fileID: 21300000, guid: 5aa9ebac47d89e848aafe37131a10f56, type: 3}
+  - {fileID: 21300000, guid: 51be7758e64b0134eaee5c08ad8465ea, type: 3}
   defendDice:
   - {fileID: 89270394}
   - {fileID: 687553127}
@@ -28152,27 +28159,20 @@ MonoBehaviour:
   - {fileID: 1523066602}
   - {fileID: 1996822553}
   - {fileID: 695869932}
-  kampfbutton: {fileID: 1531128232}
-  stoppButton: {fileID: 764630414}
-  beendenButton: {fileID: 112653881}
-  km: {fileID: 1619626949}
-  heartsatk:
+  heartsAtk:
   - {fileID: 2143377281}
   - {fileID: 1496311806}
   - {fileID: 408869744}
   - {fileID: 194362281}
   - {fileID: 1471029632}
   - {fileID: 927215421}
-  heartsdef:
+  heartsDef:
   - {fileID: 1149598219}
   - {fileID: 422537495}
   - {fileID: 643277075}
   - {fileID: 894240590}
   - {fileID: 1942764118}
   - {fileID: 40574832}
-  gm: {fileID: 1565836639}
-  dbc: {fileID: 1719293103}
-  mu: {fileID: 1565836641}
   rwAtt: {fileID: 1506135000}
   rwDef: {fileID: 1443489351}
   gwAtt: {fileID: 1767384094}
