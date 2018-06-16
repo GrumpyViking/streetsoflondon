@@ -103,10 +103,12 @@ public class MoveUnit : MonoBehaviour
             feld = null;
             feldselected = false;
             zielfeldsuche = false;
-            for(int i = 0; i < grid.Length; i++)
-            {
-                grid[i].GetComponent<Outline>().enabled = false;
-            }
+            
+        }
+        for (int i = 0; i < grid.Length; i++)
+        {
+            grid[i].GetComponent<Outline>().enabled = false;
+            grid[i].GetComponent<FieldHelper>().isSelectable = false;
         }
     }
     public void DeselectFabrik()
@@ -175,7 +177,7 @@ public class MoveUnit : MonoBehaviour
             }
 
 
-            if (select.tag == "HexFields" && feld == null && !feldselected && unitselected && zielfeldsuche)
+            if (select.tag == "HexFields" && feld == null && !feldselected && unitselected && zielfeldsuche && select.GetComponent<FieldHelper>().isSelectable)
             {
                 feld = select;
                 if(feld.GetComponent<Outline>().enabled == true)
@@ -219,6 +221,7 @@ public class MoveUnit : MonoBehaviour
                     {
                         if (grid[i].GetComponent<FieldHelper>().hasUnit == false)
                         {
+                            grid[i].GetComponent<FieldHelper>().isSelectable = true;
                             grid[i].GetComponent<Outline>().OutlineColor = Color.white;
                             grid[i].GetComponent<Outline>().enabled = true;
                         }
@@ -231,6 +234,7 @@ public class MoveUnit : MonoBehaviour
                     {
                         if (grid[i].GetComponent<FieldHelper>().hasUnit == false)
                         {
+                            grid[i].GetComponent<FieldHelper>().isSelectable = true;
                             grid[i].GetComponent<Outline>().OutlineColor = Color.white;
                             grid[i].GetComponent<Outline>().enabled = true;
                         }
@@ -261,6 +265,7 @@ public class MoveUnit : MonoBehaviour
                                 {
                                     if(Distance(unitfield, e) <= aktionsp)
                                     {
+                                        e.GetComponent<FieldHelper>().isSelectable = true;
                                         e.GetComponent<Outline>().OutlineColor = Color.white;
                                         e.GetComponent<Outline>().enabled = true;
                                     }
@@ -281,6 +286,7 @@ public class MoveUnit : MonoBehaviour
             buttonclicked = false;
             if (unit != null && feld != null && (Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) > 0) && dbc.GetFieldBonus(feld.GetComponent<FieldHelper>().id) < 10)
             {
+                //Bewegen der Einheit und Datenbank update
                 unit.transform.position = feld.transform.position + (new Vector3(0, 10, 0));
                 string buff = unit.name.Substring(unit.name.Length - 2);
                 unit.GetComponent<UnitHelper>().unitID = Convert.ToInt32(buff);
@@ -333,41 +339,6 @@ public class MoveUnit : MonoBehaviour
         int maxxy = Math.Max(Math.Abs(unitfield.GetComponent<FieldHelper>().x - fieldinreach.GetComponent<FieldHelper>().x), Math.Abs(unitfield.GetComponent<FieldHelper>().y - fieldinreach.GetComponent<FieldHelper>().y));
         return Math.Max(maxxy, Math.Abs(unitfield.GetComponent<FieldHelper>().z - fieldinreach.GetComponent<FieldHelper>().z));
     }
-    
-
-    void CheckVictory(GameObject unit, GameObject feld)
-    {
-        GameObject fabrik=null;
-        if(PassthroughData.currentPlayer == 1)
-        {
-            for(int i = 0; i < grid.Length; i++)
-            {
-                if(grid[i].GetComponent<FieldHelper>().x==8 && grid[i].GetComponent<FieldHelper>().y == 0)
-                {
-                    fabrik=grid[i];
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < grid.Length; i++)
-            {
-                if (grid[i].GetComponent<FieldHelper>().x == 1 && grid[i].GetComponent<FieldHelper>().y == 0)
-                {
-                    fabrik = grid[i];
-                }
-            }
-        }
-        if (fabrik.GetComponent<FieldHelper>().hasUnit)
-        {
-            if(dbc.GetUnitPlayerID(fabrik.GetComponent<FieldHelper>().unitID) == PassthroughData.currentPlayer)
-            {
-                gm.GameOver();   
-            }
-        }
-    }
-
-   
 
     public void Angriff()
     {
@@ -404,6 +375,7 @@ public class MoveUnit : MonoBehaviour
                             {
                                 if (Distance(unitfield, e) <= unitRW)
                                 {
+                                    
                                     e.GetComponent<Outline>().OutlineColor = Color.red;
                                     e.GetComponent<Outline>().enabled = true;
                                 }
