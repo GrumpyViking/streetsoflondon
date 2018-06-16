@@ -145,7 +145,7 @@ public class MoveUnit : MonoBehaviour
         if (select != null)
         {
             
-            if (select.tag == "Einheit" && unit == null && !unitselected && !waehlegegner)
+            if (select.tag == "Einheit" && unit == null && !unitselected && !waehlegegner && dbc.GetUnitPlayerID(select.GetComponent<UnitHelper>().unitID)==PassthroughData.currentPlayer)
             {
                 unit = select;
                 aktionsmenue.SetActive(true);
@@ -156,7 +156,7 @@ public class MoveUnit : MonoBehaviour
                 select = null;
             }
 
-            if (select.tag == "Einheit" && gegner == null && waehlegegner)
+            if (select.tag == "Einheit" && gegner == null && waehlegegner && dbc.GetUnitPlayerID(select.GetComponent<UnitHelper>().unitID) != PassthroughData.currentPlayer)
             {
                 waehlefabrik = false;
                 gegner = select;
