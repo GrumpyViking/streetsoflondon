@@ -7,7 +7,6 @@ using TMPro;
 /*
  * TODO:
  * 
- * - AP beachten
  * - Anzeige von Gegnern/Fabrik in reichweite wenn angriffs option gewählt
  * - Fehler behebung wenn angriffsoption nicht gültig (nur unter bestimmten bedingungen)
  * - Kommentieren
@@ -21,7 +20,7 @@ public class MoveUnit : MonoBehaviour
     public Ressources rm;
     GameObject gegner = null;
     public Texture[] fabrikDamage; 
-    GameObject feld;
+    GameObject feld=null;
     GameObject fabrik;
     GameObject aktionsmenue;
     GameObject unitField;
@@ -159,6 +158,24 @@ public class MoveUnit : MonoBehaviour
             {
                 unit = select;
                 aktionsmenue.SetActive(true);
+                if (unit.GetComponent<UnitHelper>().fieldID == 0)
+                {
+                    angriffButton.SetActive(false);
+                }
+                else
+                {
+                    if (unit.GetComponent<UnitHelper>().unitAP == 0)
+                    {
+                        angriffButton.SetActive(false);
+                        bewegenButton.SetActive(false);
+                    }
+                    else
+                    {
+                        angriffButton.SetActive(true);
+                        bewegenButton.SetActive(true);
+                    }
+                }
+                
                 SetUnitStatText(unit);
                 unit.GetComponent<Outline>().OutlineColor = Color.white;
                 unit.GetComponent<Outline>().enabled = true;
@@ -203,8 +220,6 @@ public class MoveUnit : MonoBehaviour
                     select = null;
                 }
             }
-            
-
 
             if (select.tag == "HexFields" && feld == null && !feldselected && unitselected && zielfeldsuche && select.GetComponent<FieldHelper>().isSelectable)
             {
@@ -503,6 +518,14 @@ public class MoveUnit : MonoBehaviour
                 }
                 unit.GetComponent<UnitHelper>().unitAP = 0;
                 usedUnits.Add(unit);
+                DeselectUnit();
+                DeselectFeld();
+                DeselectGegner();
+                DeselectFabrik();
+                bewegenButton.SetActive(true);
+            }
+            else if(gegner==null && fabrik == null)
+            {
                 DeselectUnit();
                 DeselectFeld();
                 DeselectGegner();
