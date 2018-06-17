@@ -18,7 +18,7 @@ public class MoveUnit : MonoBehaviour
     GameObject select;
     GameObject unit;
     public Ressources rm;
-    GameObject gegner;
+    GameObject gegner = null;
     public Texture[] fabrikDamage; 
     GameObject feld;
     GameObject fabrik;
@@ -80,8 +80,6 @@ public class MoveUnit : MonoBehaviour
         {
             gegner.GetComponent<Outline>().enabled = false;
             gegner = null;
-            gegnergewaehlt = false;
-            waehlegegner = true;
             aktionsmenue.SetActive(false);
         }
         gegnergewaehlt = false;
@@ -163,17 +161,19 @@ public class MoveUnit : MonoBehaviour
                 unit.GetComponent<Outline>().OutlineColor = Color.white;
                 unit.GetComponent<Outline>().enabled = true;
                 unitselected = true;
-                select = null;
+                //select = null;
+                
             }
 
-            if (select.tag == "Einheit" && gegner == null && waehlegegner && dbc.GetUnitPlayerID(select.GetComponent<UnitHelper>().unitID) != PassthroughData.currentPlayer)
+            if (select.tag == "Einheit" && gegner == null && waehlegegner == true && dbc.GetUnitPlayerID(select.GetComponent<UnitHelper>().unitID) != PassthroughData.currentPlayer)
             {
+               
                 waehlefabrik = false;
                 gegner = select;
                 gegner.GetComponent<Outline>().OutlineColor = Color.red;
                 gegner.GetComponent<Outline>().enabled = true;
                 gegnergewaehlt = true;
-                select = null;
+                //select = null;
             }
 
             if (PassthroughData.currentPlayer == 1)
@@ -215,6 +215,7 @@ public class MoveUnit : MonoBehaviour
                 feld.GetComponent<Outline>().enabled = true;
                 feldselected = true;
             }
+            select = null;
         }
     }
     GameObject ReturnClickedObject(out RaycastHit hit)
