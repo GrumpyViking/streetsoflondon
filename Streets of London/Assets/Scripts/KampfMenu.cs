@@ -33,6 +33,8 @@ public class KampfMenu : MonoBehaviour {
     public GameObject rwDef;
     public GameObject gwAtt;
     public GameObject gwDef;
+    public GameObject pictureAtt;
+    public GameObject pictureDef;
 
     //Hilfsvariablen
     int[] attackValues;
@@ -85,6 +87,8 @@ public class KampfMenu : MonoBehaviour {
             attackDice[i].GetComponent<Image>().sprite = wuerfel[0];
         }
 
+        pictureAtt.GetComponent<RawImage>().texture = attacker.GetComponent<Renderer>().material.mainTexture;
+
         //Verteidiger
 
         for (int i = 0; i < dbc.GetLP(defender.GetComponent<UnitHelper>().unitID); i++)
@@ -100,6 +104,7 @@ public class KampfMenu : MonoBehaviour {
             defendDice[i].GetComponent<DiceValue>().setDiceValue(1);
             defendDice[i].GetComponent<Image>().sprite = wuerfel[0];
         }
+        pictureDef.GetComponent<RawImage>().texture = defender.GetComponent<Renderer>().material.mainTexture;
 
         distance = Distance(attField, defField);
 
