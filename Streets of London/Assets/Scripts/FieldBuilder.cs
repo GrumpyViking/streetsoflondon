@@ -175,7 +175,7 @@ public class FieldBuilder : MonoBehaviour {
         RaycastHit hitInfo;
         int pos = 0;
         select = ReturnClickedObject(out hitInfo);
-        if (select.tag == "HexFields" && !select.GetComponent<FieldHelper>().isSet)
+        if (select != null &&select.tag == "HexFields" && !select.GetComponent<FieldHelper>().isSet)
         {
             for(int i = 0; i < fields.Length; i++)
             {
@@ -197,10 +197,6 @@ public class FieldBuilder : MonoBehaviour {
             }
             selectOpposit.GetComponent<Outline>().enabled = true;
             chooseField = false;
-        }
-        else
-        {
-
         }
     }
 
