@@ -151,7 +151,8 @@ public class ObjectPooler : MonoBehaviour
         }
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
-        
+        objectToSpawn.GetComponent<UnitHelper>().unitDefaultAP = dbc.GetAP(dbc.GetUnitID(tag));
+        objectToSpawn.GetComponent<UnitHelper>().unitAP = dbc.GetAP(dbc.GetUnitID(tag));
         objectToSpawn.name = PassthroughData.currentPlayer + "_" + tag + "_"+ dbc.GetUnitID(tag);
         objectToSpawn.GetComponent<UnitHelper>().unitID = dbc.GetUnitID(tag);
         poolDictonary[tag].Enqueue(objectToSpawn);

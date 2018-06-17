@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -25,6 +26,7 @@ public class MoveUnit : MonoBehaviour
     GameObject aktionsmenue;
     GameObject unitField;
     GameObject gegnerField;
+    List<GameObject> usedUnits = new List<GameObject>();
     public GameObject[] grid;
     public GameObject[] units;
     public Fabrik fb;
@@ -327,10 +329,11 @@ public class MoveUnit : MonoBehaviour
                     feld.GetComponent<FieldHelper>().unitID = unit.GetComponent<UnitHelper>().unitID;
                     beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
                     feld.GetComponent<FieldHelper>().hasUnit = true;
-                    
                     rm.RefreshDisplay(PassthroughData.currentPlayer);
+                    unit.GetComponent<UnitHelper>().unitAP = 0;
+                    usedUnits.Add(unit);
                 }
-                else if(unit.GetComponent<UnitHelper>().fieldID != feld.GetComponent<FieldHelper>().id)
+                else if(unit.GetComponent<UnitHelper>().fieldID != feld.GetComponent<FieldHelper>().id )
                 {
                     for(int i = 0; i < grid.Length; i++)
                     {
@@ -540,5 +543,14 @@ public class MoveUnit : MonoBehaviour
         attext.GetComponent<TextMeshProUGUI>().text = dbc.GetAtt(unit.GetComponent<UnitHelper>().unitID).ToString();
         dftext.GetComponent<TextMeshProUGUI>().text = dbc.GetDef(unit.GetComponent<UnitHelper>().unitID).ToString();
         rwtext.GetComponent<TextMeshProUGUI>().text = dbc.GetRW(unit.GetComponent<UnitHelper>().unitID).ToString();
+    }
+
+    public void ResetAP()
+    {
+        for(int i = 0; i < usedUnits.Count; i++)
+        {
+            usedUnits[i].GetComponent<UnitHelper>().unitAP = usedUnits[i].GetComponent<UnitHelper>().unitDefaultAP;
+        }
+        usedUnits.Clear();
     }
 }

@@ -9,4 +9,6 @@ public class UnitHelper : MonoBehaviour {
 
     public int unitID;
     public int fieldID;
+    public int unitAP;
+    public int unitDefaultAP;
 }

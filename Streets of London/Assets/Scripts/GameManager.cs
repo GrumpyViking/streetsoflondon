@@ -191,6 +191,7 @@ public class GameManager : MonoBehaviour {
 
     void TurnOver()
     {
+        mu.ResetAP();
         rc.AktualisiereGold(1);
         rc.AktualisiereGold(2);
         b.HasUnit();
