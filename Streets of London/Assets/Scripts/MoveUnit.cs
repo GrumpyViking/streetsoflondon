@@ -234,7 +234,7 @@ public class MoveUnit : MonoBehaviour
     public void MoveUnits()
     {
 
-        if (!buttonclicked && phase == 0)
+        if (!buttonclicked && phase == 0 && unit.GetComponent<UnitHelper>().unitAP>0)
         {
             anweisungText.GetComponent<TextMeshProUGUI>().text = "Zielfeld wählen!";
             bewegenButtonText.GetComponent<Text>().text = "Bestätigen";
@@ -346,6 +346,7 @@ public class MoveUnit : MonoBehaviour
                             feld.GetComponent<FieldHelper>().unitID = unit.GetComponent<UnitHelper>().unitID;
                             feld.GetComponent<FieldHelper>().hasUnit = true;
                             rm.RefreshDisplay(PassthroughData.currentPlayer);
+                            unit.GetComponent<UnitHelper>().unitAP -= Distance(oldfeld, feld); 
                         }
                     }
                     beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
@@ -377,7 +378,7 @@ public class MoveUnit : MonoBehaviour
         GameObject fieldunit = null;
         GameObject fieldopponent = null;
         int rw;
-        if (!buttonclicked && phase == 0)
+        if (!buttonclicked && phase == 0 && unit.GetComponent<UnitHelper>().unitAP>0)
         {
             anweisungText.GetComponent<TextMeshProUGUI>().text = "Ziel wählen!";
             waehlegegner = true;
@@ -469,6 +470,7 @@ public class MoveUnit : MonoBehaviour
                     km.SetDefField(gegnerField);
                     km.SetDistance(distance);
                     km.ShowKampfMenu();
+                    unit.GetComponent<UnitHelper>().unitAP = 0;
                 }
                 else
                 {
@@ -497,6 +499,7 @@ public class MoveUnit : MonoBehaviour
                         fb.SetLPFabrikL(schaden);
                     }
                 }
+                unit.GetComponent<UnitHelper>().unitAP = 0;
                 DeselectUnit();
                 DeselectFeld();
                 DeselectGegner();
