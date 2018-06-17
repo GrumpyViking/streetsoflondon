@@ -522,7 +522,6 @@ public class DataBaseController : MonoBehaviour {
             dbCMD.CommandText = "Select COUNT(*) from Einheit Where Name =  '"+name+"' And SpielerID = "+playerid+"";
 
             anzahl = dbCMD.ExecuteScalar().ToString();
-            Debug.Log(anzahl);
             CloseDBConnection();
 
             return Convert.ToInt32(anzahl);

@@ -257,7 +257,6 @@ public class KaufMenuScript : MonoBehaviour
 
     public void KaufBestaetigen()
     {
-
         int[] boughtunits = { Convert.ToInt32(anzeige1.GetComponent<Text>().text), Convert.ToInt32(anzeige2.GetComponent<Text>().text), Convert.ToInt32(anzeige3.GetComponent<Text>().text), Convert.ToInt32(anzeige4.GetComponent<Text>().text), Convert.ToInt32(anzeige5.GetComponent<Text>().text) };
         string[] unitnames = new string[5];
         int offset;

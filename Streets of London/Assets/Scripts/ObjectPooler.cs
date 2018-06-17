@@ -41,7 +41,6 @@ public class ObjectPooler : MonoBehaviour
                 obj.SetActive(false);
                 
                 obj.tag = "Einheit";
-                //obj.AddComponent<MoveUnit>();
                 obj.AddComponent<UnitHelper>();
                 obj.AddComponent<Outline>();
                 obj.GetComponent<Outline>().enabled = false;
