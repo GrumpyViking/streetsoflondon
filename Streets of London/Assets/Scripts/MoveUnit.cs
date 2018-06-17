@@ -346,7 +346,8 @@ public class MoveUnit : MonoBehaviour
                             feld.GetComponent<FieldHelper>().unitID = unit.GetComponent<UnitHelper>().unitID;
                             feld.GetComponent<FieldHelper>().hasUnit = true;
                             rm.RefreshDisplay(PassthroughData.currentPlayer);
-                            unit.GetComponent<UnitHelper>().unitAP -= Distance(oldfeld, feld); 
+                            unit.GetComponent<UnitHelper>().unitAP -= Distance(oldfeld, feld);
+                            usedUnits.Add(unit);
                         }
                     }
                     beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
@@ -471,6 +472,7 @@ public class MoveUnit : MonoBehaviour
                     km.SetDistance(distance);
                     km.ShowKampfMenu();
                     unit.GetComponent<UnitHelper>().unitAP = 0;
+                    usedUnits.Add(unit);
                 }
                 else
                 {
@@ -481,7 +483,7 @@ public class MoveUnit : MonoBehaviour
                 bewegenButton.SetActive(true);
 
             }
-            else
+            else if(waehlefabrik && fabrik!=null)
             {
                 int schaden = dbc.GetAtt(unit.GetComponent<UnitHelper>().unitID);
                 rw = dbc.GetRW(unit.GetComponent<UnitHelper>().unitID);
@@ -500,6 +502,7 @@ public class MoveUnit : MonoBehaviour
                     }
                 }
                 unit.GetComponent<UnitHelper>().unitAP = 0;
+                usedUnits.Add(unit);
                 DeselectUnit();
                 DeselectFeld();
                 DeselectGegner();

@@ -32,7 +32,6 @@ Shader "Custom/Outline Fill" {
       Stencil {
         Ref 1
         Comp NotEqual
-        Pass Replace
       }
 
       CGPROGRAM
