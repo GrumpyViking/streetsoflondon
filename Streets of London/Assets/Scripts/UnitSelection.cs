@@ -297,25 +297,29 @@ public class UnitSelection : MonoBehaviour {
     //OnClick-Methode für den Bestätigen-Button
     public void SubmitUnitSelection()
     {
-        SelectRandomUnits();
-        if (unitsChosen == 5)
-        {            
-            SubmitToDatabase();
-            Reset();
-            ResetSelection();
-            unitSelectionScriptObject.SetActive(false);
-            if (PassthroughData.currentPlayer == 1 )
+        if (unitsChosen != 0)
+        {
+            SelectRandomUnits();
+            if (unitsChosen == 5)
             {
-                PassthroughData.currentPlayer = 2;
-                sm.SetPlayer(PassthroughData.player2);
+                SubmitToDatabase();
+                Reset();
+                ResetSelection();
+                unitSelectionScriptObject.SetActive(false);
+                if (PassthroughData.currentPlayer == 1)
+                {
+                    PassthroughData.currentPlayer = 2;
+                    sm.SetPlayer(PassthroughData.player2);
+                }
+                else
+                {
+                    PassthroughData.currentPlayer = 1;
+                    sm.SetPlayer(PassthroughData.player1);
+                }
+                sm.PanelState(true);
             }
-            else
-            {
-                PassthroughData.currentPlayer = 1;
-                sm.SetPlayer(PassthroughData.player1);
-            }
-            sm.PanelState(true);
         }
+        
     }
 
     //---------------------------------------------------------------------

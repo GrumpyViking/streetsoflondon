@@ -54,7 +54,6 @@ public class MainMenuManager : MonoBehaviour {
     //Festlegen des aktuellen Spielern
     int StartingPlayer(string choise)
     {
-        Debug.Log("Choise: " + choise);
         if(choise.Equals("Spieler 1"))
         {
             PassthroughData.currentPlayer = 1;
@@ -66,7 +65,8 @@ public class MainMenuManager : MonoBehaviour {
         }
         else
         {
-            return Random.Range(1, 2);
+            PassthroughData.currentPlayer = Random.Range(1, 3); //Random.Range(1,3) da der Max Wert Exklusive ist
+            return PassthroughData.currentPlayer;
         }
     }
 
