@@ -17,6 +17,8 @@ public class Trickkarten : MonoBehaviour {
     public int[] activeTKDauer1 = { 0, 0, 0, 0, 0, 0, 0, 0 };
     public int[] activeTKDauer2 = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
+    public Ressources rsc;
+
     public GameObject trickkartenMenu;
     public GameObject slot1;
     public GameObject slot2;
@@ -323,9 +325,11 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot1()
     {
+        string effekt;
         if (PassthroughData.currentPlayer == 1)
         {
-            string effekt = TKPicker.player1TK[0];
+            Debug.Log(TKPicker.player1TK[0]);
+            effekt = TKPicker.player1TK[0];
             TKPicker.player1TK[0] = TKPicker.player1TK[1];
             TKPicker.player1TK[1] = TKPicker.player1TK[2];
             TKPicker.player1TK[2] = TKPicker.player1TK[3];
@@ -337,7 +341,8 @@ public class Trickkarten : MonoBehaviour {
         }
         else
         {
-            string effekt = TKPicker.player2TK[0];
+            Debug.Log(TKPicker.player2TK[0]);
+            effekt = TKPicker.player2TK[0];
             TKPicker.player2TK[0] = TKPicker.player2TK[1];
             TKPicker.player2TK[1] = TKPicker.player2TK[2];
             TKPicker.player2TK[2] = TKPicker.player2TK[3];
@@ -354,9 +359,10 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot2()
     {
+        string effekt;
         if (PassthroughData.currentPlayer == 1)
         {
-            string effekt = TKPicker.player1TK[1];
+            effekt = TKPicker.player1TK[1];
             TKPicker.player1TK[1] = TKPicker.player1TK[2];
             TKPicker.player1TK[2] = TKPicker.player1TK[3];
             TKPicker.player1TK[3] = TKPicker.player1TK[4];
@@ -367,7 +373,7 @@ public class Trickkarten : MonoBehaviour {
         }
         else
         {
-            string effekt = TKPicker.player2TK[1];
+            effekt = TKPicker.player2TK[1];
             TKPicker.player2TK[1] = TKPicker.player2TK[2];
             TKPicker.player2TK[2] = TKPicker.player2TK[3];
             TKPicker.player2TK[3] = TKPicker.player2TK[4];
@@ -383,9 +389,10 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot3()
     {
+        string effekt;
         if (PassthroughData.currentPlayer == 1)
         {
-            string effekt = TKPicker.player1TK[2];
+            effekt = TKPicker.player1TK[2];
             TKPicker.player1TK[2] = TKPicker.player1TK[3];
             TKPicker.player1TK[3] = TKPicker.player1TK[4];
             TKPicker.player1TK[4] = TKPicker.player1TK[5];
@@ -395,7 +402,7 @@ public class Trickkarten : MonoBehaviour {
         }
         else
         {
-            string effekt = TKPicker.player2TK[2];
+            effekt = TKPicker.player2TK[2];
             TKPicker.player2TK[2] = TKPicker.player2TK[3];
             TKPicker.player2TK[3] = TKPicker.player2TK[4];
             TKPicker.player2TK[4] = TKPicker.player2TK[5];
@@ -410,9 +417,10 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot4()
     {
+        string effekt;
         if (PassthroughData.currentPlayer == 1)
         {
-            string effekt = TKPicker.player1TK[3];
+            effekt = TKPicker.player1TK[3];
             TKPicker.player1TK[3] = TKPicker.player1TK[4];
             TKPicker.player1TK[4] = TKPicker.player1TK[5];
             TKPicker.player1TK[5] = TKPicker.player1TK[6];
@@ -421,7 +429,7 @@ public class Trickkarten : MonoBehaviour {
         }
         else
         {
-            string effekt = TKPicker.player2TK[3];
+            effekt = TKPicker.player2TK[3];
             TKPicker.player2TK[3] = TKPicker.player2TK[4];
             TKPicker.player2TK[4] = TKPicker.player2TK[5];
             TKPicker.player2TK[5] = TKPicker.player2TK[6];
@@ -435,9 +443,10 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot5()
     {
+        string effekt;
         if (PassthroughData.currentPlayer == 1)
         {
-            string effekt = TKPicker.player1TK[4];
+            effekt = TKPicker.player1TK[4];
             TKPicker.player1TK[4] = TKPicker.player1TK[5];
             TKPicker.player1TK[5] = TKPicker.player1TK[6];
             TKPicker.player1TK[6] = TKPicker.player1TK[7];
@@ -445,7 +454,7 @@ public class Trickkarten : MonoBehaviour {
         }
         else
         {
-            string effekt = TKPicker.player2TK[4];
+            effekt = TKPicker.player2TK[4];
             TKPicker.player2TK[4] = TKPicker.player2TK[5];
             TKPicker.player2TK[5] = TKPicker.player2TK[6];
             TKPicker.player2TK[6] = TKPicker.player2TK[7];
@@ -458,16 +467,17 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot6()
     {
+        string effekt;
         if (PassthroughData.currentPlayer == 1)
         {
-            string effekt = TKPicker.player1TK[5];
+            effekt = TKPicker.player1TK[5];
             TKPicker.player1TK[5] = TKPicker.player1TK[6];
             TKPicker.player1TK[6] = TKPicker.player1TK[7];
             TKPicker.player1TK[7] = null;
         }
         else
         {
-            string effekt = TKPicker.player2TK[5];
+            effekt = TKPicker.player2TK[5];
             TKPicker.player2TK[5] = TKPicker.player2TK[6];
             TKPicker.player2TK[6] = TKPicker.player2TK[7];
             TKPicker.player2TK[7] = null;
@@ -479,15 +489,16 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot7()
     {
+        string effekt;
         if (PassthroughData.currentPlayer == 1)
         {
-            string effekt = TKPicker.player1TK[6];
+            effekt = TKPicker.player1TK[6];
             TKPicker.player1TK[6] = TKPicker.player1TK[7];
             TKPicker.player1TK[7] = null;
         }
         else
         {
-            string effekt = TKPicker.player2TK[6];
+            effekt = TKPicker.player2TK[6];
             TKPicker.player2TK[6] = TKPicker.player2TK[7];
             TKPicker.player2TK[7] = null;
         }
@@ -498,14 +509,15 @@ public class Trickkarten : MonoBehaviour {
 
     public void useSlot8()
     {
+        string effekt;
         if (PassthroughData.currentPlayer == 1)
         {
-            string effekt = TKPicker.player1TK[7];
+            effekt = TKPicker.player1TK[7];
             TKPicker.player1TK[7] = null;
         }
         else
         {
-            string effekt = TKPicker.player2TK[7];
+            effekt = TKPicker.player2TK[7];
             TKPicker.player2TK[7] = null;
         }
         slot8.SetActive(false);
@@ -515,6 +527,7 @@ public class Trickkarten : MonoBehaviour {
 
     public void GetEffect(string effect)
     {
+        Debug.Log(effect);
         switch (effect) {
             case "Investition":
                 InvestitionEffect();
@@ -525,7 +538,9 @@ public class Trickkarten : MonoBehaviour {
 
     public void InvestitionEffect()
     {
-        SaveEffect("Investition", 2);
+        SaveEffect("Investition", 3);
+        rsc.IncreaseActiveInvestitionen();
+        rsc.RefreshDisplay(PassthroughData.currentPlayer);
         if (PassthroughData.currentPlayer == 1)
         {
             
@@ -543,30 +558,41 @@ public class Trickkarten : MonoBehaviour {
         {
             for (int i = 0; i < 8; i++)
             {
-                if (activeTKSpieler1[i] == null)
+                Debug.Log(activeTKSpieler1[i] + " " + i);
+                if (activeTKSpieler1[i] == "")
                 {
+                    
+                    activeTKSpieler1[i] = effectname;
+                    activeTKDauer1[i] = effectduration;
+                    Debug.Log(activeTKSpieler1[i] + " gespeichert bei " + i);
                     break;
                 }
                 else
                 {
-                    activeTKSpieler1[i] = effectname;
-                    activeTKDauer1[i] = effectduration;
+
+
+                    Debug.Log("Bei " + i + " ist alles belegt.");
                 }
+
             }
         }
         else
         {
             for (int i = 0; i < 8; i++)
             {
-                if (activeTKSpieler2[i] == null)
+                Debug.Log(activeTKSpieler2[i] + " " + i);
+                if (activeTKSpieler2[i] == "")
                 {
+                    activeTKSpieler2[i] = effectname;
+                    activeTKDauer2[i] = effectduration;
+                    Debug.Log(activeTKSpieler2[i] + " gespeichert bei " + i);
                     break;
                 }
                 else
                 {
-                    activeTKSpieler2[i] = effectname;
-                    activeTKDauer2[i] = effectduration;
-                    break;
+
+
+                    Debug.Log("Bei " + i + " ist alles belegt.");
                 }
             }
         }
@@ -588,6 +614,7 @@ public class Trickkarten : MonoBehaviour {
                     if (activeTKDauer1[i] != 0)
                     {
                         activeTKDauer1[i]--;
+                        CallActiveEffect(activeTKSpieler1[i]);
                     }
                     else
                     {
@@ -618,6 +645,7 @@ public class Trickkarten : MonoBehaviour {
                     if (activeTKDauer2[i] != 0)
                     {
                         activeTKDauer2[i]--;
+                        CallActiveEffect(activeTKSpieler2[i]);
                     }
                     else
                     {
@@ -633,6 +661,17 @@ public class Trickkarten : MonoBehaviour {
 
                 }
             }
+        }
+    }
+
+    public void CallActiveEffect(string effectname)
+    {
+        switch (effectname)
+        {
+            case "Investition":
+                Debug.Log("InvestitionEffect");
+                
+                break;
         }
     }
 }

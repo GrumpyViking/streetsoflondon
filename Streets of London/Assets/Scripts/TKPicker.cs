@@ -9,7 +9,7 @@ public class TKPicker : MonoBehaviour {
     public string gewaehlteTK;
     public string nameTK;
     public string wirkungTK;
-    public string[] poolTK = {"Fusel", "Infektion", "Verstärkter Mantel", "Ration"};
+    public string[] poolTK = {"Fusel", "Infektion", "Verstärkter Mantel", "Ration", "Investition" };
     public static string[] player1TK = {" ", " ", " ", " ", " ", " ", " ", " "};
     public static string[] player2TK = {" ", " ", " ", " ", " ", " ", " ", " "};
 
@@ -36,11 +36,11 @@ public class TKPicker : MonoBehaviour {
     public void RandomiseTKChoice()
     {
         System.Random rnd = new System.Random();
-        InitializeTKDetails(poolTK[rnd.Next(3)]);
+        InitializeTKDetails(poolTK[rnd.Next(5)]);
         ShowSlot1();
-        InitializeTKDetails(poolTK[rnd.Next(3)]);
+        InitializeTKDetails(poolTK[rnd.Next(5)]);
         ShowSlot2();
-        InitializeTKDetails(poolTK[rnd.Next(3)]);
+        InitializeTKDetails(poolTK[rnd.Next(5)]);
         ShowSlot3();
     }
 
@@ -70,7 +70,7 @@ public class TKPicker : MonoBehaviour {
                 break;
             case "Investition":
                 nameTK = name;
-                wirkungTK = "Erhalte 3 Gold pro Runde für 3 Runden. Nach jeder Runde wird ein Schadensmarker als Rundenzähler auf die Karte gelegt.";
+                wirkungTK = "Erhalte 3 Gold pro Runde für 3 Runden.";
                 break;
             case "Verführung":
                 nameTK = name;
@@ -124,7 +124,7 @@ public class TKPicker : MonoBehaviour {
         aufleuchtenTK1.SetActive(false);
         aufleuchtenTK2.SetActive(false);
         aufleuchtenTK3.SetActive(true);
-        gewaehlteTK = anzeigeName1.GetComponent<Text>().text;
+        gewaehlteTK = anzeigeName3.GetComponent<Text>().text;
     }
 
     public void SubmitChoice()

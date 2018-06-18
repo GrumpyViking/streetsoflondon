@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour {
     public UnitTypCards utc;
     public MoveUnit mu;
     public Bank b;
+    public Trickkarten tk;
 
     private void Start()
     {
@@ -180,6 +181,7 @@ public class GameManager : MonoBehaviour {
             pm.SetPlayer(PassthroughData.player1);
             turn++;
         }
+        tk.CheckActiveEffects(); 
         rc.RefreshDisplay(PassthroughData.currentPlayer);
         if (turn == 2)
         {

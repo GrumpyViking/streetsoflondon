@@ -11,6 +11,8 @@ public class Ressources : MonoBehaviour {
 
     int goldIncome = 0;
     int baseIncome = 1;
+    int activeInvestitionenSpieler1 = 0;
+    int activeInvestitionenSpieler2 = 0;
 
     public void AktualisiereGold(int playerID)
     {
@@ -50,8 +52,35 @@ public class Ressources : MonoBehaviour {
                 }
             }
         }
+        if (playerID == 1)
+        {
+            for (int k = 0; k < activeInvestitionenSpieler1; k++)
+            {
+                goldIncome += 3;
+            }
+        }
+        else
+        {
+            for (int k = 0; k < activeInvestitionenSpieler2; k++)
+            {
+                goldIncome += 3;
+            }
+        }
+        
+
 
         return (goldIncome+baseIncome);
     }
 	
+    public void IncreaseActiveInvestitionen()
+    {
+        if (PassthroughData.currentPlayer == 1)
+        {
+            activeInvestitionenSpieler1++;
+        }
+        else
+        {
+            activeInvestitionenSpieler2++;
+        }
+    }
 }
