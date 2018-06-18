@@ -538,7 +538,7 @@ public class Trickkarten : MonoBehaviour {
 
     public void InvestitionEffect()
     {
-        SaveEffect("Investition", 3);
+        SaveEffect("Investition", 2);
         rsc.IncreaseActiveInvestitionen();
         rsc.RefreshDisplay(PassthroughData.currentPlayer);
         if (PassthroughData.currentPlayer == 1)
@@ -550,6 +550,12 @@ public class Trickkarten : MonoBehaviour {
             
         }
 
+    }
+
+    public void EndInvestitionEffect()
+    {
+        rsc.DecreaseActiveInvestitionen();
+        rsc.RefreshDisplay(PassthroughData.currentPlayer);
     }
 
     public void SaveEffect(string effectname, int effectduration)
@@ -598,6 +604,16 @@ public class Trickkarten : MonoBehaviour {
         }
     }
 
+    public void EndActiveEffect(string effectname)
+    {
+        switch(effectname)
+        {
+            case "Investition":
+                EndInvestitionEffect();
+                break;
+        }
+    }
+
     public void CheckActiveEffects()
     {
         if (PassthroughData.currentPlayer == 1)
@@ -614,10 +630,11 @@ public class Trickkarten : MonoBehaviour {
                     if (activeTKDauer1[i] != 0)
                     {
                         activeTKDauer1[i]--;
-                        CallActiveEffect(activeTKSpieler1[i]);
+                        CallActiveEffect(activeTKSpieler1[i], i);
                     }
                     else
                     {
+                        EndActiveEffect(activeTKSpieler1[i]);
                         activeTKSpieler1[i] = null;
                         for (int j = i; j < 7; j++)
                         {
@@ -645,10 +662,11 @@ public class Trickkarten : MonoBehaviour {
                     if (activeTKDauer2[i] != 0)
                     {
                         activeTKDauer2[i]--;
-                        CallActiveEffect(activeTKSpieler2[i]);
+                        CallActiveEffect(activeTKSpieler2[i], i);
                     }
                     else
                     {
+                        EndActiveEffect(activeTKSpieler2[i]);
                         activeTKSpieler2[i] = null;
                         for (int j = i; j < 7; j++)
                         {
@@ -664,13 +682,13 @@ public class Trickkarten : MonoBehaviour {
         }
     }
 
-    public void CallActiveEffect(string effectname)
+    public void CallActiveEffect(string effectname, int position)
     {
         switch (effectname)
         {
             case "Investition":
-                Debug.Log("InvestitionEffect");
-                
+                Debug.Log(effectname + " für Spieler " + PassthroughData.currentPlayer);
+
                 break;
         }
     }

@@ -24,7 +24,7 @@ public class Ressources : MonoBehaviour {
     public void RefreshDisplay(int playerID)
     {
         gold.GetComponent<Text>().text = "Gold: " + Convert.ToString(dbc.GoldPlayer(playerID));
-        zusatzgold.GetComponent<Text>().text = "+ " + CalcIncome(playerID);
+        zusatzgold.GetComponent<Text>().text = "+ " + CalcIncome(playerID); 
     }
 
     public int CalcIncome(int playerID)
@@ -81,6 +81,18 @@ public class Ressources : MonoBehaviour {
         else
         {
             activeInvestitionenSpieler2++;
+        }
+    }
+
+    public void DecreaseActiveInvestitionen()
+    {
+        if (PassthroughData.currentPlayer == 1)
+        {
+            activeInvestitionenSpieler1--;
+        }
+        else
+        {
+            activeInvestitionenSpieler2--;
         }
     }
 }
