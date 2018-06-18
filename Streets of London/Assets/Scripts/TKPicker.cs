@@ -15,10 +15,20 @@ public class TKPicker : MonoBehaviour {
 
     public GameObject anzeigeName1;
     public GameObject anzeigeWirkung1;
+    public GameObject anzeigeBild1;
     public GameObject anzeigeName2;
     public GameObject anzeigeWirkung2;
+    public GameObject anzeigeBild2;
     public GameObject anzeigeName3;
     public GameObject anzeigeWirkung3;
+    public GameObject anzeigeBild3;
+
+    public Sprite bildTemp;
+    public Sprite bildInvestition;
+    public Sprite bildDoppelbock;
+    public Sprite bildMantel;
+    public Sprite bildInfektion;
+    public Sprite bildRation;
 
     public GameObject aufleuchtenTK1;
     public GameObject aufleuchtenTK2;
@@ -48,37 +58,30 @@ public class TKPicker : MonoBehaviour {
     {
         switch (name)
         {
-            case "Fusel":
+            case "Doppelbock":
                 nameTK = name;
                 wirkungTK = "Erhöhe den AW einer Einheit um 1 für 2 Runden.";
+                bildTemp = bildDoppelbock;
                 break;
             case "Infektion":
                 nameTK = name;
                 wirkungTK = "Alle gegnerischen Einheiten im Wirkungsbereich verlieren 2 LP.";
+                bildTemp = bildInfektion;
                 break;
             case "Verstärkter Mantel":
                 nameTK = name;
                 wirkungTK = "Erhöhe den VW einer Einheit um 1 für 2 Runden";
+                bildTemp = bildMantel;
                 break;
             case "Ration":
                 nameTK = name;
                 wirkungTK = "Heile alle Verbündeten im Wirkungsbereich um 2 LP.";
-                break;
-            case "Sabotage":
-                nameTK = name;
-                wirkungTK = "Beende den Effekt einer beliebigen, aktiven Trickkarte (auch Sabotage).";
+                bildTemp = bildRation;
                 break;
             case "Investition":
                 nameTK = name;
                 wirkungTK = "Erhalte 3 Gold pro Runde für 3 Runden.";
-                break;
-            case "Verführung":
-                nameTK = name;
-                wirkungTK = "Übernimm für eine Runde die Kontrolle über eine beliebige gegnerische Einheit.";
-                break;
-            case "Verstärkung":
-                nameTK = name;
-                wirkungTK = "Platziere einen Schläger an einer beliebigen Stelle auf deiner Spielfeldseite.";
+                bildTemp = bildInvestition;
                 break;
         }
     }
@@ -88,18 +91,21 @@ public class TKPicker : MonoBehaviour {
     {
         anzeigeName1.GetComponent<Text>().text = nameTK;
         anzeigeWirkung1.GetComponent<Text>().text = wirkungTK;
+        //anzeigeBild1.GetComponent(SpriteRenderer).sprite = bildTemp;
     }
 
     public void ShowSlot2()
     {
         anzeigeName2.GetComponent<Text>().text = nameTK;
         anzeigeWirkung2.GetComponent<Text>().text = wirkungTK;
+        //anzeigeBild2.GetComponent(SpriteRenderer).sprite = bildTemp;
     }
 
     public void ShowSlot3()
     {
         anzeigeName3.GetComponent<Text>().text = nameTK;
         anzeigeWirkung3.GetComponent<Text>().text = wirkungTK;
+        //anzeigeBild3.GetComponent(SpriteRenderer).sprite = bildTemp;
     }
     //----------------------------------------------------------------------------------------------
     //Auswahl der Kartenslots (OnClick-Methoden)
