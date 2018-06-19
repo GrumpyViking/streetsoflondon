@@ -16,6 +16,7 @@ public class Trickkarten : MonoBehaviour {
     public int[] activeTKDauer2 = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
     public Ressources rsc;
+    public DataBaseController dbc;
 
     public GameObject trickkartenMenu;
     public GameObject slot1;
@@ -60,6 +61,35 @@ public class Trickkarten : MonoBehaviour {
     public Sprite bildMantel;
     public Sprite bildInfektion;
     public Sprite bildRation;
+
+    public int[] anzahlEinheitenFusel;
+    public int[] anzahlEinheitenMantel;
+    public int[] anzahlEinheitenRation;
+    public int[] anzahlEinheitenInfektion;
+    public int[][] einheitenIdFusel;
+    public int[][] einheitenIdMantel;
+    public int[][] einheitenIdRation;
+    public int[][] einheitenIdInfektion;
+
+    public void Start()
+    {
+        anzahlEinheitenFusel = new int[2];
+        anzahlEinheitenMantel = new int[2];
+        anzahlEinheitenRation = new int[2];
+        anzahlEinheitenInfektion = new int[2];
+        einheitenIdFusel = new int[2][];
+        einheitenIdFusel[0] = new int[30];
+        einheitenIdFusel[1] = new int[30];
+        einheitenIdMantel = new int[2][];
+        einheitenIdMantel[0] = new int[30];
+        einheitenIdMantel[1] = new int[30];
+        einheitenIdRation = new int[2][];
+        einheitenIdRation[0] = new int[30];
+        einheitenIdRation[1] = new int[30];
+        einheitenIdInfektion = new int[2][];
+        einheitenIdInfektion[0] = new int[30];
+        einheitenIdInfektion[1] = new int[30];
+    }
 
     public void OeffneTrickkartenMenu()
     {
@@ -110,22 +140,22 @@ public class Trickkarten : MonoBehaviour {
         {
             case "Fusel":
                 nameTK = name;
-                wirkungTK = "Erhöhe den AW einer Einheit um 1 für 2 Runden.";
+                wirkungTK = "Erhöhe den AW deiner Einheiten um 1 für die nächste Runde.";
                 bildTemp = bildDoppelbock;
                 break;
             case "Infektion":
                 nameTK = name;
-                wirkungTK = "Alle gegnerischen Einheiten im Wirkungsbereich verlieren 2 LP.";
+                wirkungTK = "Alle gegnerischen Einheiten verlieren 1 LP. Einheiten können nicht durch diesen Effekt sterben.";
                 bildTemp = bildInfektion;
                 break;
             case "Verstärkter Mantel":
                 nameTK = name;
-                wirkungTK = "Erhöhe den VW einer Einheit um 1 für 2 Runden";
+                wirkungTK = "Erhöhe den VW deiner Einheiten um 1 für die nächste Runde.";
                 bildTemp = bildMantel;
                 break;
             case "Ration":
                 nameTK = name;
-                wirkungTK = "Heile alle Verbündeten im Wirkungsbereich um 2 LP.";
+                wirkungTK = "Heile alle deine Einheiten um 1 LP.";
                 bildTemp = bildRation;
                 break;
             case "Investition":
@@ -575,6 +605,18 @@ public class Trickkarten : MonoBehaviour {
             case "Investition":
                 InvestitionEffect();
                 break;
+            case "Ration":
+                RationEffect();
+                break;
+            case "Fusel":
+                FuselEffect();
+                break;
+            case "Verstärkter Mantel":
+                MantelEffect();
+                break;
+            case "Infektion":
+                InfektionEffect();
+                break;
 
         }
     }
@@ -584,21 +626,99 @@ public class Trickkarten : MonoBehaviour {
         SaveEffect("Investition", 2);
         rsc.IncreaseActiveInvestitionen();
         rsc.RefreshDisplay(PassthroughData.currentPlayer);
+    }
+
+    public void FuselEffect()
+    {
+        SaveEffect("Fusel", 1);
+    }
+
+    public void ActivateFusel()
+    {
+        anzahlEinheitenFusel[PassthroughData.currentPlayer] = dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer);
+        einheitenIdFusel[PassthroughData.currentPlayer] = dbc.GetUnitIds(PassthroughData.currentPlayer);
+        for (int i = 0; i < anzahlEinheitenFusel[PassthroughData.currentPlayer]; i++)
+        {
+            dbc.WriteToDB("Update Einheit SET Angriffspunkte = " + (dbc.GetAtt(einheitenIdFusel[PassthroughData.currentPlayer][i]) + 1) + " Where ID = " + einheitenIdFusel[PassthroughData.currentPlayer][i]);
+        }
+    }
+
+    public void MantelEffect()
+    {
+        SaveEffect("Verstärkter Mantel", 1);
+    }
+
+    public void ActivateMantel()
+    {
+        anzahlEinheitenMantel[PassthroughData.currentPlayer] = dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer);
+        einheitenIdMantel[PassthroughData.currentPlayer] = dbc.GetUnitIds(PassthroughData.currentPlayer);
+        for (int i = 1; i <= anzahlEinheitenMantel[PassthroughData.currentPlayer]; i++)
+        {
+            dbc.WriteToDB("Update Einheit SET Verteidigungspunkte = " + (dbc.GetDef(einheitenIdMantel[PassthroughData.currentPlayer][i]) + 1) + " Where ID = " + einheitenIdMantel[PassthroughData.currentPlayer][i]);
+        }
+    }
+
+    public void RationEffect()
+    {
+        Debug.Log("Ration Effekt für Spieler " + PassthroughData.currentPlayer);
+        anzahlEinheitenRation[PassthroughData.currentPlayer] = dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer);
+        einheitenIdRation[PassthroughData.currentPlayer] = dbc.GetUnitIds(PassthroughData.currentPlayer);
+        for (int i = 1; i <= anzahlEinheitenMantel[PassthroughData.currentPlayer]; i++)
+        {
+            //if (dbc.GetLP(einheitenIdRation[PassthroughData.currentPlayer][i]) < dbc.GetMaxLP())
+        }
+    }
+
+    public void InfektionEffect()
+    {
+        Debug.Log("Infektion Effekt für Spieler " + PassthroughData.currentPlayer);
+
         if (PassthroughData.currentPlayer == 1)
         {
-            
+            anzahlEinheitenInfektion[1] = dbc.GetNumUnitsofPlayer(2);
+            einheitenIdInfektion[1] = dbc.GetUnitIds(2);
+            for (int i = 1; i <= anzahlEinheitenInfektion[2]; i++)
+            {
+                if (dbc.GetLP(einheitenIdRation[1][i]) != 1)
+                {
+                    dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(einheitenIdInfektion[1][i]) - 1) + " Where ID = " + einheitenIdInfektion[1][i]);
+                }
+            }
         }
         else
         {
-            
+            anzahlEinheitenInfektion[0] = dbc.GetNumUnitsofPlayer(1);
+            einheitenIdInfektion[0] = dbc.GetUnitIds(1);
+            for (int i = 1; i <= anzahlEinheitenInfektion[0]; i++)
+            {
+                if (dbc.GetLP(einheitenIdRation[1][i]) != 1)
+                {
+                    dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(einheitenIdInfektion[0][i]) - 1) + " Where ID = " + einheitenIdInfektion[0][i]);
+                }
+            }
         }
-
     }
 
     public void EndInvestitionEffect()
     {
         rsc.DecreaseActiveInvestitionen();
         rsc.RefreshDisplay(PassthroughData.currentPlayer);
+    }
+
+    public void EndFuselEffect()
+    {
+        for (int i = 1; i <= anzahlEinheitenFusel[PassthroughData.currentPlayer]; i++)
+        {
+            dbc.WriteToDB("Update Einheit SET Angriffspunkte = " + (dbc.GetAtt(einheitenIdFusel[PassthroughData.currentPlayer][i]) + 1) + " Where ID = " + einheitenIdFusel[PassthroughData.currentPlayer][i]);
+        }
+    }
+
+    public void EndMantelEffect()
+    {
+        for (int i = 1; i <= anzahlEinheitenMantel[PassthroughData.currentPlayer]; i++)
+        {
+            dbc.WriteToDB("Update Einheit SET Verteidigungspunkte = " + (dbc.GetDef(einheitenIdMantel[PassthroughData.currentPlayer][i]) + 1) + " Where ID = " + einheitenIdMantel[PassthroughData.currentPlayer][i]);
+        }
     }
 
     public void SaveEffect(string effectname, int effectduration)
@@ -653,6 +773,12 @@ public class Trickkarten : MonoBehaviour {
         {
             case "Investition":
                 EndInvestitionEffect();
+                break;
+            case "Fusel":
+                EndFuselEffect();
+                break;
+            case "Verstärkter Mantel":
+                EndMantelEffect();
                 break;
         }
     }
@@ -732,6 +858,14 @@ public class Trickkarten : MonoBehaviour {
             case "Investition":
                 Debug.Log(effectname + " für Spieler " + PassthroughData.currentPlayer);
 
+                break;
+            case "Fusel":
+                Debug.Log(effectname + " für Spieler " + PassthroughData.currentPlayer);
+                ActivateFusel();
+                break;
+            case "Verstärkter Mantel":
+                Debug.Log(effectname + " für Spieler " + PassthroughData.currentPlayer);
+                ActivateMantel();
                 break;
         }
     }

@@ -58,7 +58,7 @@ public class TKPicker : MonoBehaviour {
     {
         switch (name)
         {
-            case "Doppelbock":
+            case "Fusel":
                 nameTK = name;
                 wirkungTK = "Erhöhe den AW einer Einheit um 1 für 2 Runden.";
                 bildTemp = bildDoppelbock;

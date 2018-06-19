@@ -41357,6 +41357,7 @@ MonoBehaviour:
   activeTKDauer1: 0000000000000000000000000000000000000000000000000000000000000000
   activeTKDauer2: 0000000000000000000000000000000000000000000000000000000000000000
   rsc: {fileID: 149742181}
+  dbc: {fileID: 1719293103}
   trickkartenMenu: {fileID: 2136368423}
   slot1: {fileID: 771304410}
   slot2: {fileID: 1219244638}
@@ -41396,6 +41397,10 @@ MonoBehaviour:
   bildMantel: {fileID: 21300000, guid: 169bd96bb4228cb41b47ecd73b9cb141, type: 3}
   bildInfektion: {fileID: 21300000, guid: 080758d17fd88d148ad66859589d75e5, type: 3}
   bildRation: {fileID: 21300000, guid: 53a3446b0b0cc0c41afe60e14625b493, type: 3}
+  anzahlEinheitenFusel: 
+  anzahlEinheitenMantel: 
+  anzahlEinheitenRation: 
+  anzahlEinheitenInfektion: 
 --- !u!1 &2143377281
 GameObject:
   m_ObjectHideFlags: 0
