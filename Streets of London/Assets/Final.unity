@@ -5038,7 +5038,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ddfc05a24272dfe408972a663d1d8322, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7501,7 +7501,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 401ae4b2721fb294e9da7185ff417887, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ddfc05a24272dfe408972a663d1d8322, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11714,7 +11714,7 @@ GameObject:
   - component: {fileID: 609892764}
   - component: {fileID: 609892763}
   m_Layer: 5
-  m_Name: Trickkarte5 (1)
+  m_Name: Trickkarte5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12840,7 +12840,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ddfc05a24272dfe408972a663d1d8322, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12908,7 +12908,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 401ae4b2721fb294e9da7185ff417887, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ddfc05a24272dfe408972a663d1d8322, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13203,7 +13203,7 @@ GameObject:
   - component: {fileID: 681820028}
   - component: {fileID: 681820027}
   m_Layer: 5
-  m_Name: Trickkarte8 (1)
+  m_Name: Trickkarte8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17030,7 +17030,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ddfc05a24272dfe408972a663d1d8322, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19113,7 +19113,7 @@ GameObject:
   - component: {fileID: 992785280}
   - component: {fileID: 992785279}
   m_Layer: 5
-  m_Name: Trickkarte7 (1)
+  m_Name: Trickkarte7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19450,7 +19450,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ddfc05a24272dfe408972a663d1d8322, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19787,7 +19787,7 @@ GameObject:
   - component: {fileID: 1027568491}
   - component: {fileID: 1027568490}
   m_Layer: 5
-  m_Name: Trickkarte3 (1)
+  m_Name: Trickkarte3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21549,7 +21549,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ddfc05a24272dfe408972a663d1d8322, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23081,7 +23081,7 @@ GameObject:
   - component: {fileID: 1219244641}
   - component: {fileID: 1219244640}
   m_Layer: 5
-  m_Name: Trickkarte2 (1)
+  m_Name: Trickkarte2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23637,7 +23637,7 @@ GameObject:
   - component: {fileID: 1242798169}
   - component: {fileID: 1242798168}
   m_Layer: 5
-  m_Name: Trickkarte6 (1)
+  m_Name: Trickkarte6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24771,7 +24771,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ddfc05a24272dfe408972a663d1d8322, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -27219,7 +27219,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ddfc05a24272dfe408972a663d1d8322, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -30388,7 +30388,7 @@ GameObject:
   - component: {fileID: 1582148076}
   - component: {fileID: 1582148075}
   m_Layer: 5
-  m_Name: Trickkarte4 (1)
+  m_Name: Trickkarte4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31525,7 +31525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1633592519
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31607,13 +31607,13 @@ MonoBehaviour:
   - Investition
   anzeigeName1: {fileID: 1634727988}
   anzeigeWirkung1: {fileID: 1841486415}
-  anzeigeBild1: {fileID: 1886427293}
+  anzeigeBild1: {fileID: 1886427295}
   anzeigeName2: {fileID: 1945988779}
   anzeigeWirkung2: {fileID: 543537171}
-  anzeigeBild2: {fileID: 1784757135}
+  anzeigeBild2: {fileID: 1784757137}
   anzeigeName3: {fileID: 825598934}
   anzeigeWirkung3: {fileID: 1688437080}
-  anzeigeBild3: {fileID: 924052165}
+  anzeigeBild3: {fileID: 924052167}
   bildTemp: {fileID: 0}
   bildInvestition: {fileID: 21300000, guid: 2d65d09410898be4398adefec941f7b9, type: 3}
   bildDoppelbock: {fileID: 21300000, guid: 898c2bdd893b2cd4ba5a19ec50a80074, type: 3}
@@ -40028,7 +40028,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ddfc05a24272dfe408972a663d1d8322, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -41079,8 +41079,6 @@ MonoBehaviour:
   nameTK: 
   wirkungTK: 
   effekt: 
-  wirkungsbereich: {fileID: 0}
-  trickkartenbild: {fileID: 0}
   activeTKSpieler1:
   - 
   - 
@@ -41127,6 +41125,20 @@ MonoBehaviour:
   desc6: {fileID: 1298343063}
   desc7: {fileID: 1908658496}
   desc8: {fileID: 992262007}
+  bild1: {fileID: 1496709065}
+  bild2: {fileID: 1621316386}
+  bild3: {fileID: 206057006}
+  bild4: {fileID: 303434612}
+  bild5: {fileID: 915122824}
+  bild6: {fileID: 1877541656}
+  bild7: {fileID: 1204985485}
+  bild8: {fileID: 905094340}
+  bildTemp: {fileID: 0}
+  bildInvestition: {fileID: 21300000, guid: 2d65d09410898be4398adefec941f7b9, type: 3}
+  bildDoppelbock: {fileID: 21300000, guid: 898c2bdd893b2cd4ba5a19ec50a80074, type: 3}
+  bildMantel: {fileID: 21300000, guid: 169bd96bb4228cb41b47ecd73b9cb141, type: 3}
+  bildInfektion: {fileID: 21300000, guid: 080758d17fd88d148ad66859589d75e5, type: 3}
+  bildRation: {fileID: 21300000, guid: 53a3446b0b0cc0c41afe60e14625b493, type: 3}
 --- !u!1 &2143377281
 GameObject:
   m_ObjectHideFlags: 0

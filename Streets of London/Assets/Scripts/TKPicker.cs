@@ -15,13 +15,13 @@ public class TKPicker : MonoBehaviour {
 
     public GameObject anzeigeName1;
     public GameObject anzeigeWirkung1;
-    public GameObject anzeigeBild1;
+    public Image anzeigeBild1;
     public GameObject anzeigeName2;
     public GameObject anzeigeWirkung2;
-    public GameObject anzeigeBild2;
+    public Image anzeigeBild2;
     public GameObject anzeigeName3;
     public GameObject anzeigeWirkung3;
-    public GameObject anzeigeBild3;
+    public Image anzeigeBild3;
 
     public Sprite bildTemp;
     public Sprite bildInvestition;
@@ -90,22 +90,22 @@ public class TKPicker : MonoBehaviour {
     public void ShowSlot1()
     {
         anzeigeName1.GetComponent<Text>().text = nameTK;
-        anzeigeWirkung1.GetComponent<Text>().text = wirkungTK;
-        //anzeigeBild1.GetComponent(SpriteRenderer).sprite = bildTemp;
+        anzeigeWirkung1.GetComponent<Text>().text = wirkungTK;        
+        anzeigeBild1.sprite = bildTemp;
     }
 
     public void ShowSlot2()
     {
         anzeigeName2.GetComponent<Text>().text = nameTK;
         anzeigeWirkung2.GetComponent<Text>().text = wirkungTK;
-        //anzeigeBild2.GetComponent(SpriteRenderer).sprite = bildTemp;
+        anzeigeBild2.sprite = bildTemp;
     }
 
     public void ShowSlot3()
     {
         anzeigeName3.GetComponent<Text>().text = nameTK;
         anzeigeWirkung3.GetComponent<Text>().text = wirkungTK;
-        //anzeigeBild3.GetComponent(SpriteRenderer).sprite = bildTemp;
+        anzeigeBild3.sprite = bildTemp;
     }
     //----------------------------------------------------------------------------------------------
     //Auswahl der Kartenslots (OnClick-Methoden)

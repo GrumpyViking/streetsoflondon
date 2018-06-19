@@ -8,9 +8,7 @@ public class Trickkarten : MonoBehaviour {
 
     public string nameTK;
     public string wirkungTK;
-    public string effekt; 
-    public Sprite wirkungsbereich;
-    public Sprite trickkartenbild;
+    public string effekt;
 
     public string[] activeTKSpieler1 = { null, null, null, null, null, null, null, null };
     public string[] activeTKSpieler2 = { null, null, null, null, null, null, null, null };
@@ -46,6 +44,22 @@ public class Trickkarten : MonoBehaviour {
     public GameObject desc6;
     public GameObject desc7;
     public GameObject desc8;
+
+    public Image bild1;
+    public Image bild2;
+    public Image bild3;
+    public Image bild4;
+    public Image bild5;
+    public Image bild6;
+    public Image bild7;
+    public Image bild8;
+
+    public Sprite bildTemp;
+    public Sprite bildInvestition;
+    public Sprite bildDoppelbock;
+    public Sprite bildMantel;
+    public Sprite bildInfektion;
+    public Sprite bildRation;
 
     public void OeffneTrickkartenMenu()
     {
@@ -96,35 +110,28 @@ public class Trickkarten : MonoBehaviour {
         {
             case "Fusel":
                 nameTK = name;
-                wirkungTK = "Erhöhe den AW einer EInheit um 1 für 2 Runden.";
+                wirkungTK = "Erhöhe den AW einer Einheit um 1 für 2 Runden.";
+                bildTemp = bildDoppelbock;
                 break;
             case "Infektion":
                 nameTK = name;
                 wirkungTK = "Alle gegnerischen Einheiten im Wirkungsbereich verlieren 2 LP.";
+                bildTemp = bildInfektion;
                 break;
             case "Verstärkter Mantel":
                 nameTK = name;
                 wirkungTK = "Erhöhe den VW einer Einheit um 1 für 2 Runden";
+                bildTemp = bildMantel;
                 break;
             case "Ration":
                 nameTK = name;
                 wirkungTK = "Heile alle Verbündeten im Wirkungsbereich um 2 LP.";
-                break;
-            case "Sabotage":
-                nameTK = name;
-                wirkungTK = "Beende den Effekt einer beliebigen, aktiven Trickkarte (auch Sabotage).";
+                bildTemp = bildRation;
                 break;
             case "Investition":
                 nameTK = name;
-                wirkungTK = "Erhalte 3 Gold pro Runde für 3 Runden. Nach jeder Runde wird ein Schadensmarker als Rundenzähler auf die Karte gelegt.";
-                break;
-            case "Verführung":
-                nameTK = name;
-                wirkungTK = "Übernimm für eine Runde die Kontrolle über eine beliebige gegnerische Einheit.";
-                break;
-            case "Verstärkung":
-                nameTK = name;
-                wirkungTK = "Platziere einen Schläger an einer beliebigen Stelle auf deiner Spielfeldseite.";
+                wirkungTK = "Erhalte 3 Gold pro Runde für 3 Runden.";
+                bildTemp = bildInvestition;
                 break;
         }
     }
@@ -200,6 +207,26 @@ public class Trickkarten : MonoBehaviour {
                 return "Erhöhe den VW einer Einheit um 1 für 2 Runden";
             case "Ration":
                 return "Heile alle Verbündeten im Wirkungsbereich um 2 LP.";
+            case "Investition":
+                return "Erhalte 3 Gold pro Runde für 3 Runden.";
+        }
+        return null;
+    }
+
+    public Sprite getImage(string name)
+    {
+        switch (name)
+        {
+            case "Fusel":
+                return bildDoppelbock;
+            case "Infektion":
+                return bildInfektion;
+            case "Verstärkter Mantel":
+                return bildMantel;
+            case "Ration":
+                return bildRation;
+            case "Investition":
+                return bildInvestition;
         }
         return null;
     }
@@ -211,10 +238,12 @@ public class Trickkarten : MonoBehaviour {
         {
             name1.GetComponent<Text>().text = TKPicker.player1TK[0];
             desc1.GetComponent<Text>().text = getEffect(TKPicker.player1TK[0]);
+            bild1.sprite = getImage(TKPicker.player1TK[0]);
         } else
         {
             name1.GetComponent<Text>().text = TKPicker.player2TK[0];
             desc1.GetComponent<Text>().text = getEffect(TKPicker.player2TK[0]);
+            bild1.sprite = getImage(TKPicker.player2TK[0]);
         }
     }
 
@@ -225,11 +254,13 @@ public class Trickkarten : MonoBehaviour {
         {
             name2.GetComponent<Text>().text = TKPicker.player1TK[1];
             desc2.GetComponent<Text>().text = getEffect(TKPicker.player1TK[1]);
+            bild2.sprite = getImage(TKPicker.player1TK[1]);
         }
         else
         {
             name2.GetComponent<Text>().text = TKPicker.player2TK[1];
             desc2.GetComponent<Text>().text = getEffect(TKPicker.player2TK[1]);
+            bild2.sprite = getImage(TKPicker.player2TK[1]);
         }
     }
 
@@ -240,11 +271,13 @@ public class Trickkarten : MonoBehaviour {
         {
             name3.GetComponent<Text>().text = TKPicker.player1TK[2];
             desc3.GetComponent<Text>().text = getEffect(TKPicker.player1TK[2]);
+            bild3.sprite = getImage(TKPicker.player1TK[2]);
         }
         else
         {
             name3.GetComponent<Text>().text = TKPicker.player2TK[2];
             desc3.GetComponent<Text>().text = getEffect(TKPicker.player2TK[2]);
+            bild3.sprite = getImage(TKPicker.player2TK[2]);
         }
     }
 
@@ -255,11 +288,13 @@ public class Trickkarten : MonoBehaviour {
         {
             name4.GetComponent<Text>().text = TKPicker.player1TK[3];
             desc4.GetComponent<Text>().text = getEffect(TKPicker.player1TK[3]);
+            bild4.sprite = getImage(TKPicker.player1TK[3]);
         }
         else
         {
             name4.GetComponent<Text>().text = TKPicker.player2TK[3];
             desc4.GetComponent<Text>().text = getEffect(TKPicker.player2TK[3]);
+            bild4.sprite = getImage(TKPicker.player2TK[3]);
         }
     }
 
@@ -269,12 +304,14 @@ public class Trickkarten : MonoBehaviour {
         if (PassthroughData.currentPlayer == 1)
         {
             name5.GetComponent<Text>().text = TKPicker.player1TK[4];
-            desc5.GetComponent<Text>().text = getEffect(TKPicker.player1TK[5]);
+            desc5.GetComponent<Text>().text = getEffect(TKPicker.player1TK[4]);
+            bild5.sprite = getImage(TKPicker.player1TK[4]);
         }
         else
         {
             name5.GetComponent<Text>().text = TKPicker.player2TK[4];
-            desc5.GetComponent<Text>().text = getEffect(TKPicker.player2TK[5]);
+            desc5.GetComponent<Text>().text = getEffect(TKPicker.player2TK[4]);
+            bild5.sprite = getImage(TKPicker.player2TK[4]);
         }
     }
 
@@ -285,11 +322,13 @@ public class Trickkarten : MonoBehaviour {
         {
             name6.GetComponent<Text>().text = TKPicker.player1TK[5];
             desc6.GetComponent<Text>().text = getEffect(TKPicker.player1TK[5]);
+            bild6.sprite = getImage(TKPicker.player1TK[5]);
         }
         else
         {
             name6.GetComponent<Text>().text = TKPicker.player2TK[5];
             desc6.GetComponent<Text>().text = getEffect(TKPicker.player2TK[5]);
+            bild6.sprite = getImage(TKPicker.player2TK[5]);
         }
     }
 
@@ -300,11 +339,13 @@ public class Trickkarten : MonoBehaviour {
         {
             name7.GetComponent<Text>().text = TKPicker.player1TK[6];
             desc7.GetComponent<Text>().text = getEffect(TKPicker.player1TK[6]);
+            bild7.sprite = getImage(TKPicker.player1TK[6]);
         }
         else
         {
             name7.GetComponent<Text>().text = TKPicker.player2TK[6];
             desc7.GetComponent<Text>().text = getEffect(TKPicker.player2TK[6]);
+            bild7.sprite = getImage(TKPicker.player2TK[6]);
         }
     }
 
@@ -315,11 +356,13 @@ public class Trickkarten : MonoBehaviour {
         {
             name8.GetComponent<Text>().text = TKPicker.player1TK[7];
             desc8.GetComponent<Text>().text = getEffect(TKPicker.player1TK[7]);
+            bild8.sprite = getImage(TKPicker.player1TK[7]);
         }
         else
         {
             name8.GetComponent<Text>().text = TKPicker.player2TK[7];
             desc8.GetComponent<Text>().text = getEffect(TKPicker.player2TK[7]);
+            bild8.sprite = getImage(TKPicker.player2TK[7]);
         }
     }
 
