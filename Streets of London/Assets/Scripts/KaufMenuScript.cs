@@ -425,32 +425,32 @@ public class KaufMenuScript : MonoBehaviour
                     if (i == 0)
                     {
                         offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
+                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
                         ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-386, ((j * 10f) + (10f * offset)), 1239), Quaternion.Euler(-90, 0, 0));
 
                     }
                     if (i == 1)
                     {
                         offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
+                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
                         ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-653, ((j * 10f) + (10f * offset)), 1233), Quaternion.Euler(-90, 0, 0));
                     }
                     if (i == 2)
                     {
                         offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
+                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
                         ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-895, ((j * 10f) + (10f * offset)), 1233), Quaternion.Euler(-90, 0, 0));
                     }
                     if (i == 3)
                     {
                         offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
+                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
                         ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-508.5f, ((j * 10f) + (10f * offset)), 1394), Quaternion.Euler(-90, 0, 0));
                     }
                     if (i == 4)
                     {
                         offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
+                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
                         ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-783.5f, ((j * 10f) + (10f * offset)), 1393), Quaternion.Euler(-90, 0, 0));
                     }
                 }
@@ -459,31 +459,31 @@ public class KaufMenuScript : MonoBehaviour
                     if (i == 0)
                     {
                         offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
+                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
                         ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-900, ((j * 10f) + (10f * offset)), -1239), Quaternion.Euler(-90, 180, 0));
                     }
                     if (i == 1)
                     {
                         offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
+                       // offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
                         ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-627, ((j * 10f) + (10f * offset)), -1239), Quaternion.Euler(-90, 180, 0));
                     }
                     if (i == 2)
                     {
                         offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
+                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
                         ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-383, ((j * 10f) + (10f * offset)), -1243.6f), Quaternion.Euler(-90, 180, 0));
                     }
                     if (i == 3)
                     {
                         offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
+                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
                         ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-779, ((j * 10f) + (10f * offset)), -1400), Quaternion.Euler(-90, 180, 0));
                     }
                     if (i == 4)
                     {
                         offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
+                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
                         ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-501, ((j * 10f) + (10f * offset)), -1400), Quaternion.Euler(-90, 180, 0));
                     }
                 }

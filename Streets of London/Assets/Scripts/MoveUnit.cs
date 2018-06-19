@@ -500,24 +500,36 @@ public class MoveUnit : MonoBehaviour
             }
             else if(waehlefabrik && fabrik!=null)
             {
+
                 int schaden = dbc.GetAtt(unit.GetComponent<UnitHelper>().unitID);
                 rw = dbc.GetRW(unit.GetComponent<UnitHelper>().unitID);
-                if (PassthroughData.currentPlayer == 1)
+                for (int i = 0; i < grid.Length; i++)
                 {
-                    if (fabrik != null)
+                    if (grid[i].GetComponent<FieldHelper>().id == unit.GetComponent<UnitHelper>().fieldID)
                     {
-                        fb.SetLPFabrikR(schaden);
+                        unitField = grid[i];
                     }
                 }
-                else
+                if (Distance(unitField, fabrik) <= rw)
                 {
-                    if (fabrik != null)
+                    if (PassthroughData.currentPlayer == 1)
                     {
-                        fb.SetLPFabrikL(schaden);
+                        if (fabrik != null)
+                        {
+                            fb.SetLPFabrikR(schaden);
+                        }
                     }
+                    else
+                    {
+                        if (fabrik != null)
+                        {
+                            fb.SetLPFabrikL(schaden);
+                        }
+                    }
+                    unit.GetComponent<UnitHelper>().unitAP = 0;
+                    usedUnits.Add(unit);
                 }
-                unit.GetComponent<UnitHelper>().unitAP = 0;
-                usedUnits.Add(unit);
+               
                 DeselectUnit();
                 DeselectFeld();
                 DeselectGegner();
