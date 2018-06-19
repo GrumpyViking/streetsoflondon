@@ -24,6 +24,18 @@ public class KaufMenuScript : MonoBehaviour
     public GameObject anzeige5;
     public GameObject anzeigeTK;
 
+    public GameObject spawnL1;
+    public GameObject spawnL2;
+    public GameObject spawnL3;
+    public GameObject spawnL4;
+    public GameObject spawnL5;
+
+    public GameObject spawnR1;
+    public GameObject spawnR2;
+    public GameObject spawnR3;
+    public GameObject spawnR4;
+    public GameObject spawnR5;
+
     public GameObject[] gesamtEinheit;
     int[] einheitenPrice;
     int[] ids;
@@ -424,67 +436,66 @@ public class KaufMenuScript : MonoBehaviour
                 {
                     if (i == 0)
                     {
-                        offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
-                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-386, ((j * 10f) + (10f * offset)), 1239), Quaternion.Euler(-90, 0, 0));
-
+                        offset = spawnR1.GetComponent<SpawnHelper>().numOfUnits;
+                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-386, ((j * 10f) + (10f * offset)), 1239), Quaternion.Euler(-90, 0, 0), 1);
+                        spawnR1.GetComponent<SpawnHelper>().numOfUnits++;
                     }
                     if (i == 1)
                     {
-                        offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
-                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-653, ((j * 10f) + (10f * offset)), 1233), Quaternion.Euler(-90, 0, 0));
+                        offset = spawnR2.GetComponent<SpawnHelper>().numOfUnits;
+                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-653, ((j * 10f) + (10f * offset)), 1233), Quaternion.Euler(-90, 0, 0), 2);
+                        spawnR2.GetComponent<SpawnHelper>().numOfUnits++;
                     }
                     if (i == 2)
                     {
-                        offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
-                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-895, ((j * 10f) + (10f * offset)), 1233), Quaternion.Euler(-90, 0, 0));
+                        offset = spawnR3.GetComponent<SpawnHelper>().numOfUnits;
+                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-895, ((j * 10f) + (10f * offset)), 1233), Quaternion.Euler(-90, 0, 0), 3);
+                        spawnR3.GetComponent<SpawnHelper>().numOfUnits++;
                     }
                     if (i == 3)
                     {
-                        offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
-                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-508.5f, ((j * 10f) + (10f * offset)), 1394), Quaternion.Euler(-90, 0, 0));
+                        offset = spawnR4.GetComponent<SpawnHelper>().numOfUnits;
+                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-508.5f, ((j * 10f) + (10f * offset)), 1394), Quaternion.Euler(-90, 0, 0), 4);
+                        spawnR4.GetComponent<SpawnHelper>().numOfUnits++;
                     }
                     if (i == 4)
                     {
-                        offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
-                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-783.5f, ((j * 10f) + (10f * offset)), 1393), Quaternion.Euler(-90, 0, 0));
+                        offset = spawnR5.GetComponent<SpawnHelper>().numOfUnits;
+                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-783.5f, ((j * 10f) + (10f * offset)), 1393), Quaternion.Euler(-90, 0, 0), 5);
+                        spawnR5.GetComponent<SpawnHelper>().numOfUnits++;
                     }
                 }
                 else
                 {
                     if (i == 0)
                     {
-                        offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
-                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-900, ((j * 10f) + (10f * offset)), -1239), Quaternion.Euler(-90, 180, 0));
+                        offset = spawnL1.GetComponent<SpawnHelper>().numOfUnits;
+                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-900, ((j * 10f) + (10f * offset)), -1239), Quaternion.Euler(-90, 180, 0), 1);
+                        spawnL1.GetComponent<SpawnHelper>().numOfUnits++;
                     }
                     if (i == 1)
                     {
-                        offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                       // offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
-                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-627, ((j * 10f) + (10f * offset)), -1239), Quaternion.Euler(-90, 180, 0));
+                        offset = spawnL2.GetComponent<SpawnHelper>().numOfUnits;
+                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-627, ((j * 10f) + (10f * offset)), -1239), Quaternion.Euler(-90, 180, 0), 2);
+                        spawnL2.GetComponent<SpawnHelper>().numOfUnits++;
                     }
                     if (i == 2)
                     {
-                        offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
-                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-383, ((j * 10f) + (10f * offset)), -1243.6f), Quaternion.Euler(-90, 180, 0));
+                        offset = spawnL3.GetComponent<SpawnHelper>().numOfUnits;
+                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-383, ((j * 10f) + (10f * offset)), -1243.6f), Quaternion.Euler(-90, 180, 0), 3);
+                        spawnL3.GetComponent<SpawnHelper>().numOfUnits++;
                     }
                     if (i == 3)
                     {
-                        offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
-                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-779, ((j * 10f) + (10f * offset)), -1400), Quaternion.Euler(-90, 180, 0));
+                        offset = spawnL4.GetComponent<SpawnHelper>().numOfUnits;
+                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-779, ((j * 10f) + (10f * offset)), -1400), Quaternion.Euler(-90, 180, 0), 4);
+                        spawnL4.GetComponent<SpawnHelper>().numOfUnits++;
                     }
                     if (i == 4)
                     {
-                        offset = dbc.GetNumofUnit(dbc.GetUnitName(ids[i]), PassthroughData.currentPlayer);
-                        //offset = offset - Convert.ToInt32(anzeige1.GetComponent<Text>().text);
-                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-501, ((j * 10f) + (10f * offset)), -1400), Quaternion.Euler(-90, 180, 0));
+                        offset = spawnL5.GetComponent<SpawnHelper>().numOfUnits;
+                        ObjectPooler.Instance.SpawnFromPool(unitnames[i], new Vector3(-501, ((j * 10f) + (10f * offset)), -1400), Quaternion.Euler(-90, 180, 0), 5);
+                        spawnL5.GetComponent<SpawnHelper>().numOfUnits++;
                     }
                 }
             }

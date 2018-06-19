@@ -54,7 +54,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, int spawnPoint)
     {
         if (!poolDictonary.ContainsKey(tag))
         {
@@ -153,7 +153,7 @@ public class ObjectPooler : MonoBehaviour
         objectToSpawn.transform.rotation = rotation;
         objectToSpawn.GetComponent<UnitHelper>().unitDefaultAP = dbc.GetAP(dbc.GetUnitID(tag));
         objectToSpawn.GetComponent<UnitHelper>().unitAP = dbc.GetAP(dbc.GetUnitID(tag));
-        objectToSpawn.name = PassthroughData.currentPlayer + "_" + tag + "_"+ dbc.GetUnitID(tag);
+        objectToSpawn.name = PassthroughData.currentPlayer + "_" +spawnPoint+"_"+ tag + "_"+ dbc.GetUnitID(tag);
         objectToSpawn.GetComponent<UnitHelper>().unitID = dbc.GetUnitID(tag);
         poolDictonary[tag].Enqueue(objectToSpawn);
         count++;

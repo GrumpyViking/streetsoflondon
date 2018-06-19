@@ -8,7 +8,6 @@ using TMPro;
  * TODO:
  * 
  * - Anzeige von Gegnern/Fabrik in reichweite wenn angriffs option gewählt
- * - Fehler behebung wenn angriffsoption nicht gültig (nur unter bestimmten bedingungen)
  * - Kommentieren
  */
 
@@ -28,6 +27,8 @@ public class MoveUnit : MonoBehaviour
     List<GameObject> usedUnits = new List<GameObject>();
     public GameObject[] grid;
     public GameObject[] units;
+    public GameObject[] spawnL;
+    public GameObject[] spawnR;
     public Fabrik fb;
 
     public GameObject anweisungText;
@@ -345,6 +346,25 @@ public class MoveUnit : MonoBehaviour
                     beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
                     feld.GetComponent<FieldHelper>().hasUnit = true;
                     rm.RefreshDisplay(PassthroughData.currentPlayer);
+                    if (PassthroughData.currentPlayer == 1)
+                    {
+                        for(int i = 0; i < spawnL.Length; i++)
+                        {
+                            if (Convert.ToInt32(unit.name.Substring(2, 1)) == (i + 1)){
+                                spawnL[i].GetComponent<SpawnHelper>().numOfUnits--;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < spawnR.Length; i++)
+                        {
+                            if (Convert.ToInt32(unit.name.Substring(2, 1)) == (i + 1))
+                            {
+                                spawnR[i].GetComponent<SpawnHelper>().numOfUnits--;
+                            }
+                        }
+                    }
                     unit.GetComponent<UnitHelper>().unitAP = 0;
                     usedUnits.Add(unit);
                 }
