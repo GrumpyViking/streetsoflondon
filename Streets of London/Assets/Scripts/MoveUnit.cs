@@ -515,6 +515,7 @@ public class MoveUnit : MonoBehaviour
                     DeselectUnit();
                     DeselectGegner();
                 }
+               
                 bewegenButton.SetActive(true);
 
             }
@@ -595,6 +596,9 @@ public class MoveUnit : MonoBehaviour
             DeselectUnit();
             DeselectGegner();
         }
+        DeselectFeld();
+        DeselectUnit();
+        DeselectGegner();
         aktionsmenue.SetActive(false);
     }
 
