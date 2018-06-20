@@ -23,7 +23,7 @@ public class MainMenuManager : MonoBehaviour {
     Text ctp;
 
     //Scripte auf die Zugegriffen wird
-    private SwitchScene switchSceneScript;
+    public SwitchScene switchSceneScript;
     public DataBaseController dbc;
 
     //Wird mit dem Klick auf den Startbutton ausgeführt
@@ -46,7 +46,7 @@ public class MainMenuManager : MonoBehaviour {
         PassthroughData.player2 = ptt.text;
 
         //Wechsel zur Spielansicht
-        switchSceneScript = GameObject.FindGameObjectWithTag("Scene").GetComponent<SwitchScene>();
+        //switchSceneScript = GameObject.FindGameObjectWithTag("Scene").GetComponent<SwitchScene>();
         switchSceneScript.ChangeScene(1);//Lädt die Szene 1 
     }
 
