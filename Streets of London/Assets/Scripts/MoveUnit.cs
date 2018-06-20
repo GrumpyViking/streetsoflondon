@@ -621,4 +621,11 @@ public class MoveUnit : MonoBehaviour
         usedUnits.Clear();
         
     }
+
+    public void ResetKampfAnzeige()
+    {
+        DeselectFeld();
+        DeselectUnit();
+        DeselectGegner();
+    }
 }

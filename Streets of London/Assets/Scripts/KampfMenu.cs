@@ -358,7 +358,7 @@ public class KampfMenu : MonoBehaviour {
         {
             dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(attacker.GetComponent<UnitHelper>().unitID) - lostlpatk) + " Where ID = " + attacker.GetComponent<UnitHelper>().unitID);
             dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(defender.GetComponent<UnitHelper>().unitID) - lostlpdef) + " Where ID = " + defender.GetComponent<UnitHelper>().unitID);
-
+            mu.ResetKampfAnzeige();
             mu.Continue();
         }
     }
