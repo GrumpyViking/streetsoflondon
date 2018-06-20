@@ -103,6 +103,8 @@ public class MoveUnit : MonoBehaviour
         unit = null;
         select = null;
         gewinner = null;
+        bewegenButton.SetActive(true);
+        angriffButton.SetActive(true);
         gegnergewaehlt = false;
     }
     public void DeselectFeld()
