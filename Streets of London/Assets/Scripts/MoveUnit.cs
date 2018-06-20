@@ -583,12 +583,14 @@ public class MoveUnit : MonoBehaviour
 
         if (gewinner == unit)
         {
+            usedUnits.Remove(gegner);
             Destroy(gegner);
             DeselectGegner();
             DeselectUnit();
         }
         else
         {
+            usedUnits.Remove(unit);
             Destroy(unit);
             DeselectUnit();
             DeselectGegner();
@@ -613,5 +615,6 @@ public class MoveUnit : MonoBehaviour
             usedUnits[i].GetComponent<UnitHelper>().unitAP = usedUnits[i].GetComponent<UnitHelper>().unitDefaultAP;
         }
         usedUnits.Clear();
+        
     }
 }
