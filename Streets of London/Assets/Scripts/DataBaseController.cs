@@ -30,7 +30,9 @@ public class DataBaseController : MonoBehaviour {
         {
             Initialise();
         }        
-        string conn = "URI=file:" + Application.dataPath + "/DB/PlayerData.db"; //Pfad zur Datenbank
+        //string conn = "URI=file:" + Application.dataPath + "/DB/PlayerData.db"; //Pfad zur Datenbank
+
+        string conn = "URI=file:" + System.IO.Path.Combine(Application.streamingAssetsPath, "DB/PlayerData.db");
         dbConn = (IDbConnection)new SqliteConnection(conn);
         dbConn.Open(); //Öffnet die Verbindung
     }

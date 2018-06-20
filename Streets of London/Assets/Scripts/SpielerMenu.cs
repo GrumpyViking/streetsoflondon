@@ -114,6 +114,6 @@ public class SpielerMenu : MonoBehaviour {
     {
         dbc.CleanDB(); // Säuber Datenbank am Spielende
         Application.Quit();//Beendet die Anwendung wenn das Projekt Exportiert wurde
-        UnityEditor.EditorApplication.isPlaying = false; // Beenden wenn im Editor gestartet
+        //UnityEditor.EditorApplication.isPlaying = false; // Beenden wenn im Editor gestartet
     }
 }
