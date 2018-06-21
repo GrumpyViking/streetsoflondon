@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: c22f52ea121294f46bf64cda68dfb5f5
+timeCreated: 1529574851
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: OldNewspaperTypes
+  fontNames:
+  - OldNewspaperTypes
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: cb8dc66cd05fe3d4dbe5ea7c6b6fd650, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
