@@ -6,7 +6,7 @@ using System.Data;
 /*
  * Das DataBaseController Skript ist zuständig für die verwaltung der Datenbank.
  * 
- * 
+ * Autor: Martin Schuster
  */ 
 
 public class DataBaseController : MonoBehaviour {

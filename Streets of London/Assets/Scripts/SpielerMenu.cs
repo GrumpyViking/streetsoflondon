@@ -5,6 +5,8 @@ using UnityEngine.UI;
  * Anzeige zwischen den einzelnen Phasen
  * - beim Zugende eines Spielers wird der nächste Spieler Angezeigt
  * - Pausiert das Spielgeschehen
+ * 
+ * Autor: Martin Schuster
  */
 
 public class SpielerMenu : MonoBehaviour {
