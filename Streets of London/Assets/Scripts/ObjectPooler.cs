@@ -2,14 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * ObjectPooler Skript
+ * 
+ * Objectpools werden genutzt um schon bei initialisierung des Spieles alle nötigen objekte zu erstellen.
+ * Dies verhindert im späteren Spielgeschen das auftretten von lags wenn viele Einheiten aufeinmal erstellt werden müssten.
+ * Zudem beschränkt es das maximale vorkommen der Einheiten sodass nur eine Gewisse anzahl von Einheit x existieren kann wenn der Pool leer ist.
+ * 
+ * Autor: Martin Schuster
+ * 
+ * Nutzung der vorlage von Youtuber Brackeys https://www.youtube.com/watch?v=tdSmKaJvCoA
+ */
+
 public class ObjectPooler : MonoBehaviour
 {
-
+    //Verzeichniss aller vorhandenen Pools
     public Dictionary<string, Queue<GameObject>> poolDictonary;
+    //Array für die einzelnen Texturen der Einheitensteine
     public Texture[] texArray;
-    public string name="";
+
+    //Hilfsvariable
     public int count=0;
+    //Datenbank Skript
     public DataBaseController dbc;
+
 
     [System.Serializable]
     public class Pool
@@ -26,6 +42,7 @@ public class ObjectPooler : MonoBehaviour
         Instance = this;
     }
     #endregion
+
 
     public List<Pool> pools;
     // Use this for initialization

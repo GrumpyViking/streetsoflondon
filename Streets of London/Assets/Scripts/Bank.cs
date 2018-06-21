@@ -7,6 +7,7 @@
  * Prüft ob am runden Ende eine Einheit auf der Bank sich befindet und gibt dem Spieler dem die Einheit gehört den
  * vorhandenen Goldbetrag.
  * 
+ * Autor: Martin Schuster
  */ 
 
 public class Bank : MonoBehaviour {

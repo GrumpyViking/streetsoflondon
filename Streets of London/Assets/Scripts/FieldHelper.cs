@@ -6,6 +6,8 @@
  * Des weiteren ob sich eine Einheit auf dem Feld befindet und wenn ja welche ID die hat.
  * 
  * Ist das feld eine Fabrik hat es zudem ein zweites koordinaten Set. 
+ * 
+ * Autor: Martin Schuster
  */ 
 
 public class FieldHelper : MonoBehaviour {

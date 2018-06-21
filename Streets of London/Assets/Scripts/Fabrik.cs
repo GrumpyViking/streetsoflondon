@@ -4,6 +4,7 @@
  * Fabrik Skript
  * Verwaltet die Lebenspunkte der Beiden Fabriken
  * 
+ * Autor: Martin Schuster
  */ 
 
 public class Fabrik : MonoBehaviour {

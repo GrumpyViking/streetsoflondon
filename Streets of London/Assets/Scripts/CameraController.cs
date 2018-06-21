@@ -2,7 +2,11 @@
 
 /*
  * CameraController Skript beinhaltet die Bewegung der Camera sowie das wechseln der Perspektiven für die Verschiedenen Aktionen.
- */ 
+ * 
+ * Autor: Martin Schuster
+ * Nutzung der Vorlage von Brackeys https://www.youtube.com/watch?v=cfjLQrMGEb4
+ * erweiterung um eigene anpassung
+ */
 
 public class CameraController : MonoBehaviour {
 
