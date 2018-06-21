@@ -3,6 +3,8 @@ using TMPro;
 
 /*
  * GameOver Skript zeigt bei erreichter Siegbedingung den Gewinner an.
+ * 
+ * Autor: Martin Schuster
  */ 
 
 public class GameOver : MonoBehaviour {

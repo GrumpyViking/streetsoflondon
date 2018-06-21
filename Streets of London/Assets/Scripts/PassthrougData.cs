@@ -3,6 +3,7 @@
 /*
  * Ermöglicht zugriff auf grundlegende Informationen für andere Skripte
  * 
+ * Autor Martin Schuster
  */
  
 public class PassthroughData : MonoBehaviour {

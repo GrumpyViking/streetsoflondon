@@ -10,6 +10,8 @@ using UnityEngine.UI;
  * Die Herzen für die Lebenspunkte
  * 
  * Das setzten der Reichweite und des Geländebonus
+ * 
+ * Autor: Martin Schuster
  */
  
 public class KampfMenu : MonoBehaviour {
@@ -48,14 +50,15 @@ public class KampfMenu : MonoBehaviour {
     int defDice;
     int distance; //distanz zwischen Angreifer und Verteidiger
 
+    //Funktion die gestartet wird wenn der Kampfstartet
     public void KampfStart()
     {
-        kampfButton.SetActive(false);
-        stoppButton.SetActive(true);
-        InvokeRepeating("ChangeDiceTexture", 0f, 0.1f);
+        kampfButton.SetActive(false); // Deaktiviert den Kampfstart button
+        stoppButton.SetActive(true); // Aktiviert den kampfstopp button
+        InvokeRepeating("ChangeDiceTexture", 0f, 0.1f); // für alle 0.1s die ChangeDiceTexture Funktion aus
     }
 
-    //Zurücksetzten der Werte
+    //Zurücksetzten der Werte beim beenden
     public void Reset()
     {
         for(int i = 0; i < 6; i++)
@@ -69,10 +72,11 @@ public class KampfMenu : MonoBehaviour {
         defender = null;
     }
 
+    //Beim aufruf des Kampfmenüs wird diese Methode ausgeführt
     void Init()
     {
         //Angreifer
-        
+        //Setzt entsprechend der Werte die Hertzen, Angriffswürfel, Reichweitenwert, Geländebonuswert und das Bild des Angreifers 
         for(int i = 0; i < dbc.GetLP(attacker.GetComponent<UnitHelper>().unitID); i++)
         {
             heartsAtk[i].SetActive(true);
@@ -90,7 +94,7 @@ public class KampfMenu : MonoBehaviour {
         pictureAtt.GetComponent<RawImage>().texture = attacker.GetComponent<Renderer>().material.mainTexture;
 
         //Verteidiger
-
+        //Setzt entsprechend der Werte die Hertzen, Verteidigungsswürfel, Reichweitenwert, Geländebonuswert und das Bild des Verteidigers 
         for (int i = 0; i < dbc.GetLP(defender.GetComponent<UnitHelper>().unitID); i++)
         {
             heartsDef[i].SetActive(true);
@@ -106,20 +110,21 @@ public class KampfMenu : MonoBehaviour {
         }
         pictureDef.GetComponent<RawImage>().texture = defender.GetComponent<Renderer>().material.mainTexture;
 
-        distance = Distance(attField, defField);
+        distance = Distance(attField, defField);//hilfsvariable ob verteidiger in reichweite ist um den angreifer schaden zuzufügen
 
         kampfButton.SetActive(true);
         stoppButton.SetActive(false);
         beendenButton.SetActive(false);
-
     }
 
+    //Distance Funktion bestimmt die Distanz zwsichen Angreifer und verteidiger
     int Distance(GameObject unitfield, GameObject gegnerfield)
     {
         int maxxy = Math.Max(Math.Abs(unitfield.GetComponent<FieldHelper>().x - gegnerfield.GetComponent<FieldHelper>().x), Math.Abs(unitfield.GetComponent<FieldHelper>().y - gegnerfield.GetComponent<FieldHelper>().y));
         return Math.Max(maxxy, Math.Abs(unitfield.GetComponent<FieldHelper>().z - gegnerfield.GetComponent<FieldHelper>().z));
     }
 
+    //Funktion um Kampfmenu anzuzeigen
     public void ShowKampfMenu()
     {
         km.SetActive(true);
@@ -127,37 +132,44 @@ public class KampfMenu : MonoBehaviour {
         gm.Paused();
     }
 
+    //Setter für Angreifer
     public void SetAngreifer(GameObject unit)
     {
         this.attacker = unit;
     }
 
+    //Setter für Angreiferfeld
     public void SetAttField(GameObject unitField)
     {
         this.attField = unitField;
     }
 
+    //Setter für Verteidiger
     public void SetVerteidiger(GameObject gegner)
     {
         this.defender = gegner;
     }
 
+    //Setter für Verteidigerfeld
     public void SetDefField(GameObject gegnerField)
     {
         this.defField = gegnerField;
     }
 
+    //Setter für Distance
     public void SetDistance(int distance)
     {
         this.distance = distance;
     }
 
+    //Funktion Blendet das Kampfmenu aus
     public void HideKampfMenu()
     {
         km.SetActive(false);
         gm.Continue();
     }
     
+    //Wird alle 0.1s ausgeführt und ändert zufällig zwischen dem wert 1-6 den Wert und die Textur der Würfel
     void ChangeDiceTexture()
     {
         attackValues = new int[attDice];
@@ -185,40 +197,42 @@ public class KampfMenu : MonoBehaviour {
         
     }
 
+    //Beendet das ausführen der Zufälligen berechnung der Würfelwerte
     public void KampfStopp()
     {
         CancelInvoke();
         kampfButton.SetActive(false);
         stoppButton.SetActive(false);
-        ergebnis();
+        Ergebnis();
         beendenButton.SetActive(true);
     }
 
-    void ergebnis()
+    //Wertet das Ergebnis des "Würfeln" aus
+    void Ergebnis()
     {
+        //Sortiert die würfel ergebnise von klein nach groß
         Array.Sort(attackValues);
         Array.Sort(defenceValues);
-
-        int lostlpatk = 0;
-        int lostlpdef = 0;
-
-        if(attDice == defDice)
+        //Hilfsvariablen wieviel Leben der Angreifer bzw. Verteidiger in dem Kampf verloren haben
+        int lostLPAtk = 0;
+        int lostLPDef = 0;
+        //Funktion wenn die Angriffswürfel gleich der Verteidigungswürfel ist
+        if (attDice == defDice)
         {
             for(int i = attDice-1; i >= 0; i--)
             {
                 if (defenceValues[i] < attackValues[i])
                 {
                     heartsDef[i].SetActive(false);
-                    lostlpdef++;
+                    lostLPDef++;
                 }
                 else if(defenceValues[i] > attackValues[i])
                 {
                     if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
                     {
                         heartsAtk[i].SetActive(false);
-                        lostlpatk++;
+                        lostLPAtk++;
                     }
-                    
                 }
                 else
                 {
@@ -227,29 +241,29 @@ public class KampfMenu : MonoBehaviour {
                         if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
                         {
                             heartsAtk[i].SetActive(false);
-                            lostlpatk++;
+                            lostLPAtk++;
                         }
                     }
                     else if(dbc.GetFieldBonus(defender.GetComponent<UnitHelper>().fieldID) < dbc.GetFieldBonus(attacker.GetComponent<UnitHelper>().fieldID))
                     {
                         heartsDef[i].SetActive(false);
-                        lostlpdef++;
+                        lostLPDef++;
                     }
                     else
                     {
                         heartsDef[i].SetActive(false);
-                        lostlpdef++;
+                        lostLPDef++;
                         if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
                         {
                             heartsAtk[i].SetActive(false);
-                            lostlpatk++;
+                            lostLPAtk++;
                         }
                     }
-                    
                 }
             }
         }
-        else if(attDice > defDice)
+        //Funktion wenn die Angriffswürfel größer der Verteidigungswürfel ist
+        else if (attDice > defDice)
         {
             int diff = attDice - defDice;
             for (int i = defDice-1; i >= 0; i--)
@@ -257,14 +271,14 @@ public class KampfMenu : MonoBehaviour {
                 if (defenceValues[i] < attackValues[i+diff])
                 {
                     heartsDef[i].SetActive(false);
-                    lostlpdef++;
+                    lostLPDef++;
                 }
                 else if (defenceValues[i] > attackValues[i+diff] )
                 {
                     if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
                     {
                         heartsAtk[i].SetActive(false);
-                        lostlpatk++;
+                        lostLPAtk++;
                     }
                 }
                 else
@@ -275,29 +289,28 @@ public class KampfMenu : MonoBehaviour {
                         if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
                         {
                             heartsAtk[i].SetActive(false);
-                            lostlpatk++;
+                            lostLPAtk++;
                         }
                     }
                     else if (dbc.GetFieldBonus(defender.GetComponent<UnitHelper>().fieldID) < dbc.GetFieldBonus(attacker.GetComponent<UnitHelper>().fieldID))
                     {
                         heartsDef[i].SetActive(false);
-                        lostlpdef++;
+                        lostLPDef++;
                     }
                     else
                     {
                         heartsDef[i].SetActive(false);
-                        lostlpdef++;
+                        lostLPDef++;
                         if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
                         {
                             heartsAtk[i].SetActive(false);
-                            lostlpatk++;
+                            lostLPAtk++;
                         }
-
-
                     }
                 }
             }
         }
+        //Funktion wenn die Angriffswürfel kleiner der Verteidigungswürfel ist
         else if(attDice < defDice)
         {
             int diff = defDice - attDice;
@@ -306,14 +319,14 @@ public class KampfMenu : MonoBehaviour {
                 if (defenceValues[i + diff] < attackValues[i])
                 {
                     heartsDef[i].SetActive(false);
-                    lostlpdef++;
+                    lostLPDef++;
                 }
                 else if (defenceValues[i + diff] > attackValues[i])
                 {
                     if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
                     {
                         heartsAtk[i].SetActive(false);
-                        lostlpatk++;
+                        lostLPAtk++;
                     }
                 }
                 else
@@ -323,41 +336,44 @@ public class KampfMenu : MonoBehaviour {
                         if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
                         {
                             heartsAtk[i].SetActive(false);
-                            lostlpatk++;
+                            lostLPAtk++;
                         }
                     }
                     else if (dbc.GetFieldBonus(defender.GetComponent<UnitHelper>().fieldID) < dbc.GetFieldBonus(attacker.GetComponent<UnitHelper>().fieldID))
                     {
                         heartsDef[i].SetActive(false);
-                        lostlpdef++;
+                        lostLPDef++;
                     }
                     else
                     {
                         heartsDef[i].SetActive(false);
-                        lostlpdef++;
+                        lostLPDef++;
                         if (distance <= dbc.GetRW(defender.GetComponent<UnitHelper>().unitID))
                         {
                             heartsAtk[i].SetActive(false);
-                            lostlpatk++;
+                            lostLPAtk++;
                         }
                     }
                 }
             }
         }
-        if ((dbc.GetLP(attacker.GetComponent<UnitHelper>().unitID) - lostlpatk) <= 0)
+        //Wird ausgeführt wenn der Verteidiger den Angreifer Besiegt hatt Lp=0
+        if ((dbc.GetLP(attacker.GetComponent<UnitHelper>().unitID) - lostLPAtk) <= 0)
         {
             dbc.WriteToDB("Delete From Einheit Where ID = "+ attacker.GetComponent<UnitHelper>().unitID);
             mu.FightWinner(defender);
         }
-        else if ((dbc.GetLP(defender.GetComponent<UnitHelper>().unitID) - lostlpdef) <= 0)
+        //Wird ausgeführt wenn der Angreifer den Verteidiger Besiegt hatt Lp=0
+        else if ((dbc.GetLP(defender.GetComponent<UnitHelper>().unitID) - lostLPDef) <= 0)
         {
             dbc.WriteToDB("Delete From Einheit Where ID = " + defender.GetComponent<UnitHelper>().unitID);
             mu.FightWinner(attacker);
         }
+        //Ausführen wenn keiner der beiden Besiegt ist
         else
         {
-            dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(attacker.GetComponent<UnitHelper>().unitID) - lostlpatk) + " Where ID = " + attacker.GetComponent<UnitHelper>().unitID);
-            dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(defender.GetComponent<UnitHelper>().unitID) - lostlpdef) + " Where ID = " + defender.GetComponent<UnitHelper>().unitID);
+            dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(attacker.GetComponent<UnitHelper>().unitID) - lostLPAtk) + " Where ID = " + attacker.GetComponent<UnitHelper>().unitID);
+            dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(defender.GetComponent<UnitHelper>().unitID) - lostLPDef) + " Where ID = " + defender.GetComponent<UnitHelper>().unitID);
             mu.ResetKampfAnzeige();
             mu.Continue();
         }

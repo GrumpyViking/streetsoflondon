@@ -8,6 +8,7 @@ using UnityEngine.UI;
  * Sorgt dafür das die Namen der Spieler in die Datenbank geschrieben werden.
  * Bestimmt entsprechend der Auswahl den Beginnenden Spieler
  * 
+ * Autor: Martin Schuster
  */
  
 public class MainMenuManager : MonoBehaviour {
