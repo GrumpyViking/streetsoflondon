@@ -41,6 +41,10 @@ public class Bank : MonoBehaviour {
             gold = 0;
             bank.GetComponent<Renderer>().material.mainTexture = bankGold[gold];
         }
+        else
+        {
+            IncreaseGold();
+        }
     }
 
     // Wird vom GameManager aufgerufen am ende einer Runde 

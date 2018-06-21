@@ -10,7 +10,7 @@ using UnityEngine.UI;
  * Entsprechend der auswahl wird auf der anderen Spielfeldseite das gegerüberliegende Feld gesetzt.
  * Dadurch wird die Balance erhalten.
  * 
- * Autor Martin Schuster
+ * Autor: Martin Schuster
  */ 
 
 public class FieldBuilder : MonoBehaviour {

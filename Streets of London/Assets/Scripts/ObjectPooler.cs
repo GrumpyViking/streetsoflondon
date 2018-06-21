@@ -21,12 +21,10 @@ public class ObjectPooler : MonoBehaviour
     //Array für die einzelnen Texturen der Einheitensteine
     public Texture[] texArray;
 
-    //Hilfsvariable
-    public int count=0;
     //Datenbank Skript
     public DataBaseController dbc;
 
-
+    //Pool Objekt  
     [System.Serializable]
     public class Pool
     {
@@ -43,9 +41,9 @@ public class ObjectPooler : MonoBehaviour
     }
     #endregion
 
-
     public List<Pool> pools;
-    // Use this for initialization
+
+    //Wird bei Spielstart ausgeführt Initialisiert die Pools und erstellt die einheiten
     void Start()
     {
         poolDictonary = new Dictionary<string, Queue<GameObject>>();
@@ -55,24 +53,24 @@ public class ObjectPooler : MonoBehaviour
             for (int i = 0; i < pool.size; i++)
             {
                 GameObject obj = Instantiate(pool.prefab);
-                obj.SetActive(false);
-                
-                obj.tag = "Einheit";
-                obj.AddComponent<UnitHelper>();
-                obj.AddComponent<Outline>();
+                obj.SetActive(false); //neue Einheit wird deaktiviert
+                obj.tag = "Einheit"; //fügt der Einheit den tag Einheit zu später relevant für die Einheiten bewegung
+                obj.AddComponent<UnitHelper>(); //fügt der Einheit das UnitHelper Skript hinzu
+                obj.AddComponent<Outline>(); // fügt der Einheit das Outline Skript hinzu
                 obj.GetComponent<Outline>().enabled = false;
-                obj.AddComponent<Rigidbody>();
+                obj.AddComponent<Rigidbody>(); //für der Einheit ein Rigidbody hinzu wichtig für auswahl
                 obj.GetComponent<Rigidbody>().useGravity = false;
                 obj.GetComponent<Rigidbody>().isKinematic = true;
-
-                objectPool.Enqueue(obj);
+                objectPool.Enqueue(obj); // fügt objekt dem Pool hinzu
             }
             poolDictonary.Add(pool.tag, objectPool);
         }
     }
 
+    //Spawnt(Aktiviert Einheiten an der Übergebenen Position 
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, int spawnPoint)
     {
+        //Sicherheits überprüfung ob Pool existiert
         if (!poolDictonary.ContainsKey(tag))
         {
             Debug.Log("Pool with tag " + tag + " doesn't exist");
@@ -80,6 +78,7 @@ public class ObjectPooler : MonoBehaviour
         }
         GameObject objectToSpawn = poolDictonary[tag].Dequeue();
         objectToSpawn.SetActive(true);
+        //Setzt die Texture auf die Einheit entsprechend des Teams und des Spawnpools
         if (PassthroughData.currentPlayer == 1)
         {
             if (tag == "Boss")
@@ -166,14 +165,14 @@ public class ObjectPooler : MonoBehaviour
                 objectToSpawn.GetComponent<Renderer>().material.mainTexture = texArray[19];
             }
         }
-        objectToSpawn.transform.position = position;
-        objectToSpawn.transform.rotation = rotation;
-        objectToSpawn.GetComponent<UnitHelper>().unitDefaultAP = dbc.GetAP(dbc.GetUnitID(tag));
-        objectToSpawn.GetComponent<UnitHelper>().unitAP = dbc.GetAP(dbc.GetUnitID(tag));
-        objectToSpawn.name = PassthroughData.currentPlayer + "_" +spawnPoint+"_"+ tag + "_"+ dbc.GetUnitID(tag);
-        objectToSpawn.GetComponent<UnitHelper>().unitID = dbc.GetUnitID(tag);
-        poolDictonary[tag].Enqueue(objectToSpawn);
-        count++;
+        objectToSpawn.transform.position = position; //weißt neuer Einheit die übergebene Position zu
+        objectToSpawn.transform.rotation = rotation; //weißt neuer Einheit die übergebene Rotation zu
+        objectToSpawn.GetComponent<UnitHelper>().unitDefaultAP = dbc.GetAP(dbc.GetUnitID(tag)); //Weißt die AktionsPunkte zu 
+        objectToSpawn.GetComponent<UnitHelper>().unitAP = dbc.GetAP(dbc.GetUnitID(tag)); //Weißt die aktuellen Aktionspunkte zu diese werden abgezogen und am Runden ende wieder auf den Defaultwert zurückgesetzt
+        objectToSpawn.name = PassthroughData.currentPlayer + "_" +spawnPoint+"_"+ tag + "_"+ dbc.GetUnitID(tag); //Setzt Name bestehend aus Spieler ID dem spawn point dem eigentlichen namen und er ID
+        objectToSpawn.GetComponent<UnitHelper>().unitID = dbc.GetUnitID(tag); // Weißt ID der Einheit zu
+        poolDictonary[tag].Enqueue(objectToSpawn); //Entnimmt dem Pool die Einheit
+        
         return objectToSpawn;
 
     }
