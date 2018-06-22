@@ -124,7 +124,6 @@ public class Trickkarten : MonoBehaviour {
         slot8.SetActive(false);
     }
 
-    //-------------------------------------------------------------------------
     //Anzeige der Kartendetails
     public void initializeTKDetails(string name)
     {
@@ -393,7 +392,6 @@ public class Trickkarten : MonoBehaviour {
         string effekt;
         if (PassthroughData.currentPlayer == 1)
         {
-            Debug.Log(TKPicker.player1TK[0]);
             effekt = TKPicker.player1TK[0];
             TKPicker.player1TK[0] = TKPicker.player1TK[1];
             TKPicker.player1TK[1] = TKPicker.player1TK[2];
@@ -406,7 +404,6 @@ public class Trickkarten : MonoBehaviour {
         }
         else
         {
-            Debug.Log(TKPicker.player2TK[0]);
             effekt = TKPicker.player2TK[0];
             TKPicker.player2TK[0] = TKPicker.player2TK[1];
             TKPicker.player2TK[1] = TKPicker.player2TK[2];
@@ -592,7 +589,6 @@ public class Trickkarten : MonoBehaviour {
 
     public void GetEffect(string effect)
     {
-        Debug.Log(effect);
         switch (effect) {
             case "Investition":
                 InvestitionEffect();
@@ -617,6 +613,12 @@ public class Trickkarten : MonoBehaviour {
     {
         SaveEffect("Investition", 2);
         rsc.IncreaseActiveInvestitionen();
+        rsc.RefreshDisplay(PassthroughData.currentPlayer);
+    }
+
+    public void EndInvestitionEffect()
+    {
+        rsc.DecreaseActiveInvestitionen();
         rsc.RefreshDisplay(PassthroughData.currentPlayer);
     }
 
@@ -646,6 +648,24 @@ public class Trickkarten : MonoBehaviour {
         }
     }
 
+    public void EndFuselEffect()
+    {
+        if (PassthroughData.currentPlayer == 1)
+        {
+            for (int i = 0; i < anzahlEinheitenFusel[0]; i++)
+            {
+                dbc.WriteToDB("Update Einheit SET Angriffspunkte = " + (dbc.GetAtt(einheitenIdFusel1[i]) - 1) + " Where ID = " + einheitenIdFusel1[i]);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < anzahlEinheitenFusel[1]; i++)
+            {
+                dbc.WriteToDB("Update Einheit SET Angriffspunkte = " + (dbc.GetAtt(einheitenIdFusel2[i]) - 1) + " Where ID = " + einheitenIdFusel2[i]);
+            }
+        }
+    }
+
     public void MantelEffect()
     {
         SaveEffect("Verstärkter Mantel", 1);
@@ -669,6 +689,24 @@ public class Trickkarten : MonoBehaviour {
             for (int i = 0; i < anzahlEinheitenMantel[1]; i++)
             {
                 dbc.WriteToDB("Update Einheit SET Verteidigungspunkte = " + (dbc.GetDef(einheitenIdMantel2[i]) + 1) + " Where ID = " + einheitenIdMantel2[i]);
+            }
+        }
+    }
+
+    public void EndMantelEffect()
+    {
+        if (PassthroughData.currentPlayer == 1)
+        {
+            for (int i = 0; i < anzahlEinheitenMantel[0]; i++)
+            {
+                dbc.WriteToDB("Update Einheit SET Verteidigungspunkte = " + (dbc.GetDef(einheitenIdMantel1[i]) - 1) + " Where ID = " + einheitenIdMantel1[i]);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < anzahlEinheitenMantel[1]; i++)
+            {
+                dbc.WriteToDB("Update Einheit SET Verteidigungspunkte = " + (dbc.GetDef(einheitenIdMantel2[i]) - 1) + " Where ID = " + einheitenIdMantel2[i]);
             }
         }
     }
@@ -723,89 +761,30 @@ public class Trickkarten : MonoBehaviour {
         }
     }
 
-    public void EndInvestitionEffect()
-    {
-        rsc.DecreaseActiveInvestitionen();
-        rsc.RefreshDisplay(PassthroughData.currentPlayer);
-    }
-
-    public void EndFuselEffect()
-    {
-        if (PassthroughData.currentPlayer == 1)
-        {
-            for (int i = 0; i < anzahlEinheitenFusel[0]; i++)
-            {
-                dbc.WriteToDB("Update Einheit SET Angriffspunkte = " + (dbc.GetAtt(einheitenIdFusel1[i]) - 1) + " Where ID = " + einheitenIdFusel1[i]);
-            }
-        }
-        else
-        {
-            for (int i = 0; i < anzahlEinheitenFusel[1]; i++)
-            {
-                dbc.WriteToDB("Update Einheit SET Angriffspunkte = " + (dbc.GetAtt(einheitenIdFusel2[i]) - 1) + " Where ID = " + einheitenIdFusel2[i]);
-            }
-        }
-    }
-
-    public void EndMantelEffect()
-    {
-        if (PassthroughData.currentPlayer == 1)
-        {
-            for (int i = 0; i < anzahlEinheitenMantel[0]; i++)
-            {
-                dbc.WriteToDB("Update Einheit SET Verteidigungspunkte = " + (dbc.GetDef(einheitenIdMantel1[i]) - 1) + " Where ID = " + einheitenIdMantel1[i]);
-            }
-        }
-        else
-        {
-            for (int i = 0; i < anzahlEinheitenMantel[1]; i++)
-            {
-                dbc.WriteToDB("Update Einheit SET Verteidigungspunkte = " + (dbc.GetDef(einheitenIdMantel2[i]) - 1) + " Where ID = " + einheitenIdMantel2[i]);
-            }
-        }
-    }
-
     public void SaveEffect(string effectname, int effectduration)
     {
         if (PassthroughData.currentPlayer == 1)
         {
             for (int i = 0; i < 8; i++)
             {
-                Debug.Log(activeTKSpieler1[i] + " " + i);
                 if (activeTKSpieler1[i] == "")
                 {
                     
                     activeTKSpieler1[i] = effectname;
                     activeTKDauer1[i] = effectduration;
-                    Debug.Log(activeTKSpieler1[i] + " gespeichert bei " + i);
                     break;
                 }
-                else
-                {
-
-
-                    Debug.Log("Bei " + i + " ist alles belegt.");
-                }
-
             }
         }
         else
         {
             for (int i = 0; i < 8; i++)
             {
-                Debug.Log(activeTKSpieler2[i] + " " + i);
                 if (activeTKSpieler2[i] == "")
                 {
                     activeTKSpieler2[i] = effectname;
                     activeTKDauer2[i] = effectduration;
-                    Debug.Log(activeTKSpieler2[i] + " gespeichert bei " + i);
                     break;
-                }
-                else
-                {
-
-
-                    Debug.Log("Bei " + i + " ist alles belegt.");
                 }
             }
         }
@@ -835,7 +814,6 @@ public class Trickkarten : MonoBehaviour {
             {
                 if (activeTKSpieler1[i] == null)
                 {
-                    Debug.Log(activeTKSpieler1[i]);
                     break;
                 }
                 else
@@ -867,7 +845,6 @@ public class Trickkarten : MonoBehaviour {
             {
                 if (activeTKSpieler2[i] == null)
                 {
-                    Debug.Log(activeTKSpieler2[i]);
                     break;
                 }
                 else
@@ -900,15 +877,11 @@ public class Trickkarten : MonoBehaviour {
         switch (effectname)
         {
             case "Investition":
-                Debug.Log(effectname + " für Spieler " + PassthroughData.currentPlayer);
-
                 break;
             case "Fusel":
-                Debug.Log(effectname + " für Spieler " + PassthroughData.currentPlayer);
                 ActivateFusel();
                 break;
             case "Verstärkter Mantel":
-                Debug.Log(effectname + " für Spieler " + PassthroughData.currentPlayer);
                 ActivateMantel();
                 break;
         }
