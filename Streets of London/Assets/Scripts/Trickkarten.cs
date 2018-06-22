@@ -665,7 +665,9 @@ public class Trickkarten : MonoBehaviour {
         einheitenIdRation[PassthroughData.currentPlayer] = dbc.GetSingleUnitIdsByPlayerId(PassthroughData.currentPlayer);
         for (int i = 0; i < anzahlEinheitenMantel[PassthroughData.currentPlayer]; i++)
         {
-            //if (dbc.GetLP(einheitenIdRation[PassthroughData.currentPlayer][i]) < dbc.GetMaxLP())
+            if (dbc.GetLP(einheitenIdRation[PassthroughData.currentPlayer][i]) < dbc.GetMaxLP(dbc.GetUnitNamedif(einheitenIdRation[PassthroughData.currentPlayer][i])))    {
+                dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(einheitenIdRation[PassthroughData.currentPlayer][i]) + 1) + " Where ID = " + einheitenIdRation[PassthroughData.currentPlayer][i]);
+            }
         }
     }
 
@@ -681,6 +683,7 @@ public class Trickkarten : MonoBehaviour {
             {
                 if (dbc.GetLP(einheitenIdRation[1][i]) != 1)
                 {
+                    Debug.Log("Geht");
                     dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(einheitenIdInfektion[1][i]) - 1) + " Where ID = " + einheitenIdInfektion[1][i]);
                 }
             }
@@ -693,6 +696,7 @@ public class Trickkarten : MonoBehaviour {
             {
                 if (dbc.GetLP(einheitenIdRation[0][i]) != 1)
                 {
+                    Debug.Log("Geht");
                     dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(einheitenIdInfektion[0][i]) - 1) + " Where ID = " + einheitenIdInfektion[0][i]);
                 }
             }

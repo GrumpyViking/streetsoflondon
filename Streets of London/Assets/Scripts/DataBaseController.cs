@@ -264,7 +264,7 @@ public class DataBaseController : MonoBehaviour {
     }
 
     //Einheitentyp LP
-    public int GetMaxLP(int id)
+    public int GetMaxLP(String name)
     {
         if (!init)
         {
@@ -273,7 +273,7 @@ public class DataBaseController : MonoBehaviour {
         int maxlp = 0;
         OpenDBConnection();
         dbCMD = dbConn.CreateCommand();
-        dbCMD.CommandText = "Select Lebenspunkte from EinheitenTyp Where ID =" + id;
+        dbCMD.CommandText = "Select Lebenspunkte from EinheitenTyp Where Name =" + name;
         reader = dbCMD.ExecuteReader();
         while (reader.Read())
         {
