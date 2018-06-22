@@ -297,29 +297,25 @@ public class UnitSelection : MonoBehaviour {
     //OnClick-Methode für den Bestätigen-Button
     public void SubmitUnitSelection()
     {
-        if (unitsChosen != 0)
+        SelectRandomUnits();
+        if (unitsChosen == 5)
         {
-            SelectRandomUnits();
-            if (unitsChosen == 5)
+            SubmitToDatabase();
+            Reset();
+            ResetSelection();
+            unitSelectionScriptObject.SetActive(false);
+            if (PassthroughData.currentPlayer == 1)
             {
-                SubmitToDatabase();
-                Reset();
-                ResetSelection();
-                unitSelectionScriptObject.SetActive(false);
-                if (PassthroughData.currentPlayer == 1)
-                {
-                    PassthroughData.currentPlayer = 2;
-                    sm.SetPlayer(PassthroughData.player2);
-                }
-                else
-                {
-                    PassthroughData.currentPlayer = 1;
-                    sm.SetPlayer(PassthroughData.player1);
-                }
-                sm.PanelState(true);
+                PassthroughData.currentPlayer = 2;
+                sm.SetPlayer(PassthroughData.player2);
             }
+            else
+            {
+                PassthroughData.currentPlayer = 1;
+                sm.SetPlayer(PassthroughData.player1);
+            }
+            sm.PanelState(true);
         }
-        
     }
 
     //---------------------------------------------------------------------
@@ -505,18 +501,19 @@ public class UnitSelection : MonoBehaviour {
                 timerText.GetComponent<Text>().text = count.ToString();
                 zeitleiste.transform.localScale += new Vector3(-1 / (timer + 1), 0, 0);
             }
-            else if (count == 0)
+            else if (count == -1)
             {
+                SubmitUnitSelection();
                 paused = true;
                 Reset();
-                SubmitUnitSelection();
             }
             count--;
-        }  
+        }
     }
 
     private void Reset()
     {
+        CancelInvoke();
         paused = true;
         zeitleiste.transform.localScale = defaultPosition;
         count = timer;
@@ -528,7 +525,7 @@ public class UnitSelection : MonoBehaviour {
         if (unitsChosen != 5)
         {
             String[] RandomUnits = new String[] { "", "", "", "", "", "", "", "", "", "" };
-            for (int j = 10 - unitsChosen; j > 0; j--)
+            for (int j = (10 - unitsChosen); j > 0; j--)
             {
                 if (boss == false && bossRnd == false)
                 {

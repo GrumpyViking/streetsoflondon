@@ -169,6 +169,9 @@ public class GameManager : MonoBehaviour {
             cc.SwitchSide(side);
             mu.DeselectUnit();
             mu.DeselectFeld();
+            mu.DeselectFabrik();
+            mu.DeselectGegner();
+            mu.ResetAktionsMenu();
             gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(1));
             beweglicheEinheiten.GetComponent<Text>().text = "3";
             PassthroughData.startPlayer = side;
@@ -183,6 +186,9 @@ public class GameManager : MonoBehaviour {
             cc.SwitchSide(side);
             mu.DeselectUnit();
             mu.DeselectFeld();
+            mu.DeselectFabrik();
+            mu.DeselectGegner();
+            mu.ResetAktionsMenu();
             gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(2));
             beweglicheEinheiten.GetComponent<Text>().text = "3";
             PassthroughData.startPlayer = side;

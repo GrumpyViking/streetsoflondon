@@ -633,4 +633,12 @@ public class MoveUnit : MonoBehaviour
         DeselectUnit();
         DeselectGegner();
     }
+
+    public void ResetAktionsMenu()
+    {
+        bewegenButton.SetActive(true);
+        bewegenButtonText.GetComponent<Text>().text = "Einheitbewegen";
+        angriffButton.SetActive(true);
+        angriffButtonText.GetComponent<Text>().text = "Angriff";
+    }
 }
