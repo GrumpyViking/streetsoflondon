@@ -636,7 +636,7 @@ public class Trickkarten : MonoBehaviour {
     public void ActivateFusel()
     {
         anzahlEinheitenFusel[PassthroughData.currentPlayer] = dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer);
-        einheitenIdFusel[PassthroughData.currentPlayer] = dbc.GetUnitIds(PassthroughData.currentPlayer);
+        einheitenIdFusel[PassthroughData.currentPlayer] = dbc.GetSingleUnitIdsByPlayerId(PassthroughData.currentPlayer);
         for (int i = 0; i < anzahlEinheitenFusel[PassthroughData.currentPlayer]; i++)
         {
             dbc.WriteToDB("Update Einheit SET Angriffspunkte = " + (dbc.GetAtt(einheitenIdFusel[PassthroughData.currentPlayer][i]) + 1) + " Where ID = " + einheitenIdFusel[PassthroughData.currentPlayer][i]);
@@ -651,8 +651,8 @@ public class Trickkarten : MonoBehaviour {
     public void ActivateMantel()
     {
         anzahlEinheitenMantel[PassthroughData.currentPlayer] = dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer);
-        einheitenIdMantel[PassthroughData.currentPlayer] = dbc.GetUnitIds(PassthroughData.currentPlayer);
-        for (int i = 1; i <= anzahlEinheitenMantel[PassthroughData.currentPlayer]; i++)
+        einheitenIdMantel[PassthroughData.currentPlayer] = dbc.GetSingleUnitIdsByPlayerId(PassthroughData.currentPlayer);
+        for (int i = 0; i < anzahlEinheitenMantel[PassthroughData.currentPlayer]; i++)
         {
             dbc.WriteToDB("Update Einheit SET Verteidigungspunkte = " + (dbc.GetDef(einheitenIdMantel[PassthroughData.currentPlayer][i]) + 1) + " Where ID = " + einheitenIdMantel[PassthroughData.currentPlayer][i]);
         }
@@ -662,8 +662,8 @@ public class Trickkarten : MonoBehaviour {
     {
         Debug.Log("Ration Effekt für Spieler " + PassthroughData.currentPlayer);
         anzahlEinheitenRation[PassthroughData.currentPlayer] = dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer);
-        einheitenIdRation[PassthroughData.currentPlayer] = dbc.GetUnitIds(PassthroughData.currentPlayer);
-        for (int i = 1; i <= anzahlEinheitenMantel[PassthroughData.currentPlayer]; i++)
+        einheitenIdRation[PassthroughData.currentPlayer] = dbc.GetSingleUnitIdsByPlayerId(PassthroughData.currentPlayer);
+        for (int i = 0; i < anzahlEinheitenMantel[PassthroughData.currentPlayer]; i++)
         {
             //if (dbc.GetLP(einheitenIdRation[PassthroughData.currentPlayer][i]) < dbc.GetMaxLP())
         }
@@ -676,8 +676,8 @@ public class Trickkarten : MonoBehaviour {
         if (PassthroughData.currentPlayer == 1)
         {
             anzahlEinheitenInfektion[1] = dbc.GetNumUnitsofPlayer(2);
-            einheitenIdInfektion[1] = dbc.GetUnitIds(2);
-            for (int i = 1; i <= anzahlEinheitenInfektion[2]; i++)
+            einheitenIdInfektion[1] = dbc.GetSingleUnitIdsByPlayerId(2);
+            for (int i = 0; i < anzahlEinheitenInfektion[1]; i++)
             {
                 if (dbc.GetLP(einheitenIdRation[1][i]) != 1)
                 {
@@ -688,10 +688,10 @@ public class Trickkarten : MonoBehaviour {
         else
         {
             anzahlEinheitenInfektion[0] = dbc.GetNumUnitsofPlayer(1);
-            einheitenIdInfektion[0] = dbc.GetUnitIds(1);
-            for (int i = 1; i <= anzahlEinheitenInfektion[0]; i++)
+            einheitenIdInfektion[0] = dbc.GetSingleUnitIdsByPlayerId(1);
+            for (int i = 0; i < anzahlEinheitenInfektion[1]; i++)
             {
-                if (dbc.GetLP(einheitenIdRation[1][i]) != 1)
+                if (dbc.GetLP(einheitenIdRation[0][i]) != 1)
                 {
                     dbc.WriteToDB("Update Einheit SET Lebenspunkte = " + (dbc.GetLP(einheitenIdInfektion[0][i]) - 1) + " Where ID = " + einheitenIdInfektion[0][i]);
                 }
@@ -707,17 +707,17 @@ public class Trickkarten : MonoBehaviour {
 
     public void EndFuselEffect()
     {
-        for (int i = 1; i <= anzahlEinheitenFusel[PassthroughData.currentPlayer]; i++)
+        for (int i = 0; i < anzahlEinheitenFusel[PassthroughData.currentPlayer]; i++)
         {
-            dbc.WriteToDB("Update Einheit SET Angriffspunkte = " + (dbc.GetAtt(einheitenIdFusel[PassthroughData.currentPlayer][i]) + 1) + " Where ID = " + einheitenIdFusel[PassthroughData.currentPlayer][i]);
+            dbc.WriteToDB("Update Einheit SET Angriffspunkte = " + (dbc.GetAtt(einheitenIdFusel[PassthroughData.currentPlayer][i]) - 1) + " Where ID = " + einheitenIdFusel[PassthroughData.currentPlayer][i]);
         }
     }
 
     public void EndMantelEffect()
     {
-        for (int i = 1; i <= anzahlEinheitenMantel[PassthroughData.currentPlayer]; i++)
+        for (int i = 0; i < anzahlEinheitenMantel[PassthroughData.currentPlayer]; i++)
         {
-            dbc.WriteToDB("Update Einheit SET Verteidigungspunkte = " + (dbc.GetDef(einheitenIdMantel[PassthroughData.currentPlayer][i]) + 1) + " Where ID = " + einheitenIdMantel[PassthroughData.currentPlayer][i]);
+            dbc.WriteToDB("Update Einheit SET Verteidigungspunkte = " + (dbc.GetDef(einheitenIdMantel[PassthroughData.currentPlayer][i]) - 1) + " Where ID = " + einheitenIdMantel[PassthroughData.currentPlayer][i]);
         }
     }
 

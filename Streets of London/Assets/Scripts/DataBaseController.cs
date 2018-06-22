@@ -425,7 +425,30 @@ public class DataBaseController : MonoBehaviour {
         return id;
     }
 
-    
+    public int[] GetSingleUnitIdsByPlayerId(int playerid)
+    {
+        if (!init)
+        {
+            Initialise();
+        }
+        int[] id = new int[NumOfUnits(playerid)];
+        int count = 0;
+        OpenDBConnection();
+        dbCMD = dbConn.CreateCommand();
+        dbCMD.CommandText = "Select ID from Einheit Where SpielerID =" + playerid;
+        reader = dbCMD.ExecuteReader();
+        while (reader.Read())
+        {
+            id[count] = reader.GetInt32(0);
+            count++;
+        }
+        reader.Close();
+        reader = null;
+        CloseDBConnection();
+
+        return id;
+    }
+
     //Anzahl der einheiten eines Spielers
     public int NumOfUnits(int playerid)
     {
