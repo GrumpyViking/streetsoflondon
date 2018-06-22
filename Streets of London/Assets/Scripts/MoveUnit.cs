@@ -426,6 +426,7 @@ public class MoveUnit : MonoBehaviour
         return Math.Max(maxxy, Math.Abs(unitfield.GetComponent<FieldHelper>().z - fieldinreach.GetComponent<FieldHelper>().z));
     }
 
+    //Anriff wird bei Auswahl des Angriffbutton aus dem AKtionsmenu ausgeführt
     public void Angriff()
     {
         bool validtarget;
