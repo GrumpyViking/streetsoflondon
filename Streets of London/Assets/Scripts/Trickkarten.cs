@@ -146,7 +146,7 @@ public class Trickkarten : MonoBehaviour {
                 break;
             case "Ration":
                 nameTK = name;
-                wirkungTK = "Heile alle deine Einheiten um 1 LP.";
+                wirkungTK = "Erhöhe die LP deiner aktiven Einheiten um 1 LP.";
                 bildTemp = bildRation;
                 break;
             case "Investition":

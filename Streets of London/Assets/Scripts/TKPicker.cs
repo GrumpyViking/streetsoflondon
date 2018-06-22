@@ -60,22 +60,22 @@ public class TKPicker : MonoBehaviour {
         {
             case "Fusel":
                 nameTK = name;
-                wirkungTK = "Erhöhe den AW einer Einheit um 1 für 2 Runden.";
+                wirkungTK = "Erhöhe den AW deiner Einheiten um 1 für die nächste Runde.";
                 bildTemp = bildDoppelbock;
                 break;
             case "Infektion":
                 nameTK = name;
-                wirkungTK = "Alle gegnerischen Einheiten im Wirkungsbereich verlieren 2 LP.";
+                wirkungTK = "Alle gegnerischen Einheiten verlieren 1 LP. Einheiten können nicht durch diesen Effekt sterben.";
                 bildTemp = bildInfektion;
                 break;
             case "Verstärkter Mantel":
                 nameTK = name;
-                wirkungTK = "Erhöhe den VW einer Einheit um 1 für 2 Runden";
+                wirkungTK = "Erhöhe den VW deiner Einheiten um 1 für die nächste Runde.";
                 bildTemp = bildMantel;
                 break;
             case "Ration":
                 nameTK = name;
-                wirkungTK = "Heile alle Verbündeten im Wirkungsbereich um 2 LP.";
+                wirkungTK = "Erhöhe die LP deiner aktiven Einheiten um 1 LP.";
                 bildTemp = bildRation;
                 break;
             case "Investition":
@@ -107,8 +107,8 @@ public class TKPicker : MonoBehaviour {
         anzeigeWirkung3.GetComponent<Text>().text = wirkungTK;
         anzeigeBild3.sprite = bildTemp;
     }
-    //----------------------------------------------------------------------------------------------
-    //Auswahl der Kartenslots (OnClick-Methoden)
+
+    //Auswahl der Kartenslots
     public void ChooseCard1()
     {
         aufleuchtenTK1.SetActive(true);
@@ -144,7 +144,6 @@ public class TKPicker : MonoBehaviour {
                     if (player1TK[i] == " ")
                     {
                         player1TK[i] = gewaehlteTK;
-                        Debug.Log("Spieler 1 kriegt " + gewaehlteTK);
                         break;
                     }
                 }
@@ -156,7 +155,6 @@ public class TKPicker : MonoBehaviour {
                     if (player2TK[i] == " ")
                     {
                         player2TK[i] = gewaehlteTK;
-                        Debug.Log("Spieler 2 kriegt " + gewaehlteTK);
                         break;
                     }
                 }
