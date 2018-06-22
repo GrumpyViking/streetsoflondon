@@ -16,32 +16,29 @@ using TMPro;
 
 public class MoveUnit : MonoBehaviour
 {
+    //Hilfsvariablen
     GameObject select;
     GameObject unit;
-    public Ressources rm;
     GameObject gegner = null;
-    public Texture[] fabrikDamage; 
-    GameObject feld=null;
+    GameObject feld = null;
     GameObject fabrik;
     GameObject aktionsMenue;
     GameObject unitField;
     GameObject gegnerField;
-    List<GameObject> usedUnits = new List<GameObject>();
+    GameObject gewinner;
     public GameObject[] grid;
     public GameObject[] units;
     public GameObject[] spawnL;
     public GameObject[] spawnR;
-    public Fabrik fb;
-
-    public GameObject anweisungText;
-    public GameObject bewegenButtonText;
-    public GameObject angriffButtonText;
-    public GameObject bewegenButton;
-    public GameObject angriffButton;
-    public GameObject beweglicheEinheit;
+    public Texture[] fabrikDamage;
+    List<GameObject> usedUnits = new List<GameObject>();
+    
+    //Skripte
     public KampfMenu km;
     public DataBaseController dbc;
     public GameManager gm;
+    public Ressources rm;
+    public Fabrik fb;
 
     //UI-Objekte für die Statuswerte der einzelnen Einheiten
     public GameObject nameText;
@@ -50,7 +47,13 @@ public class MoveUnit : MonoBehaviour
     public GameObject atText;
     public GameObject dfText;
     public GameObject rwText;
-    
+    public GameObject anweisungText;
+    public GameObject bewegenButtonText;
+    public GameObject angriffButtonText;
+    public GameObject bewegenButton;
+    public GameObject angriffButton;
+    public GameObject beweglicheEinheit;
+
     //Hilfsvariablen um gewisse bedingungen zu Kontrollieren
     bool unitSelected = false;
     bool feldSelected = false;
@@ -60,14 +63,14 @@ public class MoveUnit : MonoBehaviour
     bool waehleFabrik = false;
     bool gegnerGewaehlt = false;
     int phase = 0;
-    GameObject gewinner;
 
-
+    //sucht das UI Panel Aktionsmenu und weist es dem aktionsMenue GameObjekt variable zu
     private void Start()
     {
         aktionsMenue = GameObject.Find("UI/Panels/Aktionsmenue");
     }
 
+    //Prüft jedem Frame ob die Linke Maustaste betätigt wurde und führt die SelectUnit Methode aus
     private void Update()
     {
         if (PassthroughData.gameActiv)
@@ -79,6 +82,7 @@ public class MoveUnit : MonoBehaviour
         }
     }
 
+    //Abwählen des ausgewählten Gegners und zurücksetzen zugehöriger Werte
     public void DeselectGegner()
     {
         if (gegner != null)
@@ -93,6 +97,7 @@ public class MoveUnit : MonoBehaviour
         select = null;
         gewinner = null;
     }
+    //Abwählen der ausgewählten eigenen Einheit und zurücksetzen zugehöriger Werte
     public void DeselectUnit()
     {
         if (unit != null)
@@ -110,6 +115,7 @@ public class MoveUnit : MonoBehaviour
         angriffButton.SetActive(true);
         gegnerGewaehlt = false;
     }
+    //Abwählen des ausgewählten Feldes und zurücksetzen zugehöriger Werte
     public void DeselectFeld()
     {
         if (feld != null)
@@ -120,12 +126,14 @@ public class MoveUnit : MonoBehaviour
             zielFeldSuche = false;
             
         }
+        //Deaktiviert die anzeige der auswählbaren Felder
         for (int i = 0; i < grid.Length; i++)
         {
             grid[i].GetComponent<Outline>().enabled = false;
             grid[i].GetComponent<FieldHelper>().isSelectable = false;
         }
     }
+    ////Abwählen der ausgewählten Fabrik und zurücksetzen zugehöriger Werte
     public void DeselectFabrik()
     {
         if (fabrik != null)
@@ -136,30 +144,35 @@ public class MoveUnit : MonoBehaviour
         }
     }
 
+    //Hauptfunktion zur Auswahl von Eigeneneinheiten, Gegnerischen Einheiten beim Angriff, Feldern und der Fabrik
     void SelectUnit()
     {
-        RaycastHit hitInfo;
-        select = ReturnClickedObject(out hitInfo);
+        RaycastHit hitInfo; 
+        select = ReturnClickedObject(out hitInfo);//Holt sich von der ReturnClickObject Methode das "getroffene" Objekt und weißt des der Select variable zu
+        //Überprüfung wenn einheit angeklickt wurde um diese wieder Abwählen zu können
         if (select == unit && unitSelected && (!waehleGegner || !waehleFabrik))
         {
             DeselectUnit();
             unitSelected = false;
             select = null;
         }
+        //Ermöglicht das auswählen verschiedener Einheiten
         if(select != unit && unitSelected && select!=null && !zielFeldSuche && !waehleGegner)
         {
             DeselectUnit();
             SelectUnit();
         }
+        //Ermöglicht das auswählen verschiedener Felder
         if (select == feld && feldSelected)
         {
             DeselectFeld();
             feldSelected = false;
             select = null;
         }
+        //Überprüfung was von dem RayCast erfasst wurde
         if (select != null)
         {
-            
+            //Prüft ob ausgewähltes Objekt eine eigene Einheit ist und wenn ja wird diese Markiert und das Aktionsmenu geöffnet
             if (select.tag == "Einheit" && unit == null && !unitSelected && !waehleGegner && dbc.GetUnitPlayerID(select.GetComponent<UnitHelper>().unitID)==PassthroughData.currentPlayer)
             {
                 unit = select;
@@ -181,36 +194,30 @@ public class MoveUnit : MonoBehaviour
                         bewegenButton.SetActive(true);
                     }
                 }
-                
                 SetUnitStatText(unit);
                 unit.GetComponent<Outline>().OutlineColor = Color.white;
                 unit.GetComponent<Outline>().enabled = true;
                 unitSelected = true;
-                //select = null;
-                
             }
-
+            //Prüft ob bei gewählter eigener Einheit und der aktiven suche nach einem Gegner eine gegnerische Einheit ausgewählt wurde, wenn ja wird diese Ausgewählt
             if (select.tag == "Einheit" && gegner == null && waehleGegner == true && dbc.GetUnitPlayerID(select.GetComponent<UnitHelper>().unitID) != PassthroughData.currentPlayer)
             {
-               
                 waehleFabrik = false;
                 gegner = select;
                 gegner.GetComponent<Outline>().OutlineColor = Color.red;
                 gegner.GetComponent<Outline>().enabled = true;
                 gegnerGewaehlt = true;
-                //select = null;
             }
 
+            //Prüft ob die Gegnerische Einheit gewählt wurde
             if (PassthroughData.currentPlayer == 1)
             {
                 if (select.tag == "Fabrik_R" && fabrik == null && waehleFabrik)
                 {
-                    
                     waehleGegner = false;
                     fabrik = select;
                     fabrik.GetComponent<Outline>().OutlineColor = Color.red;
                     fabrik.GetComponent<Outline>().enabled = true;
-
                     select = null;
                 }
             }
@@ -222,11 +229,10 @@ public class MoveUnit : MonoBehaviour
                     fabrik = select;
                     fabrik.GetComponent<Outline>().OutlineColor = Color.red;
                     fabrik.GetComponent<Outline>().enabled = true;
-
                     select = null;
                 }
             }
-
+            //Prüft ob bei der Einheitenbewegung ein gültiges Zielfeld gewählt wurde und wählt und markiert dieses auf dem Spielfeld
             if (select.tag == "HexFields" && feld == null && !feldSelected && unitSelected && zielFeldSuche && select.GetComponent<FieldHelper>().isSelectable)
             {
                 feld = select;
@@ -241,6 +247,8 @@ public class MoveUnit : MonoBehaviour
             select = null;
         }
     }
+
+    //Sendet bei einem Mausklick einen Strahl aus und wenn dieser auf ein Objekt trifft wird dies als GameObject zurückübergeben
     GameObject ReturnClickedObject(out RaycastHit hit)
     {
         GameObject target = null;
@@ -252,11 +260,13 @@ public class MoveUnit : MonoBehaviour
         return target;
     }
 
+    //MoveUnits() wird ausgeführt wenn der EinheitenBewegen Button im Aktionsmenu betätigt wurde
     public void MoveUnits()
     {
-
+        //Prüfen ob die Einheit noch Aktionspunkte zur verfügung hat
         if (!buttonClicked && phase == 0 && unit.GetComponent<UnitHelper>().unitAP>0)
         {
+            //Ändern der Button beschreibung gemäß der gewählten Aktion und das setzen von Kontrollvariablen
             anweisungText.GetComponent<TextMeshProUGUI>().text = "Zielfeld wählen!";
             bewegenButtonText.GetComponent<Text>().text = "Bestätigen";
             zielFeldSuche = true;
@@ -264,6 +274,7 @@ public class MoveUnit : MonoBehaviour
             angriffButton.SetActive(false);
             buttonClicked = true;
             //Markierung der Felder wenn die Einheit nicht auf dem Spielfeld ist
+            // Wie in den Regeln festgelegt stehen zum Platzieren der einheiten vom Einheitenstapel die ersten beiden Reihen zur verfügung
             if (unit.GetComponent<UnitHelper>().fieldID == 0)
             {
                 if (PassthroughData.currentPlayer == 1)
@@ -272,11 +283,10 @@ public class MoveUnit : MonoBehaviour
                     {
                         if (grid[i].GetComponent<FieldHelper>().hasUnit == false)
                         {
-                            grid[i].GetComponent<FieldHelper>().isSelectable = true;
+                            grid[i].GetComponent<FieldHelper>().isSelectable = true;//Möglichkeit das feld auswählen zu können
                             grid[i].GetComponent<Outline>().OutlineColor = Color.white;
                             grid[i].GetComponent<Outline>().enabled = true;
                         }
-                        
                     }
                 }
                 else
@@ -304,6 +314,11 @@ public class MoveUnit : MonoBehaviour
                         unitfield = grid[i];
                     }
                 }
+                /*
+                 * Die Hexfelder haben jeweils eine X,Y,Z Koordinate wodurch sich die Auswahl durch eine 3Fach geschachtelte for schleife am einfachsten Realisieren lies.
+                 * Alle felder welche im bereich der Aktionsreichweite der Einheit liegen werden am ende Markiert und zur Auswahl zur verfügung gestellt
+                 * 
+                 */ 
                 for (int x = (-1 * aktionsp); x <= aktionsp; x++)
                 {
                     for (int y = (-1 * aktionsp); y <= aktionsp; y++)
@@ -327,7 +342,7 @@ public class MoveUnit : MonoBehaviour
                 }
             }
         }
-
+        //Zweite Pahse der Einheitenbewegung prüft ob gültiges Feldgewählt wurde 
         if (phase != 0)
         {
             GameObject oldfeld=null;
@@ -391,9 +406,7 @@ public class MoveUnit : MonoBehaviour
                         }
                     }
                     beweglicheEinheit.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) - 1);
-
                 }
-
                 DeselectFeld();
                 DeselectUnit();
             }
