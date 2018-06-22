@@ -30517,18 +30517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c1ac6af45e8094da4de9e3413b6328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rm: {fileID: 149742181}
-  fabrikDamage:
-  - {fileID: 2800000, guid: ee8a905356a35b84aaa59d61b38f974f, type: 3}
-  - {fileID: 2800000, guid: 6e5b9f5482e1eec49b25d015684cf0d1, type: 3}
-  - {fileID: 2800000, guid: c1b619752d9978e4fb6ba03c8ce077eb, type: 3}
-  - {fileID: 2800000, guid: 5f2168821ce9f0d49b140a12e3eb37d6, type: 3}
-  - {fileID: 2800000, guid: 57a0e3f492f6a0b489be66ba636a875e, type: 3}
-  - {fileID: 2800000, guid: d44d1656c11035e44a374b81c75ace2b, type: 3}
-  - {fileID: 2800000, guid: 0247b90b6e7689d44a257ea665c03763, type: 3}
-  - {fileID: 2800000, guid: 549dd65696da920428586ddd3cf43390, type: 3}
-  - {fileID: 2800000, guid: 160cdcb0f3b5e354e9381b1060f8a951, type: 3}
-  - {fileID: 2800000, guid: e6d6186f08982964ea0d1975712f17a8, type: 3}
   grid:
   - {fileID: 1968718533}
   - {fileID: 1006690163}
@@ -30588,22 +30576,34 @@ MonoBehaviour:
   - {fileID: 219167186}
   - {fileID: 1063344652}
   - {fileID: 587054895}
-  fb: {fileID: 1606642813}
-  anweisungText: {fileID: 340242228}
-  bewegenButtonText: {fileID: 1901940527}
-  angriffButtonText: {fileID: 1114001106}
-  bewegenButton: {fileID: 1862479884}
-  angriffButton: {fileID: 1253440470}
-  beweglicheEinheit: {fileID: 410089633}
+  fabrikDamage:
+  - {fileID: 2800000, guid: ee8a905356a35b84aaa59d61b38f974f, type: 3}
+  - {fileID: 2800000, guid: 6e5b9f5482e1eec49b25d015684cf0d1, type: 3}
+  - {fileID: 2800000, guid: c1b619752d9978e4fb6ba03c8ce077eb, type: 3}
+  - {fileID: 2800000, guid: 5f2168821ce9f0d49b140a12e3eb37d6, type: 3}
+  - {fileID: 2800000, guid: 57a0e3f492f6a0b489be66ba636a875e, type: 3}
+  - {fileID: 2800000, guid: d44d1656c11035e44a374b81c75ace2b, type: 3}
+  - {fileID: 2800000, guid: 0247b90b6e7689d44a257ea665c03763, type: 3}
+  - {fileID: 2800000, guid: 549dd65696da920428586ddd3cf43390, type: 3}
+  - {fileID: 2800000, guid: 160cdcb0f3b5e354e9381b1060f8a951, type: 3}
+  - {fileID: 2800000, guid: e6d6186f08982964ea0d1975712f17a8, type: 3}
   km: {fileID: 1619626953}
   dbc: {fileID: 1719293103}
   gm: {fileID: 1565836639}
+  rm: {fileID: 149742181}
+  fb: {fileID: 1606642813}
   nameText: {fileID: 798568834}
   apText: {fileID: 454916126}
   lpText: {fileID: 1358017441}
   atText: {fileID: 1435764229}
   dfText: {fileID: 916472341}
   rwText: {fileID: 1218858683}
+  anweisungText: {fileID: 340242228}
+  bewegenButtonText: {fileID: 1901940527}
+  angriffButtonText: {fileID: 1114001106}
+  bewegenButton: {fileID: 1862479884}
+  angriffButton: {fileID: 1253440470}
+  beweglicheEinheit: {fileID: 410089633}
 --- !u!1 &1572626672
 GameObject:
   m_ObjectHideFlags: 0
@@ -40086,7 +40086,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2081797074
 RectTransform:
   m_ObjectHideFlags: 0
@@ -41483,6 +41483,14 @@ MonoBehaviour:
   anzahlEinheitenMantel: 
   anzahlEinheitenRation: 
   anzahlEinheitenInfektion: 
+  einheitenIdFusel1: 
+  einheitenIdFusel2: 
+  einheitenIdMantel1: 
+  einheitenIdMantel2: 
+  einheitenIdRation1: 
+  einheitenIdRation2: 
+  einheitenIdInfektion1: 
+  einheitenIdInfektion2: 
 --- !u!1 &2143377281
 GameObject:
   m_ObjectHideFlags: 0
