@@ -150,7 +150,9 @@ public class CameraController : MonoBehaviour {
         if (side == 2)
         {
             camOverHead.enabled = false;
+            camOverHead.tag = "Untagged";
             cameraPlayer.enabled = true;
+            cameraPlayer.tag = "MainCamera";
             cameraPlayer.transform.position = new Vector3(-20, 1000, 1625);
             cameraPlayer.transform.rotation = Quaternion.Euler(65, 180, 0);
 
