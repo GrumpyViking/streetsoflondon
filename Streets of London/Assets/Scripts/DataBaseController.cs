@@ -425,6 +425,7 @@ public class DataBaseController : MonoBehaviour {
         return id;
     }
 
+    //Unit-IDs des jeweiligen Spielers
     public int[] GetSingleUnitIdsByPlayerId(int playerid)
     {
         if (!init)
@@ -473,7 +474,7 @@ public class DataBaseController : MonoBehaviour {
         return num;
     }
         
-    //Methode zum schreiben in die Datenbank
+    //Methode zum Schreiben in die Datenbank
     public void WriteToDB(string query)
     {
         if (!init)
@@ -509,7 +510,7 @@ public class DataBaseController : MonoBehaviour {
         return maxNum;
     }
 
-
+    //Anzahl aller Einheiten des jeweiligen Spielers
     public int GetNumUnitsofPlayer(int id)
     {
         if (!init)
