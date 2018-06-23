@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour {
 
     private void Start()
     {
-        //Default werte für Testzwecke 
+        //Default-Werte für Testzwecke 
         if (PassthroughData.player1 == null)
         {
             dbc.WriteToDB("INSERT INTO Spieler(ID, Name, Gold) VALUES (1, 'Spieler 1', 20)");
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour {
         pm.PanelState(true);
         //Pause GameFlow
         paused = true;
-        //Hilfsvariable wieviele Züge absolviert wurden
+        //Hilfsvariable, wieviele Züge absolviert wurden
         overallTurns = 0;
         PassthroughData.gameActiv = false; 
         defaultPosition = timeLine.transform.localScale; //speichert die Ursprungsgröße der Zeitleiste
@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour {
         
     }
 
-    //Prüft am ende eines Frames ob die ESC-Taste gedrückt wurde um das Spiel zu Pausieren
+    //Prüft am Ende eines Frames, ob die ESC-Taste gedrückt wurde, um das Spiel zu pausieren
     private void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -123,20 +123,20 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    //Setzt den Namen des Aktuellenspielers
+    //Setzt den Namen des aktuellen Spielers
     public void SetPlayer(string name)
     {
         playerText.GetComponent<Text>().text = name;
     }
 
-    //Möglichkeit die Goldanzeige eines Spieler zu aktuallisieren
+    //Möglichkeit die Goldanzeige eines Spieler zu aktualisieren
     public void Refresh()
     {
         goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '"+PassthroughData.currentPlayer+"'");
         gesamtEinheiten.GetComponent<Text>().text = "Einheiten gesamt: " + Convert.ToString(dbc.NumOfUnits(PassthroughData.currentPlayer));
     }
 
-    //Timer Funktion wenn Spiel nicht Pausiert ist läuft die Timerzeit runter und die Zeitleiste anzeige wird verringert
+    //Timer-Funktion, wenn Spiel nicht pausiert ist, läuft die Timerzeit runter und die Zeitleisten-Anzeige wird verringert
     void TimeLine()
     {
         if (!paused)
@@ -156,8 +156,8 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    //Wird am ende des Timer oder mit dem Betätigen des Zug Beenden Buttons ausgeführt
-    //Setzt den timer zurück und entsprechend des Aktuellen Spielers wird der nächste Spieler gesetzt und die Anzeigen angepasst
+    //Wird am Ende des Timesr oder mit dem Betätigen des "Zug Beenden"-Buttons ausgeführt
+    //Setzt den Timer zurück und entsprechend des aktuellen Spielers wird der nächste Spieler gesetzt und die Anzeigen angepasst
     private void Reset()
     {
         timeLine.transform.localScale = defaultPosition;
@@ -207,18 +207,18 @@ public class GameManager : MonoBehaviour {
         kms.SchliesseKaufmenu();
     }
 
-    //Wenn eine Runde beendet wurde (Jeder Spieler war 1 mal an der Reihe) wirde die TurnOver Methode ausgeführt
+    //Wenn eine Runde beendet wurde (Jeder Spieler war  einmal an der Reihe) wird die TurnOver Methode ausgeführt
     void TurnOver()
     {
-        mu.ResetAP(); //zurücksetzten der AP der eingesetzten einheiten
-        rc.AktualisiereGold(1); //Aktuallisieren des Gold von Spieler 1
-        rc.AktualisiereGold(2); //Aktuallisieren des Gold von Spieler 2
-        b.HasUnit(); //Prüft ob eine Einheit auf Bankfeld ist und wenn ja fügt das vorhandene Gold einem Spieler zu wenn nein wird der Bank eine Goldmünze hinzugefügt
+        mu.ResetAP(); //Zurücksetzen der AP der eingesetzten Einheiten
+        rc.AktualisiereGold(1); //Aktualisieren des Goldes von Spieler 1
+        rc.AktualisiereGold(2); //Aktualisieren des Goldes von Spieler 2
+        b.HasUnit(); //Prüft, ob eine Einheit auf dem Bankfeld ist und, wenn "Ja" fügt das vorhandene Gold einem Spieler zu, wenn "Nein" wird der Bank eine Goldmünze hinzugefügt
         turn = 0;
         overallTurns++;
     }
 
-    //Funktion zum vortsetzen eines Pausierten Spieles
+    //Funktion zum Fortsetzen eines Pausierten Spieles
     public void Continue()
     {
         paused = false;
@@ -235,14 +235,14 @@ public class GameManager : MonoBehaviour {
         Reset();
     }
 
-    //Wird ausgeführt wenn Spielsiegbedingung erreicht wurde
+    //Wird ausgeführt, wenn Spielsiegbedingung erreicht wurde
     public void GameOver()
     {
         paused = true;
         endScreen.SetActive(true);
     }
 
-    //Funktion um Spiel zu Pausieren
+    //Funktion, um Spiel zu Pausieren
     public void Paused()
     {
         paused = true;

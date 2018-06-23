@@ -16,14 +16,14 @@ public class DataBaseController : MonoBehaviour {
     IDbCommand dbCMD;
     static bool init = false;
 
-    //Initialisiert Datenbank wenn noch nicht initialisiert wurde
+    //Initialisiert Datenbank, wenn noch nicht initialisiert wurde
     void Initialise()
     {    
         init = true;
         CleanDB();
     }
 
-    //stellt die verbindung zur Datenbank her
+    //Stellt die verbindung zur Datenbank her
     void OpenDBConnection()
     {
         if (!init)
@@ -59,7 +59,7 @@ public class DataBaseController : MonoBehaviour {
         CloseDBConnection();
     }
 
-    //schließt die Datenbank verbindung
+    //Schließt die Datenbank-Verbindung
     void CloseDBConnection()
     {
         if (!init)
@@ -72,7 +72,7 @@ public class DataBaseController : MonoBehaviour {
         dbConn = null;
     }
 
-    //Alte funktion für universele abfrage
+    //Alte Funktion für universelle Abfrage
     public string RequestFromDB(string query)
     {
         if (!init)
@@ -96,7 +96,7 @@ public class DataBaseController : MonoBehaviour {
         return buff;
     }
 
-    //Einheiten relevante Informationen
+    //Einheitenrelevante Informationen
     //Einheiten ID
     public int GetUnitID(string name)
     {
@@ -115,7 +115,7 @@ public class DataBaseController : MonoBehaviour {
         return id;
     }
 
-    //Einheiten Name
+    //Einheit Name
     public string GetUnitNamedif(int id)
     {
         if (!init)
@@ -222,7 +222,7 @@ public class DataBaseController : MonoBehaviour {
         return def;
     }
 
-    //Spieler dem die Einheit zugeordnet ist
+    //Spieler, dem die Einheit zugeordnet ist
     public int GetUnitPlayerID(int id)
     {
         if (!init)
@@ -309,7 +309,7 @@ public class DataBaseController : MonoBehaviour {
         return name;
     }
 
-    //Geländefeld Relevanteinformationen
+    //Geländefeld relevante Informationen
     //Geldändefeld Bonus
     public int GetFieldBonus(int id)
     {
@@ -365,7 +365,7 @@ public class DataBaseController : MonoBehaviour {
         return num;
     }
 
-    //Spieler Relevante Informationen
+    //Spielerrelevante Informationen
     //Spielername
     public string GetName(int id)
     {
@@ -450,7 +450,7 @@ public class DataBaseController : MonoBehaviour {
         return id;
     }
 
-    //Anzahl der einheiten eines Spielers
+    //Anzahl der Einheiten eines Spielers
     public int NumOfUnits(int playerid)
     {
         if (!init)

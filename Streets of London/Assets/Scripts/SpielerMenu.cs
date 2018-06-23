@@ -11,12 +11,12 @@ using UnityEngine.UI;
 
 public class SpielerMenu : MonoBehaviour {
 
-    //UI-Objekte die Beeinflusst werden können
+    //UI-Objekte, die beeinflusst werden können
     public GameObject spielerMenuScriptObject;
     public GameObject playerTextObject;
     public GameObject mainUI;
 
-    //Scripte die Genutzt werden
+    //Scripte, die genutzt werden
     public GameManager gm;
     public DataBaseController dbc;
     public UnitSelection us;
@@ -27,7 +27,7 @@ public class SpielerMenu : MonoBehaviour {
     bool fieldBuild;
     int unitsSelected;
 
-    //Initialisieren setzt startwerte für Spielbeginn
+    //Initialisieren setzt Startwerte für Spielbeginn
     void Start()
     {
         initialise = false;
@@ -57,8 +57,8 @@ public class SpielerMenu : MonoBehaviour {
         playerTextObject.GetComponent<Text>().text = name;
     }
 
-    //Prüft ob das Spielfeld schon aufgebaut wurde
-    //ansonsten beginnt das Spiel
+    //Prüft, ob das Spielfeld schon aufgebaut wurde
+    //Ansonsten beginnt das Spiel
     public void CheckAction()
     {
         if (!fieldBuild)
@@ -71,7 +71,7 @@ public class SpielerMenu : MonoBehaviour {
         }
     }
 
-    //Setzt den Status für den Spielfeld aufbau
+    //Setzt den Status für den Spielfeldaufbau
     public void SetFieldBuild(bool value)
     {
         fieldBuild = value;
@@ -84,10 +84,10 @@ public class SpielerMenu : MonoBehaviour {
     }
 
 
-    //Start des Eigentlichen spieles
+    //Start des eigentlichen Spieles
     public void StartGame()
     {
-        //Prüft ob beide Spieler ihre EinheitenTypen gewählt haben
+        //Prüft, ob beide Spieler ihre Einheitentypen gewählt haben
         if (unitsSelected != 2)
         { 
             unitsSelected++;
@@ -96,14 +96,14 @@ public class SpielerMenu : MonoBehaviour {
         }
         else
         {
-            //Wenn noch nicht geschehen wird das SpielInitialisiert 
+            //Wenn noch nicht geschehen, wird das Spiel initialisiert 
             if (!initialise)
             {
                 gm.SetupScene();
                 PassthroughData.gameActiv = true;
                 initialise = true;
             }
-            else //Andernfalls wird das Spielfortgesetzt
+            else //Andernfalls wird das Spiel fortgesetzt
             {
                 PassthroughData.gameActiv = true;
                 gm.Continue();
@@ -114,8 +114,8 @@ public class SpielerMenu : MonoBehaviour {
     //Beenden des Programms
     public void ExitPorgram()
     {
-        dbc.CleanDB(); // Säuber Datenbank am Spielende
-        Application.Quit();//Beendet die Anwendung wenn das Projekt Exportiert wurde
+        dbc.CleanDB(); // Säubere Datenbank am Spielende
+        Application.Quit();//Beendet die Anwendung, wenn das Projekt exportiert wurde
         //UnityEditor.EditorApplication.isPlaying = false; // Beenden wenn im Editor gestartet
     }
 }
