@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
     public DataBaseController dbc;
     public SpielerMenu pm;
     public FieldBuilder fb;
-    public KaufMenuScript kms;
+    public KaufMenu kms;
     public Ressources rc;
     public UnitTypCards utc;
     public MoveUnit mu;

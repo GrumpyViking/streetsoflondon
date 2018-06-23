@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KaufMenuScript : MonoBehaviour
+public class KaufMenu : MonoBehaviour
 {
     public GameObject kaufMenuScriptObject;     //GameObject für den Kaufmenü-Bildschirm
     public GameObject playerTextTop;            //GameObject für die Anzeige des Spielernames am oberen Bildschirmrand
@@ -57,7 +57,7 @@ public class KaufMenuScript : MonoBehaviour
     public TKPicker tkp;                //TKPicker-Object
 
     //Methode zum Öffnen des Trickkartenmenüs
-    public void OeffneKaufmenue()
+    public void OeffneKaufmenu()
     {
         kaufMenuScriptObject.SetActive(true);
         playerTextKaufMenu.GetComponent<Text>().text = playerTextTop.GetComponent<Text>().text;

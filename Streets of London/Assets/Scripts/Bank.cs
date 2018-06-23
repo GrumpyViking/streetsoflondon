@@ -12,17 +12,17 @@
 
 public class Bank : MonoBehaviour {
 
-    //Gold variable
+    //Gold-Variable
     public int gold;
-    //Das Bankfeld
+    //Bankfeld
     public GameObject bank;
-    //Texturen für die Einzelnen Münzen
+    //Texturen für die einzelnen Münzen
     public Texture[] bankGold;
 
-    //Datenbank Skript
+    //Datenbank-Skript
     public DataBaseController dbc;
 
-    //Zu Beginn gold wird auf 0 gesetzt
+    //Zu Beginn Gold wird auf 0 gesetzt
     private void Start()
     {
         gold = 0;

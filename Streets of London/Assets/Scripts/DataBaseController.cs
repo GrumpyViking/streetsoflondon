@@ -132,6 +132,7 @@ public class DataBaseController : MonoBehaviour {
 
         return name;
     }
+    
     //Einheit Aktionspunkte
     public int GetAP(int id)
     {
@@ -575,10 +576,5 @@ public class DataBaseController : MonoBehaviour {
 
             return Convert.ToInt32(anzahl);
         }
-    }
-    
-
-    
-	
-	
+    }	
 }

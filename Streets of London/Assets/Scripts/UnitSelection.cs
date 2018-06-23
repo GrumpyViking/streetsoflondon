@@ -12,8 +12,9 @@ public class UnitSelection : MonoBehaviour {
     public GameObject playerTextEinheitenAuswahl;
     public GameObject zeitleiste;
     public GameObject timerText;
-    public SpielerMenu sm;
-    public DataBaseController dbc;
+
+    public SpielerMenu sm;              //SpielerMenu-Object
+    public DataBaseController dbc;      //DataBaseController-Object
 
     //Aufleucht-Objekte
     public GameObject leuchten01;

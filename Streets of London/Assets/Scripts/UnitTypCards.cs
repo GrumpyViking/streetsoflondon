@@ -6,6 +6,7 @@ public class UnitTypCards : MonoBehaviour {
     public Material[] materials;
     public GameObject[] card;
     public DataBaseController dbc;
+
 	public void Initialise()
     {
         int[] ids = new int[5];
