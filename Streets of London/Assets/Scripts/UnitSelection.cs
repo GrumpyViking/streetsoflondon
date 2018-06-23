@@ -27,14 +27,16 @@ public class UnitSelection : MonoBehaviour {
     public GameObject leuchten09;
     public GameObject leuchten10;
 
-    
 
+    //Attribute für den Timer und die Zeitleiste
     public float timer;
-    private float count;
+    private float count;                    
     private bool paused;
-    private int unitsChosen = 0;            //Counter der gewaehlten Einheiten
-    private int side;                       //Angabe des aktuellen Spielers
     private Vector3 defaultPosition;
+
+    private int unitsChosen = 0;            //Counter der gewählten Einheiten
+    private int side;                       //Angabe des aktuellen Spielers
+    
 
     //Bool-Werte für die Auswahl der Einheitentypen
     private bool boss = false;
@@ -48,8 +50,9 @@ public class UnitSelection : MonoBehaviour {
     private bool taschendieb = false;
     private bool tueftler = false;
 
-    private bool finish = false;            //Bool-Wert um die Auswahl für den zweiten Spieler zu ermöglichen
+    private bool finish = false;            //Bool-Wert, um die Auswahl für den zweiten Spieler zu ermöglichen
 
+    //Attribute für die zufällige Auswahl der Einheitentypen
     private bool bossRnd = false;
     private bool diebinRnd = false;
     private bool meuchelmoerderRnd = false;
@@ -61,12 +64,7 @@ public class UnitSelection : MonoBehaviour {
     private bool taschendiebRnd = false;
     private bool tueftlerRnd = false;
 
-    
-
-    private void Start()
-    {
-    }
-
+    //Methode zum Starten des Timers
     public void StartTimer()
     {
         count = timer;
@@ -74,7 +72,6 @@ public class UnitSelection : MonoBehaviour {
         InvokeRepeating("TimeLine", 1.0f, 1.0f);
     }
 
-    //---------------------------------------------------------------------
     //Methode zum Aufrufen der ersten Auswahl
     public void Auswahl()
     {
@@ -91,9 +88,7 @@ public class UnitSelection : MonoBehaviour {
         }
     }
 
-    //---------------------------------------------------------------------
-    //OnClick-Methoden für die einzelnen Einheitentypen-Buttons
-
+    //Methode für die Auswahl des Boss-Einheitentyps
     public void BossSelected()
     {
         if (boss == false)
@@ -112,6 +107,7 @@ public class UnitSelection : MonoBehaviour {
         }  
     }
 
+    //Methode für die Auswahl des Diebin-Einheitentyps
     public void DiebinSelected()
     {
         if (diebin == false)
@@ -132,6 +128,7 @@ public class UnitSelection : MonoBehaviour {
         }
     }
 
+    //Methode für die Auswahl des Meuchelmörder-Einheitentyps
     public void MeuchelmoerderSelected()
     {
         if (meuchelmoerder == false)
@@ -153,6 +150,7 @@ public class UnitSelection : MonoBehaviour {
         }
     }
 
+    //Methode für die Auswahl des Pestarzt-Einheitentyps
     public void PestarztSelected()
     {
         if (pestarzt == false)
@@ -173,6 +171,7 @@ public class UnitSelection : MonoBehaviour {
         }
     }
 
+    //Methode für die Auswahl des Polizist-Einheitentyps
     public void PolizistSelected()
     {
         if (polizist == false)
@@ -193,6 +192,7 @@ public class UnitSelection : MonoBehaviour {
         }
     }
 
+    //Methode für die Auswahl des Raufbold-Einheitentyps
     public void RaufboldSelected()
     {
         if (raufbold == false)
@@ -213,6 +213,7 @@ public class UnitSelection : MonoBehaviour {
         }
     }
 
+    //Methode für die Auswahl des Scharfschütze-Einheitentyps
     public void ScharfschuetzeSelected()
     {
         if (scharfschuetze == false)
@@ -233,6 +234,7 @@ public class UnitSelection : MonoBehaviour {
         }
     }
 
+    //Methode für die Auswahl des Schläger-Einheitentyps
     public void SchlaegerSelected()
     {
         if (schlaeger == false)
@@ -253,6 +255,7 @@ public class UnitSelection : MonoBehaviour {
         }
     }
 
+    //Methode für die Auswahl des Taschendieb-Einheitentyps
     public void TaschendiebSelected()
     {
         if (taschendieb == false)
@@ -273,6 +276,7 @@ public class UnitSelection : MonoBehaviour {
         }
     }
 
+    //Methode für die Auswahl des Tüftler-Einheitentyps
     public void TueftlerSelected()
     {
         if (tueftler == false)
@@ -293,8 +297,7 @@ public class UnitSelection : MonoBehaviour {
         }
     }
 
-    //---------------------------------------------------------------------
-    //OnClick-Methode für den Bestätigen-Button
+    //Methode für das Bestätigen der Einheitentypenauswahl
     public void SubmitUnitSelection()
     {
         SelectRandomUnits();
@@ -318,7 +321,6 @@ public class UnitSelection : MonoBehaviour {
         }
     }
 
-    //---------------------------------------------------------------------
     //Methode zum Reset des Leuchtens und der bool-Werte
     public void ResetSelection()
     {        
@@ -355,7 +357,6 @@ public class UnitSelection : MonoBehaviour {
         unitsChosen = 0;
     }
 
-    //---------------------------------------------------------------------
     //Methode für die Übertragung der Auswahl an die Datenbank
     public void SubmitToDatabase()
     {
@@ -491,6 +492,7 @@ public class UnitSelection : MonoBehaviour {
         }
     }
 
+    //Methode für die Aktualisierung des Timers
     void TimeLine()
     {
         if (!paused)
@@ -511,6 +513,7 @@ public class UnitSelection : MonoBehaviour {
         }
     }
 
+    //Methode zum Reset des Timers
     private void Reset()
     {
         CancelInvoke();
@@ -520,6 +523,7 @@ public class UnitSelection : MonoBehaviour {
         timerText.GetComponent<Text>().text = timer.ToString();
     }
 
+    //Methode zur zufälligen Auswahl der Einheitentypen bei unvollständiger Auswahl
     public void SelectRandomUnits()
     {
         if (unitsChosen != 5)
