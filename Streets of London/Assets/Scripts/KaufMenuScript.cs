@@ -6,17 +6,18 @@ using UnityEngine.UI;
 
 public class KaufMenuScript : MonoBehaviour
 {
-    public GameObject kaufMenuScriptObject;
-    public GameObject playerTextTop;
-    public GameObject playerTextKaufMenu;
-    public Sprite[] unitpictures;
-    public GameObject[] units;
+    public GameObject kaufMenuScriptObject;     //GameObject für den Kaufmenü-Bildschirm
+    public GameObject playerTextTop;            //GameObject für die Anzeige des Spielernames am oberen Bildschirmrand
+    public GameObject playerTextKaufMenu;       //GameObject für die Anzeige des Spielernames im Kaufmenü
+    public Sprite[] unitpictures;               //Array für die Speicherung der Einheitentypenkarten-Bilder 
+    public GameObject[] units;                  //Array für die Speicherung der GameObjects der Slots
 
-    int gold;
-    int goldremaining;
-    public GameObject goldvor;
-    public GameObject goldnach;
+    int gold;                       //Attribut zur Speicherung des aktuellen Goldes
+    int goldremaining;              //Attribut zur Speicherung des verbleibenden Goldes
+    public GameObject goldvor;      //GameObject zur Anzeige des Goldes vor dem Kauf
+    public GameObject goldnach;     //GameObject zur Anzeige des Goldes nach dem Kauf
 
+    //GameObjects zur Anzeige der Anzahl der gekauften Einheiten bzw. Trickkarten
     public GameObject anzeige1;
     public GameObject anzeige2;
     public GameObject anzeige3;
@@ -24,33 +25,38 @@ public class KaufMenuScript : MonoBehaviour
     public GameObject anzeige5;
     public GameObject anzeigeTK;
 
+    //GameObjects zum Spawnen der Einheiten für den Spieler auf der linken Spielfeldhälfte
     public GameObject spawnL1;
     public GameObject spawnL2;
     public GameObject spawnL3;
     public GameObject spawnL4;
     public GameObject spawnL5;
 
+    //GameObjects zum Spawnen der Einheiten für den Spieler auf der rechten Spielfeldhälfte
     public GameObject spawnR1;
     public GameObject spawnR2;
     public GameObject spawnR3;
     public GameObject spawnR4;
     public GameObject spawnR5;
 
-    public GameObject[] gesamtEinheit;
-    int[] einheitenPrice;
-    int[] ids;
-    int gekaufteTK = 0;
-    public GameObject preis1;
-    public GameObject preis2;
-    public GameObject preis3;
-    public GameObject preis4;
-    public GameObject preis5;
-    public GameObject preisTK;
+    public GameObject[] gesamtEinheit;      //Array zur Speicherung der GameObjects für die Anzeige der aktuellen Einheitenanzahl bzw. der maximalen Einheitenanzahl des Einheitentyps
+    int[] einheitenPrice;                   //Array zur Speicherung der Preise der jeweiligen Einheitentypen
+    int[] ids;                              //Array zur Speicherung der IDs der jeweiligen Einheitentypen
 
-    public DataBaseController dbc;
-    public GameManager gm;
-    public TKPicker tkp;
+    int gekaufteTK = 0;                     //Attribut zur Speicherung und Übergabe der Anzahl der gekauften Trickkarten
 
+    public GameObject preis1;       //GameObject zur Anzeige des Preises für den ersten Einheitentyp
+    public GameObject preis2;       //GameObject zur Anzeige des Preises für den zweiten Einheitentyp
+    public GameObject preis3;       //GameObject zur Anzeige des Preises für den dritten Einheitentyp
+    public GameObject preis4;       //GameObject zur Anzeige des Preises für den vierten Einheitentyp
+    public GameObject preis5;       //GameObject zur Anzeige des Preises für den fünften Einheitentyp
+    public GameObject preisTK;      //GameObject zur Anzeige des Preises für die Trickkarten
+
+    public DataBaseController dbc;      //DataBaseController-Object
+    public GameManager gm;              //GameManager-Object
+    public TKPicker tkp;                //TKPicker-Object
+
+    //Methode zum Öffnen des Trickkartenmenüs
     public void OeffneKaufmenue()
     {
         kaufMenuScriptObject.SetActive(true);
@@ -60,9 +66,9 @@ public class KaufMenuScript : MonoBehaviour
         goldvor.GetComponent<Text>().text = Convert.ToString(gold);
         goldnach.GetComponent<Text>().text = Convert.ToString(goldremaining);
         EinheitentypAktualisierung(PassthroughData.currentPlayer);
-
     }
 
+    //Methode zum Schließen des Trickkartenmenüs
     public void SchliesseKaufmenu()
     {
         kaufMenuScriptObject.SetActive(false);
@@ -80,8 +86,8 @@ public class KaufMenuScript : MonoBehaviour
         preisTK.GetComponent<Text>().text = "0";
         gm.Refresh();
     }
-    //---------------------------------------------------------------------------------------------------------------
-    //OnClick-Methoden der Buttons zum Erhöhen und Verringern der Kaufmenge der Einheitentypen 1-5 und Trickkarten
+
+    //Methode des Buttons zum Erhöhen der Kaufmenge des ersten Einheitentyps
     public void ErhoeheAnzeige1()
     {
         if((einheitenPrice[0] <= goldremaining) && ((Convert.ToInt32(preis1.GetComponent<Text>().text)+ Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
@@ -95,6 +101,7 @@ public class KaufMenuScript : MonoBehaviour
         
     }
 
+    //Methode des Buttons zum Verringern der Kaufmenge des ersten Einheitentyps
     public void VerringereAnzeige1()
     {
 
@@ -107,6 +114,7 @@ public class KaufMenuScript : MonoBehaviour
         }
     }
 
+    //Methode des Buttons zum Erhöhen der Kaufmenge des zweiten Einheitentyps
     public void ErhoeheAnzeige2()
     {
         if ((Convert.ToInt32(preis1.GetComponent<Text>().text) + Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
@@ -119,6 +127,7 @@ public class KaufMenuScript : MonoBehaviour
         }
     }
 
+    //Methode des Buttons zum Verringern der Kaufmenge des zweiten Einheitentyps
     public void VerringereAnzeige2()
     {
         if (Convert.ToInt32(anzeige2.GetComponent<Text>().text) > 0)
@@ -130,6 +139,7 @@ public class KaufMenuScript : MonoBehaviour
         }
     }
 
+    //Methode des Buttons zum Erhöhen der Kaufmenge des dritten Einheitentyps
     public void ErhoeheAnzeige3()
     {
         if ((Convert.ToInt32(preis1.GetComponent<Text>().text) + Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
@@ -142,6 +152,7 @@ public class KaufMenuScript : MonoBehaviour
         }
     }
 
+    //Methoden der Buttons zum Verringern der Kaufmenge des dritten Einheitentyps
     public void VerringereAnzeige3()
     {
         if (Convert.ToInt32(anzeige3.GetComponent<Text>().text) > 0)
@@ -153,6 +164,7 @@ public class KaufMenuScript : MonoBehaviour
         }
     }
 
+    //Methoden der Buttons zum Erhöhen der Kaufmenge des vierten Einheitentyps
     public void ErhoeheAnzeige4()
     {
         if ((Convert.ToInt32(preis1.GetComponent<Text>().text) + Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
@@ -165,6 +177,7 @@ public class KaufMenuScript : MonoBehaviour
         }
     }
 
+    //Methoden der Buttons zum Verringern der Kaufmenge des vierten Einheitentyps
     public void VerringereAnzeige4()
     {
         if (Convert.ToInt32(anzeige4.GetComponent<Text>().text) > 0)
@@ -176,6 +189,7 @@ public class KaufMenuScript : MonoBehaviour
         }
     }
 
+    //Methoden der Buttons zum Erhöhen der Kaufmenge des fünften Einheitentyps
     public void ErhoeheAnzeige5()
     {
         if ((Convert.ToInt32(preis1.GetComponent<Text>().text) + Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
@@ -188,6 +202,7 @@ public class KaufMenuScript : MonoBehaviour
         }
     }
 
+    //Methoden der Buttons zum Verringern der Kaufmenge des fünften Einheitentyps
     public void VerringereAnzeige5()
     {
         if (Convert.ToInt32(anzeige5.GetComponent<Text>().text) > 0)
@@ -199,6 +214,7 @@ public class KaufMenuScript : MonoBehaviour
         }
     }
 
+    //Methoden der Buttons zum Erhöhen der Kaufmenge der Trickkarten
     public void ErhoeheAnzeigeTK()
     {
         if (goldremaining>4)
@@ -210,6 +226,7 @@ public class KaufMenuScript : MonoBehaviour
         }
     }
 
+    //Methoden der Buttons zum Verringern der Kaufmenge der Trickkarten
     public void VerringereAnzeigeTK()
     {
         if (Convert.ToInt32(anzeigeTK.GetComponent<Text>().text) > 0)
@@ -220,53 +237,59 @@ public class KaufMenuScript : MonoBehaviour
             PreisaktualisierungTK();
         }
     }
-    //---------------------------------------------------------------------------------------------------------------
-    //Aktualisierung der Gesamtpreisanzeigen für die Einheitentypen 1-5 und die Trickkarten
+    
+    //Aktualisierung der Gesamtpreisanzeigen für den ersten Einheitentypen
     public void Preisaktualisierung1()
     {
         preis1.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige1.GetComponent<Text>().text) * einheitenPrice[0]);
-        refrechRemainingGold();
+        RefreshRemainingGold();
 
     }
 
+    //Aktualisierung der Gesamtpreisanzeigen für den zweiten Einheitentypen
     public void Preisaktualisierung2()
     {
         preis2.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige2.GetComponent<Text>().text) * einheitenPrice[1]);
-        refrechRemainingGold();
+        RefreshRemainingGold();
     }
 
+    //Aktualisierung der Gesamtpreisanzeigen für den dritten Einheitentypen
     public void Preisaktualisierung3()
     {
         preis3.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige3.GetComponent<Text>().text) * einheitenPrice[2]);
-        refrechRemainingGold();
+        RefreshRemainingGold();
     }
 
+    //Aktualisierung der Gesamtpreisanzeigen für den vierten Einheitentypen
     public void Preisaktualisierung4()
     {
         preis4.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige4.GetComponent<Text>().text) * einheitenPrice[3]);
-        refrechRemainingGold();
+        RefreshRemainingGold();
     }
 
+    //Aktualisierung der Gesamtpreisanzeigen für den fünften Einheitentypen
     public void Preisaktualisierung5()
     {
         preis5.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeige5.GetComponent<Text>().text) * einheitenPrice[4]);
-        refrechRemainingGold();
+        RefreshRemainingGold();
     }
 
+    //Aktualisierung der Gesamtpreisanzeigen für die Trickkarten
     public void PreisaktualisierungTK()
     {
         preisTK.GetComponent<Text>().text = Convert.ToString(Convert.ToInt32(anzeigeTK.GetComponent<Text>().text) * 4);
-        refrechRemainingGold();
+        RefreshRemainingGold();
     }
-    //---------------------------------------------------------------------------------------------------------------
 
-    public void refrechRemainingGold()
+    //Aktualisierung der Anzeige des verbleibenden Goldes nach dem Kauf
+    public void RefreshRemainingGold()
     {
         goldnach.GetComponent<Text>().text = Convert.ToString(gold- (Convert.ToInt32(preis1.GetComponent<Text>().text) + Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
             + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis5.GetComponent<Text>().text) + Convert.ToInt32(preisTK.GetComponent<Text>().text)));
         goldremaining = Convert.ToInt32(goldnach.GetComponent<Text>().text);
     }
 
+    //Methode zur Bestätigung des Kaufs, Schreiben der gekauften Einheiten in die Datenbank, Spawn der gekauften Einheiten und Öffnen des Trickkarten-Pickers
     public void KaufBestaetigen()
     {
         int[] boughtunits = { Convert.ToInt32(anzeige1.GetComponent<Text>().text), Convert.ToInt32(anzeige2.GetComponent<Text>().text), Convert.ToInt32(anzeige3.GetComponent<Text>().text), Convert.ToInt32(anzeige4.GetComponent<Text>().text), Convert.ToInt32(anzeige5.GetComponent<Text>().text) };
@@ -515,6 +538,7 @@ public class KaufMenuScript : MonoBehaviour
         }
     }
 
+    //Aktualisierung der Einheitentypen zur Anzeige des korrekten Kaufmenüs für den jeweiligen Spieler
     public void EinheitentypAktualisierung(int playerID)
     {
         ids = new int[5];
