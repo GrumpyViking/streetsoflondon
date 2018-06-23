@@ -226,9 +226,10 @@ public class GameManager : MonoBehaviour {
         cc.cameraActiv = true;
     }
 
-    //Funtkion zum Beenden eines Zuges
+    //Funktion zum Beenden eines Zuges
     public void ZugBeenden()
     {
+        tk.SchliesseTrickkartenMenu();
         paused = true;
         PassthroughData.gameActiv = false;
         Reset();
