@@ -4,16 +4,19 @@ using UnityEngine.UI;
 
 public class Ressources : MonoBehaviour {
 
-    public GameObject gold;
-    public GameObject zusatzgold;
-    public DataBaseController dbc;
-    public GameObject[] fields;
+    public GameObject gold;             //GameObject der Gold-Anzeige
+    public GameObject zusatzgold;       //GameObject der Zusatzgold-Anzeige
 
-    int goldIncome = 0;
-    int baseIncome = 1;
-    int activeInvestitionenSpieler1 = 0;
-    int activeInvestitionenSpieler2 = 0;
+    public DataBaseController dbc;      //DataBaseController-Object zum Schreiben in die Datenbank
 
+    public GameObject[] fields;         //Array für die einzelnen Geländefelder (Berechnung des Einkommens)
+
+    int goldIncome = 0;                     //Attribut für das Einkommen aus Geschäftsfeldern und dem Investitions-Effekt
+    int baseIncome = 1;                     //Attribut für das Grundeinkommen
+    int activeInvestitionenSpieler1 = 0;    //Attribut für die Anzahl der aktiven Investitions-Effekte für Spieler 1
+    int activeInvestitionenSpieler2 = 0;    //Attribut für die Anzahl der aktiven Investitions-Effekte für Spieler 2
+
+    //Methode zur Aktualisierung des Goldwertes und Speicherung des neuen Goldwertes in der Datenbank
     public void AktualisiereGold(int playerID)
     {
         int goldNextRound=0;
@@ -21,12 +24,14 @@ public class Ressources : MonoBehaviour {
         dbc.WriteToDB("Update Spieler Set Gold = " + goldNextRound + " Where ID="+playerID+"");
     }
 
+    //Methode zur Aktualisierung der Anzeige des Goldwertes und des Zusatzgoldes
     public void RefreshDisplay(int playerID)
     {
         gold.GetComponent<Text>().text = "Gold: " + Convert.ToString(dbc.GoldPlayer(playerID));
         zusatzgold.GetComponent<Text>().text = "+ " + CalcIncome(playerID); 
     }
 
+    //Methode zur Berechnung des Einkommens in der nächsten Runde (Beachtung der Positionierung von Einheiten auf Geschäftsfeldern und Trickkarteneffekte)
     public int CalcIncome(int playerID)
     {
         goldIncome = 0;
@@ -72,6 +77,7 @@ public class Ressources : MonoBehaviour {
         return (goldIncome+baseIncome);
     }
 	
+    //Methode zur Erhöhung der aktiven Investitions-Effekte
     public void IncreaseActiveInvestitionen()
     {
         if (PassthroughData.currentPlayer == 1)
@@ -84,6 +90,7 @@ public class Ressources : MonoBehaviour {
         }
     }
 
+    //Methode zur Verringerung der aktiven Investions-Effekte
     public void DecreaseActiveInvestitionen()
     {
         if (PassthroughData.currentPlayer == 1)
