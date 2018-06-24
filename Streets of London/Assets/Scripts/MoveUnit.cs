@@ -599,10 +599,18 @@ public class MoveUnit : MonoBehaviour
     public void FightWinner(GameObject winner)
     {
         this.gewinner = winner;
-
         if (gewinner == unit)
         {
             usedUnits.Remove(gegner);
+            foreach(GameObject field in grid)
+            {
+                if(field.GetComponent<FieldHelper>().unitID == gegner.GetComponent<UnitHelper>().unitID)
+                {
+                    field.GetComponent<FieldHelper>().unitID = 0;
+                    field.GetComponent<FieldHelper>().hasUnit = false;
+                }
+            }
+            dbc.WriteToDB("Delete From Einheit Where ID = " + gegner.GetComponent<UnitHelper>().unitID + "");
             Destroy(gegner);
             DeselectGegner();
             DeselectUnit();
@@ -610,6 +618,15 @@ public class MoveUnit : MonoBehaviour
         else
         {
             usedUnits.Remove(unit);
+            foreach (GameObject field in grid)
+            {
+                if (field.GetComponent<FieldHelper>().unitID == unit.GetComponent<UnitHelper>().unitID)
+                {
+                    field.GetComponent<FieldHelper>().unitID = 0;
+                    field.GetComponent<FieldHelper>().hasUnit = false;
+                }
+            }
+            dbc.WriteToDB("Delete From Einheit Where ID = " + unit.GetComponent<UnitHelper>().unitID + "");
             Destroy(unit);
             DeselectUnit();
             DeselectGegner();

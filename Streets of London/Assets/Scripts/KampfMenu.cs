@@ -45,7 +45,6 @@ public class KampfMenu : MonoBehaviour {
     GameObject attField;
     GameObject defField;
     GameObject defender;
-    int gewinner=2;
     int attDice; 
     int defDice;
     int distance; //distanz zwischen Angreifer und Verteidiger

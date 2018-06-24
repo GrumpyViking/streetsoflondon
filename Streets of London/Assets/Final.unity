@@ -9498,7 +9498,6 @@ GameObject:
   - component: {fileID: 495650034}
   - component: {fileID: 495650037}
   - component: {fileID: 495650036}
-  - component: {fileID: 495650035}
   m_Layer: 5
   m_Name: Trickkarte2
   m_TagString: Untagged
@@ -9530,23 +9529,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000031781714, y: -499.55}
   m_SizeDelta: {x: 303, y: 439.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &495650035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 495650033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aff1322d3ec1c341a838f4c18b81eac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trickkarte: {fileID: 11400000, guid: 62e2979a79d219b43b358a72e956d082, type: 2}
-  trickkartenname: {fileID: 1945988781}
-  wirkung: {fileID: 543537173}
-  preis: {fileID: 479002042}
-  trickkartenbild: {fileID: 1784757137}
-  wirkungsbereich: {fileID: 409923086}
 --- !u!114 &495650036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11743,7 +11725,6 @@ GameObject:
   - component: {fileID: 609892762}
   - component: {fileID: 609892765}
   - component: {fileID: 609892764}
-  - component: {fileID: 609892763}
   m_Layer: 5
   m_Name: Trickkarte5
   m_TagString: Untagged
@@ -11775,23 +11756,6 @@ RectTransform:
   m_AnchoredPosition: {x: -700.0001, y: -749.99994}
   m_SizeDelta: {x: 303, y: 439.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &609892763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 609892761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aff1322d3ec1c341a838f4c18b81eac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trickkarte: {fileID: 11400000, guid: 62e2979a79d219b43b358a72e956d082, type: 2}
-  trickkartenname: {fileID: 78747008}
-  wirkung: {fileID: 1966589030}
-  preis: {fileID: 1619805483}
-  trickkartenbild: {fileID: 915122824}
-  wirkungsbereich: {fileID: 2083724613}
 --- !u!114 &609892764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13232,7 +13196,6 @@ GameObject:
   - component: {fileID: 681820026}
   - component: {fileID: 681820029}
   - component: {fileID: 681820028}
-  - component: {fileID: 681820027}
   m_Layer: 5
   m_Name: Trickkarte8
   m_TagString: Untagged
@@ -13264,23 +13227,6 @@ RectTransform:
   m_AnchoredPosition: {x: 700.0001, y: -749.99994}
   m_SizeDelta: {x: 303, y: 439.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &681820027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 681820025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aff1322d3ec1c341a838f4c18b81eac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trickkarte: {fileID: 11400000, guid: 62e2979a79d219b43b358a72e956d082, type: 2}
-  trickkartenname: {fileID: 383143081}
-  wirkung: {fileID: 992262009}
-  preis: {fileID: 309193962}
-  trickkartenbild: {fileID: 905094340}
-  wirkungsbereich: {fileID: 999810337}
 --- !u!114 &681820028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14619,7 +14565,6 @@ GameObject:
   - component: {fileID: 771304411}
   - component: {fileID: 771304414}
   - component: {fileID: 771304413}
-  - component: {fileID: 771304412}
   m_Layer: 5
   m_Name: Trickkarte1
   m_TagString: Untagged
@@ -14651,23 +14596,6 @@ RectTransform:
   m_AnchoredPosition: {x: -700.0001, y: -290}
   m_SizeDelta: {x: 303, y: 439.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &771304412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 771304410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aff1322d3ec1c341a838f4c18b81eac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trickkarte: {fileID: 11400000, guid: 62e2979a79d219b43b358a72e956d082, type: 2}
-  trickkartenname: {fileID: 669973698}
-  wirkung: {fileID: 1837245063}
-  preis: {fileID: 506413505}
-  trickkartenbild: {fileID: 1496709065}
-  wirkungsbereich: {fileID: 1154459390}
 --- !u!114 &771304413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19154,7 +19082,6 @@ GameObject:
   - component: {fileID: 992785278}
   - component: {fileID: 992785281}
   - component: {fileID: 992785280}
-  - component: {fileID: 992785279}
   m_Layer: 5
   m_Name: Trickkarte7
   m_TagString: Untagged
@@ -19186,23 +19113,6 @@ RectTransform:
   m_AnchoredPosition: {x: 224.99997, y: -749.99994}
   m_SizeDelta: {x: 303, y: 439.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &992785279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 992785277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aff1322d3ec1c341a838f4c18b81eac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trickkarte: {fileID: 11400000, guid: 62e2979a79d219b43b358a72e956d082, type: 2}
-  trickkartenname: {fileID: 125818455}
-  wirkung: {fileID: 1908658498}
-  preis: {fileID: 1925167489}
-  trickkartenbild: {fileID: 1204985485}
-  wirkungsbereich: {fileID: 1439964203}
 --- !u!114 &992785280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19845,7 +19755,6 @@ GameObject:
   - component: {fileID: 1027568489}
   - component: {fileID: 1027568492}
   - component: {fileID: 1027568491}
-  - component: {fileID: 1027568490}
   m_Layer: 5
   m_Name: Trickkarte3
   m_TagString: Untagged
@@ -19877,23 +19786,6 @@ RectTransform:
   m_AnchoredPosition: {x: 224.99997, y: -290}
   m_SizeDelta: {x: 303, y: 439.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1027568490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1027568488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aff1322d3ec1c341a838f4c18b81eac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trickkarte: {fileID: 11400000, guid: 62e2979a79d219b43b358a72e956d082, type: 2}
-  trickkartenname: {fileID: 495138993}
-  wirkung: {fileID: 1669448842}
-  preis: {fileID: 1064950959}
-  trickkartenbild: {fileID: 206057006}
-  wirkungsbereich: {fileID: 302390216}
 --- !u!114 &1027568491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23173,7 +23065,6 @@ GameObject:
   - component: {fileID: 1219244639}
   - component: {fileID: 1219244642}
   - component: {fileID: 1219244641}
-  - component: {fileID: 1219244640}
   m_Layer: 5
   m_Name: Trickkarte2
   m_TagString: Untagged
@@ -23205,23 +23096,6 @@ RectTransform:
   m_AnchoredPosition: {x: -225, y: -290}
   m_SizeDelta: {x: 303, y: 439.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1219244640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1219244638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aff1322d3ec1c341a838f4c18b81eac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trickkarte: {fileID: 11400000, guid: 62e2979a79d219b43b358a72e956d082, type: 2}
-  trickkartenname: {fileID: 2024506511}
-  wirkung: {fileID: 1209029541}
-  preis: {fileID: 641845361}
-  trickkartenbild: {fileID: 1621316386}
-  wirkungsbereich: {fileID: 1288850648}
 --- !u!114 &1219244641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23729,7 +23603,6 @@ GameObject:
   - component: {fileID: 1242798167}
   - component: {fileID: 1242798170}
   - component: {fileID: 1242798169}
-  - component: {fileID: 1242798168}
   m_Layer: 5
   m_Name: Trickkarte6
   m_TagString: Untagged
@@ -23761,23 +23634,6 @@ RectTransform:
   m_AnchoredPosition: {x: -225, y: -749.99994}
   m_SizeDelta: {x: 303, y: 439.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1242798168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1242798166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aff1322d3ec1c341a838f4c18b81eac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trickkarte: {fileID: 11400000, guid: 62e2979a79d219b43b358a72e956d082, type: 2}
-  trickkartenname: {fileID: 961940348}
-  wirkung: {fileID: 1298343065}
-  preis: {fileID: 830534351}
-  trickkartenbild: {fileID: 1877541656}
-  wirkungsbereich: {fileID: 886542632}
 --- !u!114 &1242798169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30688,7 +30544,6 @@ GameObject:
   - component: {fileID: 1582148074}
   - component: {fileID: 1582148077}
   - component: {fileID: 1582148076}
-  - component: {fileID: 1582148075}
   m_Layer: 5
   m_Name: Trickkarte4
   m_TagString: Untagged
@@ -30720,23 +30575,6 @@ RectTransform:
   m_AnchoredPosition: {x: 700.0001, y: -290}
   m_SizeDelta: {x: 303, y: 439.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1582148075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1582148073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aff1322d3ec1c341a838f4c18b81eac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trickkarte: {fileID: 11400000, guid: 62e2979a79d219b43b358a72e956d082, type: 2}
-  trickkartenname: {fileID: 762020775}
-  wirkung: {fileID: 787476212}
-  preis: {fileID: 1744141914}
-  trickkartenbild: {fileID: 303434612}
-  wirkungsbereich: {fileID: 654148920}
 --- !u!114 &1582148076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31641,7 +31479,6 @@ GameObject:
   - component: {fileID: 1628033987}
   - component: {fileID: 1628033990}
   - component: {fileID: 1628033989}
-  - component: {fileID: 1628033988}
   m_Layer: 5
   m_Name: Trickkarte3
   m_TagString: Untagged
@@ -31673,23 +31510,6 @@ RectTransform:
   m_AnchoredPosition: {x: 396.59998, y: -499.55}
   m_SizeDelta: {x: 303, y: 439.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1628033988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1628033986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aff1322d3ec1c341a838f4c18b81eac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trickkarte: {fileID: 11400000, guid: 62e2979a79d219b43b358a72e956d082, type: 2}
-  trickkartenname: {fileID: 825598936}
-  wirkung: {fileID: 1688437082}
-  preis: {fileID: 2118310509}
-  trickkartenbild: {fileID: 924052167}
-  wirkungsbereich: {fileID: 655169213}
 --- !u!114 &1628033989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35378,7 +35198,6 @@ GameObject:
   - component: {fileID: 1858376010}
   - component: {fileID: 1858376013}
   - component: {fileID: 1858376012}
-  - component: {fileID: 1858376011}
   m_Layer: 5
   m_Name: Trickkarte1
   m_TagString: Untagged
@@ -35410,23 +35229,6 @@ RectTransform:
   m_AnchoredPosition: {x: -384.50003, y: -499.55}
   m_SizeDelta: {x: 303, y: 439.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1858376011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1858376009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aff1322d3ec1c341a838f4c18b81eac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trickkarte: {fileID: 11400000, guid: 62e2979a79d219b43b358a72e956d082, type: 2}
-  trickkartenname: {fileID: 1634727990}
-  wirkung: {fileID: 1841486417}
-  preis: {fileID: 1220810462}
-  trickkartenbild: {fileID: 1886427295}
-  wirkungsbereich: {fileID: 1609485719}
 --- !u!114 &1858376012
 MonoBehaviour:
   m_ObjectHideFlags: 0

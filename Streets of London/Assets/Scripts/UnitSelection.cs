@@ -49,9 +49,7 @@ public class UnitSelection : MonoBehaviour {
     private bool scharfschuetze = false;
     private bool schlaeger = false;
     private bool taschendieb = false;
-    private bool tueftler = false;
-
-    private bool finish = false;            //Bool-Wert, um die Auswahl für den zweiten Spieler zu ermöglichen
+    private bool tueftler = false;          
 
     //Attribute für die zufällige Auswahl der Einheitentypen
     private bool bossRnd = false;

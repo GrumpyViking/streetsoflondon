@@ -554,7 +554,6 @@ public class DataBaseController : MonoBehaviour {
         {
             Initialise();
         }
-        int count = 0;
         string check;
         OpenDBConnection();
         dbCMD = dbConn.CreateCommand();
