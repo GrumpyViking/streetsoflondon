@@ -64,13 +64,13 @@ public class MoveUnit : MonoBehaviour
     bool gegnerGewaehlt = false;
     int phase = 0;
 
-    //sucht das UI Panel Aktionsmenu und weist es dem aktionsMenue GameObjekt variable zu
+    //sucht das UI Panel Aktionsmenu und weist es der aktionsMenue GameObjekt-Variable zu
     private void Start()
     {
         aktionsMenue = GameObject.Find("UI/Panels/Aktionsmenue");
     }
 
-    //Prüft jedem Frame ob die Linke Maustaste betätigt wurde und führt die SelectUnit Methode aus
+    //Prüft jeden Frame, ob die linke Maustaste betätigt wurde und führt die SelectUnit-Methode aus
     private void Update()
     {
         if (PassthroughData.gameActiv)
@@ -82,7 +82,7 @@ public class MoveUnit : MonoBehaviour
         }
     }
 
-    //Abwählen des ausgewählten Gegners und zurücksetzen zugehöriger Werte
+    //Abwählen des ausgewählten Gegners und Zurücksetzen zugehöriger Werte
     public void DeselectGegner()
     {
         if (gegner != null)
@@ -97,7 +97,7 @@ public class MoveUnit : MonoBehaviour
         select = null;
         gewinner = null;
     }
-    //Abwählen der ausgewählten eigenen Einheit und zurücksetzen zugehöriger Werte
+    //Abwählen der ausgewählten eigenen Einheit und Zurücksetzen zugehöriger Werte
     public void DeselectUnit()
     {
         if (unit != null)
@@ -115,7 +115,7 @@ public class MoveUnit : MonoBehaviour
         angriffButton.SetActive(true);
         gegnerGewaehlt = false;
     }
-    //Abwählen des ausgewählten Feldes und zurücksetzen zugehöriger Werte
+    //Abwählen des ausgewählten Feldes und Zurücksetzen zugehöriger Werte
     public void DeselectFeld()
     {
         if (feld != null)
@@ -133,7 +133,7 @@ public class MoveUnit : MonoBehaviour
             grid[i].GetComponent<FieldHelper>().isSelectable = false;
         }
     }
-    ////Abwählen der ausgewählten Fabrik und zurücksetzen zugehöriger Werte
+    //Abwählen der ausgewählten Fabrik und Zurücksetzen zugehöriger Werte
     public void DeselectFabrik()
     {
         if (fabrik != null)
@@ -148,7 +148,7 @@ public class MoveUnit : MonoBehaviour
     void SelectUnit()
     {
         RaycastHit hitInfo; 
-        select = ReturnClickedObject(out hitInfo);//Holt sich von der ReturnClickObject Methode das "getroffene" Objekt und weißt des der Select variable zu
+        select = ReturnClickedObject(out hitInfo);//Holt sich von der ReturnClickObject Methode das "getroffene" Objekt und weißt es der select-Variable zu
         //Überprüfung wenn einheit angeklickt wurde um diese wieder Abwählen zu können
         if (select == unit && unitSelected && (!waehleGegner || !waehleFabrik))
         {
@@ -156,20 +156,20 @@ public class MoveUnit : MonoBehaviour
             unitSelected = false;
             select = null;
         }
-        //Ermöglicht das auswählen verschiedener Einheiten
+        //Ermöglicht das Auswählen verschiedener Einheiten
         if(select != unit && unitSelected && select!=null && !zielFeldSuche && !waehleGegner)
         {
             DeselectUnit();
             SelectUnit();
         }
-        //Ermöglicht das auswählen verschiedener Felder
+        //Ermöglicht das Auswählen verschiedener Felder
         if (select == feld && feldSelected)
         {
             DeselectFeld();
             feldSelected = false;
             select = null;
         }
-        //Überprüfung was von dem RayCast erfasst wurde
+        //Überprüfung, was von dem RayCast erfasst wurde
         if (select != null)
         {
             //Prüft ob ausgewähltes Objekt eine eigene Einheit ist und wenn ja wird diese Markiert und das Aktionsmenu geöffnet
@@ -273,8 +273,8 @@ public class MoveUnit : MonoBehaviour
             waehleGegner = false;
             angriffButton.SetActive(false);
             buttonClicked = true;
-            //Markierung der Felder wenn die Einheit nicht auf dem Spielfeld ist
-            // Wie in den Regeln festgelegt stehen zum Platzieren der einheiten vom Einheitenstapel die ersten beiden Reihen zur verfügung
+            //Markierung der Felder, wenn die Einheit nicht auf dem Spielfeld ist
+            //Wie in den Regeln festgelegt stehen zum Platzieren der Einheiten vom Einheitenstapel die ersten beiden Reihen zur Verfügung
             if (unit.GetComponent<UnitHelper>().fieldID == 0)
             {
                 if (PassthroughData.currentPlayer == 1)
@@ -283,7 +283,7 @@ public class MoveUnit : MonoBehaviour
                     {
                         if (grid[i].GetComponent<FieldHelper>().hasUnit == false)
                         {
-                            grid[i].GetComponent<FieldHelper>().isSelectable = true;//Möglichkeit das feld auswählen zu können
+                            grid[i].GetComponent<FieldHelper>().isSelectable = true;//Möglichkeit das Feld auswählen zu können
                             grid[i].GetComponent<Outline>().OutlineColor = Color.white;
                             grid[i].GetComponent<Outline>().enabled = true;
                         }
@@ -302,7 +302,7 @@ public class MoveUnit : MonoBehaviour
                     }
                 }
             }
-            //Markierung der Felder in reichweite
+            //Markierung der Felder in Reichweite
             else
             {
                 int aktionsp = dbc.GetAP(unit.GetComponent<UnitHelper>().unitID);
@@ -315,9 +315,8 @@ public class MoveUnit : MonoBehaviour
                     }
                 }
                 /*
-                 * Die Hexfelder haben jeweils eine X,Y,Z Koordinate wodurch sich die Auswahl durch eine 3Fach geschachtelte for schleife am einfachsten Realisieren lies.
-                 * Alle felder welche im bereich der Aktionsreichweite der Einheit liegen werden am ende Markiert und zur Auswahl zur verfügung gestellt
-                 * 
+                 * Die Hexfelder haben jeweils eine X,Y,Z Koordinate wodurch sich die Auswahl durch eine 3Fach geschachtelte for schleife am einfachsten realisieren ließ.
+                 * Alle felder, die im Bereich der Aktionsreichweite der Einheit liegen werden am Ende markiert und zur Auswahl zur Verfügung gestellt
                  */ 
                 for (int x = (-1 * aktionsp); x <= aktionsp; x++)
                 {
@@ -342,7 +341,7 @@ public class MoveUnit : MonoBehaviour
                 }
             }
         }
-        //Zweite Pahse der Einheitenbewegung prüft ob gültiges Feldgewählt wurde 
+        //Zweite Pahse der Einheitenbewegung prüft, ob gültiges Feldgewählt wurde 
         if (phase != 0)
         {
             GameObject oldfeld=null;
@@ -352,7 +351,7 @@ public class MoveUnit : MonoBehaviour
             buttonClicked = false;
             if (unit != null && feld != null && (Convert.ToInt32(beweglicheEinheit.GetComponent<Text>().text) > 0) && dbc.GetFieldBonus(feld.GetComponent<FieldHelper>().id) < 10)
             {
-                //Bewegen der Einheit und Datenbank update
+                //Bewegen der Einheit und Datenbank-Update
                 unit.transform.position = feld.transform.position + (new Vector3(0, 10, 0));
                 string buff = unit.name.Substring(unit.name.Length - 2);
                 unit.GetComponent<UnitHelper>().unitID = Convert.ToInt32(buff);
@@ -426,7 +425,7 @@ public class MoveUnit : MonoBehaviour
         return Math.Max(maxxy, Math.Abs(unitfield.GetComponent<FieldHelper>().z - fieldinreach.GetComponent<FieldHelper>().z));
     }
 
-    //Anriff wird bei Auswahl des Angriffbutton aus dem AKtionsmenu ausgeführt
+    //Anriff wird bei Auswahl des Angriffbutton aus dem Aktionsmenu ausgeführt
     public void Angriff()
     {
         bool validtarget;

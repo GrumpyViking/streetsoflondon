@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour {
         playerText.GetComponent<Text>().text = name;
     }
 
-    //Möglichkeit die Goldanzeige eines Spieler zu aktualisieren
+    //Möglichkeit die UI-Anzeigen eines Spieler zu aktualisieren
     public void Refresh()
     {
         goldText.GetComponent<Text>().text = "Gold: " + dbc.RequestFromDB("Select Gold from Spieler where ID = '"+PassthroughData.currentPlayer+"'");
@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    //Wird am Ende des Timesr oder mit dem Betätigen des "Zug Beenden"-Buttons ausgeführt
+    //Wird am Ende des Timers oder mit dem Betätigen des "Zug Beenden"-Buttons ausgeführt
     //Setzt den Timer zurück und entsprechend des aktuellen Spielers wird der nächste Spieler gesetzt und die Anzeigen angepasst
     private void Reset()
     {
