@@ -297,7 +297,7 @@ public class KaufMenu : MonoBehaviour
         int offset;
         for (int i = 0; i < boughtunits.Length; i++)
         {
-            //Namen der wewählten Einheitentypen werden ermittelt
+            //Namen der gewählten Einheitentypen werden ermittelt
             if (boughtunits[i] != 0)
             {
                 if (ids[i] == 1 || ids[i] == 2)

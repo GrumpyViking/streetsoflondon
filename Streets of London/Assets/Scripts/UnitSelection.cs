@@ -365,12 +365,12 @@ public class UnitSelection : MonoBehaviour {
         {
             if (side == 0)
             {
-                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
+                //Methode, um den Einheitentyp der Datenbank für den ersten Spieler hinzuzufügen
                 dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (1, 'Boss', 'Boss', 3, 5, 3, 1, 5, 4, 1)");
             }
             else
             {
-                //Hier kommt die Methode hin um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
+                //Methode, um den Einheitentyp der Datenbank für den zweiten Spieler hinzuzufügen
                 dbc.WriteToDB("Insert Into Einheitentyp (ID, Name, Beschreibung, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (2, 'Boss', 'Boss', 3, 5, 3, 1, 5, 4, 2)");
             }
         }
