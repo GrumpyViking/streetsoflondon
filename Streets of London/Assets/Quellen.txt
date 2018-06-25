@@ -1,0 +1,45 @@
+Quellen Unity Asset Store:
+	Quick Outline 
+	verfasser Chris Nolet
+	ver. 1.0.4
+	https://assetstore.unity.com/packages/tools/particles-effects/quick-outline-115488
+
+	TextMesh Pro
+	verfasser Unity Technologies
+	ver. 1.2.2
+	https://assetstore.unity.com/packages/essentials/beta-projects/textmesh-pro-84126
+
+
+
+Quellen Internet:
+
+Code Bestandteile die genutzt wurden:
+
+	Objektpooler Skript:
+		YoutubeKanal Brackeys https://www.youtube.com/channel/UCYbK_tjZ2OrIZFBvU6CCMiA, Video OBJECT POOLING in Unity 
+		https://www.youtube.com/watch?v=tdSmKaJvCoA
+		veröffentlicht am: 11.02.2018
+
+	CameraController Skript:
+		YoutubeKanal Brackeys https://www.youtube.com/channel/UCYbK_tjZ2OrIZFBvU6CCMiA, Video How to make RTS Camera Movement in Unity 
+		https://www.youtube.com/watch?v=cfjLQrMGEb4
+		veröffentlicht am 16.04.2017
+
+	SwitchScene Skript:
+		YoutubeKanal Brackeys https://www.youtube.com/channel/UCYbK_tjZ2OrIZFBvU6CCMiA, Video How to make a LOADING BAR in Unity
+		https://www.youtube.com/watch?v=YMj2qPq9CP8
+		veröffentlicht am 14.06.2017
+
+	DatenbankController Skript:
+		Forum Unity https://answers.unity.com, Bereich Questions database-sqlite-setup-for-unity
+		Verfasser Adorable73 · 08 07 2014 
+		https://answers.unity.com/questions/743400/database-sqlite-setup-for-unity.html
+
+Theoretische Grundlage: 
+
+Berechnung der Bewegungs-/Angriffsbereiche im Hexfeld:
+	Blog https://www.redblobgames.com, Bereich Hexagonal grid reference and implementation guide
+	Verfasser: Red Blob Games, Mar 2013 updated in Mar 2015, Apr 2018
+	https://www.redblobgames.com/grids/hexagons/
+	Zuletzt gesehen am 17.06.2018
+

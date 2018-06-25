@@ -174,7 +174,6 @@ public class ObjectPooler : MonoBehaviour
         poolDictonary[tag].Enqueue(objectToSpawn); //Entnimmt dem Pool die Einheit
         
         return objectToSpawn;
-
     }
   
 }

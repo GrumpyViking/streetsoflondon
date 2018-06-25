@@ -610,8 +610,9 @@ public class MoveUnit : MonoBehaviour
                     field.GetComponent<FieldHelper>().hasUnit = false;
                 }
             }
-            dbc.WriteToDB("Delete From Einheit Where ID = " + gegner.GetComponent<UnitHelper>().unitID + "");
-            Destroy(gegner);
+            //dbc.WriteToDB("Delete From Einheit Where ID = " + gegner.GetComponent<UnitHelper>().unitID + "");
+            //Destroy(gegner);
+            gegner.SetActive(false);
             DeselectGegner();
             DeselectUnit();
         }
@@ -626,8 +627,9 @@ public class MoveUnit : MonoBehaviour
                     field.GetComponent<FieldHelper>().hasUnit = false;
                 }
             }
-            dbc.WriteToDB("Delete From Einheit Where ID = " + unit.GetComponent<UnitHelper>().unitID + "");
-            Destroy(unit);
+            //dbc.WriteToDB("Delete From Einheit Where ID = " + unit.GetComponent<UnitHelper>().unitID + "");
+            //Destroy(unit);
+            unit.SetActive(false);
             DeselectUnit();
             DeselectGegner();
         }
