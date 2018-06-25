@@ -112,6 +112,10 @@ public class FieldBuilder : MonoBehaviour {
     //Setzt den Timer zurück 
     private void Reset()
     {
+        if(select != null && selectOpposit != null)
+        {
+            SetFieldImage(UnityEngine.Random.Range(2, 5));
+        }
         timeLine.transform.localScale = defaultPosition;
         timerState = false;
         chooseField = false;
@@ -374,6 +378,8 @@ public class FieldBuilder : MonoBehaviour {
                     }
                 }
             }
+            select = null;
+            selectOpposit = null;
             Reset();
         }
         

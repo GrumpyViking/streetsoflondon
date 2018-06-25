@@ -90,8 +90,9 @@ public class KaufMenu : MonoBehaviour
     //Methode des Buttons zum Erhöhen der Kaufmenge des ersten Einheitentyps
     public void ErhoeheAnzeige1()
     {
-        if((einheitenPrice[0] <= goldremaining) && ((Convert.ToInt32(preis1.GetComponent<Text>().text)+ Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
-            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis5.GetComponent<Text>().text)) < gold))
+        if((einheitenPrice[0] <= goldremaining) && 
+            ((Convert.ToInt32(preis1.GetComponent<Text>().text)+ Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text) + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis5.GetComponent<Text>().text)) < gold) && 
+            (dbc.GetNumofUnit(dbc.GetUnitName(ids[0]), PassthroughData.currentPlayer) + Convert.ToInt32(anzeige1.GetComponent<Text>().text) <5))
         {
             int x1 = Convert.ToInt32(anzeige1.GetComponent<Text>().text);
             String text1 = Convert.ToString(x1 + 1);
@@ -118,7 +119,8 @@ public class KaufMenu : MonoBehaviour
     public void ErhoeheAnzeige2()
     {
         if ((Convert.ToInt32(preis1.GetComponent<Text>().text) + Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
-            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis5.GetComponent<Text>().text)) < gold && einheitenPrice[1] <= goldremaining)
+            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis5.GetComponent<Text>().text)) < gold && einheitenPrice[1] <= goldremaining &&
+            (dbc.GetNumofUnit(dbc.GetUnitName(ids[1]), PassthroughData.currentPlayer) + Convert.ToInt32(anzeige2.GetComponent<Text>().text) < 5))
         {
             int x2 = Convert.ToInt32(anzeige2.GetComponent<Text>().text);
             String text2 = Convert.ToString(x2 + 1);
@@ -143,7 +145,8 @@ public class KaufMenu : MonoBehaviour
     public void ErhoeheAnzeige3()
     {
         if ((Convert.ToInt32(preis1.GetComponent<Text>().text) + Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
-            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis5.GetComponent<Text>().text)) < gold && einheitenPrice[2] <= goldremaining)
+            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis5.GetComponent<Text>().text)) < gold && einheitenPrice[2] <= goldremaining &&
+            (dbc.GetNumofUnit(dbc.GetUnitName(ids[2]), PassthroughData.currentPlayer) + Convert.ToInt32(anzeige3.GetComponent<Text>().text) < 5))
         {
             int x3 = Convert.ToInt32(anzeige3.GetComponent<Text>().text);
             String text3 = Convert.ToString(x3 + 1);
@@ -168,7 +171,8 @@ public class KaufMenu : MonoBehaviour
     public void ErhoeheAnzeige4()
     {
         if ((Convert.ToInt32(preis1.GetComponent<Text>().text) + Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
-            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis5.GetComponent<Text>().text)) < gold && einheitenPrice[3] <= goldremaining)
+            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis5.GetComponent<Text>().text)) < gold && einheitenPrice[3] <= goldremaining &&
+            (dbc.GetNumofUnit(dbc.GetUnitName(ids[3]), PassthroughData.currentPlayer) + Convert.ToInt32(anzeige4.GetComponent<Text>().text) < 5))
         {
             int x4 = Convert.ToInt32(anzeige4.GetComponent<Text>().text);
             String text4 = Convert.ToString(x4 + 1);
@@ -193,7 +197,8 @@ public class KaufMenu : MonoBehaviour
     public void ErhoeheAnzeige5()
     {
         if ((Convert.ToInt32(preis1.GetComponent<Text>().text) + Convert.ToInt32(preis2.GetComponent<Text>().text) + Convert.ToInt32(preis3.GetComponent<Text>().text)
-            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis5.GetComponent<Text>().text)) < gold && einheitenPrice[4] <= goldremaining)
+            + Convert.ToInt32(preis4.GetComponent<Text>().text) + Convert.ToInt32(preis5.GetComponent<Text>().text)) < gold && einheitenPrice[4] <= goldremaining &&
+            (dbc.GetNumofUnit(dbc.GetUnitName(ids[4]), PassthroughData.currentPlayer) + Convert.ToInt32(anzeige5.GetComponent<Text>().text) < 5))
         {
             int x5 = Convert.ToInt32(anzeige5.GetComponent<Text>().text);
             String text5 = Convert.ToString(x5 + 1);

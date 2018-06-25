@@ -20389,34 +20389,34 @@ MonoBehaviour:
   pools:
   - tag: Boss
     prefab: {fileID: 1030904958661354, guid: 03b39a6e3d0815a4abb162f20356f3a9, type: 2}
-    size: 5
+    size: 10
   - tag: Diebin
     prefab: {fileID: 1030904958661354, guid: 03b39a6e3d0815a4abb162f20356f3a9, type: 2}
-    size: 5
+    size: 10
   - tag: Scharfschuetze
     prefab: {fileID: 1030904958661354, guid: 03b39a6e3d0815a4abb162f20356f3a9, type: 2}
-    size: 5
+    size: 10
   - tag: Raufbold
     prefab: {fileID: 1030904958661354, guid: 03b39a6e3d0815a4abb162f20356f3a9, type: 2}
-    size: 5
+    size: 10
   - tag: Tueftler
     prefab: {fileID: 1030904958661354, guid: 03b39a6e3d0815a4abb162f20356f3a9, type: 2}
-    size: 5
+    size: 10
   - tag: Schlaeger
     prefab: {fileID: 1030904958661354, guid: 03b39a6e3d0815a4abb162f20356f3a9, type: 2}
-    size: 5
+    size: 10
   - tag: Meuchelmoerder
     prefab: {fileID: 1030904958661354, guid: 03b39a6e3d0815a4abb162f20356f3a9, type: 2}
-    size: 5
+    size: 10
   - tag: Polizist
     prefab: {fileID: 1030904958661354, guid: 03b39a6e3d0815a4abb162f20356f3a9, type: 2}
-    size: 5
+    size: 10
   - tag: Pestarzt
     prefab: {fileID: 1030904958661354, guid: 03b39a6e3d0815a4abb162f20356f3a9, type: 2}
-    size: 5
+    size: 10
   - tag: Taschendieb
     prefab: {fileID: 1030904958661354, guid: 03b39a6e3d0815a4abb162f20356f3a9, type: 2}
-    size: 5
+    size: 10
 --- !u!4 &1077912414
 Transform:
   m_ObjectHideFlags: 0
