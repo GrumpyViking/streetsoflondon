@@ -359,13 +359,13 @@ public class KampfMenu : MonoBehaviour {
         //Wird ausgeführt wenn der Verteidiger den Angreifer Besiegt hatt Lp=0
         if ((dbc.GetLP(attacker.GetComponent<UnitHelper>().unitID) - lostLPAtk) <= 0)
         {
-            //dbc.WriteToDB("Delete From Einheit Where ID = "+ attacker.GetComponent<UnitHelper>().unitID);
+            dbc.WriteToDB("Delete From Einheit Where ID = "+ attacker.GetComponent<UnitHelper>().unitID);
             mu.FightWinner(defender);
         }
         //Wird ausgeführt wenn der Angreifer den Verteidiger Besiegt hatt Lp=0
         else if ((dbc.GetLP(defender.GetComponent<UnitHelper>().unitID) - lostLPDef) <= 0)
         {
-            //dbc.WriteToDB("Delete From Einheit Where ID = " + defender.GetComponent<UnitHelper>().unitID);
+            dbc.WriteToDB("Delete From Einheit Where ID = " + defender.GetComponent<UnitHelper>().unitID);
             mu.FightWinner(attacker);
         }
         //Ausführen wenn keiner der beiden Besiegt ist
