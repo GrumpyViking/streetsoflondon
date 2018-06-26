@@ -44,6 +44,8 @@ public class MainMenuManager : MonoBehaviour {
         //Das PassthroughData Script bietet die möglichkeit grundlegende Daten zurverfügungzustellen
         PassthroughData.startPlayer = StartingPlayer(ctp.text);
         PassthroughData.player1 = pot.text;
+        PassthroughData.unitsPlayer1 = 0;
+        PassthroughData.unitsPlayer2 = 0;
         PassthroughData.player2 = ptt.text;
 
         //Wechsel zur Spielansicht

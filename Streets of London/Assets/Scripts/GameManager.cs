@@ -56,11 +56,13 @@ public class GameManager : MonoBehaviour {
             PassthroughData.player1 = "Spieler 1";
             PassthroughData.currentPlayer = 1;
             PassthroughData.startPlayer = 1;
+            PassthroughData.unitsPlayer1 = 0;
         }
         if (PassthroughData.player2 == null)
         {
             dbc.WriteToDB("INSERT INTO Spieler(ID, Name, Gold) VALUES (2, 'Spieler 2', 20)");
             PassthroughData.player2 = "Spieler 2";
+            PassthroughData.unitsPlayer2 = 0;
         }
 
         //Show SpielerMenu

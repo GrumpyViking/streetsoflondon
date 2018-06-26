@@ -114,8 +114,11 @@ public class SpielerMenu : MonoBehaviour {
     //Beenden des Programms
     public void ExitPorgram()
     {
+        PassthroughData.unitsPlayer1 = 0; // Zurücksetzten der maximalen Einheiten Spieler 1
+        PassthroughData.unitsPlayer2 = 0; // Zurücksetzten der maximalen Einheiten Spieler 2
         dbc.CleanDB(); // Säubere Datenbank am Spielende
         Application.Quit();//Beendet die Anwendung, wenn das Projekt exportiert wurde
+        
         //UnityEditor.EditorApplication.isPlaying = false; // Beenden wenn im Editor gestartet
     }
 }

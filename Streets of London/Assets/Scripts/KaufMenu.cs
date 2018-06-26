@@ -353,110 +353,130 @@ public class KaufMenu : MonoBehaviour
                 {
                     if (PassthroughData.currentPlayer == 1)
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Boss',  3, 5, 3, 1, 5, 4, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + PassthroughData.unitsPlayer1 + ", 'Boss',  3, 5, 3, 1, 5, 4, 1)");
+                        PassthroughData.unitsPlayer1++;
                     }
                     else
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Boss',  3, 5, 3, 1, 5, 4, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 5 + "" + PassthroughData.unitsPlayer2 + ", 'Boss',  3, 5, 3, 1, 5, 4, 2)");
+                        PassthroughData.unitsPlayer2++;
                     }
                 }
                 if (ids[i] == 3 || ids[i] == 4)
                 {
                     if (PassthroughData.currentPlayer == 1)
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Diebin',  3, 3, 2, 2, 3, 3, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + PassthroughData.unitsPlayer1 + ", 'Diebin',  3, 3, 2, 2, 3, 3, 1)");
+                        PassthroughData.unitsPlayer1++;
                     }
                     else
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Diebin',  3, 3, 2, 2, 3, 3, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 5 + "" + PassthroughData.unitsPlayer2 + ", 'Diebin',  3, 3, 2, 2, 3, 3, 2)");
+                        PassthroughData.unitsPlayer2++;
                     }
                 }
                 if (ids[i] == 5 || ids[i] == 6)
                 {
                     if (PassthroughData.currentPlayer == 1)
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Meuchelmoerder',  4, 3, 1, 1, 4, 3, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + PassthroughData.unitsPlayer1 + ", 'Meuchelmoerder',  4, 3, 1, 1, 4, 3, 1)");
+                        PassthroughData.unitsPlayer1++;
                     }
                     else
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + " , 'Meuchelmoerder',  4, 3, 1, 1, 4, 3, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 5 + "" + PassthroughData.unitsPlayer2 + " , 'Meuchelmoerder',  4, 3, 1, 1, 4, 3, 2)");
+                        PassthroughData.unitsPlayer2++;
                     }
                 }
                 if (ids[i] == 7 || ids[i] == 8)
                 {
                     if (PassthroughData.currentPlayer == 1)
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Pestarzt',  3, 3, 4, 1, 4, 1, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + PassthroughData.unitsPlayer1 + ", 'Pestarzt',  3, 3, 4, 1, 4, 1, 1)");
+                        PassthroughData.unitsPlayer1++;
                     }
                     else
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Pestarzt',  3, 3, 4, 1, 4, 1, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 5 + "" + PassthroughData.unitsPlayer2 + ", 'Pestarzt',  3, 3, 4, 1, 4, 1, 2)");
+                        PassthroughData.unitsPlayer2++;
                     }
                 }
                 if (ids[i] == 9 || ids[i] == 10)
                 {
                     if (PassthroughData.currentPlayer == 1)
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Polizist',  2, 5, 3, 1, 3, 2, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + PassthroughData.unitsPlayer1 + ", 'Polizist',  2, 5, 3, 1, 3, 2, 1)");
+                        PassthroughData.unitsPlayer1++;
                     }
                     else
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Polizist',  2, 5, 3, 1, 3, 2, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 5 + "" + PassthroughData.unitsPlayer2 + ", 'Polizist',  2, 5, 3, 1, 3, 2, 2)");
+                        PassthroughData.unitsPlayer2++;
                     }
                 }
                 if (ids[i] == 11 || ids[i] == 12)
                 {
                     if (PassthroughData.currentPlayer == 1)
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Raufbold',  2, 6, 3, 1, 3, 1, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + PassthroughData.unitsPlayer1 + ", 'Raufbold',  2, 6, 3, 1, 3, 1, 1)");
+                        PassthroughData.unitsPlayer1++;
                     }
                     else
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Raufbold',  2, 6, 3, 1, 3, 1, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 5 + "" + PassthroughData.unitsPlayer2 + ", 'Raufbold',  2, 6, 3, 1, 3, 1, 2)");
+                        PassthroughData.unitsPlayer2++;
                     }
                 }
                 if (ids[i] == 13 || ids[i] == 14)
                 {
                     if (PassthroughData.currentPlayer == 1)
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Scharfschuetze',  3, 3, 2, 3, 4, 3, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + PassthroughData.unitsPlayer1 + ", 'Scharfschuetze',  3, 3, 2, 3, 4, 3, 1)");
+                        PassthroughData.unitsPlayer1++;
                     }
                     else
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Scharfschuetze',  3, 3, 2, 3, 4, 3, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 5 + "" + PassthroughData.unitsPlayer2 + ", 'Scharfschuetze',  3, 3, 2, 3, 4, 3, 2)");
+                        PassthroughData.unitsPlayer2++;
                     }
                 }
                 if (ids[i] == 15 || ids[i] == 16)
                 {
                     if (PassthroughData.currentPlayer == 1)
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Schlaeger',  2, 4, 2, 1, 2, 2, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + PassthroughData.unitsPlayer1 + ", 'Schlaeger',  2, 4, 2, 1, 2, 2, 1)");
+                        PassthroughData.unitsPlayer1++;
                     }
                     else
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Schlaeger',  2, 4, 2, 1, 2, 2, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 5 + "" + PassthroughData.unitsPlayer2 + ", 'Schlaeger',  2, 4, 2, 1, 2, 2, 2)");
+                        PassthroughData.unitsPlayer2++;
                     }
                 }
                 if (ids[i] == 17 || ids[i] == 18)
                 {
                     if (PassthroughData.currentPlayer == 1)
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Taschendieb',  4, 2, 1, 1, 2, 1, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + PassthroughData.unitsPlayer1 + ", 'Taschendieb',  4, 2, 1, 1, 2, 1, 1)");
+                        PassthroughData.unitsPlayer1++;
                     }
                     else
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Taschendieb',  4, 2, 1, 1, 2, 1, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 5 + "" + PassthroughData.unitsPlayer2 + ", 'Taschendieb',  4, 2, 1, 1, 2, 1, 2)");
+                        PassthroughData.unitsPlayer2++;
                     }
                 }
                 if (ids[i] == 19 || ids[i] == 20)
                 {
                     if (PassthroughData.currentPlayer == 1)
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Tueftler',  2, 2, 1, 2, 5, 5, 1)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 1 + "" + PassthroughData.unitsPlayer1 + ", 'Tueftler',  2, 2, 1, 2, 5, 5, 1)");
+                        PassthroughData.unitsPlayer1++;
                     }
                     else
                     {
-                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 2 + "" + dbc.GetNumUnitsofPlayer(PassthroughData.currentPlayer) + ", 'Tueftler',  2, 2, 1, 2, 5, 5, 2)");
+                        dbc.WriteToDB("Insert Into Einheit (ID, Name, Aktionspunkte, Lebenspunkte, Verteidigungspunkte, Reichweite, Kosten, Angriffspunkte, SpielerID) Values (" + 5 + "" + PassthroughData.unitsPlayer2 + ", 'Tueftler',  2, 2, 1, 2, 5, 5, 2)");
+                        PassthroughData.unitsPlayer2++;
                     }
                 }
                 //Einheiten erscheinen auf dem Spielfeld 
